@@ -559,6 +559,24 @@ button[aria-selected="true"] .nom-f{font-style:italic}
   .det-f{grid-template-columns:minmax(0,1fr);gap:1rem}
 }
 @media (prefers-reduced-motion:reduce){.etapes-f .seg i,.etapes-f li,.choix-f button::after{transition:none}.js .det-f.actif{animation:none}}
+
+/* Ruban des engagements */
+.ruban{position:relative;overflow:hidden;background:var(--ivoire);border-block:1px solid var(--ligne);padding-block:clamp(1.1rem,2.4vw,1.6rem)}
+.ruban::before,.ruban::after{content:"";position:absolute;top:0;bottom:0;width:clamp(40px,8vw,120px);z-index:1;pointer-events:none}
+.ruban::before{left:0;background:linear-gradient(90deg,var(--ivoire),transparent)}
+.ruban::after{right:0;background:linear-gradient(-90deg,var(--ivoire),transparent)}
+.ruban-liste{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0;padding:0}
+.ruban-piste{display:flex;width:max-content;animation:ruban 48s linear infinite}
+.ruban:hover .ruban-piste{animation-play-state:paused}
+.ruban-bloc{display:flex;align-items:center;flex:none}
+.item-r{font-family:var(--f-titre);font-style:italic;font-weight:400;font-size:clamp(1.45rem,3vw,2.1rem);color:var(--nuit);white-space:nowrap;padding-inline:clamp(1.2rem,3vw,2.4rem)}
+.sep-r{width:clamp(20px,2.4vw,28px);height:auto;flex:none;opacity:.9}
+@keyframes ruban{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){
+  .ruban::before,.ruban::after,.ruban-piste{display:none}
+  .ruban-liste{position:static;width:auto;height:auto;clip:auto;white-space:normal;display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem 1.6rem;list-style:none;padding-inline:var(--goutiere)}
+  .ruban-liste li{font-family:var(--f-titre);font-style:italic;font-size:1.3rem}
+}
 </style>
 </head>
 <body>
@@ -601,9 +619,10 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 <div class="progress" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 </div></section>
 <div class="contenu">
-<div class="reassurance"><div class="wrap"><ul>
-<li>Visite et devis gratuits</li><li>Intervention partout en France</li><li>Rapport photo à chaque étape</li><li>Zéro avance de frais</li>
-</ul></div></div>
+<div class="ruban" role="region" aria-label="Nos engagements">
+<ul class="ruban-liste"><li>Visite et devis gratuits</li><li>Intervention partout en France</li><li>Rapport photo à chaque étape</li><li>Zéro avance de frais</li><li>Un seul interlocuteur</li></ul>
+<div class="ruban-piste" aria-hidden="true"><div class="ruban-bloc"><span class="item-r">Visite et devis gratuits</span><img class="sep-r" src="images/monogramme-entete.png" width="96" height="89" alt=""><span class="item-r">Intervention partout en France</span><img class="sep-r" src="images/monogramme-entete.png" width="96" height="89" alt=""><span class="item-r">Rapport photo à chaque étape</span><img class="sep-r" src="images/monogramme-entete.png" width="96" height="89" alt=""><span class="item-r">Zéro avance de frais</span><img class="sep-r" src="images/monogramme-entete.png" width="96" height="89" alt=""><span class="item-r">Un seul interlocuteur</span><img class="sep-r" src="images/monogramme-entete.png" width="96" height="89" alt=""></div><div class="ruban-bloc"><span class="item-r">Visite et devis gratuits</span><img class="sep-r" src="images/monogramme-entete.png" width="96" height="89" alt=""><span class="item-r">Intervention partout en France</span><img class="sep-r" src="images/monogramme-entete.png" width="96" height="89" alt=""><span class="item-r">Rapport photo à chaque étape</span><img class="sep-r" src="images/monogramme-entete.png" width="96" height="89" alt=""><span class="item-r">Zéro avance de frais</span><img class="sep-r" src="images/monogramme-entete.png" width="96" height="89" alt=""><span class="item-r">Un seul interlocuteur</span><img class="sep-r" src="images/monogramme-entete.png" width="96" height="89" alt=""></div></div>
+</div>
 <section class="sec-bloc"><div class="wrap">
 <div class="tete rv"><p class="sur">Les quatre temps de Lignée</p><h2 class="grand">Une seule maison, <em>avant, pendant, après.</em></h2><p class="chapo">Nous accompagnons les familles à chaque moment, et jusque dans la mémoire.</p></div>
 <div class="temps rv">

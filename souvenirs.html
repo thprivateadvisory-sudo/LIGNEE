@@ -559,6 +559,24 @@ button[aria-selected="true"] .nom-f{font-style:italic}
   .det-f{grid-template-columns:minmax(0,1fr);gap:1rem}
 }
 @media (prefers-reduced-motion:reduce){.etapes-f .seg i,.etapes-f li,.choix-f button::after{transition:none}.js .det-f.actif{animation:none}}
+
+/* Ruban des engagements */
+.ruban{position:relative;overflow:hidden;background:var(--ivoire);border-block:1px solid var(--ligne);padding-block:clamp(1.1rem,2.4vw,1.6rem)}
+.ruban::before,.ruban::after{content:"";position:absolute;top:0;bottom:0;width:clamp(40px,8vw,120px);z-index:1;pointer-events:none}
+.ruban::before{left:0;background:linear-gradient(90deg,var(--ivoire),transparent)}
+.ruban::after{right:0;background:linear-gradient(-90deg,var(--ivoire),transparent)}
+.ruban-liste{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0;padding:0}
+.ruban-piste{display:flex;width:max-content;animation:ruban 48s linear infinite}
+.ruban:hover .ruban-piste{animation-play-state:paused}
+.ruban-bloc{display:flex;align-items:center;flex:none}
+.item-r{font-family:var(--f-titre);font-style:italic;font-weight:400;font-size:clamp(1.45rem,3vw,2.1rem);color:var(--nuit);white-space:nowrap;padding-inline:clamp(1.2rem,3vw,2.4rem)}
+.sep-r{width:clamp(20px,2.4vw,28px);height:auto;flex:none;opacity:.9}
+@keyframes ruban{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){
+  .ruban::before,.ruban::after,.ruban-piste{display:none}
+  .ruban-liste{position:static;width:auto;height:auto;clip:auto;white-space:normal;display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem 1.6rem;list-style:none;padding-inline:var(--goutiere)}
+  .ruban-liste li{font-family:var(--f-titre);font-style:italic;font-size:1.3rem}
+}
 </style>
 </head>
 <body>
