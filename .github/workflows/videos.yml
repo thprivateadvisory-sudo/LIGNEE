@@ -50,13 +50,13 @@ jobs:
             dur=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$tmp")
             res=$(ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0 "$tmp")
             if [ "$mode" = "apercu" ]; then
-              ffmpeg -v error -y -i "$tmp" -vf "fps=8/$dur,scale=320:-2,tile=4x2" -frames:v 1 -q:v 4 "videos/apercus/$nom.jpg"
+              ffmpeg -nostdin -v error -y -i "$tmp" -vf "fps=8/$dur,scale=320:-2,tile=4x2" -frames:v 1 -q:v 4 "videos/apercus/$nom.jpg"
             else
-              ffmpeg -v error -y -i "$tmp" -t 14 -an -vf "scale='if(gt(iw,ih),1280,720)':-2,fps=25,format=yuv420p" -c:v libx264 -preset slow -crf 27 -movflags +faststart "videos/$nom.mp4"
-              ffmpeg -v error -y -ss 1 -i "$tmp" -frames:v 1 -vf "scale='if(gt(iw,ih),1280,720)':-2" -q:v 5 "videos/$nom.jpg"
+              ffmpeg -nostdin -v error -y -i "$tmp" -t 14 -an -vf "scale='if(gt(iw,ih),1280,720)':-2,fps=25,format=yuv420p" -c:v libx264 -preset slow -crf 27 -movflags +faststart "videos/$nom.mp4"
+              ffmpeg -nostdin -v error -y -ss 1 -i "$tmp" -frames:v 1 -vf "scale='if(gt(iw,ih),1280,720)':-2" -q:v 5 "videos/$nom.jpg"
             fi
             echo "OK $mode $id $nom via=$via duree=$dur taille=$res" >> videos/journal.txt
-          done < videos/sources.txt
+          done < <(grep -v "^#" videos/sources.txt)
           cat videos/journal.txt
       - name: Enregistrer
         run: |
