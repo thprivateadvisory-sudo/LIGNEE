@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Que faire après un décès : la checklist complète · Lignée</title>
+<meta name="description" content="Toutes les démarches dans l'ordre, des premières 24 heures aux six premiers mois. Checklist gratuite.">
+<link rel="canonical" href="https://lignee.fr/guide.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Lignée">
+<meta property="og:title" content="Que faire après un décès : la checklist complète · Lignée">
+<meta property="og:description" content="Toutes les démarches dans l'ordre, des premières 24 heures aux six premiers mois. Checklist gratuite.">
+<meta property="og:url" content="https://lignee.fr/guide.html">
+<meta name="theme-color" content="#1B2A41">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='10' fill='%231B2A41'/%3E%3Cpath d='M19 11v24c0 2 1.2 3 3 3h11c2 0 3-1.4 2.2-3c-.8-1.6-2.8-1.3-3.4.2' fill='none' stroke='%23B89B5E' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M15 11h8' stroke='%23B89B5E' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;400;500&display=swap">
+<style>
+/* Colonne de lecture aérée, sections alternées ivoire / pierre, filets or comme seule ornementation. */
+:root{
+  --nuit:#1B2A41; --ivoire:#F5F1E8; --or:#B89B5E; --or-texte:#7D6431; --pierre:#ECE6DA; --ardoise:#5B6472;
+  --ligne:#D9D0BE; --blanc:#FBF9F4;
+  --f-titre:"Cormorant Garamond", "Cormorant", Garamond, "Times New Roman", serif;
+  --f-texte:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mesure:65ch; --large:1120px; --goutiere:clamp(16px,5vw,40px);
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--ivoire);color:var(--nuit);font-family:var(--f-texte);font-size:17px;line-height:1.65;font-weight:400}
+img{max-width:100%}
+a{color:inherit;text-underline-offset:3px;text-decoration-color:var(--or)}
+a:hover{text-decoration-color:var(--nuit)}
+:focus-visible{outline:2px solid var(--or-texte);outline-offset:3px;border-radius:2px}
+h1,h2,h3{font-family:var(--f-titre);font-weight:500;line-height:1.12;margin:0;text-wrap:balance;letter-spacing:-.005em}
+h1{font-size:clamp(2.4rem,6vw,4.1rem)}
+h2{font-size:clamp(1.9rem,4vw,2.7rem)}
+h3{font-size:1.55rem;font-weight:600}
+p{margin:0}
+.wrap{max-width:var(--large);margin:0 auto;padding-inline:var(--goutiere)}
+.sur{font-family:var(--f-texte);font-size:.78rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--or-texte)}
+.chapo{font-size:1.15rem;color:var(--ardoise);max-width:var(--mesure)}
+.prose{max-width:var(--mesure);display:grid;gap:1rem}
+.prose h2{margin-top:1.5rem}
+.prose h3{margin-top:1rem}
+.prose ul,.prose ol{margin:0;padding-left:1.2rem;display:grid;gap:.4rem}
+.filet{width:56px;height:1px;background:var(--or);border:0;margin:0}
+.muted{color:var(--ardoise)}
+
+/* En-tête */
+.entete{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--ivoire) 94%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--ligne)}
+.entete .wrap{display:flex;align-items:center;gap:1.5rem;min-height:72px}
+.marque{font-family:var(--f-titre);font-size:1.7rem;font-weight:600;letter-spacing:.24em;text-decoration:none;margin-right:auto;padding-left:.24em}
+.nav{display:flex;gap:1.2rem;font-size:.92rem;white-space:nowrap}
+.entete .btn{white-space:nowrap;padding:.7rem 1.2rem;font-size:.92rem}
+.nav a{text-decoration:none;color:var(--ardoise);padding-block:.4rem;border-bottom:1px solid transparent}
+.nav a:hover,.nav a[aria-current="page"]{color:var(--nuit);border-bottom-color:var(--or)}
+.menu-btn{display:none;background:none;border:1px solid var(--ligne);border-radius:999px;font:inherit;font-size:.9rem;color:var(--nuit);padding:.45rem 1rem;cursor:pointer}
+@media (max-width:980px){.entete .btn{display:none}}
+@media (max-width:1180px){
+  .menu-btn{display:inline-block}
+  .nav{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;gap:0;background:var(--ivoire);border-bottom:1px solid var(--ligne);padding:.5rem var(--goutiere) 1rem}
+  .nav a{padding-block:.8rem;border-bottom:1px solid var(--ligne);font-size:1.05rem}
+  .entete.ouvert .nav{display:flex}
+}
+
+/* Boutons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font:inherit;font-size:.98rem;font-weight:500;text-decoration:none;border-radius:999px;padding:.85rem 1.5rem;border:1px solid var(--nuit);background:var(--nuit);color:var(--ivoire);cursor:pointer;transition:background .2s,color .2s,border-color .2s;text-align:center}
+.btn:hover{background:var(--or);border-color:var(--or);color:var(--nuit)}
+.btn.sec{background:transparent;color:var(--nuit)}
+.btn.sec:hover{background:var(--nuit);color:var(--ivoire);border-color:var(--nuit)}
+.btns{display:flex;flex-wrap:wrap;gap:.75rem}
+
+/* Sections */
+.sec-bloc{padding-block:clamp(56px,9vw,104px)}
+.sec-bloc.pierre{background:var(--pierre)}
+.sec-bloc.nuit{background:var(--nuit);color:var(--ivoire)}
+.sec-bloc.nuit .sur{color:var(--or)}
+.sec-bloc.nuit .chapo,.sec-bloc.nuit .muted{color:#C9CED6}
+.sec-bloc.nuit .btn{background:var(--ivoire);color:var(--nuit);border-color:var(--ivoire)}
+.sec-bloc.nuit .btn:hover{background:var(--or);border-color:var(--or)}
+.sec-bloc.nuit .btn.sec{background:transparent;color:var(--ivoire);border-color:#4A5871}
+.sec-bloc.nuit .btn.sec:hover{border-color:var(--or);color:var(--or)}
+.tete{display:grid;gap:1rem;margin-bottom:clamp(2rem,5vw,3.2rem);max-width:var(--mesure)}
+
+/* Héros */
+.heros{padding-block:clamp(56px,10vw,120px) clamp(48px,8vw,96px);position:relative;overflow:hidden}
+.heros .wrap{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:3rem;align-items:center}
+.heros-texte{display:grid;gap:1.5rem;min-width:0}
+.heros .chapo{font-size:1.2rem}
+.heros-mono{color:var(--or);justify-self:center;width:min(320px,100%);opacity:.9}
+.heros-mono .mono{width:100%;height:auto}
+.heros-page .wrap{grid-template-columns:minmax(0,1fr)}
+@media (max-width:820px){.heros .wrap{grid-template-columns:minmax(0,1fr)}.heros-mono{display:none}}
+
+/* Bandeau de réassurance */
+.reassurance{border-block:1px solid var(--ligne);background:var(--blanc)}
+.reassurance ul{list-style:none;margin:0;padding:1.1rem 0;display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem 2.5rem;font-size:.95rem;color:var(--ardoise)}
+.reassurance li{display:flex;align-items:center;gap:.6rem}
+.reassurance li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--or)}
+
+/* Grilles */
+.grille{display:grid;gap:clamp(1.5rem,3vw,2.5rem);grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (min-width:981px){.grille.trois{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:980px){.grille{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.grille{grid-template-columns:minmax(0,1fr)}}
+.grille.deux{grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr))}
+.item{display:grid;gap:.6rem;align-content:start;padding-top:1.2rem;border-top:1px solid var(--or);min-width:0}
+.item h3{font-size:1.4rem}
+.item p{color:var(--ardoise)}
+.sec-bloc.nuit .item p{color:#C9CED6}
+
+/* Formules */
+.formules{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr))}
+.formule{background:var(--blanc);border:1px solid var(--ligne);border-radius:6px;padding:2rem 1.75rem;display:grid;gap:1rem;grid-template-rows:auto auto 1fr auto;min-width:0}
+.formule.mise{border-color:var(--or);box-shadow:0 0 0 1px var(--or) inset}
+.formule .pour{font-size:.9rem;color:var(--or-texte);font-weight:500}
+.formule ul{list-style:none;margin:0;padding:0;display:grid;gap:.55rem;align-content:start}
+.formule li{padding-left:1.4rem;position:relative}
+.formule li::before{content:"";position:absolute;left:0;top:.75em;width:.7rem;height:1px;background:var(--or)}
+.formule .prix{font-family:var(--f-titre);font-size:1.35rem;font-weight:600;border-top:1px solid var(--ligne);padding-top:1rem}
+.formule .prix span{font-family:var(--f-texte);font-size:.85rem;font-weight:400;color:var(--ardoise);display:block}
+
+/* Étapes : la méthode est une vraie séquence */
+.etapes{list-style:none;margin:0;padding:0;display:grid;gap:0;counter-reset:etape;max-width:820px}
+.etapes li{counter-increment:etape;display:grid;grid-template-columns:3.5rem minmax(0,1fr);gap:1.25rem;padding-block:1.6rem;border-top:1px solid var(--ligne)}
+.etapes li:last-child{border-bottom:1px solid var(--ligne)}
+.etapes li::before{content:counter(etape);font-family:var(--f-titre);font-size:2.4rem;line-height:1;color:var(--or-texte);font-weight:500}
+.etapes h3{font-size:1.45rem;margin-bottom:.35rem}
+.etapes p{color:var(--ardoise)}
+.sec-bloc.nuit .etapes li{border-color:#33435E}
+.sec-bloc.nuit .etapes p{color:#C9CED6}
+.sec-bloc.nuit .etapes li::before{color:var(--or)}
+
+/* FAQ */
+.faq{max-width:820px;border-top:1px solid var(--ligne)}
+.faq details{border-bottom:1px solid var(--ligne)}
+.faq summary{cursor:pointer;list-style:none;padding:1.25rem 2.5rem 1.25rem 0;position:relative;font-family:var(--f-titre);font-size:1.35rem;font-weight:600;line-height:1.3}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:.25rem;top:1.05rem;font-family:var(--f-texte);font-weight:300;font-size:1.6rem;color:var(--or-texte)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding:0 0 1.4rem;color:var(--ardoise);max-width:var(--mesure)}
+
+/* Formulaires */
+.form-zone{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:clamp(2rem,5vw,4rem);align-items:start}
+@media (max-width:860px){.form-zone{grid-template-columns:minmax(0,1fr)}}
+.form{background:var(--blanc);border:1px solid var(--ligne);border-radius:6px;padding:clamp(1.25rem,4vw,2.25rem);display:grid;gap:1.1rem;min-width:0}
+.champs{display:grid;gap:1.1rem;grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:560px){.champs{grid-template-columns:minmax(0,1fr)}}
+.champ{display:grid;gap:.35rem;min-width:0}
+.champ.plein{grid-column:1/-1}
+.champ label,.legende{font-size:.9rem;font-weight:500}
+.champ .opt{font-weight:400;color:var(--ardoise)}
+.champ input,.champ select,.champ textarea{font:inherit;font-size:1rem;color:var(--nuit);background:var(--ivoire);border:1px solid #CFC5B1;border-radius:4px;padding:.75rem .85rem;width:100%;min-width:0}
+.champ textarea{min-height:120px;resize:vertical}
+.champ input:focus,.champ select:focus,.champ textarea:focus{outline:2px solid var(--or);outline-offset:0;border-color:var(--or)}
+.consent{display:flex;gap:.7rem;align-items:flex-start;font-size:.88rem;color:var(--ardoise);line-height:1.5}
+.consent input{margin-top:.25rem;width:18px;height:18px;flex:none;accent-color:var(--nuit)}
+.form .btn{justify-self:start}
+.form-msg{font-size:.95rem;padding:.9rem 1rem;border-radius:4px;background:var(--pierre);border-left:3px solid var(--or)}
+.form-msg.erreur{border-left-color:#9B3B2E}
+.coord{display:grid;gap:1.25rem}
+.coord .ligne-c{display:grid;gap:.15rem;padding-bottom:1.1rem;border-bottom:1px solid var(--ligne)}
+.coord .val{font-family:var(--f-titre);font-size:1.5rem;font-weight:600;user-select:all}
+
+/* Checklist du guide */
+.periode{display:grid;grid-template-columns:minmax(0,14rem) minmax(0,1fr);gap:1.5rem 3rem;padding-block:2rem;border-top:1px solid var(--ligne)}
+.periode:last-of-type{border-bottom:1px solid var(--ligne)}
+@media (max-width:760px){.periode{grid-template-columns:minmax(0,1fr);gap:1rem}}
+.periode h3{font-size:1.6rem}
+.coches{list-style:none;margin:0;padding:0;display:grid;gap:.75rem}
+.coches li{display:grid;grid-template-columns:1.1rem minmax(0,1fr);gap:.85rem;align-items:start}
+.coches li::before{content:"";width:1.05rem;height:1.05rem;border:1.2px solid var(--or-texte);border-radius:2px;margin-top:.3rem}
+.note{font-size:.9rem;color:var(--ardoise);border-left:2px solid var(--or);padding-left:1rem;max-width:var(--mesure)}
+
+/* Tableau mentions */
+.table-wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{text-align:left;padding:.7rem .9rem;border-bottom:1px solid var(--ligne);vertical-align:top}
+th{font-weight:500;width:38%}
+.a-completer{background:#F3E6C4;padding:0 .25rem;border-radius:2px}
+
+/* Pied de page */
+.pied{background:var(--nuit);color:#C9CED6;padding-block:3.5rem 2rem;font-size:.95rem}
+.pied a{color:var(--ivoire);text-decoration:none}
+.pied a:hover{color:var(--or)}
+.pied-haut{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(2,minmax(0,1fr));gap:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid #33435E}
+@media (max-width:760px){.pied-haut{grid-template-columns:minmax(0,1fr)}}
+.sceau{display:flex;align-items:center;gap:1rem;color:var(--or)}
+.sceau .mono{width:52px;height:52px}
+.sceau span{font-family:var(--f-titre);font-size:1.6rem;letter-spacing:.24em;color:var(--ivoire);font-weight:600}
+.pied ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem}
+.pied h4{margin:0 0 .8rem;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--or);font-weight:500}
+.pied-bas{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;padding-top:1.5rem;font-size:.85rem}
+
+/* Barre d'appel mobile */
+.barre-appel{display:none}
+@media (max-width:980px){
+  body{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
+  .barre-appel{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem;position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--nuit);padding:.6rem .75rem calc(.6rem + env(safe-area-inset-bottom,0px))}
+  .barre-appel a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.15rem;text-decoration:none;color:var(--ivoire);font-size:.8rem;font-weight:500;padding:.45rem .25rem;border-radius:6px;border:1px solid #33435E;text-align:center;line-height:1.2}
+  .barre-appel a.principal{background:var(--or);color:var(--nuit);border-color:var(--or)}
+  .barre-appel svg{width:18px;height:18px}
+}
+</style>
+</head>
+<body>
+<header class="entete"><div class="wrap">
+<a class="marque" href="index.html" aria-label="Lignée, accueil">LIGNÉE</a>
+<nav class="nav" aria-label="Navigation principale"><a href="formules.html">Nos formules</a><a href="methode.html">Comment ça marche</a><a href="notaires.html">Notaires et pros</a><a href="guide.html" aria-current="page">Guide gratuit</a><a href="a-propos.html">À propos</a><a href="contact.html">Contact</a></nav>
+<a class="btn" href="contact.html#visite">Demander une visite gratuite</a>
+<button class="menu-btn" type="button" aria-expanded="false">Menu</button>
+</div></header>
+<main>
+
+<section class="heros heros-page"><div class="wrap"><div class="heros-texte">
+<p class="sur">Guide gratuit</p>
+<h1>Que faire après un décès.</h1>
+<p class="chapo">Les premiers jours sont un tourbillon. Voici les étapes, dans l'ordre, pour ne rien oublier.</p>
+<div class="btns"><a class="btn" href="#checklist">Télécharger la checklist</a></div>
+</div></div></section>
+<section class="sec-bloc"><div class="wrap">
+<div class="periode"><div><p class="sur">Étape 1 sur 4</p><h3>Premières 24 heures</h3></div><ul class="coches"><li><span>Faire constater le décès par un médecin, qui établit le certificat de décès.</span></li><li><span>Déclarer le décès à la mairie du lieu du décès. Les pompes funèbres peuvent s'en charger.</span></li><li><span>Rechercher si votre proche avait laissé des volontés ou souscrit un contrat obsèques.</span></li><li><span>Choisir une entreprise de pompes funèbres et demander un devis détaillé.</span></li></ul></div><div class="periode"><div><p class="sur">Étape 2 sur 4</p><h3>Première semaine</h3></div><ul class="coches"><li><span>Organiser les obsèques.</span></li><li><span>Prévenir l'employeur ou la caisse de retraite, et les organismes qui versent des prestations.</span></li><li><span>Informer la banque. Elle peut régler tout ou partie des frais d'obsèques sur le compte de votre proche, dans une limite fixée par la loi.</span></li><li><span>Demander plusieurs copies de l'acte de décès à la mairie.</span></li><li><span>Contacter un notaire, en particulier s'il y a un logement ou un testament.</span></li></ul></div><div class="periode"><div><p class="sur">Étape 3 sur 4</p><h3>Premier mois</h3></div><ul class="coches"><li><span>Prévenir l'assurance maladie, la mutuelle et les assurances (logement, véhicule).</span></li><li><span>Faire le point sur le logement&nbsp;: bail à résilier, logement à vider, à vendre ou à louer.</span></li><li><span>Résilier ou transférer les contrats&nbsp;: électricité, gaz, eau, internet, téléphone.</span></li><li><span>Faire suivre le courrier.</span></li><li><span>Rassembler les papiers utiles au notaire&nbsp;: livret de famille, titres de propriété, relevés bancaires.</span></li></ul></div><div class="periode"><div><p class="sur">Étape 4 sur 4</p><h3>Six premiers mois</h3></div><ul class="coches"><li><span>Avec le notaire, préparer la déclaration de succession. Pour un décès en France métropolitaine, elle doit être déposée dans les six mois.</span></li><li><span>Décider avec les autres héritiers de l'avenir du logement et des biens.</span></li><li><span>Vider, nettoyer et remettre en état le logement, puis le vendre, le louer ou le rendre.</span></li><li><span>Faire la dernière déclaration de revenus de votre proche l'année suivant le décès.</span></li></ul></div>
+<p class="note" style="margin-top:2rem">Ce guide vous informe sur les étapes les plus courantes. Il ne remplace pas un conseil juridique&nbsp;: pour toute question sur la succession, adressez-vous à votre notaire.</p>
+</div></section>
+<section class="sec-bloc pierre" id="checklist"><div class="wrap form-zone">
+<div class="prose">
+<p class="sur">Checklist à imprimer</p>
+<h2 style="margin-top:0">Recevez la checklist par e-mail.</h2>
+<p class="muted">Une page par période, à cocher au fur et à mesure. Nous ne vous enverrons rien d'autre sans votre accord.</p>
+</div>
+<form class="form" data-form="Checklist" data-ok="Merci. La checklist arrive dans votre boîte e-mail." novalidate>
+<div class="champ"><label for="g-mail">Votre adresse e-mail</label><input id="g-mail" name="email" type="email" required autocomplete="email"></div>
+<label class="consent"><input type="checkbox" name="consentement" required id="g-consent"> <span>J'accepte que Lignée utilise ces informations pour m'envoyer la checklist. Voir notre <a href="confidentialite.html">politique de confidentialité</a>.</span></label>
+<button class="btn" type="submit">Recevoir la checklist</button>
+<p class="form-msg" role="status" hidden></p>
+</form>
+</div></section>
+<section class="sec-bloc nuit"><div class="wrap" style="display:grid;gap:1.5rem;max-width:860px">
+<p class="sur">Et le logement&nbsp;?</p>
+<h2>Nous pouvons nous en occuper pour vous.</h2>
+<p class="chapo">Tri, vente des biens, débarras, nettoyage, remise en état et vente&nbsp;: un seul interlocuteur, zéro avance de frais.</p>
+<div class="btns"><a class="btn" href="contact.html#visite">Demander une visite gratuite</a><a class="btn sec" href="formules.html">Voir nos formules</a></div>
+</div></section>
+
+</main>
+<footer class="pied"><div class="wrap">
+<div class="pied-haut">
+<div style="display:grid;gap:1rem;align-content:start">
+<div class="sceau"><svg class="mono" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M19 11c0 0 0 22 0 24c0 2 1.2 3 3 3h11c2 0 3-1.4 2.2-3c-.8-1.6-2.8-1.3-3.4.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 11h8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>LIGNÉE</span></div>
+<p>Le logement de votre proche, pris en charge du premier tri jusqu'à la vente. Intervention en Lorraine.</p>
+</div>
+<div><h4>Le service</h4><ul>
+<li><a href="formules.html">Nos formules</a></li><li><a href="methode.html">Comment ça marche</a></li>
+<li><a href="notaires.html">Notaires et professionnels</a></li><li><a href="guide.html">Guide : que faire après un décès</a></li></ul></div>
+<div><h4>Nous joindre</h4><ul>
+<li><a href="tel:03XXXXXXXX">03 XX XX XX XX</a></li><li><a href="https://wa.me/33XXXXXXXXX?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20vos%20services." target="_blank" rel="noopener">WhatsApp</a></li>
+<li><a href="mailto:contact@lignee.fr">contact@lignee.fr</a></li><li><a href="contact.html#visite">Demander une visite gratuite</a></li></ul></div>
+</div>
+<div class="pied-bas">
+<p>Lignée, une société du Groupe Cohesif</p>
+<p><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a> · <a href="a-propos.html">À propos</a></p>
+</div>
+</div></footer>
+<nav class="barre-appel" aria-label="Nous joindre">
+<a href="tel:03XXXXXXXX"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Appeler</a>
+<a href="https://wa.me/33XXXXXXXXX?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20vos%20services." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/></svg>WhatsApp</a>
+<a class="principal" href="contact.html#visite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Visite gratuite</a>
+</nav>
+<script>
+(function(){
+  var entete=document.querySelector('.entete'),btn=document.querySelector('.menu-btn');
+  if(btn){btn.addEventListener('click',function(){var o=entete.classList.toggle('ouvert');btn.setAttribute('aria-expanded',o?'true':'false');btn.textContent=o?'Fermer':'Menu';});}
+  // Clé Web3Forms à renseigner à la mise en ligne (https://web3forms.com).
+  var CLE='A_RENSEIGNER';
+  document.querySelectorAll('form[data-form]').forEach(function(f){
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      var msg=f.querySelector('.form-msg');
+      if(!f.checkValidity()){f.reportValidity();return;}
+      msg.hidden=false;msg.classList.remove('erreur');
+      if(CLE==='A_RENSEIGNER'){
+        msg.classList.add('erreur');
+        msg.textContent="Le formulaire est en cours de branchement : votre demande n'a pas encore été envoyée. Appelez-nous au 03 XX XX XX XX ou écrivez à contact@lignee.fr.";
+        return;
+      }
+      var d=new FormData(f);d.append('access_key',CLE);d.append('subject','Lignée · '+f.getAttribute('data-form'));
+      msg.textContent='Envoi en cours…';
+      fetch('https://api.web3forms.com/submit',{method:'POST',body:d}).then(function(r){return r.json();}).then(function(j){
+        if(j.success){f.reset();msg.textContent=f.getAttribute('data-ok');}
+        else{throw new Error();}
+      }).catch(function(){msg.classList.add('erreur');msg.textContent="L'envoi n'a pas abouti. Appelez-nous au 03 XX XX XX XX ou écrivez à contact@lignee.fr.";});
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
