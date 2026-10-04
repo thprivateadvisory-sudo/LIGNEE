@@ -439,6 +439,42 @@ h1 em,h2 em,.grand em{font-style:italic;font-weight:300}
 @media (max-width:900px){.parcours.trois ol{grid-template-columns:minmax(0,1fr)}}
 .pied-haut{grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,1fr))}
 @media (max-width:860px){.pied-haut{grid-template-columns:repeat(2,minmax(0,1fr))}.pied-haut>div:first-child{grid-column:1/-1}}
+
+/* Vidéos : teintées aux couleurs du ciel pour rester dans l'univers */
+.video-fond{position:absolute;inset:0;z-index:-2;overflow:hidden;background:var(--c1,var(--nuit))}
+.video-fond video,.video-fond img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.72) contrast(1.04)}
+.video-fond::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,color-mix(in srgb,var(--c1,#101A2B) 86%,transparent) 0%,color-mix(in srgb,var(--c2,#34435E) 58%,transparent) 58%,color-mix(in srgb,var(--c3,#B8916C) 50%,transparent) 100%)}
+.heros-ciel.avec-video{background:var(--c1)}
+.heros-ciel.avec-video::after{display:none}
+
+/* Ouverture de l'accueil : l'aube réelle, qui s'efface dans le ciel dessiné */
+.ouverture .video-fond{--c1:#101A2B;--c2:#34435E;--c3:#C29A72}
+.ouverture .video-fond::after{background:linear-gradient(180deg,rgba(16,26,43,.78) 0%,rgba(30,42,64,.5) 45%,rgba(194,154,114,.25) 100%)}
+.ouverture .video-fond video{filter:saturate(.8) contrast(1.05) brightness(.95)}
+
+/* Bande film plein écran */
+.film{position:relative;isolation:isolate;min-height:88vh;min-height:88svh;display:grid;align-items:end;color:var(--clair);padding-block:clamp(80px,12vw,140px)}
+.film .video-fond{--c1:#0B1220;--c2:#1B2A41;--c3:#1B2A41}
+.film .video-fond::after{background:linear-gradient(180deg,rgba(11,18,32,.25) 0%,rgba(11,18,32,.35) 40%,rgba(11,18,32,.88) 100%)}
+.film .wrap{display:grid;gap:1.2rem;width:100%}
+.film .citation{font-size:clamp(2.2rem,5.5vw,4.4rem);max-width:18ch}
+.film .citation em{color:var(--or-clair)}
+.film p.chapo{color:rgba(245,241,232,.82)}
+
+/* Cadres vidéo dans les sections */
+.cadre-video{position:relative;margin:0;overflow:hidden;border-radius:2px;background:var(--pierre);min-width:0}
+.cadre-video video,.cadre-video img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.75) sepia(.08)}
+.cadre-video.portrait{aspect-ratio:4/5;max-height:78vh}
+.cadre-video.paysage{aspect-ratio:16/9}
+.cadre-video figcaption{position:absolute;left:1rem;bottom:.9rem;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--clair);text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.souv.avec-video{grid-template-columns:minmax(0,1fr) minmax(0,.85fr)}
+@media (max-width:860px){.souv.avec-video{grid-template-columns:minmax(0,1fr)}.cadre-video.portrait{aspect-ratio:4/4.4}}
+.bloc-video{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(2rem,5vw,4rem);align-items:center;margin-bottom:clamp(2.5rem,5vw,4rem)}
+.bloc-video .tete{margin:0}
+@media (max-width:860px){.bloc-video{grid-template-columns:minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){.video-fond video,.cadre-video video{display:none}}
+
+.js .ouverture>.video-fond{opacity:1;transform:none;animation:none}
 </style>
 </head>
 <body>
@@ -450,7 +486,7 @@ h1 em,h2 em,.grand em{font-style:italic;font-weight:300}
 </div></header>
 <main>
 
-<section class="heros-ciel aube"><div class="wrap"><div class="heros-texte">
+<section class="heros-ciel aube avec-video"><div class="video-fond" aria-hidden="true"><video data-auto muted loop playsinline autoplay preload="auto" poster="videos/rideaux-soleil.jpg" aria-hidden="true"><source src="videos/rideaux-soleil.mp4" type="video/mp4"></video></div><div class="wrap"><div class="heros-texte">
 <p class="sur">Nos formules</p>
 <h1>Choisissez jusqu'où vous souhaitez être accompagné.</h1>
 <p class="chapo">Chaque famille est différente. Que vous souhaitiez seulement libérer le logement ou tout nous confier jusqu'à la vente, un coordinateur unique suit votre dossier.</p>
@@ -667,6 +703,19 @@ h1 em,h2 em,.grand em{font-style:italic;font-weight:300}
       }).catch(function(){msg.classList.add('erreur');msg.textContent="L'envoi n'a pas abouti. Appelez-nous au 03 XX XX XX XX ou écrivez à contact@lignee.fr.";});
     });
   });
+})();
+
+(function(){
+  var reduit=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var vids=[].slice.call(document.querySelectorAll('video[data-auto]'));
+  if(reduit){vids.forEach(function(v){v.removeAttribute('autoplay');v.pause();});return;}
+  function jouer(v){if(v.preload==='none'){v.preload='auto';}var p=v.play();if(p&&p.catch)p.catch(function(){});}
+  if(!('IntersectionObserver' in window)){vids.forEach(jouer);return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)jouer(e.target);else e.target.pause();});},{rootMargin:'200px 0px'});
+  vids.forEach(function(v){io.observe(v);});
+  // Ouverture : la vidéo s'efface quand on descend vers le récit
+  var ov=document.querySelector('.ouverture .video-fond');
+  if(ov){var maj=function(){var h=ov.parentNode.offsetHeight||1;var o=1-Math.min(1,Math.max(0,window.scrollY/(h*.85)));ov.style.opacity=o.toFixed(3);};maj();addEventListener('scroll',maj,{passive:true});}
 })();
 </script>
 

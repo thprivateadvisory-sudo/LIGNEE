@@ -439,6 +439,42 @@ h1 em,h2 em,.grand em{font-style:italic;font-weight:300}
 @media (max-width:900px){.parcours.trois ol{grid-template-columns:minmax(0,1fr)}}
 .pied-haut{grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,1fr))}
 @media (max-width:860px){.pied-haut{grid-template-columns:repeat(2,minmax(0,1fr))}.pied-haut>div:first-child{grid-column:1/-1}}
+
+/* Vidéos : teintées aux couleurs du ciel pour rester dans l'univers */
+.video-fond{position:absolute;inset:0;z-index:-2;overflow:hidden;background:var(--c1,var(--nuit))}
+.video-fond video,.video-fond img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.72) contrast(1.04)}
+.video-fond::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,color-mix(in srgb,var(--c1,#101A2B) 86%,transparent) 0%,color-mix(in srgb,var(--c2,#34435E) 58%,transparent) 58%,color-mix(in srgb,var(--c3,#B8916C) 50%,transparent) 100%)}
+.heros-ciel.avec-video{background:var(--c1)}
+.heros-ciel.avec-video::after{display:none}
+
+/* Ouverture de l'accueil : l'aube réelle, qui s'efface dans le ciel dessiné */
+.ouverture .video-fond{--c1:#101A2B;--c2:#34435E;--c3:#C29A72}
+.ouverture .video-fond::after{background:linear-gradient(180deg,rgba(16,26,43,.78) 0%,rgba(30,42,64,.5) 45%,rgba(194,154,114,.25) 100%)}
+.ouverture .video-fond video{filter:saturate(.8) contrast(1.05) brightness(.95)}
+
+/* Bande film plein écran */
+.film{position:relative;isolation:isolate;min-height:88vh;min-height:88svh;display:grid;align-items:end;color:var(--clair);padding-block:clamp(80px,12vw,140px)}
+.film .video-fond{--c1:#0B1220;--c2:#1B2A41;--c3:#1B2A41}
+.film .video-fond::after{background:linear-gradient(180deg,rgba(11,18,32,.25) 0%,rgba(11,18,32,.35) 40%,rgba(11,18,32,.88) 100%)}
+.film .wrap{display:grid;gap:1.2rem;width:100%}
+.film .citation{font-size:clamp(2.2rem,5.5vw,4.4rem);max-width:18ch}
+.film .citation em{color:var(--or-clair)}
+.film p.chapo{color:rgba(245,241,232,.82)}
+
+/* Cadres vidéo dans les sections */
+.cadre-video{position:relative;margin:0;overflow:hidden;border-radius:2px;background:var(--pierre);min-width:0}
+.cadre-video video,.cadre-video img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.75) sepia(.08)}
+.cadre-video.portrait{aspect-ratio:4/5;max-height:78vh}
+.cadre-video.paysage{aspect-ratio:16/9}
+.cadre-video figcaption{position:absolute;left:1rem;bottom:.9rem;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--clair);text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.souv.avec-video{grid-template-columns:minmax(0,1fr) minmax(0,.85fr)}
+@media (max-width:860px){.souv.avec-video{grid-template-columns:minmax(0,1fr)}.cadre-video.portrait{aspect-ratio:4/4.4}}
+.bloc-video{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(2rem,5vw,4rem);align-items:center;margin-bottom:clamp(2.5rem,5vw,4rem)}
+.bloc-video .tete{margin:0}
+@media (max-width:860px){.bloc-video{grid-template-columns:minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){.video-fond video,.cadre-video video{display:none}}
+
+.js .ouverture>.video-fond{opacity:1;transform:none;animation:none}
 </style>
 </head>
 <body>
@@ -458,6 +494,7 @@ h1 em,h2 em,.grand em{font-style:italic;font-weight:300}
 <p class="chapo">Du premier tri jusqu'à la vente, un seul interlocuteur prend en charge le logement de votre proche, avec respect et discrétion.</p>
 <div class="btns"><a class="btn" href="contact.html#visite">Demander une visite gratuite</a><a class="btn sec" href="tel:03XXXXXXXX">Nous appeler</a></div>
 <div class="defiler" aria-hidden="true">Faire défiler<span></span></div>
+<div class="video-fond" aria-hidden="true"><video data-auto muted loop playsinline autoplay preload="auto" poster="videos/aube-champs.jpg" aria-hidden="true"><source src="videos/aube-champs.mp4" type="video/mp4"></video></div>
 </section>
 <section class="recit" id="recit" aria-label="Ce que nous faisons pour les familles"><div class="scene">
 <svg class="maison" viewBox="0 120 1200 470" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
@@ -501,6 +538,11 @@ h1 em,h2 em,.grand em{font-style:italic;font-weight:300}
 <li class="rv"><span class="v">Transmettre</span><p>Vente ou location du logement, reprise du véhicule.</p></li>
 </ul>
 </div></section>
+<section class="film"><div class="video-fond" aria-hidden="true"><video data-auto muted loop playsinline preload="none" poster="videos/photos-boite.jpg" aria-hidden="true"><source src="videos/photos-boite.mp4" type="video/mp4"></video></div><div class="wrap">
+<p class="sur rv" style="color:var(--or-clair)">Les souvenirs</p>
+<p class="citation rv">Chaque objet <em>raconte quelqu'un.</em></p>
+<p class="chapo rv">Une lettre, une photo, un bibelot sans valeur pour les autres. Nous les trouvons, nous les mettons de côté, nous vous les rendons.</p>
+</div></section>
 <section class="sec-bloc pierre"><div class="wrap colle">
 <div class="tete rv"><p class="sur">Pourquoi Lignée</p><h2 class="grand">Une maison qui s'occupe de <em>tout ce qui reste.</em></h2><div class="btns"><a class="btn sec" href="a-propos.html">Qui sommes-nous</a></div></div>
 <div class="raisons">
@@ -534,15 +576,18 @@ h1 em,h2 em,.grand em{font-style:italic;font-weight:300}
 </div></div>
 <p style="margin-top:2rem"><a href="formules.html">Comparer les formules en détail</a></p>
 </div></section>
-<section class="sec-bloc pierre"><div class="wrap souv">
-<div class="tete rv" style="margin:0"><p class="sur">Confection souvenir</p><h2 class="grand">Sa chemise préférée devient <em>un coussin.</em></h2><p class="chapo">Pendant le tri, mettez de côté un vêtement, le bois d'un meuble, des photos. Nous en faisons des objets uniques, à garder ou à offrir à chacun.</p><div class="btns"><a class="btn" href="souvenirs.html">Découvrir les souvenirs</a></div></div>
+<section class="sec-bloc pierre"><div class="wrap souv avec-video">
+<div style="display:grid;gap:2rem;min-width:0">
+<div class="tete rv" style="margin:0"><p class="sur">Confection souvenir</p><h2 class="grand">Sa chemise préférée devient <em>un coussin.</em></h2><p class="chapo">Pendant le tri, mettez de côté un vêtement, le bois d'un meuble, des photos. Nous en faisons des objets uniques, à garder ou à offrir à chacun.</p></div>
 <ul class="souv-liste rv">
 <li><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 13Q24 7 38 13Q43 24 38 35Q24 41 10 35Q5 24 10 13Z"/><circle cx="24" cy="24" r="1.6"/><path d="M15 18Q24 15 33 18M15 30Q24 33 33 30"/></svg><span>Coussin ou plaid dans ses chemises</span></li>
-<li><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="18" r="8"/><circle cx="17" cy="11" r="3"/><circle cx="31" cy="11" r="3"/><path d="M15 40Q14 26 24 26Q34 26 33 40Z"/><path d="M22 19h.01M26 19h.01M23 22q1 1 2 0"/></svg><span>Ours en tissu dans un de ses vêtements</span></li>
 <li><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="18" width="32" height="20" rx="1.5"/><path d="M6 18h36v-5H6z"/><path d="M12 25q6-3 12 0t12 0M12 31q6-3 12 0t12 0"/></svg><span>Boîte ou cadre taillé dans le bois de ses meubles</span></li>
 <li><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 14C18 10 10 10 6 12V36C10 34 18 34 24 38C30 34 38 34 42 36V12C38 10 30 10 24 14Z"/><path d="M24 14V38"/></svg><span>Livre souvenir et photos numérisées</span></li>
 <li><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 6Q24 22 38 6"/><path d="M24 20v3"/><circle cx="24" cy="31" r="8"/><path d="M20 31q4-5 8 0M21.5 34q2.5-3 5 0M19 28q5-6 10 0"/></svg><span>Bijou avec son empreinte ou son écriture</span></li>
 </ul>
+<div class="btns rv"><a class="btn" href="souvenirs.html">Découvrir les souvenirs</a></div>
+</div>
+<figure class="cadre-video portrait rv"><video data-auto muted loop playsinline preload="none" poster="videos/couture-machine.jpg" aria-hidden="true"><source src="videos/couture-machine.mp4" type="video/mp4"></video><figcaption>Confection souvenir</figcaption></figure>
 </div></section>
 <section class="sec-bloc"><div class="wrap">
 <div class="tete rv"><p class="sur">Comment ça marche</p><h2 class="grand">Cinq étapes, <em>un seul interlocuteur.</em></h2></div>
@@ -739,6 +784,19 @@ h1 em,h2 em,.grand em{font-style:italic;font-weight:300}
       }).catch(function(){msg.classList.add('erreur');msg.textContent="L'envoi n'a pas abouti. Appelez-nous au 03 XX XX XX XX ou écrivez à contact@lignee.fr.";});
     });
   });
+})();
+
+(function(){
+  var reduit=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var vids=[].slice.call(document.querySelectorAll('video[data-auto]'));
+  if(reduit){vids.forEach(function(v){v.removeAttribute('autoplay');v.pause();});return;}
+  function jouer(v){if(v.preload==='none'){v.preload='auto';}var p=v.play();if(p&&p.catch)p.catch(function(){});}
+  if(!('IntersectionObserver' in window)){vids.forEach(jouer);return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)jouer(e.target);else e.target.pause();});},{rootMargin:'200px 0px'});
+  vids.forEach(function(v){io.observe(v);});
+  // Ouverture : la vidéo s'efface quand on descend vers le récit
+  var ov=document.querySelector('.ouverture .video-fond');
+  if(ov){var maj=function(){var h=ov.parentNode.offsetHeight||1;var o=1-Math.min(1,Math.max(0,window.scrollY/(h*.85)));ov.style.opacity=o.toFixed(3);};maj();addEventListener('scroll',maj,{passive:true});}
 })();
 </script>
 

@@ -43,3 +43,7 @@ Rechercher et remplacer dans les 9 fichiers :
 À faire relire par un juriste : mentions légales, confidentialité, guide « que faire après un décès ». Les CGV restent à rédiger avant le premier dossier.
 
 Cercueils, urnes et assurance obsèques sont présentés comme « bientôt », sans prix ni vente : ils ne pourront être proposés qu'après l'habilitation funéraire préfectorale et l'inscription ORIAS.
+
+## Vidéos
+
+Les vidéos du dossier `videos/` viennent de Pexels (licence Pexels : utilisation libre, y compris commerciale, sans attribution obligatoire). Elles sont téléchargées et compressées par l'Action GitHub `.github/workflows/videos.yml` à partir de la liste `videos/sources.txt` (une ligne `final <id Pexels> <nom>` par vidéo). Pour en ajouter une, ajoutez une ligne et poussez : l'Action ajoute `videos/<nom>.mp4` et son image d'affiche `videos/<nom>.jpg`.
