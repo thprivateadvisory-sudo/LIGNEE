@@ -16,7 +16,16 @@ Un fichier HTML autonome par page, tous au même niveau (styles et scripts inclu
 | `mentions-legales.html` | Mentions légales |
 | `confidentialite.html` | Politique de confidentialité |
 
-Déploiement : GitHub + Vercel (aucune étape de build, `vercel.json` active les URL sans `.html`).
+Hébergement : GitHub Pages (aucune étape de build).
+
+## Mettre le site en ligne
+
+1. Sur GitHub : Settings → Pages.
+2. Source : « Deploy from a branch », choisir la branche du site et le dossier `/ (root)`, puis Save.
+3. Le site est en ligne en une ou deux minutes à l'adresse indiquée par GitHub.
+4. Nom de domaine : dans Settings → Pages → Custom domain, saisir le domaine (ex. `lignee.fr`), puis créer chez le registraire les enregistrements DNS indiqués par GitHub. Cocher ensuite « Enforce HTTPS ».
+
+Le fichier `.nojekyll` indique à GitHub Pages de servir les fichiers tels quels.
 
 ## À compléter avant la mise en ligne
 
