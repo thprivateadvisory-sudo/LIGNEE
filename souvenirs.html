@@ -475,11 +475,19 @@ h1 em,h2 em,.grand em{font-style:italic;font-weight:300}
 @media (prefers-reduced-motion:reduce){.video-fond video,.cadre-video video{display:none}}
 
 .js .ouverture>.video-fond{opacity:1;transform:none;animation:none}
+
+.marque{display:inline-flex;align-items:center;gap:.7rem;padding-left:0;flex:none;font-size:1.55rem}
+.entete .btn{flex:none}
+.entete .wrap{gap:1.25rem}
+.nav{gap:1.1rem}
+.marque span{padding-left:.24em}
+.marque-mono{width:34px;height:auto;display:block}
+@media (max-width:560px){.marque{font-size:1.45rem;gap:.55rem}.marque-mono{width:28px}}
 </style>
 </head>
 <body>
 <header class="entete"><div class="wrap">
-<a class="marque" href="index.html" aria-label="Lignée, accueil">LIGNÉE</a>
+<a class="marque" href="index.html" aria-label="Lignée, accueil"><img class="marque-mono" src="images/monogramme-entete.png" width="96" height="89" alt=""><span>LIGNÉE</span></a>
 <nav class="nav" aria-label="Navigation principale"><a href="formules.html">Le logement</a><a href="souvenirs.html" aria-current="page">Souvenirs</a><a href="boutique.html">Boutique</a><a href="anticiper.html">Anticiper</a><a href="notaires.html">Notaires</a><a href="guide.html">Guide</a><a href="contact.html">Contact</a></nav>
 <a class="btn" href="contact.html#visite">Demander une visite gratuite</a>
 <button class="menu-btn" type="button" aria-expanded="false">Menu</button>
