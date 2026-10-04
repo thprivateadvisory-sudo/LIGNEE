@@ -1,0 +1,66 @@
+name: Vidéos du site
+
+# Télécharge les vidéos Pexels listées dans videos/sources.txt :
+#   "apercu <id> <nom>" produit une planche d'aperçu dans videos/apercus/
+#   "final <id> <nom>"  produit videos/<nom>.mp4 (compressée) et videos/<nom>.jpg (affiche)
+on:
+  push:
+    paths:
+      - "videos/sources.txt"
+      - ".github/workflows/videos.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: videos-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  videos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Installer ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null
+      - name: Télécharger et traiter
+        shell: bash
+        run: |
+          set -u
+          UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36"
+          mkdir -p videos/apercus
+          : > videos/journal.txt
+          telecharger() {
+            local id="$1" out="$2"
+            curl -sSL -A "$UA" --max-time 180 -o "$out" "https://www.pexels.com/download/video/$id/" || true
+            if ffprobe -v error "$out" >/dev/null 2>&1; then echo "telechargement"; return 0; fi
+            local page; page=$(curl -sSL -A "$UA" --max-time 60 "https://www.pexels.com/video/$id/" || true)
+            local url; url=$(printf '%s' "$page" | grep -oE "https://videos\.pexels\.com/video-files/$id/[^\"' ]+\.mp4" | grep -E "1920_1080|1280_720|2560_1440|1080_1920" | head -1)
+            [ -z "$url" ] && url=$(printf '%s' "$page" | grep -oE "https://videos\.pexels\.com/video-files/$id/[^\"' ]+\.mp4" | head -1)
+            if [ -n "$url" ]; then curl -sSL -A "$UA" --max-time 180 -o "$out" "$url" || true; fi
+            if ffprobe -v error "$out" >/dev/null 2>&1; then echo "page"; return 0; fi
+            return 1
+          }
+          while read -r mode id nom; do
+            [ -z "${mode:-}" ] && continue
+            case "$mode" in \#*) continue;; esac
+            tmp="/tmp/$id.mp4"; rm -f "$tmp"
+            if ! via=$(telecharger "$id" "$tmp"); then echo "ECHEC $mode $id $nom" >> videos/journal.txt; continue; fi
+            dur=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$tmp")
+            res=$(ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0 "$tmp")
+            if [ "$mode" = "apercu" ]; then
+              ffmpeg -v error -y -i "$tmp" -vf "fps=8/$dur,scale=320:-2,tile=4x2" -frames:v 1 -q:v 4 "videos/apercus/$nom.jpg"
+            else
+              ffmpeg -v error -y -i "$tmp" -t 14 -an -vf "scale='if(gt(iw,ih),1280,720)':-2,fps=25,format=yuv420p" -c:v libx264 -preset slow -crf 27 -movflags +faststart "videos/$nom.mp4"
+              ffmpeg -v error -y -ss 1 -i "$tmp" -frames:v 1 -vf "scale='if(gt(iw,ih),1280,720)':-2" -q:v 5 "videos/$nom.jpg"
+            fi
+            echo "OK $mode $id $nom via=$via duree=$dur taille=$res" >> videos/journal.txt
+          done < videos/sources.txt
+          cat videos/journal.txt
+      - name: Enregistrer
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add videos
+          git diff --cached --quiet || (git commit -m "Vidéos : traitement automatique" && git push)
