@@ -483,6 +483,24 @@ h1 em,h2 em,.grand em{font-style:italic;font-weight:300}
 .marque span{padding-left:.24em}
 .marque-mono{width:34px;height:auto;display:block}
 @media (max-width:560px){.marque{font-size:1.45rem;gap:.55rem}.marque-mono{width:28px}}
+
+/* En-tête opaque : plus de contenu flou visible derrière */
+.entete{background:var(--ivoire);backdrop-filter:none;-webkit-backdrop-filter:none}
+/* Mobile : textes du récit plus compacts, boutons sur une ligne */
+@media (max-width:980px){
+  .js .chap{top:calc(var(--hdr) + 3vh)}
+  .chap h2{font-size:clamp(1.9rem,8.4vw,2.6rem)}
+  .chap p.txt{font-size:1rem;line-height:1.55}
+  .chap .btns{gap:.5rem}
+  .chap .btn{padding:.65rem 1.05rem;font-size:.9rem}
+  .ouverture .btn.sec{display:none}
+  .ouverture{gap:.9rem}
+}
+@media (max-width:980px) and (max-height:720px){
+  .ouverture .mono-or{width:64px}
+  .ouverture h1{font-size:2.15rem}
+  .ouverture .chapo{font-size:.98rem}
+}
 </style>
 </head>
 <body>
@@ -504,7 +522,7 @@ h1 em,h2 em,.grand em{font-style:italic;font-weight:300}
 <div class="ligne-c"><span class="sur">Téléphone</span><span class="val">03 XX XX XX XX</span><a href="tel:03XXXXXXXX">Appeler</a></div>
 <div class="ligne-c"><span class="sur">WhatsApp</span><a href="https://wa.me/33XXXXXXXXX?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20vos%20services." target="_blank" rel="noopener">Nous écrire sur WhatsApp</a></div>
 <div class="ligne-c"><span class="sur">E-mail</span><span class="val" style="font-size:1.25rem">contact@lignee.fr</span></div>
-<div class="ligne-c" style="border:0"><span class="sur">Zone d'intervention</span><span>Lorraine&nbsp;: Meurthe-et-Moselle, Moselle, Meuse, Vosges</span></div>
+<div class="ligne-c" style="border:0"><span class="sur">Zone d'intervention</span><span>Partout en France, en ville comme à la campagne</span></div>
 </div>
 <form class="form" data-form="Visite gratuite" data-ok="Merci. Nous vous rappelons sous 24 heures ouvrées." novalidate>
 <div><h2 style="font-size:1.9rem">Demander une visite gratuite</h2></div>
@@ -531,7 +549,7 @@ h1 em,h2 em,.grand em{font-style:italic;font-weight:300}
 <details><summary>Que deviennent les objets&nbsp;?</summary><p>Vous gardez ce que vous voulez. Le reste est vendu, donné à des associations ou recyclé, et tout est noté dans un rapport.</p></details>
 <details><summary>Dois-je avancer de l'argent&nbsp;?</summary><p>Non. Nos frais peuvent être réglés sur la vente des biens ou lors de la signature chez le notaire, selon votre situation.</p></details>
 <details><summary>Je n'habite pas à proximité, est-ce un problème&nbsp;?</summary><p>Non. Nous gérons tout à distance avec photos et comptes rendus.</p></details>
-<details><summary>Où intervenez-vous&nbsp;?</summary><p>En Lorraine pour commencer, et bientôt dans toute la France.</p></details>
+<details><summary>Où intervenez-vous&nbsp;?</summary><p>Partout en France. Votre coordinateur suit le dossier à distance, et nos équipes partenaires interviennent sur place, près du logement de votre proche.</p></details>
 </div>
 </div></section>
 
@@ -540,7 +558,7 @@ h1 em,h2 em,.grand em{font-style:italic;font-weight:300}
 <div class="pied-haut">
 <div style="display:grid;gap:1rem;align-content:start">
 <img class="sceau" src="images/sceau-or.png" width="400" height="396" alt="Sceau Lignée, maison fondée en 2026" loading="lazy">
-<p>Le logement de votre proche, pris en charge du premier tri jusqu'à la vente. Intervention en Lorraine.</p>
+<p>Le logement de votre proche, pris en charge du premier tri jusqu'à la vente. Intervention partout en France.</p>
 </div>
 <div><h4>Le logement</h4><ul>
 <li><a href="formules.html">Nos formules</a></li><li><a href="methode.html">Comment ça marche</a></li>
@@ -634,8 +652,18 @@ h1 em,h2 em,.grand em{font-style:italic;font-weight:300}
     function cl(v){return v<0?0:v>1?1:v;}
     function seg(p,a,b){var f=cl((p-a)/(b-a));return f*f*(3-2*f);}
     function lum(c){return (.2126*c[0]+.7152*c[1]+.0722*c[2])/255;}
-    function cadrer(){maison.setAttribute('viewBox',innerWidth/innerHeight<.9?'370 175 460 370':'0 120 1200 470');}
+    function cadrer(){maison.setAttribute('viewBox',innerWidth/innerHeight<.9?'370 175 460 370':(innerWidth>980?'-240 120 1200 470':'0 120 1200 470'));}
     cadrer();addEventListener('resize',cadrer);
+    // La maison occupe uniquement la place libre sous le texte, quel que soit l'écran
+    function placer(){
+      if(innerWidth>980){maison.style.height='';return;}
+      var bas=0;chaps.forEach(function(c){var b=c.offsetTop+c.offsetHeight;if(b>bas)bas=b;});
+      var marge=parseFloat(getComputedStyle(maison).bottom)||0;
+      var dispo=scene.clientHeight-marge-bas-14;
+      var max=scene.clientHeight*.62;
+      maison.style.height=Math.max(120,Math.min(max,dispo))+'px';
+    }
+    placer();addEventListener('resize',placer);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(placer);setTimeout(placer,1200);
     var PP=[[0,1],[.18,1],[.32,2],[.43,2],[.57,3],[.68,3],[.82,4],[1,4]];
     function phaseDe(p){for(var q=1;q<PP.length;q++){if(p<=PP[q][0]){var a=PP[q-1],b=PP[q];return a[1]+(b[1]-a[1])*((p-a[0])/(b[0]-a[0]||1));}}return 4;}
     var cur=window.scrollY,dernier=-1;
