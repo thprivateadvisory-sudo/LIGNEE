@@ -2,13 +2,16 @@
 
 Site statique de Lignée (accompagnement du logement après un décès), construit d'après le business plan et le kit de construction.
 
-Un fichier HTML autonome par page, tous au même niveau (styles et scripts inclus dans chaque page) :
+Un fichier HTML autonome par page (12 pages), tous au même niveau (styles et scripts inclus dans chaque page) :
 
 | Fichier | Page |
 |---|---|
 | `index.html` | Accueil |
 | `formules.html` | Nos formules (Essentiel, Complet, Sérénité) |
 | `methode.html` | Comment ça marche |
+| `souvenirs.html` | Confection souvenir (sur devis, formulaire de devis) |
+| `boutique.html` | Boutique (ouverture prochaine, liste d'attente) |
+| `anticiper.html` | Coffret « Mes volontés », assurance obsèques, cercueils et urnes (bientôt, liste d'attente) |
 | `notaires.html` | Notaires et professionnels (formulaire pro) |
 | `guide.html` | Guide gratuit : que faire après un décès |
 | `a-propos.html` | À propos |
@@ -38,3 +41,5 @@ Rechercher et remplacer dans les 9 fichiers :
 - `contact@lignee.fr` et `https://lignee.fr` (balises canoniques, `sitemap.xml`, `robots.txt`) si le domaine final est différent.
 
 À faire relire par un juriste : mentions légales, confidentialité, guide « que faire après un décès ». Les CGV restent à rédiger avant le premier dossier.
+
+Cercueils, urnes et assurance obsèques sont présentés comme « bientôt », sans prix ni vente : ils ne pourront être proposés qu'après l'habilitation funéraire préfectorale et l'inscription ORIAS.

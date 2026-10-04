@@ -377,12 +377,74 @@ h1 em,h2 em,.grand em{font-style:italic;font-weight:300}
 .fin .chapo{margin-inline:auto}
 .fin .btns{justify-content:center}
 .fin .mono-or{width:72px;height:auto;opacity:.9}
+
+/* Quatre temps */
+.temps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--nuit)}
+.temps a{display:grid;gap:.7rem;align-content:start;padding:1.8rem clamp(1rem,2vw,1.8rem) 2rem;border-left:1px solid var(--ligne);text-decoration:none;position:relative;transition:background .4s}
+.temps a:first-child{border-left:0}
+.temps a:hover{background:rgba(184,155,94,.08)}
+.temps .moment{font-family:var(--f-titre);font-style:italic;font-size:1.15rem;color:var(--or-texte)}
+.temps h3{font-size:1.75rem;font-weight:400}
+.temps p{color:var(--ardoise);font-size:.98rem}
+.temps .suite{font-size:.9rem;margin-top:.4rem;text-decoration:underline;text-decoration-color:var(--or);text-underline-offset:4px}
+@media (max-width:980px){.temps{grid-template-columns:repeat(2,minmax(0,1fr))}.temps a:nth-child(3){border-left:0}.temps a:nth-child(n+3){border-top:1px solid var(--ligne)}}
+@media (max-width:560px){.temps{grid-template-columns:minmax(0,1fr)}.temps a{border-left:0;border-top:1px solid var(--ligne);padding-inline:0}.temps a:first-child{border-top:0}}
+.statut{justify-self:start;display:inline-flex;align-items:center;gap:.45rem;font-size:.7rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:.32rem .75rem;border-radius:999px;border:1px solid currentColor}
+.statut::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.statut.dispo{color:#2F6B52}
+.statut.devis{color:var(--nuit)}
+.statut.bientot{color:var(--or-texte)}
+
+/* Produits */
+.produits{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1.5rem,3vw,2.5rem)}
+.produits.q4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:980px){.produits,.produits.q4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.produits,.produits.q4{grid-template-columns:minmax(0,1fr)}}
+.produit{display:grid;gap:.75rem;align-content:start;padding-top:1.4rem;border-top:1px solid var(--ligne);min-width:0}
+.produit svg{width:46px;height:46px;fill:none;stroke:var(--or-texte);stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.produit h3{font-size:1.55rem;font-weight:500}
+.produit p{color:var(--ardoise)}
+.sec-bloc.nuit .produit{border-color:#33435E}
+.sec-bloc.nuit .produit p{color:#C9CED6}
+.sec-bloc.nuit .produit svg{stroke:var(--or-clair)}
+.sec-bloc.nuit .statut.devis{color:var(--clair)}
+.sec-bloc.nuit .statut.bientot{color:var(--or-clair)}
+
+/* Teaser souvenirs */
+.souv{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(2rem,6vw,5rem);align-items:center}
+@media (max-width:860px){.souv{grid-template-columns:minmax(0,1fr)}}
+.souv-liste{list-style:none;margin:0;padding:0;display:grid;gap:0;border-top:1px solid var(--ligne)}
+.souv-liste li{display:grid;grid-template-columns:46px minmax(0,1fr);gap:1.1rem;align-items:center;padding-block:1.1rem;border-bottom:1px solid var(--ligne)}
+.souv-liste svg{width:40px;height:40px;fill:none;stroke:var(--or-texte);stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+
+/* Offres à venir (anticiper) */
+.offre{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(1.5rem,5vw,4rem);padding-block:clamp(2rem,4vw,3rem);border-top:1px solid var(--ligne)}
+.offre:last-of-type{border-bottom:1px solid var(--ligne)}
+.offre .tete-o{display:grid;gap:.9rem;align-content:start}
+.offre h2{font-size:clamp(2rem,4vw,3rem)}
+.offre .corps{display:grid;gap:1rem;max-width:var(--mesure)}
+.offre .corps p{color:var(--ardoise)}
+@media (max-width:820px){.offre{grid-template-columns:minmax(0,1fr)}}
+.chiffre{display:grid;gap:.5rem;justify-items:start}
+.chiffre b{font-family:var(--f-titre);font-weight:300;font-size:clamp(4rem,12vw,8rem);line-height:.9;color:var(--or-clair);font-variant-numeric:tabular-nums}
+.chiffre span{max-width:28rem;color:#C9CED6}
+.chiffre small{font-size:.8rem;color:#9AA3B0}
+
+/* Choix multiples dans les formulaires */
+.choix{display:grid;gap:.55rem;border:0;margin:0;padding:0;min-width:0}
+.choix legend{font-size:.9rem;font-weight:500;margin-bottom:.4rem;padding:0}
+.choix label{display:flex;gap:.65rem;align-items:center;font-size:.95rem}
+.choix input{width:18px;height:18px;accent-color:var(--nuit)}
+.parcours.trois ol{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:900px){.parcours.trois ol{grid-template-columns:minmax(0,1fr)}}
+.pied-haut{grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,1fr))}
+@media (max-width:860px){.pied-haut{grid-template-columns:repeat(2,minmax(0,1fr))}.pied-haut>div:first-child{grid-column:1/-1}}
 </style>
 </head>
 <body>
 <header class="entete"><div class="wrap">
 <a class="marque" href="index.html" aria-label="Lignée, accueil">LIGNÉE</a>
-<nav class="nav" aria-label="Navigation principale"><a href="formules.html">Nos formules</a><a href="methode.html">Comment ça marche</a><a href="notaires.html">Notaires et pros</a><a href="guide.html">Guide gratuit</a><a href="a-propos.html">À propos</a><a href="contact.html" aria-current="page">Contact</a></nav>
+<nav class="nav" aria-label="Navigation principale"><a href="formules.html">Le logement</a><a href="souvenirs.html">Souvenirs</a><a href="boutique.html">Boutique</a><a href="anticiper.html">Anticiper</a><a href="notaires.html">Notaires</a><a href="guide.html">Guide</a><a href="contact.html" aria-current="page">Contact</a></nav>
 <a class="btn" href="contact.html#visite">Demander une visite gratuite</a>
 <button class="menu-btn" type="button" aria-expanded="false">Menu</button>
 </div></header>
@@ -436,9 +498,12 @@ h1 em,h2 em,.grand em{font-style:italic;font-weight:300}
 <img class="sceau" src="images/sceau-or.png" width="400" height="396" alt="Sceau Lignée, maison fondée en 2026" loading="lazy">
 <p>Le logement de votre proche, pris en charge du premier tri jusqu'à la vente. Intervention en Lorraine.</p>
 </div>
-<div><h4>Le service</h4><ul>
+<div><h4>Le logement</h4><ul>
 <li><a href="formules.html">Nos formules</a></li><li><a href="methode.html">Comment ça marche</a></li>
 <li><a href="notaires.html">Notaires et professionnels</a></li><li><a href="guide.html">Guide : que faire après un décès</a></li></ul></div>
+<div><h4>Lignée</h4><ul>
+<li><a href="souvenirs.html">Confection souvenir</a></li><li><a href="boutique.html">La boutique</a></li>
+<li><a href="anticiper.html">Anticiper</a></li><li><a href="a-propos.html">À propos</a></li></ul></div>
 <div><h4>Nous joindre</h4><ul>
 <li><a href="tel:03XXXXXXXX">03 XX XX XX XX</a></li><li><a href="https://wa.me/33XXXXXXXXX?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20vos%20services." target="_blank" rel="noopener">WhatsApp</a></li>
 <li><a href="mailto:contact@lignee.fr">contact@lignee.fr</a></li><li><a href="contact.html#visite">Demander une visite gratuite</a></li></ul></div>
