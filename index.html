@@ -577,12 +577,59 @@ button[aria-selected="true"] .nom-f{font-style:italic}
   .ruban-liste{position:static;width:auto;height:auto;clip:auto;white-space:normal;display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem 1.6rem;list-style:none;padding-inline:var(--goutiere)}
   .ruban-liste li{font-family:var(--f-titre);font-style:italic;font-size:1.3rem}
 }
+
+/* Preuves dès l'ouverture */
+.preuves{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem 1.4rem;font-size:.86rem;color:rgba(245,241,232,.86)}
+.preuves li{display:flex;align-items:center;gap:.5rem}
+.preuves li::before{content:"";width:12px;height:7px;border-left:1.6px solid var(--or-clair);border-bottom:1.6px solid var(--or-clair);transform:rotate(-45deg) translateY(-2px)}
+.js .ouverture>.preuves{animation-delay:1.7s}
+
+/* Le juste prix */
+.juste-prix{position:relative;isolation:isolate;color:var(--clair);padding-block:clamp(80px,11vw,140px)}
+.juste-prix .video-fond{--c1:#0B1220;--c2:#121D31;--c3:#1B2A41}
+.juste-prix .video-fond::after{background:linear-gradient(180deg,rgba(11,18,32,.92),rgba(18,29,49,.86) 50%,rgba(27,42,65,.94))}
+.juste-prix .sur{color:var(--or-clair)}
+.juste-prix .chapo{color:rgba(245,241,232,.8)}
+.jp-grille{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:1px solid rgba(217,185,127,.4)}
+.jp{display:grid;gap:1.1rem;align-content:start;padding:clamp(1.8rem,3vw,2.6rem) clamp(1rem,3vw,2.6rem) clamp(1.8rem,3vw,2.4rem) 0;min-width:0}
+.jp+.jp{border-left:1px solid rgba(217,185,127,.25);padding-left:clamp(1rem,3vw,2.6rem)}
+.jp-moment{font-family:var(--f-titre);font-style:italic;font-size:1.15rem;color:var(--or-clair)}
+.jp h3{font-size:clamp(2rem,3.6vw,2.9rem);font-weight:400;line-height:1.08}
+.jp-chiffre{display:grid;gap:.35rem;padding-block:1rem;border-block:1px solid rgba(245,241,232,.12)}
+.jp-chiffre b{font-family:var(--f-titre);font-weight:300;font-size:clamp(2.8rem,6vw,4.4rem);line-height:1;color:var(--or-clair);font-variant-numeric:tabular-nums}
+.jp-chiffre span{color:rgba(245,241,232,.82);max-width:30rem}
+.jp p{color:rgba(245,241,232,.8)}
+.jp .jp-src{font-size:.78rem;color:rgba(245,241,232,.5)}
+.jp-pied{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 2rem;padding-top:clamp(1.5rem,3vw,2.2rem);border-top:1px solid rgba(217,185,127,.4)}
+.jp-pied .btn{background:var(--or);border-color:var(--or);color:var(--nuit)}
+.jp-pied .btn:hover{background:var(--clair);border-color:var(--clair)}
+.jp-pied p{font-size:.86rem;color:rgba(245,241,232,.6);max-width:40rem}
+@media (max-width:820px){.jp-grille{grid-template-columns:minmax(0,1fr)}.jp{padding-right:0}.jp+.jp{border-left:0;border-top:1px solid rgba(217,185,127,.25);padding-left:0}}
+
+/* Charte */
+.charte-tete{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2rem;align-items:center;margin-bottom:clamp(2rem,4vw,3rem)}
+.charte-tete img{width:clamp(110px,14vw,170px);height:auto}
+.charte-liste{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--nuit)}
+.charte-liste li{display:grid;gap:.55rem;align-content:start;padding:1.8rem clamp(1rem,2.4vw,2rem) 2rem 0;border-bottom:1px solid var(--ligne);min-width:0}
+.charte-liste li:not(:nth-child(3n+1)){padding-left:clamp(1rem,2.4vw,2rem);border-left:1px solid var(--ligne)}
+.charte-liste h3{font-size:1.6rem;font-weight:500}
+.charte-liste p{color:var(--ardoise)}
+.charte-sig{margin-top:1.6rem;font-family:var(--f-titre);font-style:italic;font-size:1.25rem;color:var(--or-texte)}
+@media (max-width:900px){.charte-liste{grid-template-columns:repeat(2,minmax(0,1fr))}.charte-liste li:not(:nth-child(3n+1)){padding-left:0;border-left:0}.charte-liste li:nth-child(2n){padding-left:clamp(1rem,2.4vw,2rem);border-left:1px solid var(--ligne)}}
+@media (max-width:560px){.charte-liste{grid-template-columns:minmax(0,1fr)}.charte-liste li:nth-child(2n){padding-left:0;border-left:0}.charte-tete{grid-template-columns:minmax(0,1fr) 84px}.charte-tete img{width:84px}}
+
+/* Récit plus court pour arriver plus vite aux preuves */
+.js .recit{height:400vh}
+
+.jp-chiffre-clair{color:var(--nuit)!important}
+.jp-chiffre-clair b{font-family:var(--f-titre);font-weight:400;font-size:1.6rem;color:var(--or-texte)}
+.defiler{display:none!important}
 </style>
 </head>
 <body>
 <header class="entete"><div class="wrap">
 <a class="marque" href="index.html" aria-label="Lignée, accueil"><img class="marque-mono" src="images/monogramme-entete.png" width="96" height="89" alt=""><span>LIGNÉE</span></a>
-<nav class="nav" aria-label="Navigation principale"><a href="formules.html">Le logement</a><a href="souvenirs.html">Souvenirs</a><a href="boutique.html">Boutique</a><a href="anticiper.html">Anticiper</a><a href="notaires.html">Notaires</a><a href="guide.html">Guide</a><a href="contact.html">Contact</a></nav>
+<nav class="nav" aria-label="Navigation principale"><a href="formules.html">Le logement</a><a href="souvenirs.html">Souvenirs</a><a href="boutique.html">Boutique</a><a href="anticiper.html">Obsèques</a><a href="notaires.html">Notaires</a><a href="guide.html">Guide</a><a href="contact.html">Contact</a></nav>
 <a class="btn" href="contact.html#visite">Demander une visite gratuite</a>
 <button class="menu-btn" type="button" aria-expanded="false">Menu</button>
 </div></header>
@@ -595,6 +642,7 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 <h1>Vous héritez d'un logement. <em>Nous nous occupons de tout.</em></h1>
 <p class="chapo">Du premier tri jusqu'à la vente, un seul interlocuteur prend en charge le logement de votre proche, avec respect et discrétion.</p>
 <div class="btns"><a class="btn" href="contact.html#visite">Demander une visite gratuite</a><a class="btn sec" href="tel:03XXXXXXXX">Nous appeler</a></div>
+<ul class="preuves"><li>Visite gratuite</li><li>Zéro avance de frais</li><li>Prix affichés</li><li>Partout en France</li></ul>
 <div class="defiler" aria-hidden="true">Faire défiler<span></span></div>
 <div class="video-fond" aria-hidden="true"><video data-auto muted loop playsinline autoplay preload="auto" poster="videos/aube-champs.jpg" aria-hidden="true"><source src="videos/aube-champs.mp4" type="video/mp4"></video></div>
 </section>
@@ -623,6 +671,35 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 <ul class="ruban-liste"><li>Visite et devis gratuits</li><li>Intervention partout en France</li><li>Rapport photo à chaque étape</li><li>Zéro avance de frais</li><li>Un seul interlocuteur</li></ul>
 <div class="ruban-piste" aria-hidden="true"><div class="ruban-bloc"><span class="item-r">Visite et devis gratuits</span><img class="sep-r" src="images/monogramme-entete.png" width="96" height="89" alt=""><span class="item-r">Intervention partout en France</span><img class="sep-r" src="images/monogramme-entete.png" width="96" height="89" alt=""><span class="item-r">Rapport photo à chaque étape</span><img class="sep-r" src="images/monogramme-entete.png" width="96" height="89" alt=""><span class="item-r">Zéro avance de frais</span><img class="sep-r" src="images/monogramme-entete.png" width="96" height="89" alt=""><span class="item-r">Un seul interlocuteur</span><img class="sep-r" src="images/monogramme-entete.png" width="96" height="89" alt=""></div><div class="ruban-bloc"><span class="item-r">Visite et devis gratuits</span><img class="sep-r" src="images/monogramme-entete.png" width="96" height="89" alt=""><span class="item-r">Intervention partout en France</span><img class="sep-r" src="images/monogramme-entete.png" width="96" height="89" alt=""><span class="item-r">Rapport photo à chaque étape</span><img class="sep-r" src="images/monogramme-entete.png" width="96" height="89" alt=""><span class="item-r">Zéro avance de frais</span><img class="sep-r" src="images/monogramme-entete.png" width="96" height="89" alt=""><span class="item-r">Un seul interlocuteur</span><img class="sep-r" src="images/monogramme-entete.png" width="96" height="89" alt=""></div></div>
 </div>
+<section class="juste-prix" id="juste-prix"><div class="video-fond" aria-hidden="true"><video data-auto muted loop playsinline preload="none" poster="videos/brume-campagne.jpg" aria-hidden="true"><source src="videos/brume-campagne.mp4" type="video/mp4"></video></div><div class="wrap">
+<div class="tete rv"><p class="sur">Bientôt chez Lignée</p><h2 class="grand">Le juste prix, <em>enfin.</em></h2><p class="chapo">Au moment le plus difficile, les familles n'ont ni le temps ni la force de comparer. Nous voulons des prix affichés, compris en une lecture, au plus près du coût réel.</p></div>
+<div class="jp-grille">
+<article class="jp rv">
+<p class="jp-moment">Pendant les obsèques</p>
+<h3>Cercueils et urnes <em>au juste prix.</em></h3>
+<p class="jp-chiffre"><b>650 à 3 800 €</b><span>le prix habituel d'un cercueil en France, soit 20 à 40 % de la facture des obsèques.</span></p>
+<p>Nous préparons une gamme simple et digne, vendue au plus près de son coût, avec le prix affiché avant toute décision.</p>
+<p class="jp-src">Sources&nbsp;: Mutuelle SMI, France Conso.</p>
+</article>
+<article class="jp rv">
+<p class="jp-moment">Avant, pour protéger les siens</p>
+<h3>L'assurance obsèques, <em>en clair.</em></h3>
+<p class="jp-chiffre"><b>40 %</b><span>seulement des cotisations des contrats obsèques individuels sont reversées en moyenne.</span></p>
+<p>Nous voulons un contrat lisible en une page, aux frais affichés, avec un assureur partenaire, et une comparaison honnête avec les autres solutions.</p>
+<p class="jp-src">Source&nbsp;: UFC-Que Choisir et Unaf, cités par Moneyvox.</p>
+</article>
+</div>
+<div class="jp-pied rv">
+<a class="btn" href="anticiper.html#prevenu">Être prévenu en priorité</a>
+<p>Ouverture après obtention de notre habilitation funéraire préfectorale et de notre inscription à l'ORIAS. Les premiers inscrits seront informés avant tout le monde.</p>
+</div>
+</div></section>
+<section class="sec-bloc charte"><div class="wrap">
+<div class="charte-tete"><div class="tete rv" style="margin:0"><p class="sur">Notre charte</p><h2 class="grand">Six engagements, <em>écrits noir sur blanc.</em></h2></div>
+<img class="rv" src="images/sceau.png" width="600" height="594" alt="Sceau Lignée, maison fondée en 2026" loading="lazy"></div>
+<ol class="charte-liste"><li class="rv"><h3>Le prix, avant tout</h3><p>Un devis détaillé, ligne par ligne, avant toute intervention. Aucun frais caché.</p></li><li class="rv"><h3>Zéro avance de frais</h3><p>Nos frais sont réglés sur la vente des biens ou chez le notaire, selon votre situation.</p></li><li class="rv"><h3>Jamais de démarchage</h3><p>Nous ne sollicitons jamais une famille en deuil. C'est vous, ou votre notaire, qui nous appelez.</p></li><li class="rv"><h3>Rien sans votre accord</h3><p>Mandat signé par les héritiers ou validé par le notaire. Rien n'est vendu ni jeté sans vous.</p></li><li class="rv"><h3>Tout est tracé</h3><p>Un rapport photo à chaque étape&nbsp;: vous voyez tout, même à des centaines de kilomètres.</p></li><li class="rv"><h3>Vos données protégées</h3><p>Elles servent à vous répondre. Elles ne sont jamais revendues.</p></li></ol>
+<p class="charte-sig rv">Lignée, une société du Groupe Cohesif.</p>
+</div></section>
 <section class="sec-bloc"><div class="wrap">
 <div class="tete rv"><p class="sur">Les quatre temps de Lignée</p><h2 class="grand">Une seule maison, <em>avant, pendant, après.</em></h2><p class="chapo">Nous accompagnons les familles à chaque moment, et jusque dans la mémoire.</p></div>
 <div class="temps rv">
@@ -725,7 +802,7 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 <li><a href="notaires.html">Notaires et professionnels</a></li><li><a href="guide.html">Guide : que faire après un décès</a></li></ul></div>
 <div><h4>Lignée</h4><ul>
 <li><a href="souvenirs.html">Confection souvenir</a></li><li><a href="boutique.html">La boutique</a></li>
-<li><a href="anticiper.html">Anticiper</a></li><li><a href="a-propos.html">À propos</a></li></ul></div>
+<li><a href="anticiper.html">Obsèques et prévoyance</a></li><li><a href="a-propos.html">À propos</a></li></ul></div>
 <div><h4>Nous joindre</h4><ul>
 <li><a href="tel:03XXXXXXXX">03 XX XX XX XX</a></li><li><a href="https://wa.me/33XXXXXXXXX?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20vos%20services." target="_blank" rel="noopener">WhatsApp</a></li>
 <li><a href="mailto:contact@lignee.fr">contact@lignee.fr</a></li><li><a href="contact.html#visite">Demander une visite gratuite</a></li></ul></div>

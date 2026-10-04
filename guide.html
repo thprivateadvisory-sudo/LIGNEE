@@ -577,12 +577,59 @@ button[aria-selected="true"] .nom-f{font-style:italic}
   .ruban-liste{position:static;width:auto;height:auto;clip:auto;white-space:normal;display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem 1.6rem;list-style:none;padding-inline:var(--goutiere)}
   .ruban-liste li{font-family:var(--f-titre);font-style:italic;font-size:1.3rem}
 }
+
+/* Preuves dès l'ouverture */
+.preuves{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem 1.4rem;font-size:.86rem;color:rgba(245,241,232,.86)}
+.preuves li{display:flex;align-items:center;gap:.5rem}
+.preuves li::before{content:"";width:12px;height:7px;border-left:1.6px solid var(--or-clair);border-bottom:1.6px solid var(--or-clair);transform:rotate(-45deg) translateY(-2px)}
+.js .ouverture>.preuves{animation-delay:1.7s}
+
+/* Le juste prix */
+.juste-prix{position:relative;isolation:isolate;color:var(--clair);padding-block:clamp(80px,11vw,140px)}
+.juste-prix .video-fond{--c1:#0B1220;--c2:#121D31;--c3:#1B2A41}
+.juste-prix .video-fond::after{background:linear-gradient(180deg,rgba(11,18,32,.92),rgba(18,29,49,.86) 50%,rgba(27,42,65,.94))}
+.juste-prix .sur{color:var(--or-clair)}
+.juste-prix .chapo{color:rgba(245,241,232,.8)}
+.jp-grille{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:1px solid rgba(217,185,127,.4)}
+.jp{display:grid;gap:1.1rem;align-content:start;padding:clamp(1.8rem,3vw,2.6rem) clamp(1rem,3vw,2.6rem) clamp(1.8rem,3vw,2.4rem) 0;min-width:0}
+.jp+.jp{border-left:1px solid rgba(217,185,127,.25);padding-left:clamp(1rem,3vw,2.6rem)}
+.jp-moment{font-family:var(--f-titre);font-style:italic;font-size:1.15rem;color:var(--or-clair)}
+.jp h3{font-size:clamp(2rem,3.6vw,2.9rem);font-weight:400;line-height:1.08}
+.jp-chiffre{display:grid;gap:.35rem;padding-block:1rem;border-block:1px solid rgba(245,241,232,.12)}
+.jp-chiffre b{font-family:var(--f-titre);font-weight:300;font-size:clamp(2.8rem,6vw,4.4rem);line-height:1;color:var(--or-clair);font-variant-numeric:tabular-nums}
+.jp-chiffre span{color:rgba(245,241,232,.82);max-width:30rem}
+.jp p{color:rgba(245,241,232,.8)}
+.jp .jp-src{font-size:.78rem;color:rgba(245,241,232,.5)}
+.jp-pied{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 2rem;padding-top:clamp(1.5rem,3vw,2.2rem);border-top:1px solid rgba(217,185,127,.4)}
+.jp-pied .btn{background:var(--or);border-color:var(--or);color:var(--nuit)}
+.jp-pied .btn:hover{background:var(--clair);border-color:var(--clair)}
+.jp-pied p{font-size:.86rem;color:rgba(245,241,232,.6);max-width:40rem}
+@media (max-width:820px){.jp-grille{grid-template-columns:minmax(0,1fr)}.jp{padding-right:0}.jp+.jp{border-left:0;border-top:1px solid rgba(217,185,127,.25);padding-left:0}}
+
+/* Charte */
+.charte-tete{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2rem;align-items:center;margin-bottom:clamp(2rem,4vw,3rem)}
+.charte-tete img{width:clamp(110px,14vw,170px);height:auto}
+.charte-liste{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--nuit)}
+.charte-liste li{display:grid;gap:.55rem;align-content:start;padding:1.8rem clamp(1rem,2.4vw,2rem) 2rem 0;border-bottom:1px solid var(--ligne);min-width:0}
+.charte-liste li:not(:nth-child(3n+1)){padding-left:clamp(1rem,2.4vw,2rem);border-left:1px solid var(--ligne)}
+.charte-liste h3{font-size:1.6rem;font-weight:500}
+.charte-liste p{color:var(--ardoise)}
+.charte-sig{margin-top:1.6rem;font-family:var(--f-titre);font-style:italic;font-size:1.25rem;color:var(--or-texte)}
+@media (max-width:900px){.charte-liste{grid-template-columns:repeat(2,minmax(0,1fr))}.charte-liste li:not(:nth-child(3n+1)){padding-left:0;border-left:0}.charte-liste li:nth-child(2n){padding-left:clamp(1rem,2.4vw,2rem);border-left:1px solid var(--ligne)}}
+@media (max-width:560px){.charte-liste{grid-template-columns:minmax(0,1fr)}.charte-liste li:nth-child(2n){padding-left:0;border-left:0}.charte-tete{grid-template-columns:minmax(0,1fr) 84px}.charte-tete img{width:84px}}
+
+/* Récit plus court pour arriver plus vite aux preuves */
+.js .recit{height:400vh}
+
+.jp-chiffre-clair{color:var(--nuit)!important}
+.jp-chiffre-clair b{font-family:var(--f-titre);font-weight:400;font-size:1.6rem;color:var(--or-texte)}
+.defiler{display:none!important}
 </style>
 </head>
 <body>
 <header class="entete"><div class="wrap">
 <a class="marque" href="index.html" aria-label="Lignée, accueil"><img class="marque-mono" src="images/monogramme-entete.png" width="96" height="89" alt=""><span>LIGNÉE</span></a>
-<nav class="nav" aria-label="Navigation principale"><a href="formules.html">Le logement</a><a href="souvenirs.html">Souvenirs</a><a href="boutique.html">Boutique</a><a href="anticiper.html">Anticiper</a><a href="notaires.html">Notaires</a><a href="guide.html" aria-current="page">Guide</a><a href="contact.html">Contact</a></nav>
+<nav class="nav" aria-label="Navigation principale"><a href="formules.html">Le logement</a><a href="souvenirs.html">Souvenirs</a><a href="boutique.html">Boutique</a><a href="anticiper.html">Obsèques</a><a href="notaires.html">Notaires</a><a href="guide.html" aria-current="page">Guide</a><a href="contact.html">Contact</a></nav>
 <a class="btn" href="contact.html#visite">Demander une visite gratuite</a>
 <button class="menu-btn" type="button" aria-expanded="false">Menu</button>
 </div></header>
@@ -630,7 +677,7 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 <li><a href="notaires.html">Notaires et professionnels</a></li><li><a href="guide.html">Guide : que faire après un décès</a></li></ul></div>
 <div><h4>Lignée</h4><ul>
 <li><a href="souvenirs.html">Confection souvenir</a></li><li><a href="boutique.html">La boutique</a></li>
-<li><a href="anticiper.html">Anticiper</a></li><li><a href="a-propos.html">À propos</a></li></ul></div>
+<li><a href="anticiper.html">Obsèques et prévoyance</a></li><li><a href="a-propos.html">À propos</a></li></ul></div>
 <div><h4>Nous joindre</h4><ul>
 <li><a href="tel:03XXXXXXXX">03 XX XX XX XX</a></li><li><a href="https://wa.me/33XXXXXXXXX?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20vos%20services." target="_blank" rel="noopener">WhatsApp</a></li>
 <li><a href="mailto:contact@lignee.fr">contact@lignee.fr</a></li><li><a href="contact.html#visite">Demander une visite gratuite</a></li></ul></div>
