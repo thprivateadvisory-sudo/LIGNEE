@@ -624,10 +624,41 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 .jp-chiffre-clair{color:var(--nuit)!important}
 .jp-chiffre-clair b{font-family:var(--f-titre);font-weight:400;font-size:1.6rem;color:var(--or-texte)}
 .defiler{display:none!important}
+
+:root{--hdr:106px}
+/* Barre d'accueil des familles */
+.alerte{background:var(--nuit);color:rgba(245,241,232,.86);font-size:.84rem;border-bottom:1px solid rgba(217,185,127,.22)}
+.alerte-in{max-width:var(--large);margin:0 auto;padding:.5rem var(--goutiere);display:flex;justify-content:center;flex-wrap:wrap;gap:.2rem .45rem;text-align:center}
+.alerte a{color:var(--clair);text-decoration:underline;text-decoration-color:var(--or-clair);text-underline-offset:3px}
+.alerte a:hover{color:var(--or-clair)}
+.entete.ouvert .alerte{color:rgba(245,241,232,.86)}
+@media (max-width:560px){.alerte-tel{display:none}.alerte{font-size:.74rem}.alerte-in{flex-wrap:nowrap;white-space:nowrap;padding-inline:10px}:root{--hdr:96px}}
+@media (max-width:980px) and (max-height:760px){.ouverture .mono-or{width:46px}.ouverture h1{font-size:2rem}.ouverture{gap:.7rem;padding-bottom:84px}.ouverture .chapo{font-size:.95rem;line-height:1.5}.preuves{font-size:.8rem;gap:.25rem 1rem}}
+
+/* Engagements : bandeau fixe et sobre */
+.engagements{background:var(--ivoire);border-bottom:1px solid var(--ligne)}
+.engagements ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.engagements li{display:grid;gap:.3rem;align-content:start;padding:1.6rem clamp(1rem,2vw,1.6rem);border-left:1px solid var(--ligne);min-width:0}
+.engagements li:first-child{border-left:0;padding-left:0}
+.engagements b{font-family:var(--f-titre);font-weight:500;font-size:1.3rem;line-height:1.2}
+.engagements span{font-size:.9rem;color:var(--ardoise);line-height:1.45}
+@media (max-width:900px){.engagements ul{grid-template-columns:repeat(2,minmax(0,1fr))}.engagements li:nth-child(3){border-left:0;padding-left:0}.engagements li:nth-child(n+3){border-top:1px solid var(--ligne)}.engagements li:nth-child(2n){padding-right:0}}
+@media (max-width:420px){.engagements li{padding-inline:.8rem}.engagements li:nth-child(2n+1){padding-left:0}.engagements b{font-size:1.15rem}}
+
+/* Statuts : une mention écrite, pas une étiquette */
+.statut{border:0;padding:0;border-radius:0;font-family:var(--f-titre);font-style:italic;font-weight:400;font-size:1.05rem;letter-spacing:0;text-transform:none;gap:.6rem}
+.statut::before{width:18px;height:1px;border-radius:0;background:currentColor;opacity:.7}
+.statut.dispo{color:var(--nuit)}
+
+/* Le juste prix : boutons sobres */
+.jp-pied .btn{background:var(--clair);border-color:var(--clair);color:var(--nuit)}
+.jp-pied .btn:hover{background:var(--or);border-color:var(--or)}
+.pied-legal{display:flex;flex-wrap:wrap;gap:.3rem 1.2rem;font-size:.8rem;color:#9AA3B0;padding-top:1rem}
+.pied-legal a{color:#C9CED6}
 </style>
 </head>
 <body>
-<header class="entete"><div class="wrap">
+<header class="entete"><div class="alerte"><p class="alerte-in"><span>Un proche vient de nous quitter&nbsp;?</span> <a href="guide.html">Les premières démarches</a><span class="alerte-tel"> · <a href="tel:03XXXXXXXX">03 XX XX XX XX</a></span></p></div><div class="wrap">
 <a class="marque" href="index.html" aria-label="Lignée, accueil"><img class="marque-mono" src="images/monogramme-entete.png" width="96" height="89" alt=""><span>LIGNÉE</span></a>
 <nav class="nav" aria-label="Navigation principale"><a href="formules.html">Le logement</a><a href="souvenirs.html">Souvenirs</a><a href="boutique.html">Boutique</a><a href="anticiper.html" aria-current="page">Obsèques</a><a href="notaires.html">Notaires</a><a href="guide.html">Guide</a><a href="contact.html">Contact</a></nav>
 <a class="btn" href="contact.html#visite">Demander une visite gratuite</a>
@@ -638,15 +669,15 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 <section class="heros-ciel aube avec-video"><div class="video-fond" aria-hidden="true"><video data-auto muted loop playsinline autoplay preload="auto" poster="videos/brume-campagne.jpg" aria-hidden="true"><source src="videos/brume-campagne.mp4" type="video/mp4"></video></div><div class="wrap"><div class="heros-texte">
 <p class="sur">Obsèques et prévoyance</p>
 <h1>Des obsèques au juste prix, <em>une assurance en clair.</em></h1>
-<p class="chapo">Cercueils et urnes vendus au plus près de leur coût, assurance obsèques lisible en une page, coffret pour transmettre ses volontés. Ces services ouvrent bientôt&nbsp;: inscrivez-vous pour être prévenu en priorité.</p>
-<div class="btns"><a class="btn" href="#prevenu">Être prévenu en priorité</a></div>
+<p class="chapo">Cercueils et urnes vendus au plus près de leur coût, assurance obsèques lisible en une page, coffret pour transmettre ses volontés. Ces services ouvrent bientôt&nbsp;: inscrivez-vous pour être informé de leur ouverture.</p>
+<div class="btns"><a class="btn" href="#prevenu">Être informé de l'ouverture</a></div>
 </div></div></section>
 <section class="sec-bloc"><div class="wrap">
-<article class="offre rv" id="juste-prix"><div class="tete-o"><p class="sur">Pendant les obsèques</p><h2>Cercueils et urnes <em>au juste prix.</em></h2><span class="statut bientot">Bientôt</span></div>
+<article class="offre rv" id="juste-prix"><div class="tete-o"><p class="sur">Pendant les obsèques</p><h2>Cercueils et urnes <em>au juste prix.</em></h2><span class="statut bientot">Ouverture prochaine</span></div>
 <div class="corps"><p class="jp-chiffre-clair"><b>650 à 3 800 €</b>&nbsp;: le prix habituel d'un cercueil en France (sources&nbsp;: Mutuelle SMI, France Conso).</p><p>Le cercueil représente souvent 20 à 40 % de la facture des obsèques, et les familles n'ont ni le temps ni l'énergie de comparer. Nous préparons une gamme simple et digne, vendue au plus près de son coût.</p><p class="note">Disponible après obtention de notre habilitation funéraire préfectorale.</p></div></article>
-<article class="offre rv"><div class="tete-o"><p class="sur">Avant, pour protéger les siens</p><h2>L'assurance obsèques, <em>en clair.</em></h2><span class="statut bientot">Bientôt</span></div>
+<article class="offre rv"><div class="tete-o"><p class="sur">Avant, pour protéger les siens</p><h2>L'assurance obsèques, <em>en clair.</em></h2><span class="statut bientot">Ouverture prochaine</span></div>
 <div class="corps"><p class="jp-chiffre-clair"><b>40 %</b>&nbsp;: la part des cotisations des contrats obsèques individuels reversée en moyenne (source&nbsp;: UFC-Que Choisir et Unaf, cités par Moneyvox).</p><p>Un contrat simple, aux frais affichés, avec un assureur partenaire. Nous voulons une offre que l'on comprend en le lisant une fois, et une comparaison honnête avec les autres solutions.</p><p class="note">Cette offre sera proposée après notre inscription au registre des intermédiaires en assurance (ORIAS), en partenariat avec un assureur.</p></div></article>
-<article class="offre rv"><div class="tete-o"><p class="sur">Avant</p><h2>Le coffret <em>«&nbsp;Mes volontés&nbsp;»</em></h2><span class="statut bientot">Bientôt</span></div>
+<article class="offre rv"><div class="tete-o"><p class="sur">Avant</p><h2>Le coffret <em>«&nbsp;Mes volontés&nbsp;»</em></h2><span class="statut bientot">Ouverture prochaine</span></div>
 <div class="corps"><p>Un coffret pour rassembler vos documents importants, vos codes et mots de passe, vos souhaits pour vos obsèques et des lettres à vos proches.</p><p>Le jour venu, votre famille sait où chercher et quoi faire. C'est souvent le plus beau cadeau qu'on puisse leur laisser.</p></div></article>
 </div></section>
 <section class="sec-bloc nuit"><div class="wrap souv">
@@ -687,7 +718,7 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 </div>
 <div class="pied-bas">
 <p>Lignée, une société du Groupe Cohesif</p>
-<p><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a> · <a href="a-propos.html">À propos</a></p>
+<p><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a> · <a href="mentions-legales.html#mediation">Médiation de la consommation</a> · <a href="a-propos.html">À propos</a></p>
 </div>
 </div></footer>
 <nav class="barre-appel" aria-label="Nous joindre">
