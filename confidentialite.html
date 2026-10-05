@@ -20,6 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Lignée", "url": "https://lignee.fr/", "logo": "https://lignee.fr/images/icone-512.png", "email": "contact@lignee.fr", "areaServed": "FR", "parentOrganization": {"@type": "Organization", "name": "Groupe Cohesif"}, "description": "Prise en charge du logement d'un proche disparu : tri, vente des biens, débarras, nettoyage, remise en état et vente du logement, partout en France."}</script>
 <style>
 /* Colonne de lecture aérée, sections alternées ivoire / pierre, filets or comme seule ornementation. */
 :root{
@@ -655,6 +656,27 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 .jp-pied .btn:hover{background:var(--or);border-color:var(--or)}
 .pied-legal{display:flex;flex-wrap:wrap;gap:.3rem 1.2rem;font-size:.8rem;color:#9AA3B0;padding-top:1rem}
 .pied-legal a{color:#C9CED6}
+
+/* Fil d'Ariane */
+.ariane{display:flex;flex-wrap:wrap;gap:.5rem;font-size:.8rem;letter-spacing:.04em;color:rgba(245,241,232,.7)}
+.ariane a{color:rgba(245,241,232,.86);text-decoration:none;border-bottom:1px solid rgba(217,185,127,.5)}
+.ariane a:hover{color:var(--or-clair)}
+.ariane span[aria-current]{color:rgba(245,241,232,.6)}
+/* Être rappelé */
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.rappel{display:grid;gap:.8rem;width:min(100%,640px);margin-top:1rem;padding-top:1.6rem;border-top:1px solid rgba(245,241,232,.2);justify-items:center}
+.rappel-titre{font-family:var(--f-titre);font-style:italic;font-size:1.35rem;color:var(--clair)}
+.rappel-champs{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:.6rem;width:100%}
+.rappel input:not([type=checkbox]){font:inherit;font-size:1rem;padding:.8rem 1rem;border-radius:999px;border:1px solid rgba(245,241,232,.4);background:rgba(245,241,232,.1);color:var(--clair);min-width:0}
+.rappel input::placeholder{color:rgba(245,241,232,.65)}
+.rappel input:focus{outline:2px solid var(--or-clair);outline-offset:1px}
+.rappel .consent{color:rgba(245,241,232,.75);font-size:.8rem;text-align:left}
+.rappel .consent a{color:var(--clair)}
+.rappel .form-msg{color:var(--nuit);text-align:left}
+@media (max-width:620px){.rappel-champs{grid-template-columns:minmax(0,1fr)}.rappel .btn{width:100%}}
+/* Signature du pied de page */
+.signature{font-family:var(--f-titre);font-weight:300;font-size:clamp(2.4rem,7vw,5.4rem);line-height:1;color:var(--clair);padding-bottom:2.4rem;margin-bottom:2.4rem;border-bottom:1px solid #33435E;letter-spacing:-.01em}
+.signature em{color:var(--or-clair);font-style:italic}
 </style>
 </head>
 <body>
@@ -666,7 +688,7 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 </div></header>
 <main>
 
-<section class="heros-ciel nuit"><div class="wrap"><div class="heros-texte"><p class="sur">Vos données</p><h1>Politique de confidentialité</h1><p class="chapo">Nous collectons uniquement ce qui est nécessaire pour vous recontacter. Nous ne vendons ni ne louons vos informations.</p></div></div></section>
+<section class="heros-ciel nuit"><div class="wrap"><div class="heros-texte"><nav class="ariane" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><span aria-hidden="true">/</span><span aria-current="page">Confidentialité</span></nav><p class="sur">Vos données</p><h1>Politique de confidentialité</h1><p class="chapo">Nous collectons uniquement ce qui est nécessaire pour vous recontacter. Nous ne vendons ni ne louons vos informations.</p></div></div></section>
 <section class="sec-bloc pierre"><div class="wrap prose">
 <h2 style="margin-top:0">Responsable du traitement</h2>
 <p>Lignée, SAS dont le siège est situé <span class="a-completer">à compléter</span>. Contact&nbsp;: contact@lignee.fr.</p>
@@ -692,6 +714,7 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 
 </main>
 <footer class="pied"><div class="wrap">
+<p class="signature">Ce qui compte <em>se transmet.</em></p>
 <div class="pied-haut">
 <div style="display:grid;gap:1rem;align-content:start">
 <img class="sceau" src="images/sceau-or.png" width="400" height="396" alt="Sceau Lignée, maison fondée en 2026" loading="lazy">
