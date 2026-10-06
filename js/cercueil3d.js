@@ -14,16 +14,24 @@ const Y_HAUT = Y_SOCLE + H_CAISSE;
 // Profils : décalage latéral de la caisse selon la hauteur (t de 0 à 1).
 const PROFILS = {
   droit: () => 0,
-  galbe: t => 0.022 * Math.sin(Math.PI * t) - 0.008 * t,
-  evase: t => 0.012 * t,
+  galbe: t => (t < 0.58 ? 0.038 * Math.sin(Math.PI * t / 0.58) : 0),
 };
 
 // Couvercles : couches successives [hauteur, retrait].
+// Formes de chaque modèle, relevées sur les photos du catalogue.
+// socle : couches [hauteur, débord] ; rainures et bandeaux : hauteur relative sur la caisse.
+const FORMES = {
+  sobre: { profil: 'droit', couvercle: 'pans', finition: 'satine', socle: [[0.04, 0.016]], rainures: [0.82], vis: true, poignees: { x: [-0.5, 0.25], t: 0.58 } },
+  tradition: { profil: 'galbe', couvercle: 'moulure', finition: 'satine', socle: [[0.035, 0.02]], rainures: [0.62], vis: true, poignees: { x: [-0.62, -0.12, 0.38], t: 0.8 } },
+  floral: { profil: 'droit', couvercle: 'arrondi', finition: 'brillant', socle: [[0.022, 0.024], [0.008, 0.014], [0.02, 0.022]], bandeaux: [[0.93, 0.012, 0.022]], gravure: true, poignees: { x: [-0.84, 0.45], t: 0.62 } },
+  heritage: { profil: 'droit', couvercle: 'gradins', finition: 'brillant', socle: [[0.03, 0.028], [0.035, 0.014]], bandeaux: [[0.7, 0.008, 0.02]], rainures: [0.4], poignees: { x: [-0.62, -0.12, 0.38], t: 0.8 } },
+};
+
 const COUVERCLES = {
-  pans: [[0.032, 0.012, 0.012], [0.012, -0.012, -0.012], [0.045, -0.03, -0.075], [0.012, -0.075, -0.075]],
-  moulure: [[0.032, 0.014, 0.014], [0.016, -0.004, -0.012], [0.018, -0.022, -0.022], [0.05, -0.034, -0.085], [0.012, -0.085, -0.085]],
-  double: [[0.032, 0.012, 0.012], [0.026, -0.018, -0.018], [0.012, -0.03, -0.03], [0.04, -0.04, -0.075], [0.012, -0.075, -0.075]],
-  gradins: [[0.034, 0.014, 0.014], [0.02, -0.01, -0.01], [0.012, -0.022, -0.022], [0.1, -0.03, -0.125], [0.016, -0.125, -0.125]],
+  pans: [[0.04, 0.014, 0.014], [0.016, -0.008, -0.008], [0.07, -0.028, -0.085], [0.014, -0.085, -0.085]],
+  moulure: [[0.04, 0.016, 0.016], [0.018, -0.004, -0.012], [0.022, -0.022, -0.022], [0.065, -0.034, -0.09], [0.014, -0.09, -0.09]],
+  arrondi: [[0.014, 0.004, 0.016], [0.014, 0.016, 0.021], [0.014, 0.021, 0.016], [0.014, 0.016, 0.002], [0.014, 0.002, -0.016], [0.05, -0.02, -0.04], [0.014, -0.04, -0.04]],
+  gradins: [[0.04, 0.016, 0.016], [0.016, -0.004, -0.004], [0.13, -0.018, -0.165], [0.018, -0.165, -0.165]],
 };
 
 function contour(d) {
@@ -39,16 +47,16 @@ function points(d) {
   return [[-L / 2 - d, HF + d], [XS, HS + d], [L / 2 + d, HH + d], [L / 2 + d, -HH - d], [XS, -HS - d], [-L / 2 - d, -HF - d]];
 }
 
-function tronc(d0, d1, y, h, dessous = false) {
+function tronc(d0, d1, y, h, dessous = false, dessus = true) {
   const a = points(d0), b = points(d1), v = [];
   const P = (q, yy) => [q[0], yy, -q[1]];
   for (let i = 0; i < 6; i++) {
     const j = (i + 1) % 6, p0 = P(a[i], y), p1 = P(a[j], y), p2 = P(b[j], y + h), p3 = P(b[i], y + h);
-    v.push(...p0, ...p1, ...p2, ...p0, ...p2, ...p3);
+    v.push(...p0, ...p2, ...p1, ...p0, ...p3, ...p2);
   }
   for (let i = 1; i < 5; i++) {
-    v.push(...P(b[0], y + h), ...P(b[i], y + h), ...P(b[i + 1], y + h));
-    if (dessous) v.push(...P(a[0], y), ...P(a[i + 1], y), ...P(a[i], y));
+    if (dessus) v.push(...P(b[0], y + h), ...P(b[i + 1], y + h), ...P(b[i], y + h));
+    if (dessous) v.push(...P(a[0], y), ...P(a[i], y), ...P(a[i + 1], y));
   }
   const g = new THREE.BufferGeometry();
   g.setAttribute('position', new THREE.Float32BufferAttribute(v, 3));
@@ -57,10 +65,9 @@ function tronc(d0, d1, y, h, dessous = false) {
   return g;
 }
 
+// Trou : contour parcouru en sens inverse, pour que les parois intérieures soient tournées vers l'intérieur
 function trou(d) {
-  const s = contour(d);
-  const h = new THREE.Path(s.getPoints());
-  return h;
+  return new THREE.Path(contour(d).getPoints().reverse());
 }
 
 function extrude(forme, h, y, biseau = 0.003) {
@@ -263,7 +270,7 @@ export function creerVue(canvas, { auChangement } = {}) {
   const rendu = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
   rendu.setPixelRatio(Math.min(devicePixelRatio, 2));
   rendu.outputColorSpace = THREE.SRGBColorSpace;
-  rendu.toneMapping = THREE.ACESFilmicToneMapping; rendu.toneMappingExposure = 0.8;
+  rendu.toneMapping = THREE.LinearToneMapping; rendu.toneMappingExposure = 1.0;
   rendu.shadowMap.enabled = true; rendu.shadowMap.type = THREE.PCFSoftShadowMap; rendu.shadowMap.autoUpdate = false;
 
   const scene = new THREE.Scene();
@@ -280,13 +287,17 @@ export function creerVue(canvas, { auChangement } = {}) {
   let sale = true;
   ctl.addEventListener('change', () => { sale = true; });
 
-  const soleil = new THREE.DirectionalLight(0xfff4e6, 1.15); soleil.position.set(2.2, 4, 1.6); soleil.castShadow = true;
+  const soleil = new THREE.DirectionalLight(0xfff4e6, 0.4); soleil.position.set(0.4, 4.2, 0); soleil.castShadow = true;
   soleil.shadow.mapSize.set(1024, 1024); Object.assign(soleil.shadow.camera, { left: -1.4, right: 1.4, top: 1.4, bottom: -1.4 }); soleil.shadow.radius = 6; soleil.shadow.bias = -0.0004;
-  scene.add(soleil, new THREE.HemisphereLight(0xffffff, 0xd8cbb4, 0.25));
+  // Éclairage de studio : deux boîtes à lumière latérales, pour un rendu égal sous tous les angles
+  const boite1 = new THREE.DirectionalLight(0xfff6ec, 0.9); boite1.position.set(1.2, 1.6, 3);
+  const boite2 = new THREE.DirectionalLight(0xfff6ec, 0.9); boite2.position.set(-1.2, 1.6, -3);
+  scene.add(soleil, boite1, boite2, new THREE.HemisphereLight(0xffffff, 0xd8cbb4, 0.3));
   const sol = new THREE.Mesh(new THREE.PlaneGeometry(8, 8), new THREE.ShadowMaterial({ opacity: 0.16 })); sol.rotation.x = -Math.PI / 2; sol.receiveShadow = true; scene.add(sol);
   const contact = new THREE.Mesh(new THREE.PlaneGeometry(2.5, 0.95), new THREE.MeshBasicMaterial({ map: textureOmbre(), transparent: true, depthWrite: false })); contact.rotation.x = -Math.PI / 2; contact.position.y = 0.001; scene.add(contact);
 
   const cercueil = new THREE.Group(); scene.add(cercueil);
+  const chargeur = new THREE.TextureLoader();
   let charniere = null, couvercle = null, plaque = null, hautCouvercle = Y_HAUT, ouvert = 0, cible = 0, anim = null;
   const cacheBois = {};
   const bois = (hex, fin) => {
@@ -303,48 +314,72 @@ export function creerVue(canvas, { auChangement } = {}) {
 
   function construire(cfg) {
     vider(cercueil);
-    const mb = bois(cfg.teinte, cfg.finition), prof = PROFILS[cfg.profil] || PROFILS.droit;
-    // Socle
-    cercueil.add(maillage(uvBois(extrude(contour(0.016), Y_SOCLE, 0)), mb));
+    const F = FORMES[cfg.modele], mb = bois(cfg.teinte, F.finition), prof = PROFILS[F.profil];
+    const sombre = new THREE.MeshStandardMaterial({ color: new THREE.Color(cfg.teinte).multiplyScalar(0.42), roughness: 0.7 });
+    // Socle en couches
+    let ys = 0;
+    for (const [h, d] of F.socle) { cercueil.add(maillage(uvBois(extrude(contour(d), h, ys, 0.002)), mb)); ys += h; }
+    const H = Y_HAUT - ys, yT = t => ys + H * t;
     // Caisse creuse, épaisseur 22 mm, en tranches pour suivre le galbe
-    const n = cfg.profil === 'droit' ? 1 : 24;
-    for (let i = 0; i < n; i++) {
-      const t = (i + 0.5) / n, f = contour(prof(t)); f.holes.push(trou(-EP));
-      cercueil.add(maillage(uvBois(extrude(f, H_CAISSE / n + (i < n - 1 ? 0.001 : 0), Y_SOCLE + i * H_CAISSE / n, n > 1 ? 0 : 0.003)), mb));
+    if (F.profil === 'droit') {
+      const f = contour(0); f.holes.push(trou(-EP));
+      cercueil.add(maillage(uvBois(extrude(f, H, ys, 0.002)), mb));
+    } else {
+      // Flanc galbé d'une seule surface continue, paroi intérieure et chant à part
+      const n = 32;
+      for (let i = 0; i < n; i++) cercueil.add(maillage(uvBois(tronc(prof(i / n), prof((i + 1) / n), ys + i * H / n, H / n, false, false)), mb));
+      const paroi = contour(-EP + 0.001); paroi.holes.push(trou(-EP));
+      cercueil.add(maillage(uvBois(extrude(paroi, H, ys, 0)), mb));
+      const chant = contour(prof(1)); chant.holes.push(trou(-EP));
+      cercueil.add(maillage(uvBois(extrude(chant, 0.003, Y_HAUT - 0.003, 0)), mb));
     }
-    if (cfg.bandeau) { const f = contour(0.008); f.holes.push(trou(-EP)); cercueil.add(maillage(uvBois(extrude(f, 0.018, Y_SOCLE + H_CAISSE * 0.74)), mb)); }
-    // Intérieur : fond, capiton et oreiller
+    for (const [tb, d, h] of F.bandeaux || []) { const f = contour(prof(tb) + d); f.holes.push(trou(-EP)); cercueil.add(maillage(uvBois(extrude(f, h, yT(tb) - h / 2, 0.004)), mb)); }
+    for (const tr of F.rainures || []) { const f = contour(prof(tr) + 0.0008); f.holes.push(trou(-EP)); cercueil.add(maillage(extrude(f, 0.004, yT(tr), 0), sombre, false)); }
+    // Intérieur : capiton, fond et oreiller
     const satin = new THREE.MeshStandardMaterial({ map: textureSatin(cfg.capiton, true), roughness: 0.38, metalness: 0.05 });
     const lit = new THREE.MeshStandardMaterial({ map: textureSatin(cfg.capiton, false), roughness: 0.42, metalness: 0.04 });
     const doublure = contour(-EP - 0.001); doublure.holes.push(trou(-EP - 0.008));
-    cercueil.add(maillage(extrude(doublure, H_CAISSE - 0.03, Y_SOCLE + 0.02, 0), satin, false));
-    cercueil.add(maillage(extrude(contour(-EP - 0.004), 0.07, Y_SOCLE + 0.02, 0.01), lit, false));
-    const or = new THREE.Mesh(new THREE.SphereGeometry(1, 32, 20), lit); or.scale.set(0.15, 0.045, 0.17); or.position.set(L / 2 - 0.26, Y_SOCLE + 0.1, 0); or.receiveShadow = true; cercueil.add(or);
+    cercueil.add(maillage(extrude(doublure, H - 0.03, ys + 0.02, 0), satin, false));
+    cercueil.add(maillage(extrude(contour(-EP - 0.004), 0.07, ys + 0.02, 0.01), lit, false));
+    const or = new THREE.Mesh(new THREE.SphereGeometry(1, 32, 20), lit); or.scale.set(0.15, 0.045, 0.17); or.position.set(L / 2 - 0.26, ys + 0.1, 0); or.receiveShadow = true; cercueil.add(or);
     // Poignées
     const mp = metal(cfg.metal), pente = (HS - HF) / (XS + L / 2), ang = Math.atan(pente);
-    const xs = cfg.nbPoignees === 4 ? [-0.5, 0.25] : [-0.62, -0.12, 0.38];
-    const yp = Y_SOCLE + H_CAISSE * 0.6, dp = prof(0.6);
+    const xs = F.poignees.x, tp = F.poignees.t, dp = prof(tp);
     for (const x of xs) for (const s of [1, -1]) {
       const p = POIGNEES[cfg.poignee](mp), z = HF + (x + L / 2) * pente + dp;
-      p.position.set(x, yp, s * z); p.rotation.y = s > 0 ? -ang : Math.PI + ang;
+      p.position.set(x, yT(tp), s * z); p.rotation.y = s > 0 ? -ang : Math.PI + ang;
       p.traverse(c => { if (c.isMesh) c.castShadow = true; });
       cercueil.add(p);
     }
-    // Couvercle
-    // Couvercle monté sur une charnière côté gauche, pour l'ouvrir sans le perdre de vue
+    // Gravure florale : relief relevé sur la photo du modèle réel
+    if (F.gravure) {
+      const relief = chargeur.load('images/catalogue/gravure-relief.webp', () => { sale = true; }); relief.channel = 1;
+      const masque = masqueGravure(); masque.channel = 1;
+      const mg = new THREE.MeshPhysicalMaterial({ map: mb.map, bumpMap: relief, bumpScale: 5, alphaMap: masque, transparent: true, roughness: mb.roughness, clearcoat: mb.clearcoat, clearcoatRoughness: mb.clearcoatRoughness, envMapIntensity: 0.45, polygonOffset: true, polygonOffsetFactor: -2 });
+      for (const s of [1, -1]) {
+        const g = new THREE.PlaneGeometry(0.97, 0.18);
+        g.setAttribute('uv1', g.attributes.uv.clone());
+        const pl = new THREE.Mesh(g, mg);
+        const x = -0.17, z = HF + (x + L / 2) * pente + 0.0045;
+        pl.position.set(x, yT(0.47), s * z); pl.rotation.y = s > 0 ? -ang : Math.PI + ang;
+        // Le fil du bois suit les mêmes coordonnées que la caisse
+        pl.updateMatrixWorld(); const pos = g.attributes.position, uv = g.attributes.uv, w = new THREE.Vector3();
+        for (let k = 0; k < pos.count; k++) { w.fromBufferAttribute(pos, k).applyMatrix4(pl.matrixWorld); uv.setXY(k, w.x * 0.5, (w.y + w.z) * 0.9); }
+        cercueil.add(pl);
+      }
+    }
+    // Couvercle monté sur une charnière, pour l'ouvrir sans le perdre de vue
     charniere = new THREE.Group(); charniere.position.set(0, Y_HAUT, -(HS + 0.012)); cercueil.add(charniere);
     couvercle = new THREE.Group(); couvercle.position.set(0, -Y_HAUT, HS + 0.012); charniere.add(couvercle);
     let y = Y_HAUT;
-    COUVERCLES[cfg.couvercle].forEach(([h, d0, d1], i) => { couvercle.add(maillage(uvBois(tronc(d0, d1, y, h, i === 0)), mb)); y += h; });
+    COUVERCLES[F.couvercle].forEach(([h, d0, d1], i) => { couvercle.add(maillage(uvBois(tronc(d0, d1, y, h, i === 0)), mb)); y += h; });
     hautCouvercle = y;
-    // Gravure florale sur les flancs
-    if (cfg.gravure) {
-      const tex = textureFlorale(cfg.teinte);
-      for (const s of [1, -1]) {
-        const pl = new THREE.Mesh(new THREE.PlaneGeometry(0.95, 0.12), new THREE.MeshStandardMaterial({ map: tex, transparent: true, roughness: 0.6, depthWrite: false }));
-        const x = -0.15, z = HF + (x + L / 2) * pente + prof(0.27) + 0.0015;
-        pl.position.set(x, Y_SOCLE + H_CAISSE * 0.27, s * z); pl.rotation.y = s > 0 ? -ang : Math.PI + ang;
-        cercueil.add(pl);
+    // Cache-vis dorés sur la tranche du couvercle
+    if (F.vis) {
+      const mv = metal('laiton'), g = new THREE.SphereGeometry(0.0055, 12, 8), q = points(COUVERCLES[F.couvercle][0][1] + 0.001), yv = Y_HAUT + COUVERCLES[F.couvercle][0][0] * 0.5;
+      for (let i = 0; i < 6; i++) {
+        const a = q[i], b = q[(i + 1) % 6], lg = Math.hypot(b[0] - a[0], b[1] - a[1]), k = Math.max(1, Math.round(lg / 0.14));
+        for (let j = 0; j < k; j++) { const f = (j + 0.5) / k, v = new THREE.Mesh(g, mv); v.position.set(a[0] + (b[0] - a[0]) * f, yv, -(a[1] + (b[1] - a[1]) * f)); couvercle.add(v); }
       }
     }
     // Emblème et plaque
@@ -356,19 +391,12 @@ export function creerVue(canvas, { auChangement } = {}) {
     rendu.shadowMap.needsUpdate = true; sale = true;
   }
 
-  function textureFlorale(hex) {
-    const c = document.createElement('canvas'); c.width = 1024; c.height = 240;
-    const x = c.getContext('2d'), sombre = new THREE.Color(hex).multiplyScalar(0.55), clair = new THREE.Color(hex).multiplyScalar(1.18);
-    const trait = (col, dx, dy, w) => {
-      x.strokeStyle = `rgba(${col.r * 255 | 0},${col.g * 255 | 0},${col.b * 255 | 0},.85)`; x.lineWidth = w; x.lineCap = 'round';
-      x.beginPath(); x.moveTo(40 + dx, 200 + dy); x.bezierCurveTo(300 + dx, 210 + dy, 520 + dx, 60 + dy, 980 + dx, 50 + dy); x.stroke();
-      for (const [px, py, l, a] of [[260, 170, 120, -0.5], [420, 130, 140, -0.9], [560, 100, 120, -0.4], [700, 80, 150, -0.8], [820, 62, 110, -0.3]]) {
-        x.beginPath(); x.ellipse(px + dx + l / 2 * Math.cos(a), py + dy + l / 2 * Math.sin(a), l / 2, 16, a, 0, Math.PI * 2); x.stroke();
-      }
-      for (const [px, py] of [[900, 40], [950, 70]]) { x.beginPath(); x.arc(px + dx, py + dy, 20, 0, Math.PI * 2); x.stroke(); x.beginPath(); x.arc(px + dx, py + dy, 9, 0, Math.PI * 2); x.stroke(); }
-    };
-    trait(clair, 2, 2, 5); trait(sombre, 0, 0, 4);
-    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
+  function masqueGravure() {
+    const c = document.createElement('canvas'); c.width = 730; c.height = 136;
+    const x = c.getContext('2d'); x.fillStyle = '#000'; x.fillRect(0, 0, 730, 136);
+    x.filter = 'blur(3px)'; x.fillStyle = '#fff';
+    x.beginPath(); x.moveTo(10, 126); x.lineTo(90, 6); x.lineTo(720, 6); x.lineTo(654, 126); x.closePath(); x.fill();
+    return new THREE.CanvasTexture(c);
   }
 
   function poserCouvercle() {
@@ -418,6 +446,7 @@ export function creerVue(canvas, { auChangement } = {}) {
     afficher(cfg) { construire(cfg); taille(); auChangement && auChangement(); },
     graver(l1, l2) { if (plaque) { plaque.material[2].map.dispose(); plaque.material[2].map = textureGravure(l1, l2); plaque.material[2].needsUpdate = true; sale = true; } },
     vue,
+    poser(p, c) { ctl.autoRotate = false; anim = null; cam.position.set(...p); ctl.target.set(...c); ctl.update(); sale = true; },
     couvercle(o) { cible = o ? 1 : 0; if (o) vue('interieur'); else vue('troisquarts'); },
     demarrer() { if (!actif) { actif = true; sale = true; taille(); requestAnimationFrame(boucle); } },
     arreter() { actif = false; },

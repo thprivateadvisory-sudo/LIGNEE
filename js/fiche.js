@@ -1,10 +1,10 @@
 // Fiche produit des cercueils : vue 3D ou photo réelle, personnalisation, caractéristiques et conformité.
-const TEINTES = [
-  { id: 'clair', nom: 'Chêne clair', hex: '#D9B07A' },
-  { id: 'naturel', nom: 'Naturel', hex: '#C08A4E' },
-  { id: 'miel', nom: 'Miel', hex: '#A86A36' },
-  { id: 'acajou', nom: 'Acajou', hex: '#6E2A14' },
-  { id: 'noyer', nom: 'Noyer', hex: '#45281A' },
+const TEINTES = [ // hex : teinte mesurée sur les photos ; base : couleur donnée au moteur 3D pour la restituer
+  { id: 'clair', nom: 'Chêne clair', hex: '#D4AF7D', base: '#D8B37F' },
+  { id: 'naturel', nom: 'Naturel', hex: '#C17C41', base: '#DA8C44' },
+  { id: 'miel', nom: 'Miel', hex: '#AC7C46', base: '#C18B49' },
+  { id: 'acajou', nom: 'Acajou', hex: '#80472A', base: '#8D4315' },
+  { id: 'noyer', nom: 'Noyer', hex: '#4F2E1C', base: '#572A0E' },
 ];
 const POIGNEES = [
   { id: 'barre', nom: 'Barre', metal: 'bronze-vieilli', detail: 'Bronze vieilli', img: 'poignee-barre' },
@@ -37,26 +37,26 @@ const MODELES = {
   sobre: {
     nom: 'Sobre', prix: '340', stock: true, usage: 'Inhumation ou crémation', cremation: true,
     accroche: 'La simplicité, sans rien céder sur la qualité.',
-    profil: 'droit', couvercle: 'pans', finition: 'satine', teinte: 'naturel', nbPoignees: 4, poignee: 'demi-lune', embleme: 'sans',
-    carac: [['Forme', 'Parisienne, lignes droites'], ['Couvercle', 'À pans'], ['Finition', 'Vernis naturel satiné'], ['Poignées', '4, au choix'], ['Capiton', 'Coton, avec oreiller'], ['Taille', 'Adulte standard. Autres tailles sur demande']],
+    teinte: 'naturel', poignee: 'demi-lune', embleme: 'sans',
+    carac: [['Forme', 'Parisienne, lignes droites'], ['Couvercle', 'À pans, cache-vis dorés'], ['Finition', 'Vernis naturel satiné'], ['Poignées', '4, au choix'], ['Capiton', 'Coton, avec oreiller'], ['Taille', 'Adulte standard. Autres tailles sur demande']],
   },
   tradition: {
     nom: 'Tradition', prix: '690', stock: true, usage: 'Inhumation ou crémation', cremation: true,
     accroche: 'Le classique des familles françaises, aux flancs galbés.',
-    profil: 'galbe', couvercle: 'moulure', finition: 'satine', teinte: 'miel', nbPoignees: 6, poignee: 'barre', embleme: 'croix',
-    carac: [['Forme', 'Parisienne, flancs galbés'], ['Couvercle', 'Mouluré'], ['Finition', 'Satinée'], ['Poignées', '6, au choix'], ['Capiton', 'Satiné, avec oreiller'], ['Taille', 'Adulte standard. Autres tailles sur demande']],
+    teinte: 'miel', poignee: 'barre', embleme: 'croix',
+    carac: [['Forme', 'Parisienne, flancs galbés'], ['Couvercle', 'Mouluré, cache-vis dorés'], ['Finition', 'Satinée'], ['Poignées', '6, au choix'], ['Capiton', 'Satiné, avec oreiller'], ['Taille', 'Adulte standard. Autres tailles sur demande']],
   },
   floral: {
     nom: 'Floral', prix: '890', stock: false, usage: 'Inhumation ou crémation', cremation: true,
     accroche: 'Une gravure florale en bas-relief sur chaque flanc.',
-    profil: 'evase', couvercle: 'double', finition: 'satine', teinte: 'clair', nbPoignees: 6, poignee: 'etrier', embleme: 'rose', gravure: true,
-    carac: [['Forme', 'Parisienne, flancs gravés'], ['Couvercle', 'Double moulure'], ['Finition', 'Satinée'], ['Poignées', '6, au choix'], ['Capiton', 'Satiné, avec oreiller'], ['Taille', 'Adulte standard. Autres tailles sur demande']],
+    teinte: 'clair', poignee: 'etrier', embleme: 'sans',
+    carac: [['Forme', 'Parisienne, gravure florale en bas-relief'], ['Couvercle', 'Bord arrondi'], ['Finition', 'Vernis brillant'], ['Poignées', '4, au choix'], ['Capiton', 'Satiné, avec oreiller'], ['Taille', 'Adulte standard. Autres tailles sur demande']],
   },
   heritage: {
     nom: 'Héritage', prix: '1 190', stock: false, usage: 'Inhumation', cremation: false,
     accroche: 'Notre modèle signature, verni comme un meuble de famille.',
-    profil: 'droit', couvercle: 'gradins', finition: 'brillant', teinte: 'acajou', nbPoignees: 6, poignee: 'demi-lune', embleme: 'crucifix', bandeau: true,
-    carac: [['Forme', 'Parisienne, bandeau mouluré'], ['Couvercle', 'À gradins'], ['Finition', 'Vernis brillant'], ['Poignées', '6, au choix'], ['Capiton', 'Brodé, avec oreiller'], ['Taille', 'Adulte standard. Autres tailles sur demande']],
+    teinte: 'acajou', poignee: 'demi-lune', embleme: 'sans',
+    carac: [['Forme', 'Parisienne, socle à gradins, bandeau mouluré'], ['Couvercle', 'En pointe de diamant'], ['Finition', 'Vernis brillant'], ['Poignées', '6, au choix'], ['Capiton', 'Brodé, avec oreiller'], ['Taille', 'Adulte standard. Autres tailles sur demande']],
   },
 };
 
@@ -77,8 +77,8 @@ function init() {
   function config() {
     const m = MODELES[cle], p = POIGNEES.find(x => x.id === etat.poignee);
     return {
-      profil: m.profil, couvercle: m.couvercle, finition: m.finition, nbPoignees: m.nbPoignees, gravure: m.gravure, bandeau: m.bandeau,
-      teinte: TEINTES.find(x => x.id === etat.teinte).hex, capiton: CAPITONS.find(x => x.id === etat.capiton).hex,
+      modele: cle,
+      teinte: TEINTES.find(x => x.id === etat.teinte).base, capiton: CAPITONS.find(x => x.id === etat.capiton).hex,
       poignee: etat.poignee, metal: p.metal, embleme: etat.embleme, l1: etat.l1, l2: etat.l2,
     };
   }
@@ -178,6 +178,7 @@ function init() {
   });
   const h = location.hash.match(/^#modele-(\w+)/);
   if (h) ouvrir(h[1]);
+  addEventListener('hashchange', () => { const m = location.hash.match(/^#modele-(\w+)/); if (m && m[1] !== cle) ouvrir(m[1]); });
   // Précharge la 3D quand la gamme approche de l'écran.
   const g = d.getElementById('prix');
   if (g && 'IntersectionObserver' in window) {
