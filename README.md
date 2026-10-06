@@ -44,7 +44,24 @@ Rechercher et remplacer dans les 9 fichiers :
 
 ## Prix et engagements à valider avant la mise en ligne
 
-Les prix de la gamme (cercueils 340 à 1 190 €, urnes 49 à 149 €), la livraison incluse et les descriptions des modèles sont des propositions à valider avec les coûts fournisseurs. Ils sont définis à un seul endroit dans le script de génération ; sinon, rechercher `390&nbsp;€`, `690&nbsp;€`, etc. dans `index.html` et `cercueils.html`.
+Les prix de la gamme (cercueils 340 à 1 190 €, urnes 49 à 149 €), la livraison incluse et les descriptions des modèles sont des propositions à valider avec les coûts fournisseurs. Rechercher `340&nbsp;€`, `690&nbsp;€`, etc. dans `index.html` et `cercueils.html`.
+
+## Gamme photographiée (catalogue fournisseur)
+
+Photos tirées du catalogue fournisseur, modèles de style européen uniquement, dans `images/catalogue/` :
+
+| Modèle Lignée | Réf. fournisseur | Disponibilité | Prix proposé |
+|---|---|---|---|
+| Sobre | IT249 | En stock | 340 € |
+| Tradition | IT266 | En stock | 690 € |
+| Floral | IT277 | Sur commande | 890 € |
+| Héritage | E666 | Sur commande | 1 190 € |
+
+Finitions au choix (section « Personnaliser » de `cercueils.html`) : poignées H001, H005, H012, H032 ; emblèmes D051 (crucifix), D055 (croix latine), D010 (croix huguenote), D009 (étoile de David), D014 (rose) ; plaque DP011.
+
+Engagements affichés à tenir réellement (sections « Notre contrôle qualité » et « Vérifiez ») : contrôle en quatre points de chaque cercueil (bois, finitions, intérieur, commande), devis signé avant toute commande, paiement après signature, adhésion à un médiateur de la consommation, numéro d'habilitation dans les mentions légales.
+
+À confirmer auprès du fournisseur avant la mise en ligne : essence du bois (le site affirme « bois massif uniquement »), épaisseur réglementaire, compatibilité crémation des modèles Sobre, Tradition et Floral, délais réels des modèles sur commande.
 
 Les trois garanties affichées (prix le plus bas garanti avec remboursement de la différence, bois massif contrôlé un par un avec remplacement en cas de défaut, livraison avant les obsèques ou remboursement) sont des engagements contractuels : à reprendre dans les CGV et à tenir dans la réalité, sinon ils deviennent une pratique commerciale trompeuse.
 
