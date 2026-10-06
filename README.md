@@ -46,6 +46,16 @@ Rechercher et remplacer dans les 9 fichiers :
 
 Les prix de la gamme (cercueils 340 à 1 190 €, urnes 49 à 149 €), la livraison incluse et les descriptions des modèles sont des propositions à valider avec les coûts fournisseurs. Rechercher `340&nbsp;€`, `690&nbsp;€`, etc. dans `index.html` et `cercueils.html`.
 
+## Catalogue imprimé
+
+`catalogue/Lignee-catalogue-2026.pdf` : 8 pages A4 pour la boutique (couverture, pourquoi Lignée a été créée, comment choisir, modèles en stock, modèles sur commande, finitions, urnes et garanties, contact avec QR code et cachet du conseiller).
+
+- Format fini A4 (210 × 297 mm), fonds perdus de 3 mm inclus (fichier en 216 × 303 mm), sans traits de coupe. Polices intégrées (TrueType). Couleurs en RVB : l'imprimeur les convertit en CMJN.
+- Conseil d'impression : 8 pages, piqûre à cheval (2 agrafes), papier couché demi-mat 170 g.
+- Régénérer après modification de `catalogue/catalogue.html` : `python3 catalogue/generer.py` (Playwright et Chromium).
+- Avant impression, remplacer dans `catalogue/catalogue.html` : le téléphone `03 XX XX XX XX`, le numéro d'habilitation `XX-XX-XXX`, et vérifier que `lignee.fr` est en ligne (le QR code pointe vers `https://lignee.fr/cercueils.html`). Faire valider prix et engagements comme pour le site.
+- Les photos viennent du PDF fournisseur (environ 180 ppi réels une fois imprimées) : avec les photos haute définition du fabricant, l'impression sera plus nette.
+
 ## Fiche produit et vue 3D
 
 Un clic sur un cercueil (page `cercueils.html`, ou lien `cercueils.html#modele-heritage` depuis n'importe quelle page) ouvre sa fiche : vue 3D à faire tourner, photo réelle, choix de la teinte, des poignées, de l'emblème, du capiton et de la gravure de la plaque, caractéristiques, conformité, livraison. « Demander ce cercueil » ouvre `contact.html` avec la demande pré-remplie.
