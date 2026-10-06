@@ -46,6 +46,14 @@ Rechercher et remplacer dans les 9 fichiers :
 
 Les prix de la gamme (cercueils 340 à 1 190 €, urnes 49 à 149 €), la livraison incluse et les descriptions des modèles sont des propositions à valider avec les coûts fournisseurs. Rechercher `340&nbsp;€`, `690&nbsp;€`, etc. dans `index.html` et `cercueils.html`.
 
+## Fiche produit et vue 3D
+
+Un clic sur un cercueil (page `cercueils.html`, ou lien `cercueils.html#modele-heritage` depuis n'importe quelle page) ouvre sa fiche : vue 3D à faire tourner, photo réelle, choix de la teinte, des poignées, de l'emblème, du capiton et de la gravure de la plaque, caractéristiques, conformité, livraison. « Demander ce cercueil » ouvre `contact.html` avec la demande pré-remplie.
+
+Fichiers dans `js/` : `fiche.js` (fiche, données des modèles), `cercueil3d.js` (modèles 3D construits en code d'après les photos), `three.module.min.js`, `OrbitControls.js`, `RoomEnvironment.js` (Three.js r160, licence MIT, hébergé avec le site). La 3D ne se charge qu'à l'ouverture d'une fiche ; sans WebGL, la fiche reste utilisable avec la photo.
+
+À confirmer auprès du fournisseur : les cinq teintes (chêne clair, naturel, miel, acajou, noyer) et les trois capitons (blanc, ivoire, champagne) proposés pour chaque modèle, et la remise d'une attestation de conformité du fabricant (promise dans l'onglet Conformité).
+
 ## Gamme photographiée (catalogue fournisseur)
 
 Photos tirées du catalogue fournisseur, modèles de style européen uniquement, dans `images/catalogue/` :
