@@ -46,6 +46,8 @@ Rechercher et remplacer dans les 9 fichiers :
 
 Les prix de la gamme (cercueils 340 à 1 190 €, urnes 49 à 149 €), la livraison incluse et les descriptions des modèles sont des propositions à valider avec les coûts fournisseurs. Ils sont définis à un seul endroit dans le script de génération ; sinon, rechercher `390&nbsp;€`, `690&nbsp;€`, etc. dans `index.html` et `cercueils.html`.
 
+Les trois garanties affichées (prix le plus bas garanti avec remboursement de la différence, bois massif contrôlé un par un avec remplacement en cas de défaut, livraison avant les obsèques ou remboursement) sont des engagements contractuels : à reprendre dans les CGV et à tenir dans la réalité, sinon ils deviennent une pratique commerciale trompeuse.
+
 La vente de cercueils et d'urnes exige l'habilitation funéraire préfectorale, l'assurance obsèques l'inscription ORIAS : leurs numéros sont à renseigner dans `mentions-legales.html` avant toute vente.
 
 ## Vidéos
