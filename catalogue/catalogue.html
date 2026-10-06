@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Lignée · Catalogue des cercueils 2026</title>
+<!-- Catalogue imprimable : A4 (210 × 297 mm) + 3 mm de fonds perdus sur chaque bord.
+     Générer le PDF : python3 catalogue/generer.py -->
+<style>
+@font-face{font-family:"Cormorant Garamond";font-weight:300;font-style:normal;src:url(polices/cormorant-garamond-latin-300-normal.woff2)}
+@font-face{font-family:"Cormorant Garamond";font-weight:300;font-style:italic;src:url(polices/cormorant-garamond-latin-300-italic.woff2)}
+@font-face{font-family:"Cormorant Garamond";font-weight:400;font-style:normal;src:url(polices/cormorant-garamond-latin-400-normal.woff2)}
+@font-face{font-family:"Cormorant Garamond";font-weight:400;font-style:italic;src:url(polices/cormorant-garamond-latin-400-italic.woff2)}
+@font-face{font-family:"Cormorant Garamond";font-weight:500;font-style:normal;src:url(polices/cormorant-garamond-latin-500-normal.woff2)}
+@font-face{font-family:"Cormorant Garamond";font-weight:500;font-style:italic;src:url(polices/cormorant-garamond-latin-500-italic.woff2)}
+@font-face{font-family:"Inter Cat";font-weight:400;src:url(polices/inter-latin-400-normal.woff2)}
+@font-face{font-family:"Inter Cat";font-weight:500;src:url(polices/inter-latin-500-normal.woff2)}
+@font-face{font-family:"Inter Cat";font-weight:600 700;src:url(polices/inter-latin-600-normal.woff2)}
+:root{
+  --nuit:#1B2A41;--ivoire:#F5F1E8;--pierre:#ECE6DA;--or:#B89B5E;--or-texte:#7D6431;--or-clair:#D9B97F;--ardoise:#4E5866;--ligne:#D9D0BE;--vert:#3F7A55;
+  --titre:"Cormorant Garamond",Garamond,serif;--texte:"Inter Cat",sans-serif;
+  --fp:3mm;      /* fonds perdus */
+  --marge:15mm;  /* fonds perdus + 12 mm de zone de sécurité */
+}
+@page{size:216mm 303mm;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{font-family:var(--texte);font-size:9.6pt;line-height:1.5;color:var(--nuit);background:#777}
+.page{width:216mm;height:303mm;position:relative;overflow:hidden;background:var(--ivoire);page-break-after:always;break-after:page;padding:var(--marge)}
+.page:last-child{page-break-after:auto;break-after:auto}
+.pierre{background:var(--pierre)}
+.nuit{background:var(--nuit);color:var(--ivoire)}
+h1,h2,h3{font-family:var(--titre);font-weight:400;line-height:1.05}
+h2{font-size:34pt;letter-spacing:-.005em}
+h2 em,h1 em{font-style:italic;font-weight:300}
+h3{font-size:19pt}
+.sur{font-size:7.4pt;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--or-texte)}
+.nuit .sur{color:var(--or-clair)}
+.chapo{font-size:11pt;color:var(--ardoise);max-width:140mm;margin-top:4mm}
+.nuit .chapo{color:rgba(245,241,232,.82)}
+.filet{height:.35mm;background:var(--nuit);margin:7mm 0 0}
+.folio{position:absolute;bottom:9mm;left:var(--marge);right:var(--marge);display:flex;justify-content:space-between;font-size:7pt;letter-spacing:.12em;text-transform:uppercase;color:var(--ardoise)}
+.nuit .folio{color:rgba(245,241,232,.55)}
+ul.coches{list-style:none;display:grid;gap:2mm}
+ul.coches li{position:relative;padding-left:6mm}
+ul.coches li::before{content:"";position:absolute;left:.6mm;top:1.3mm;width:2.8mm;height:1.5mm;border-left:.35mm solid var(--or-texte);border-bottom:.35mm solid var(--or-texte);transform:rotate(-45deg)}
+
+/* Couverture */
+.couv{display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:44mm}
+.couv .mono{width:46mm}
+.couv .marque{font-family:var(--titre);font-size:15pt;letter-spacing:.5em;margin:6mm 0 0 .5em;color:var(--or-clair)}
+.couv h1{font-size:46pt;margin-top:24mm}
+.couv .sous{font-size:11pt;color:rgba(245,241,232,.8);margin-top:6mm;max-width:130mm}
+.couv .vitrine{width:95mm;margin-top:22mm;filter:drop-shadow(0 6mm 5mm rgba(0,0,0,.45))}
+.couv .pied{position:absolute;bottom:18mm;left:0;right:0;font-size:8pt;letter-spacing:.2em;text-transform:uppercase;color:var(--or-clair)}
+
+/* Pourquoi Lignée */
+.deux-col{display:grid;grid-template-columns:1fr 1fr;gap:10mm}
+.recit p{font-size:10.4pt;margin-top:3.5mm}
+.recit p:first-child{margin-top:0}
+.recit .lettrine{font-family:var(--titre);font-size:15pt;line-height:1.35;color:var(--nuit)}
+.echelle{margin-top:9mm;padding:6mm;background:var(--pierre)}
+.ech-l{display:grid;grid-template-columns:30mm 1fr;align-items:center;gap:4mm;margin-top:3mm}
+.ech-l b{font-family:var(--titre);font-size:13pt;font-weight:500}
+.ech-p{position:relative;height:8mm;background:rgba(27,42,65,.08)}
+.ech-p span{position:absolute;top:0;bottom:0;display:flex;align-items:center;padding:0 2.5mm;font-size:8pt;font-weight:500;white-space:nowrap}
+.ech-p .hab{left:16.25%;width:78.75%;background:#B9B2A6;color:var(--nuit)}
+.ech-p .lig{left:0;width:8.5%;background:var(--or);color:var(--nuit);overflow:visible}
+.ech-p .lig em{position:absolute;left:100%;margin-left:2mm;font-style:normal;color:var(--nuit)}
+.ech-axe{display:flex;justify-content:space-between;margin:2mm 0 0 34mm;font-size:6.6pt;color:var(--ardoise)}
+.source{font-size:6.8pt;color:var(--ardoise);margin-top:3mm}
+.engag{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:10mm;border-top:.35mm solid var(--nuit)}
+.engag div{padding:5mm 5mm 5mm 0;border-bottom:.2mm solid var(--ligne)}
+.engag div:nth-child(2n){padding-left:5mm;border-left:.2mm solid var(--ligne)}
+.engag h3{font-size:15pt;margin-bottom:1.5mm}
+.engag p{color:var(--ardoise);font-size:9.2pt}
+
+/* Comment choisir */
+.etapes{display:grid;gap:0;margin-top:9mm;border-top:.35mm solid var(--nuit)}
+.etape{display:grid;grid-template-columns:22mm 1fr;gap:6mm;padding:7mm 0;border-bottom:.2mm solid var(--ligne)}
+.etape .n{font-family:var(--titre);font-size:40pt;line-height:.9;color:var(--or)}
+.etape h3{margin-bottom:2mm}
+.etape p{color:var(--ardoise)}
+.choix2{display:grid;grid-template-columns:1fr 1fr;gap:5mm;margin-top:4mm}
+.carte{background:#FBF9F4;border:.2mm solid var(--ligne);padding:4.5mm}
+.carte b{display:flex;align-items:center;gap:2mm;font-size:8pt;letter-spacing:.12em;text-transform:uppercase}
+.carte p{margin-top:1.5mm;font-size:9pt;color:var(--ardoise)}
+.pt{display:inline-block;width:2mm;height:2mm;border-radius:50%;background:var(--vert)}
+.pt.cmd{background:var(--or)}
+.inclus{margin-top:9mm;padding:7mm;background:var(--nuit);color:var(--ivoire)}
+.inclus h3{color:var(--ivoire);margin-bottom:4mm}
+.inclus ul.coches{grid-template-columns:1fr 1fr;column-gap:8mm}
+.inclus ul.coches li::before{border-color:var(--or-clair)}
+
+/* Modèles */
+.modele{display:grid;grid-template-columns:92mm 1fr;gap:9mm;align-items:center;padding:9mm 0;border-bottom:.2mm solid var(--ligne)}
+.modele:first-of-type{border-top:.35mm solid var(--nuit)}
+.modele figure{display:grid;gap:2.5mm}
+.modele img{width:92mm;height:auto;filter:drop-shadow(0 3mm 2.5mm rgba(27,42,65,.22))}
+.modele figcaption{font-size:6.8pt;color:var(--ardoise);text-align:center}
+.dispo{display:flex;align-items:center;gap:2mm;font-size:7.4pt;font-weight:500;letter-spacing:.14em;text-transform:uppercase}
+.usage{font-size:7.4pt;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--or-texte);margin-top:1.5mm}
+.modele h3{font-size:30pt;margin:2.5mm 0 1.5mm}
+.accroche{font-family:var(--titre);font-style:italic;font-size:13pt;color:var(--ardoise);line-height:1.25}
+.modele ul{list-style:none;margin-top:4mm;display:grid;gap:1.3mm;font-size:9.2pt;color:var(--ardoise)}
+.modele ul li{padding-left:5mm;position:relative}
+.modele ul li::before{content:"";position:absolute;left:0;top:2.3mm;width:2.6mm;height:.3mm;background:var(--or)}
+.prix{display:flex;align-items:baseline;gap:3mm;margin-top:5mm;padding-top:4mm;border-top:.2mm solid var(--ligne)}
+.prix b{font-family:var(--titre);font-weight:400;font-size:32pt;line-height:1}
+.prix span{font-size:8pt;color:var(--ardoise)}
+
+/* Personnalisation */
+.bloc-perso{display:grid;grid-template-columns:42mm 1fr;gap:6mm;padding:6mm 0;border-bottom:.2mm solid var(--ligne)}
+.bloc-perso:first-of-type{border-top:.35mm solid var(--nuit);margin-top:8mm}
+.bloc-perso h3{font-size:16pt}
+.bloc-perso p.d{font-size:8.4pt;color:var(--ardoise);margin-top:1.5mm}
+.tuiles{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm}
+.tuiles.six{grid-template-columns:repeat(6,1fr)}
+.tuile{display:grid;gap:1.5mm;text-align:center}
+.tuile .v{height:19mm;display:grid;place-items:center;border-bottom:.2mm solid var(--ligne)}
+.tuile .v img{max-width:100%;max-height:17mm;filter:drop-shadow(0 .8mm .8mm rgba(27,42,65,.2))}
+.tuile.haute .v{height:27mm}.tuile.haute .v img{max-height:25mm}
+.tuile .v em{font-family:var(--titre);font-size:10pt;color:var(--ardoise)}
+.tuile b{font-size:8pt;font-weight:500}
+.tuile small{display:block;font-size:6.8pt;color:var(--ardoise)}
+.teintes{display:flex;gap:5mm}
+.teinte{display:grid;justify-items:center;gap:1.5mm;font-size:7.6pt;text-align:center}
+.teinte i{width:13mm;height:13mm;border-radius:50%;box-shadow:inset 0 0 0 .2mm rgba(0,0,0,.15)}
+.note{font-size:6.8pt;color:var(--ardoise);margin-top:2.5mm}
+
+/* Urnes, garanties */
+.urnes{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:7mm;border-top:.35mm solid var(--nuit)}
+.urne{padding:5mm 5mm 5mm 0}
+.urne+.urne{padding-left:5mm;border-left:.2mm solid var(--ligne)}
+.urne svg{width:16mm;height:16mm;fill:none;stroke:var(--or-texte);stroke-width:1.2}
+.urne h3{font-size:18pt;margin-top:2mm}
+.urne p{font-size:8.6pt;color:var(--ardoise);margin-top:1mm}
+.urne .prix{margin-top:3mm;padding-top:2.5mm}.urne .prix b{font-size:22pt}
+.garanties{display:grid;grid-template-columns:repeat(3,1fr);gap:6mm;margin-top:7mm}
+.garanties div{border-top:.35mm solid var(--or);padding-top:3.5mm}
+.garanties .r{font-family:var(--titre);font-style:italic;font-size:16pt;color:var(--or)}
+.garanties h3{font-size:15pt;margin:1mm 0 1.5mm}
+.garanties p{font-size:8.6pt;color:var(--ardoise)}
+.conf{margin-top:8mm;padding:6mm;background:var(--pierre)}
+.conf h3{font-size:16pt;margin-bottom:3mm}
+.conf ul.coches{font-size:8.8pt}
+
+/* Dos */
+.dos{display:flex;flex-direction:column}
+.dos h2{color:var(--ivoire);font-size:38pt;margin-top:4mm}
+.dos .grille{display:grid;grid-template-columns:1fr 62mm;gap:12mm;margin-top:14mm}
+.contact{display:grid;gap:6mm}
+.contact .l{font-size:7.4pt;letter-spacing:.16em;text-transform:uppercase;color:var(--or-clair)}
+.contact .v{font-family:var(--titre);font-size:24pt;line-height:1.1}
+.contact .v.p{font-size:16pt}
+.qr{background:var(--ivoire);color:var(--nuit);padding:5mm;text-align:center}
+.qr img{width:100%;height:auto}
+.qr p{font-size:8.4pt;margin-top:3mm;line-height:1.35}
+.qr b{font-family:var(--titre);font-size:13pt;font-weight:500;display:block}
+.cachet{margin-top:14mm;border:.3mm dashed rgba(245,241,232,.45);height:40mm;padding:4mm;font-size:7.4pt;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,241,232,.6)}
+.mentions{position:absolute;left:var(--marge);right:var(--marge);bottom:16mm;font-size:6.6pt;line-height:1.5;color:rgba(245,241,232,.6)}
+.dos .sceau{position:absolute;right:var(--marge);top:var(--marge);width:30mm;opacity:.9}
+</style>
+</head>
+<body>
+
+<!-- 1. Couverture -->
+<section class="page nuit couv">
+  <img class="mono" src="../images/monogramme-or.png" alt="">
+  <p class="marque">LIGNÉE</p>
+  <h1>Nos cercueils, <em>au juste prix.</em></h1>
+  <p class="sous">Quatre modèles en bois, des finitions au choix et un prix affiché, livraison comprise, partout en France.</p>
+  <img class="vitrine" src="images/heritage.png" alt="Cercueil Héritage">
+  <p class="pied">Catalogue 2026 · Maison funéraire au juste prix</p>
+</section>
+
+<!-- 2. Pourquoi Lignée a été créée -->
+<section class="page">
+  <p class="sur">Pourquoi Lignée a été créée</p>
+  <h2>Le respect que mérite une vie, <em>au juste prix.</em></h2>
+  <div class="filet"></div>
+  <div class="deux-col" style="margin-top:8mm">
+    <div class="recit">
+      <p class="lettrine">Lignée est née d'un constat simple&nbsp;: au moment le plus difficile, les familles paient le prix fort, sans pouvoir comparer.</p>
+    </div>
+    <div class="recit">
+      <p>Nous avons décidé de faire autrement&nbsp;: acheter en direct aux fabricants, sans intermédiaire, fixer notre marge et afficher nos prix.</p>
+      <p>Autour de ce juste prix, nous avons bâti une maison complète, avec une seule règle&nbsp;: un prix clair, un seul interlocuteur.</p>
+    </div>
+  </div>
+  <div class="echelle">
+    <p class="sur">Le prix d'un cercueil en France</p>
+    <div class="ech-l"><b>Prix habituel</b><div class="ech-p"><span class="hab">de 650 à 3&nbsp;800&nbsp;€</span></div></div>
+    <div class="ech-l"><b>Chez Lignée</b><div class="ech-p"><span class="lig"><em>dès 340&nbsp;€, livraison comprise</em></span></div></div>
+    <p class="ech-axe"><span>0&nbsp;€</span><span>1&nbsp;000&nbsp;€</span><span>2&nbsp;000&nbsp;€</span><span>3&nbsp;000&nbsp;€</span><span>4&nbsp;000&nbsp;€</span></p>
+    <p class="source">Prix habituels&nbsp;: sources Mutuelle SMI et France Conso. Prix Lignée TTC, livraison incluse en France métropolitaine.</p>
+  </div>
+  <div class="engag">
+    <div><h3>La transparence</h3><p>Des prix affichés TTC, livraison comprise. Le devis signé est celui que vous payez.</p></div>
+    <div><h3>La discrétion</h3><p>Nous ne démarchons jamais les familles. Ce sont elles qui nous appellent.</p></div>
+    <div><h3>La liberté</h3><p>Vous gardez la pompe funèbre de votre choix. Nous livrons là où ont lieu les obsèques.</p></div>
+    <div><h3>La durée</h3><p>Avant, pendant et après les obsèques&nbsp;: un seul interlocuteur, aussi longtemps qu'il le faut.</p></div>
+  </div>
+  <p class="folio"><span>Lignée · Catalogue 2026</span><span>2</span></p>
+</section>
+
+<!-- 3. Comment choisir -->
+<section class="page">
+  <p class="sur">Comment choisir</p>
+  <h2>Trois questions, <em>et c'est tout.</em></h2>
+  <p class="chapo">Prenez le temps qu'il vous faut. Un conseiller peut aussi tout faire avec vous, par téléphone ou en boutique.</p>
+  <div class="etapes">
+    <div class="etape"><span class="n">1</span><div><h3>Est-ce urgent&nbsp;?</h3><p>Selon votre situation, choisissez parmi nos modèles en stock ou sur commande.</p>
+      <div class="choix2">
+        <div class="carte"><b><i class="pt"></i>En stock</b><p>Pour un décès récent. Livré avant les obsèques, partout en France, ou intégralement remboursé.</p></div>
+        <div class="carte"><b><i class="pt cmd"></i>Sur commande</b><p>Pour préparer ses obsèques à l'avance. Délai garanti par écrit sur le devis.</p></div>
+      </div></div></div>
+    <div class="etape"><span class="n">2</span><div><h3>Quel modèle&nbsp;?</h3><p>Quatre modèles, un prix chacun, de 340 à 1&nbsp;190&nbsp;€. Chaque modèle convient à l'inhumation&nbsp;; trois conviennent aussi à la crémation.</p></div></div>
+    <div class="etape"><span class="n">3</span><div><h3>Quelles finitions&nbsp;?</h3><p>Teinte du bois, poignées, emblème du couvercle, capiton et gravure de la plaque. Tout est au choix, sans supplément.</p></div></div>
+  </div>
+  <div class="inclus">
+    <h3>Le prix affiché est le prix payé. Il comprend&nbsp;:</h3>
+    <ul class="coches">
+      <li>Le cercueil, contrôlé un par un</li>
+      <li>Le capiton et l'oreiller</li>
+      <li>Les poignées de votre choix</li>
+      <li>L'emblème de votre choix</li>
+      <li>La plaque d'identité gravée</li>
+      <li>La livraison en France métropolitaine</li>
+    </ul>
+  </div>
+  <p class="folio"><span>Lignée · Catalogue 2026</span><span>3</span></p>
+</section>
+
+<!-- 4. Modèles en stock -->
+<section class="page">
+  <p class="sur">Nos modèles · En stock</p>
+  <h2>Disponibles <em>immédiatement.</em></h2>
+  <p class="chapo">Pour un décès soudain, quand tout doit aller vite. Livrés avant les obsèques, à la pompe funèbre de votre choix.</p>
+  <div style="margin-top:8mm">
+  <article class="modele">
+    <figure><img src="images/sobre.png" alt="Cercueil Sobre"><figcaption>Photo du modèle, finition d'origine</figcaption></figure>
+    <div>
+      <p class="dispo"><i class="pt"></i>En stock</p><p class="usage">Inhumation ou crémation</p>
+      <h3>Sobre</h3><p class="accroche">La simplicité, sans rien céder sur la qualité.</p>
+      <ul><li>Forme parisienne, lignes droites</li><li>Couvercle à pans, cache-vis dorés</li><li>Vernis naturel satiné</li><li>Capiton coton et oreiller</li><li>4 poignées au choix, plaque gravée</li></ul>
+      <p class="prix"><b>340&nbsp;€</b><span>TTC, livraison incluse</span></p>
+    </div>
+  </article>
+  <article class="modele">
+    <figure><img src="images/tradition.png" alt="Cercueil Tradition"><figcaption>Photo du modèle, finition d'origine</figcaption></figure>
+    <div>
+      <p class="dispo"><i class="pt"></i>En stock · Le plus choisi</p><p class="usage">Inhumation ou crémation</p>
+      <h3>Tradition</h3><p class="accroche">Le classique des familles françaises, aux flancs galbés.</p>
+      <ul><li>Forme parisienne, flancs galbés</li><li>Couvercle mouluré, cache-vis dorés</li><li>Finition satinée, teinte miel</li><li>Capiton satiné et oreiller</li><li>6 poignées au choix, plaque gravée</li></ul>
+      <p class="prix"><b>690&nbsp;€</b><span>TTC, livraison incluse</span></p>
+    </div>
+  </article>
+  </div>
+  <p class="folio"><span>Lignée · Catalogue 2026</span><span>4</span></p>
+</section>
+
+<!-- 5. Modèles sur commande -->
+<section class="page">
+  <p class="sur">Nos modèles · Sur commande</p>
+  <h2>Choisis <em>avec soin.</em></h2>
+  <p class="chapo">Préparés pour vous, au délai écrit sur le devis. Idéals pour choisir ses propres obsèques, dans le cadre d'un contrat obsèques.</p>
+  <div style="margin-top:8mm">
+  <article class="modele">
+    <figure><img src="images/floral.png" alt="Cercueil Floral"><figcaption>Photo du modèle, finition d'origine</figcaption></figure>
+    <div>
+      <p class="dispo"><i class="pt cmd"></i>Sur commande</p><p class="usage">Inhumation ou crémation</p>
+      <h3>Floral</h3><p class="accroche">Une gravure florale en bas-relief sur chaque flanc.</p>
+      <ul><li>Forme parisienne, flancs gravés</li><li>Couvercle à bord arrondi</li><li>Vernis brillant, bois clair</li><li>Capiton satiné et oreiller</li><li>4 poignées au choix, plaque gravée</li></ul>
+      <p class="prix"><b>890&nbsp;€</b><span>TTC, livraison incluse</span></p>
+    </div>
+  </article>
+  <article class="modele">
+    <figure><img src="images/heritage.png" alt="Cercueil Héritage"><figcaption>Photo du modèle, finition d'origine</figcaption></figure>
+    <div>
+      <p class="dispo"><i class="pt cmd"></i>Sur commande · Modèle signature</p><p class="usage">Inhumation</p>
+      <h3>Héritage</h3><p class="accroche">Verni comme un meuble de famille.</p>
+      <ul><li>Forme parisienne, socle à gradins</li><li>Couvercle en pointe de diamant</li><li>Teinte acajou, vernis brillant</li><li>Capiton brodé et oreiller</li><li>6 poignées laiton, plaque gravée</li></ul>
+      <p class="prix"><b>1&nbsp;190&nbsp;€</b><span>TTC, livraison incluse</span></p>
+    </div>
+  </article>
+  </div>
+  <p class="folio"><span>Lignée · Catalogue 2026</span><span>5</span></p>
+</section>
+
+<!-- 6. Personnalisation -->
+<section class="page">
+  <p class="sur">Personnaliser</p>
+  <h2>Les finitions de votre choix, <em>sans supplément.</em></h2>
+  <p class="chapo">Sur tous les modèles, y compris ceux en stock&nbsp;: vous choisissez, nous posons.</p>
+  <div class="bloc-perso"><div><h3>Teinte du bois</h3><p class="d">Cinq teintes.</p></div>
+    <div><div class="teintes">
+      <span class="teinte"><i style="background:#D4AF7D"></i>Chêne clair</span>
+      <span class="teinte"><i style="background:#C17C41"></i>Naturel</span>
+      <span class="teinte"><i style="background:#AC7C46"></i>Miel</span>
+      <span class="teinte"><i style="background:#80472A"></i>Acajou</span>
+      <span class="teinte"><i style="background:#4F2E1C"></i>Noyer</span>
+    </div><p class="note">Teintes imprimées à titre indicatif. Nuancier bois disponible en boutique.</p></div></div>
+  <div class="bloc-perso"><div><h3>Poignées</h3><p class="d">Métal moulé, quatre styles.</p></div>
+    <div class="tuiles">
+      <div class="tuile"><div class="v"><img src="images/poignee-barre.png" alt=""></div><b>Barre</b><small>Bronze vieilli</small></div>
+      <div class="tuile"><div class="v"><img src="images/poignee-demi-lune.png" alt=""></div><b>Demi-lune</b><small>Laiton vieilli</small></div>
+      <div class="tuile"><div class="v"><img src="images/poignee-etrier.png" alt=""></div><b>Étrier</b><small>Laiton</small></div>
+      <div class="tuile"><div class="v"><img src="images/poignee-rosaces.png" alt=""></div><b>À rosaces</b><small>Laiton vieilli</small></div>
+    </div></div>
+  <div class="bloc-perso"><div><h3>Emblème du couvercle</h3><p class="d">Selon les convictions du défunt, ou aucun.</p></div>
+    <div class="tuiles six">
+      <div class="tuile haute"><div class="v"><img src="images/emblem-crucifix.png" alt=""></div><b>Crucifix</b></div>
+      <div class="tuile haute"><div class="v"><img src="images/emblem-croix.png" alt=""></div><b>Croix latine</b></div>
+      <div class="tuile haute"><div class="v"><img src="images/emblem-huguenote.png" alt=""></div><b>Croix huguenote</b></div>
+      <div class="tuile haute"><div class="v"><img src="images/emblem-etoile.png" alt=""></div><b>Étoile de David</b></div>
+      <div class="tuile haute"><div class="v"><img src="images/emblem-rose.png" alt=""></div><b>Rose</b></div>
+      <div class="tuile haute"><div class="v"><em>Aucun</em></div><b>Sans emblème</b></div>
+    </div></div>
+  <div class="bloc-perso"><div><h3>Capiton et plaque</h3><p class="d">L'intérieur et la gravure.</p></div>
+    <div class="tuiles">
+      <div class="tuile"><div class="v"><span class="teinte"><i style="background:#F3F1EC"></i></span></div><b>Capiton blanc</b></div>
+      <div class="tuile"><div class="v"><span class="teinte"><i style="background:#EEE3CC"></i></span></div><b>Capiton ivoire</b></div>
+      <div class="tuile"><div class="v"><span class="teinte"><i style="background:#E2CDA8"></i></span></div><b>Capiton champagne</b></div>
+      <div class="tuile"><div class="v"><img src="images/plaque.png" alt=""></div><b>Plaque gravée</b><small>Nom et dates, 17,5 × 11 cm</small></div>
+    </div></div>
+  <p class="folio"><span>Lignée · Catalogue 2026</span><span>6</span></p>
+</section>
+
+<!-- 7. Urnes, garanties, conformité -->
+<section class="page">
+  <p class="sur">Urnes</p>
+  <h2>Pour une crémation, <em>trois urnes.</em></h2>
+  <div class="urnes">
+    <div class="urne"><svg viewBox="0 0 64 64"><path d="M24 6h16v5c10 4 14 13 14 23 0 13-7 21-15 24H25c-8-3-15-11-15-24 0-10 4-19 14-23z"/><path d="M21 11h22M16 52h32"/></svg><p class="usage">Biodégradable</p><h3>Terre</h3><p>Pour une dispersion ou une inhumation en pleine terre. Fibres végétales.</p><p class="prix"><b>49&nbsp;€</b><span>TTC</span></p></div>
+    <div class="urne"><svg viewBox="0 0 64 64"><path d="M24 6h16v5c10 4 14 13 14 23 0 13-7 21-15 24H25c-8-3-15-11-15-24 0-10 4-19 14-23z"/><path d="M21 11h22M16 52h32"/></svg><p class="usage">Columbarium ou maison</p><h3>Céramique</h3><p>Céramique émaillée, trois teintes. Plaque gravée incluse.</p><p class="prix"><b>89&nbsp;€</b><span>TTC</span></p></div>
+    <div class="urne"><svg viewBox="0 0 64 64"><path d="M24 6h16v5c10 4 14 13 14 23 0 13-7 21-15 24H25c-8-3-15-11-15-24 0-10 4-19 14-23z"/><path d="M21 11h22M16 52h32"/></svg><p class="usage">Columbarium ou caveau</p><h3>Laiton</h3><p>Laiton brossé, fermeture vissée. Gravure du nom et des dates.</p><p class="prix"><b>149&nbsp;€</b><span>TTC</span></p></div>
+  </div>
+  <p class="note">Gravure et livraison comprises.</p>
+  <p class="sur" style="margin-top:11mm">Nos garanties</p>
+  <h2 style="font-size:28pt">Nous nous y engageons <em>par écrit.</em></h2>
+  <div class="garanties">
+    <div><span class="r">I</span><h3>Prix le plus bas</h3><p>Le même modèle moins cher ailleurs, livraison comprise&nbsp;? Nous remboursons la différence.</p></div>
+    <div><span class="r">II</span><h3>Qualité</h3><p>Chaque cercueil est contrôlé un par un. Au moindre défaut à la livraison, il est remplacé.</p></div>
+    <div><span class="r">III</span><h3>Livré à temps</h3><p>En stock&nbsp;: avant les obsèques. Sur commande&nbsp;: au délai écrit sur le devis. Sinon, remboursé.</p></div>
+  </div>
+  <div class="conf">
+    <h3>Conformité</h3>
+    <ul class="coches">
+      <li>Bois d'une épaisseur minimale de 22&nbsp;mm après finition (article R2213-25 du Code général des collectivités territoriales).</li>
+      <li>Garniture intérieure étanche, en matériau biodégradable.</li>
+      <li>Attestation de conformité du fabricant remise sur simple demande.</li>
+    </ul>
+  </div>
+  <p class="folio"><span>Lignée · Catalogue 2026</span><span>7</span></p>
+</section>
+
+<!-- 8. Dos -->
+<section class="page nuit dos">
+  <img class="sceau" src="../images/sceau-or.png" alt="">
+  <p class="sur">Nous contacter</p>
+  <h2>Parlons-en, <em>sans engagement.</em></h2>
+  <p class="chapo">Un conseiller vous écoute, répond à vos questions et vous adresse un devis écrit, au prix affiché. Aucune pression, jamais.</p>
+  <div class="grille">
+    <div class="contact">
+      <div><p class="l">Téléphone</p><p class="v">03 XX XX XX XX</p></div>
+      <div><p class="l">Site internet</p><p class="v p">lignee.fr</p></div>
+      <div><p class="l">E-mail</p><p class="v p">contact@lignee.fr</p></div>
+      <div><p class="l">Devis</p><p class="v p">Gratuit, réponse sous 24 heures</p></div>
+    </div>
+    <div class="qr"><img src="images/qr-cercueils.svg" alt="QR code vers lignee.fr/cercueils"><p><b>Voir en 3D</b>Scannez pour faire tourner chaque cercueil et essayer les teintes.</p></div>
+  </div>
+  <div class="cachet">Cachet de votre conseiller</div>
+  <p class="mentions">Prix TTC en vigueur au 6 octobre 2026, livraison incluse en France métropolitaine. Photos des modèles réels en finition d'origine&nbsp;; teintes imprimées indicatives. La fourniture de cercueils et d'urnes relève du service extérieur des pompes funèbres&nbsp;: Lignée l'exerce sous habilitation funéraire préfectorale n°&nbsp;XX-XX-XXX. Lignée, une société du Groupe Cohesif.</p>
+  <p class="folio"><span>Lignée · Catalogue 2026</span><span>8</span></p>
+</section>
+
+</body>
+</html>
