@@ -863,11 +863,12 @@ input:focus-visible+.pastille{outline:2px solid var(--or-texte)}
 .fiche .actions .btn{justify-content:center;text-align:center}
 .fiche .resume{margin:.9rem 0 0;font-size:.8rem;color:var(--ardoise);line-height:1.5}
 @media (max-width:900px){
-  .fiche{width:100vw;height:100dvh}
-  .fiche-in{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);overflow-y:auto}
+  .fiche{width:100%;max-width:100%;height:100dvh;max-height:100dvh;margin:0;inset:0}
+  .fiche-in{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);overflow-y:auto;overflow-x:hidden}
   .fiche-vue{height:58dvh}
   .fiche-panneau{overflow:visible;border-left:0;border-top:1px solid var(--ligne)}
-  .fiche-fermer{position:fixed;top:.8rem;right:.8rem;z-index:2}
+  .fiche-fermer{position:fixed;top:max(.7rem,env(safe-area-inset-top));right:max(.7rem,env(safe-area-inset-right));z-index:2}
+  .vue-outils [data-tourner],.vue-outils [data-zoom],.vue-outils .sep{display:none}
   .vue-aide{display:none}
   .fiche-vue{height:66dvh}
   .vue-onglets{padding:.7rem .8rem 0}
@@ -1018,7 +1019,7 @@ input:focus-visible+.pastille{outline:2px solid var(--or-texte)}
 <div class="fiche-vue">
 <div class="vue-onglets" role="tablist" aria-label="Affichage"><button type="button" role="tab" data-onglet="3d" aria-selected="true">Vue 3D</button><button type="button" role="tab" data-onglet="photo" aria-selected="false">Photo réelle</button></div>
 <div class="vue-3d"><canvas aria-label="Cercueil en trois dimensions. Faites glisser pour tourner, pincez ou utilisez la molette pour zoomer."></canvas><p class="vue-charge">Préparation de la vue 3D…</p><p class="vue-aide">Faites glisser pour tourner · molette ou pincement pour zoomer</p>
-<div class="vue-outils"><button type="button" data-tourner="-0.785" aria-label="Tourner vers la gauche">↺</button><button type="button" data-tourner="0.785" aria-label="Tourner vers la droite">↻</button><button type="button" data-zoom="0.75" aria-label="Rapprocher">+</button><button type="button" data-zoom="1.33" aria-label="Éloigner">−</button><span class="sep" aria-hidden="true"></span><button type="button" data-vue="troisquarts">3/4</button><button type="button" data-vue="profil">Profil</button><button type="button" data-vue="dessus">Dessus</button><button type="button" data-couvercle aria-pressed="false">Ouvrir le couvercle</button></div></div>
+<div class="vue-outils"><button type="button" data-couvercle aria-pressed="false">Ouvrir le couvercle</button><span class="sep" aria-hidden="true"></span><button type="button" data-tourner="-0.785" aria-label="Tourner vers la gauche">↺</button><button type="button" data-tourner="0.785" aria-label="Tourner vers la droite">↻</button><button type="button" data-zoom="0.75" aria-label="Rapprocher">+</button><button type="button" data-zoom="1.33" aria-label="Éloigner">−</button><span class="sep" aria-hidden="true"></span><button type="button" data-vue="troisquarts">3/4</button><button type="button" data-vue="profil">Profil</button><button type="button" data-vue="dessus">Dessus</button></div></div>
 <figure class="vue-photo" hidden><img src="" alt=""><figcaption>Photo du modèle réel, finition d'origine.</figcaption></figure>
 <div><div class="vue-modeles" aria-label="Autres modèles"><button type="button" data-modele-nav="sobre">Sobre</button><button type="button" data-modele-nav="tradition">Tradition</button><button type="button" data-modele-nav="floral">Floral</button><button type="button" data-modele-nav="heritage">Héritage</button></div>
 <p class="vue-note">Vue 3D indicative pour visualiser teintes et finitions. Le modèle, sa teinte et ses finitions sont confirmés sur votre devis.</p></div>
