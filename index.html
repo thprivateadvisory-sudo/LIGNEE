@@ -727,6 +727,41 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 .inclus li{display:flex;align-items:center;gap:.5rem}
 .inclus li::before{content:"";width:11px;height:6px;border-left:1.5px solid var(--or-texte);border-bottom:1.5px solid var(--or-texte);transform:rotate(-45deg) translateY(-2px)}
 .inclus{list-style:none;margin:0;padding-left:0}
+/* Gamme photographiée : modèles en stock et sur commande, finitions au choix. */
+.photo{margin:0 0 .3rem;aspect-ratio:760/340;background:#fff;border:1px solid var(--ligne)}
+.photo img{display:block;width:100%;height:100%;object-fit:contain}
+.gamme:not(.deux) .photo{aspect-ratio:auto;height:6.5rem}
+@media (max-width:980px){.gamme:not(.deux) .photo{height:auto;aspect-ratio:760/340}}
+.modele.photo-m{grid-template-rows:auto auto auto auto 1fr auto}
+.dispo-l{margin:0 0 -.35rem}
+.dispo{display:inline-flex;align-items:center;gap:.45rem;font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--nuit)}
+.dispo::before{content:"";width:6px;height:6px;border-radius:50%;background:#3F7A55}
+.dispo.cmd::before{background:var(--or)}
+.modele h4{font-family:var(--f-titre);font-size:2rem;font-weight:400;line-height:1;margin:0}
+.deux-gammes{display:grid;gap:clamp(2.5rem,5vw,4rem)}
+.groupe-tete{display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr);gap:.35rem 3rem;align-items:baseline;padding-bottom:1.2rem}
+.gamme.deux .photo{max-width:30rem}
+.groupe-tete h3{font-size:1.6rem;font-weight:400}
+.groupe-tete p{margin:0;font-size:.92rem;color:var(--ardoise);max-width:46ch}
+.gamme.deux{grid-template-columns:repeat(2,minmax(0,1fr))}
+.perso{border-top:1px solid var(--nuit)}
+.perso-ligne{display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr);gap:1.2rem 3rem;padding:2rem 0;border-bottom:1px solid var(--ligne)}
+.perso-tete h3{font-size:1.6rem;font-weight:400;margin-bottom:.35rem}
+.perso-tete p{margin:0;font-size:.92rem;color:var(--ardoise)}
+.choix{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(9.5rem,1fr));gap:1rem}
+.choix figure{margin:0;display:grid;gap:.55rem}
+.vign{display:grid;place-items:center;height:8.5rem;background:#fff;border:1px solid var(--ligne)}
+.vign img{display:block;width:120px;height:auto}
+.vign.haute img{width:70px}
+.vign.plaque img{width:110px}
+.vign.vide{font-family:var(--f-titre);font-style:italic;font-size:1.15rem;color:var(--ardoise)}
+.choix figcaption{display:grid;gap:.1rem;font-size:.9rem;line-height:1.35}
+.choix figcaption b{font-weight:500;color:var(--nuit)}
+.choix figcaption span{font-size:.8rem;color:var(--ardoise)}
+.perso-pied{margin:2rem 0 0;font-size:.98rem;color:var(--ardoise);max-width:var(--mesure)}
+.perso-pied a{color:var(--nuit);font-weight:500;text-underline-offset:3px}
+@media (max-width:760px){.perso-ligne,.groupe-tete{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){.gamme.deux{grid-template-columns:minmax(0,1fr)}.choix{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 /* Chiffres clés en bandeau */
 .chiffres{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--nuit)}
@@ -836,8 +871,8 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 </div>
 </div></section>
 <section class="sec-bloc pierre" id="gamme"><div class="wrap">
-<div class="tete rv"><p class="sur">La gamme Lignée</p><h2 class="grand">Le plus beau cercueil <em>n'a pas à être le plus cher.</em></h2><p class="chapo">Quatre modèles en bois massif, sélectionnés parmi les meilleurs ateliers. Pas d'options cachées, pas de supplément le jour venu.</p></div>
-<div class="gamme"><article class="modele rv"><svg viewBox="0 0 220 88" aria-hidden="true"><path d="M8 44L36 15L196 21L213 35V53L196 67L36 73Z"/></svg><p class="usage">Inhumation, crémation</p><h3>Sobre</h3><ul><li>Pin massif, vernis naturel</li><li>Capiton et oreiller en coton</li><li>Quatre poignées, plaque d'identité</li></ul><p class="prix-m"><b>390&nbsp;€</b><span>TTC, livraison incluse</span></p></article><article class="modele mise rv"><svg viewBox="0 0 220 88" aria-hidden="true"><path d="M8 44L36 15L196 21L213 35V53L196 67L36 73Z"/><path d="M44 25L190 30L202 40V48L190 58L44 63L22 44Z"/></svg><p class="usage">Inhumation, crémation</p><h3>Tradition <span class="repere">Le plus choisi</span></h3><ul><li>Chêne massif, teinte au choix</li><li>Couvercle mouluré</li><li>Capiton satiné, six poignées</li></ul><p class="prix-m"><b>690&nbsp;€</b><span>TTC, livraison incluse</span></p></article><article class="modele rv"><svg viewBox="0 0 220 88" aria-hidden="true"><path d="M8 44L36 15L196 21L213 35V53L196 67L36 73Z"/><path d="M44 25L190 30L202 40V48L190 58L44 63L22 44Z"/><path d="M52 32L184 36L192 42V46L184 52L52 56L36 44Z"/><path d="M70 9v4M120 11v4M170 13v4M70 75v4M120 73v4M170 71v4"/></svg><p class="usage">Inhumation</p><h3>Héritage</h3><ul><li>Chêne massif, finition vernie</li><li>Double moulure, poignées laiton</li><li>Capiton brodé</li></ul><p class="prix-m"><b>1 190&nbsp;€</b><span>TTC, livraison incluse</span></p></article><article class="modele rv"><svg viewBox="0 0 220 88" aria-hidden="true"><path d="M10 20H208L214 26V62L208 68H10L4 62V26Z"/><path d="M18 30H200V58H18Z"/></svg><p class="usage">Crémation</p><h3>Crémation</h3><ul><li>Pin, sans vernis ni métal</li><li>Conforme aux exigences des crématoriums</li><li>Capiton coton naturel</li></ul><p class="prix-m"><b>340&nbsp;€</b><span>TTC, livraison incluse</span></p></article></div>
+<div class="tete rv"><p class="sur">La gamme Lignée</p><h2 class="grand">Le plus beau cercueil <em>n'a pas à être le plus cher.</em></h2><p class="chapo">Quatre modèles en bois massif, deux en stock pour l'urgence, deux sur commande. Poignées et emblème au choix, sans supplément le jour venu.</p></div>
+<div class="gamme"><article class="modele photo-m rv"><figure class="photo"><img src="images/catalogue/cercueil-sobre.webp" width="760" height="340" alt="Cercueil Sobre : lignes droites, couvercle à pans, bois clair au vernis naturel" loading="lazy" decoding="async"></figure><p class="dispo-l"><span class="dispo">En stock</span></p><p class="usage">Inhumation, crémation</p><h3>Sobre</h3><ul><li>Lignes droites, couvercle à pans</li><li>Vernis naturel, teinte claire</li><li>Capiton et oreiller en coton</li></ul><p class="prix-m"><b>340&nbsp;€</b><span>TTC, livraison incluse</span></p></article><article class="modele photo-m mise rv"><figure class="photo"><img src="images/catalogue/cercueil-tradition.webp" width="760" height="340" alt="Cercueil Tradition : flancs galbés, couvercle mouluré, teinte miel satinée" loading="lazy" decoding="async"></figure><p class="dispo-l"><span class="dispo">En stock</span></p><p class="usage">Inhumation, crémation</p><h3>Tradition <span class="repere">Le plus choisi</span></h3><ul><li>Flancs galbés, couvercle mouluré</li><li>Teinte miel, finition satinée</li><li>Capiton satiné, six poignées</li></ul><p class="prix-m"><b>690&nbsp;€</b><span>TTC, livraison incluse</span></p></article><article class="modele photo-m rv"><figure class="photo"><img src="images/catalogue/cercueil-floral.webp" width="760" height="340" alt="Cercueil Floral : gravure florale sur le flanc, bois clair satiné, double moulure" loading="lazy" decoding="async"></figure><p class="dispo-l"><span class="dispo cmd">Sur commande</span></p><p class="usage">Inhumation, crémation</p><h3>Floral</h3><ul><li>Gravure florale sur le flanc</li><li>Bois clair, double moulure</li><li>Capiton satiné, six poignées</li></ul><p class="prix-m"><b>890&nbsp;€</b><span>TTC, livraison incluse</span></p></article><article class="modele photo-m rv"><figure class="photo"><img src="images/catalogue/cercueil-heritage.webp" width="760" height="340" alt="Cercueil Héritage : teinte acajou vernie brillante, couvercle à gradins, poignées demi-lune dorées" loading="lazy" decoding="async"></figure><p class="dispo-l"><span class="dispo cmd">Sur commande</span></p><p class="usage">Inhumation</p><h3>Héritage</h3><ul><li>Teinte acajou, vernis brillant</li><li>Couvercle à gradins</li><li>Capiton brodé, six poignées laiton</li></ul><p class="prix-m"><b>1 190&nbsp;€</b><span>TTC, livraison incluse</span></p></article></div>
 <ul class="inclus rv"><li>Bois massif, contrôlé un par un</li><li>Livraison incluse en France métropolitaine</li><li>Prix le plus bas garanti</li><li>Conformes à la réglementation funéraire française</li></ul>
 <div class="btns rv" style="margin-top:2rem"><a class="btn" href="cercueils.html">Voir les cercueils et les urnes</a><a class="btn sec" href="contact.html">Demander un devis</a></div>
 </div></section>
