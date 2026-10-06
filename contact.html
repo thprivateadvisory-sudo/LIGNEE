@@ -4,15 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script>document.documentElement.classList.add('js')</script>
-<title>Demander une visite gratuite · Lignée</title>
-<meta name="description" content="Laissez-nous vos coordonnées, nous vous rappelons sous 24 heures ouvrées. Visite et devis gratuits, sans engagement.">
-<link rel="canonical" href="https://lignee.fr/contact.html">
+<title>Devis gratuit en 24 heures · Lignée</title>
+<meta name="description" content="Cercueil, urne, assurance obsèques, souvenir ou logement : un conseiller Lignée vous répond sous 24 heures. Devis gratuit et sans engagement.">
+<link rel="canonical" href="https://lignee.fr/contact">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Lignée">
-<meta property="og:title" content="Demander une visite gratuite · Lignée">
-<meta property="og:description" content="Laissez-nous vos coordonnées, nous vous rappelons sous 24 heures ouvrées. Visite et devis gratuits, sans engagement.">
-<meta property="og:url" content="https://lignee.fr/contact.html">
+<meta property="og:title" content="Devis gratuit en 24 heures · Lignée">
+<meta property="og:description" content="Cercueil, urne, assurance obsèques, souvenir ou logement : un conseiller Lignée vous répond sous 24 heures. Devis gratuit et sans engagement.">
+<meta property="og:url" content="https://lignee.fr/contact">
 <meta name="theme-color" content="#1B2A41">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
@@ -677,40 +677,106 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 /* Signature du pied de page */
 .signature{font-family:var(--f-titre);font-weight:300;font-size:clamp(2.4rem,7vw,5.4rem);line-height:1;color:var(--clair);padding-bottom:2.4rem;margin-bottom:2.4rem;border-bottom:1px solid #33435E;letter-spacing:-.01em}
 .signature em{color:var(--or-clair);font-style:italic}
+
+/* ===== Maison funéraire au juste prix ===== */
+.vh-titre{max-width:20ch}
+/* Échelle de prix : le marché contre Lignée */
+.echelle{display:grid;gap:1.4rem;padding-block:clamp(1.6rem,3vw,2.4rem);border-top:1px solid rgba(217,185,127,.4)}
+.ech-ligne{display:grid;grid-template-columns:minmax(0,13rem) minmax(0,1fr);gap:.6rem 2rem;align-items:center}
+.ech-nom{display:grid;gap:.1rem}
+.ech-nom b{font-family:var(--f-titre);font-weight:400;font-size:1.45rem;line-height:1.15}
+.ech-nom span{font-size:.85rem;color:rgba(245,241,232,.66)}
+.ech-piste{position:relative;height:46px;border-bottom:1px solid rgba(245,241,232,.18)}
+.ech-zone{position:absolute;top:12px;height:22px;border-radius:2px;background:repeating-linear-gradient(135deg,rgba(245,241,232,.22) 0 6px,rgba(245,241,232,.1) 6px 12px);border:1px solid rgba(245,241,232,.35)}
+.ech-zone.lig{background:var(--or-clair);border-color:var(--or-clair)}
+.ech-zone em{position:absolute;left:calc(100% + .7rem);top:50%;transform:translateY(-50%);font-style:normal;font-family:var(--f-titre);font-size:1.3rem;white-space:nowrap;color:var(--clair)}
+.ech-zone em.dedans{left:.8rem;right:auto;color:var(--clair);text-shadow:0 1px 6px rgba(0,0,0,.5)}
+@media (max-width:420px){.ech-zone em.dedans{top:50%;transform:translateY(-50%);left:.6rem}}
+.ech-zone.lig em{color:var(--or-clair);font-weight:500}
+.js .echelle .ech-zone{transform-origin:left;transform:scaleX(0);transition:transform 1.6s cubic-bezier(.2,.7,.2,1)}
+.js .echelle.vu .ech-zone{transform:scaleX(1)}
+.js .echelle .ech-zone em{opacity:0;transition:opacity .6s 1.2s}
+.js .echelle.vu .ech-zone em{opacity:1}
+.ech-axe{display:flex;justify-content:space-between;font-size:.75rem;color:rgba(245,241,232,.5);margin-left:calc(13rem + 2rem);font-variant-numeric:tabular-nums}
+@media (max-width:760px){.ech-ligne{grid-template-columns:minmax(0,1fr)}.ech-axe{margin-left:0}.ech-zone em{font-size:1.1rem}}
+@media (max-width:420px){.ech-zone em{left:auto;right:0;top:-1.15rem;transform:none;font-size:1rem}}
+.ech-note{font-size:.8rem;color:rgba(245,241,232,.55);max-width:46rem}
+@media (prefers-reduced-motion:reduce){.js .echelle .ech-zone{transform:none}.js .echelle .ech-zone em{opacity:1}}
+
+/* Gamme : modèles à prix affichés */
+.gamme{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--nuit)}
+.gamme.trois{grid-template-columns:repeat(3,minmax(0,1fr))}
+.modele{display:grid;grid-template-rows:auto auto auto 1fr auto;gap:.8rem;padding:1.8rem clamp(1rem,2vw,1.8rem) 2rem;border-left:1px solid var(--ligne);min-width:0;position:relative}
+.modele:first-child{border-left:0;padding-left:0}
+.modele.mise{background:linear-gradient(180deg,rgba(184,155,94,.12),transparent 70%)}
+.modele.mise:first-child{padding-left:clamp(1rem,2vw,1.8rem)}
+.modele svg{width:100%;max-width:220px;height:88px;fill:none;stroke:var(--or-texte);stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.modele .usage{font-size:.72rem;font-weight:500;letter-spacing:.12em;white-space:nowrap;text-transform:uppercase;color:var(--or-texte)}
+.modele h3{font-size:2rem;font-weight:400;line-height:1}
+.modele ul{list-style:none;margin:0;padding:0;display:grid;gap:.35rem;align-content:start;font-size:.94rem;color:var(--ardoise)}
+.modele li{padding-left:1.1rem;position:relative}
+.modele li::before{content:"";position:absolute;left:0;top:.75em;width:.55rem;height:1px;background:var(--or)}
+.prix-m{display:grid;gap:.15rem;border-top:1px solid var(--ligne);padding-top:1rem}
+.prix-m b{font-family:var(--f-titre);font-weight:400;font-size:2.6rem;line-height:1;font-variant-numeric:tabular-nums}
+.prix-m span{font-size:.82rem;color:var(--ardoise)}
+.prix-m s{color:var(--ardoise);font-size:.9rem;text-decoration-color:#9B3B2E}
+.repere{display:block;margin-top:.35rem;font-family:var(--f-texte);font-style:normal;font-size:.8rem;font-weight:500;letter-spacing:.04em;color:var(--or-texte)}
+@media (max-width:980px){.gamme,.gamme.trois{grid-template-columns:repeat(2,minmax(0,1fr))}.modele:nth-child(3){border-left:0;padding-left:0}.modele:nth-child(n+3){border-top:1px solid var(--ligne)}}
+@media (max-width:560px){.gamme,.gamme.trois{grid-template-columns:minmax(0,1fr)}.modele{border-left:0;padding-inline:0;border-top:1px solid var(--ligne)}.modele:first-child{border-top:0}.modele.mise,.modele.mise:first-child{padding-inline:1rem}}
+.inclus{display:flex;flex-wrap:wrap;gap:.5rem 2rem;padding-top:1.4rem;margin-top:.4rem;border-top:1px solid var(--ligne);font-size:.92rem;color:var(--ardoise)}
+.inclus li{display:flex;align-items:center;gap:.5rem}
+.inclus li::before{content:"";width:11px;height:6px;border-left:1.5px solid var(--or-texte);border-bottom:1.5px solid var(--or-texte);transform:rotate(-45deg) translateY(-2px)}
+.inclus{list-style:none;margin:0;padding-left:0}
+
+/* Chiffres clés en bandeau */
+.chiffres{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--nuit)}
+.chiffres div{display:grid;gap:.4rem;align-content:start;padding:1.6rem clamp(1rem,2vw,1.8rem) 1.8rem;border-left:1px solid var(--ligne);min-width:0}
+.chiffres div:first-child{border-left:0;padding-left:0}
+.chiffres b{font-family:var(--f-titre);font-weight:300;font-size:clamp(2.6rem,5vw,3.8rem);line-height:1;color:var(--or-texte);font-variant-numeric:tabular-nums}
+.chiffres span{color:var(--ardoise);font-size:.95rem}
+.chiffres small{font-size:.75rem;color:var(--ardoise);opacity:.8}
+@media (max-width:760px){.chiffres{grid-template-columns:minmax(0,1fr)}.chiffres div{border-left:0;padding-left:0;border-top:1px solid var(--ligne)}.chiffres div:first-child{border-top:0}}
+
+/* Mention réglementaire discrète */
+.mention{font-size:.82rem;color:var(--ardoise);max-width:46rem}
+.sec-bloc.nuit .mention{color:#9AA3B0}
+
+/* Contact : champs selon le sujet */
+.js [data-si][hidden]{display:none!important}
 </style>
 </head>
 <body>
-<header class="entete"><div class="alerte"><p class="alerte-in"><span>Un proche vient de nous quitter&nbsp;?</span> <a href="guide.html">Les premières démarches</a><span class="alerte-tel"> · <a href="tel:03XXXXXXXX">03 XX XX XX XX</a></span></p></div><div class="wrap">
+<header class="entete"><div class="alerte"><p class="alerte-in"><span>Un décès à organiser&nbsp;?</span> <a href="cercueils.html#prix">Nos prix</a><span aria-hidden="true">·</span><a href="guide.html">Les premières démarches</a><span class="alerte-tel"> · <a href="tel:03XXXXXXXX">03 XX XX XX XX</a></span></p></div><div class="wrap">
 <a class="marque" href="index.html" aria-label="Lignée, accueil"><img class="marque-mono" src="images/monogramme-entete.png" width="96" height="89" alt=""><span>LIGNÉE</span></a>
-<nav class="nav" aria-label="Navigation principale"><a href="formules.html">Le logement</a><a href="souvenirs.html">Souvenirs</a><a href="boutique.html">Boutique</a><a href="anticiper.html">Obsèques</a><a href="notaires.html">Notaires</a><a href="guide.html">Guide</a><a href="contact.html" aria-current="page">Contact</a></nav>
-<a class="btn" href="contact.html#visite">Demander une visite gratuite</a>
+<nav class="nav" aria-label="Navigation principale"><a href="cercueils.html">Cercueils et urnes</a><a href="anticiper.html">Assurance obsèques</a><a href="souvenirs.html">Souvenirs</a><a href="formules.html">Succession et logement</a><a href="guide.html">Guide</a><a href="contact.html" aria-current="page">Contact</a></nav>
+<a class="btn" href="contact.html">Devis gratuit en 24 h</a>
 <button class="menu-btn" type="button" aria-expanded="false">Menu</button>
 </div></header>
 <main>
 
 <section class="heros-ciel aube"><div class="wrap"><div class="heros-texte"><nav class="ariane" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><span aria-hidden="true">/</span><span aria-current="page">Contact</span></nav>
 <p class="sur">Contact</p>
-<h1>Parlons-en, sans engagement.</h1>
-<p class="chapo">Laissez-nous vos coordonnées, nous vous rappelons sous 24 heures ouvrées. Vous pouvez aussi nous écrire sur WhatsApp.</p>
+<h1>Comment pouvons-nous <em>vous aider&nbsp;?</em></h1>
+<p class="chapo">Un devis, une question, une situation urgente&nbsp;: laissez-nous vos coordonnées, un conseiller vous répond sous 24 heures ouvrées. Gratuit et sans engagement.</p>
 </div></div></section>
 <section class="sec-bloc pierre" id="visite"><div class="wrap form-zone">
 <div class="coord">
 <div class="ligne-c"><span class="sur">Téléphone</span><span class="val">03 XX XX XX XX</span><a href="tel:03XXXXXXXX">Appeler</a></div>
 <div class="ligne-c"><span class="sur">WhatsApp</span><a href="https://wa.me/33XXXXXXXXX?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20vos%20services." target="_blank" rel="noopener">Nous écrire sur WhatsApp</a></div>
 <div class="ligne-c"><span class="sur">E-mail</span><span class="val" style="font-size:1.25rem">contact@lignee.fr</span></div>
-<div class="ligne-c" style="border:0"><span class="sur">Zone d'intervention</span><span>Partout en France, en ville comme à la campagne</span></div>
+<div class="ligne-c" style="border:0"><span class="sur">Livraison et intervention</span><span>Partout en France métropolitaine</span></div>
 </div>
-<form class="form" data-form="Visite gratuite" data-ok="Merci. Nous vous rappelons sous 24 heures ouvrées." novalidate>
-<div><h2 style="font-size:1.9rem">Demander une visite gratuite</h2></div>
+<form class="form" data-form="Demande de devis" data-ok="Merci. Nous vous rappelons sous 24 heures ouvrées." novalidate>
+<div><h2 style="font-size:1.9rem">Demander un devis gratuit</h2></div>
 <div class="champs">
 <div class="champ"><label for="v-nom">Nom</label><input id="v-nom" name="nom" required autocomplete="name"></div>
 <div class="champ"><label for="v-tel">Téléphone</label><input id="v-tel" name="telephone" type="tel" required autocomplete="tel"></div>
 <div class="champ plein"><label for="v-mail">E-mail</label><input id="v-mail" name="email" type="email" required autocomplete="email"></div>
-<div class="champ"><label for="v-ville">Ville du logement</label><input id="v-ville" name="ville" required></div>
-<div class="champ"><label for="v-type">Type de logement</label><select id="v-type" name="type" required><option value="">Choisir</option><option>Maison</option><option>Appartement</option><option>Chambre en EHPAD ou résidence</option><option>Autre</option></select></div>
-<div class="champ"><label for="v-surface">Surface approximative</label><select id="v-surface" name="surface"><option value="">Je ne sais pas</option><option>Moins de 40 m²</option><option>40 à 60 m²</option><option>60 à 90 m²</option><option>90 à 120 m²</option><option>Plus de 120 m²</option></select></div>
-<div class="champ"><label for="v-formule">Formule souhaitée</label><select id="v-formule" name="formule"><option>Je ne sais pas encore</option><option>Essentiel</option><option>Complet</option><option>Sérénité</option></select></div>
-<div class="champ plein"><label for="v-notaire">Notaire en charge <span class="opt">(facultatif)</span></label><input id="v-notaire" name="notaire"></div>
+<div class="champ plein"><label for="v-sujet">Votre demande concerne</label><select id="v-sujet" name="sujet" required data-sujet><option value="">Choisir</option><option value="cercueil">Un cercueil ou une urne</option><option value="assurance">L'assurance obsèques</option><option value="souvenir">Un souvenir confectionné</option><option value="logement">Le logement d'un proche</option><option value="autre">Autre chose</option></select></div><div class="champ" data-si="cercueil"><label for="v-date">Date des obsèques <span class="opt">(si connue)</span></label><input id="v-date" name="date_obseques" type="date"></div><div class="champ" data-si="cercueil"><label for="v-pf">Pompe funèbre <span class="opt">(si choisie)</span></label><input id="v-pf" name="pompe_funebre"></div><div class="champ"><label for="v-ville">Ville</label><input id="v-ville" name="ville" required></div>
+<div class="champ" data-si="logement"><label for="v-type">Type de logement</label><select id="v-type" name="type"><option value="">Choisir</option><option>Maison</option><option>Appartement</option><option>Chambre en EHPAD ou résidence</option><option>Autre</option></select></div>
+<div class="champ" data-si="logement"><label for="v-surface">Surface approximative</label><select id="v-surface" name="surface"><option value="">Je ne sais pas</option><option>Moins de 40 m²</option><option>40 à 60 m²</option><option>60 à 90 m²</option><option>90 à 120 m²</option><option>Plus de 120 m²</option></select></div>
+<div class="champ" data-si="logement"><label for="v-formule">Formule souhaitée</label><select id="v-formule" name="formule"><option>Je ne sais pas encore</option><option>Essentiel</option><option>Complet</option><option>Sérénité</option></select></div>
+<div class="champ plein" data-si="logement"><label for="v-notaire">Notaire en charge <span class="opt">(facultatif)</span></label><input id="v-notaire" name="notaire"></div>
 <div class="champ plein"><label for="v-msg">Message <span class="opt">(facultatif)</span></label><textarea id="v-msg" name="message" placeholder="Quelques mots sur votre situation, si vous le souhaitez."></textarea></div>
 </div>
 <label class="consent"><input type="checkbox" name="consentement" required id="v-consent"> <span>J'accepte que Lignée utilise ces informations pour me recontacter au sujet de ma demande. Voir notre <a href="confidentialite.html">politique de confidentialité</a>.</span></label>
@@ -721,11 +787,10 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 <section class="sec-bloc"><div class="wrap">
 <div class="tete"><p class="sur">Questions fréquentes</p><h2>Avant de nous appeler.</h2></div>
 <div class="faq">
-<details><summary>Peut-on vider le logement avant la fin de la succession&nbsp;?</summary><p>Cela dépend de la situation. Nous intervenons avec l'accord de tous les héritiers ou du notaire, qui reste votre référent pour la succession.</p></details>
-<details><summary>Que deviennent les objets&nbsp;?</summary><p>Vous gardez ce que vous voulez. Le reste est vendu, donné à des associations ou recyclé, et tout est noté dans un rapport.</p></details>
-<details><summary>Dois-je avancer de l'argent&nbsp;?</summary><p>Non. Nos frais peuvent être réglés sur la vente des biens ou lors de la signature chez le notaire, selon votre situation.</p></details>
-<details><summary>Je n'habite pas à proximité, est-ce un problème&nbsp;?</summary><p>Non. Nous gérons tout à distance avec photos et comptes rendus.</p></details>
-<details><summary>Où intervenez-vous&nbsp;?</summary><p>Partout en France. Votre coordinateur suit le dossier à distance, et nos équipes partenaires interviennent sur place, près du logement de votre proche.</p></details>
+<details><summary>Le devis est-il vraiment gratuit&nbsp;?</summary><p>Oui, et sans engagement. Vous recevez un devis écrit, au prix affiché sur le site, et vous prenez le temps d'en parler en famille.</p></details>
+<details><summary>Le décès vient d'avoir lieu, que faire en premier&nbsp;?</summary><p>Faites constater le décès par un médecin, puis contactez l'opérateur funéraire de votre choix. Notre <a href="guide.html">guide des premières démarches</a> détaille chaque étape. Vous pouvez aussi nous appeler&nbsp;: nous vous orientons.</p></details>
+<details><summary>Puis-je garder ma pompe funèbre et acheter le cercueil chez vous&nbsp;?</summary><p>Oui. Vous restez libre de choisir vos prestataires. Nous livrons le cercueil ou l'urne là où ont lieu les obsèques, en lien avec l'opérateur.</p></details>
+<details><summary>Je n'habite pas à proximité, est-ce un problème&nbsp;?</summary><p>Non. Tout se fait par téléphone, par e-mail ou sur WhatsApp, et nous intervenons partout en France.</p></details>
 </div>
 </div></section>
 
@@ -735,17 +800,17 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 <div class="pied-haut">
 <div style="display:grid;gap:1rem;align-content:start">
 <img class="sceau" src="images/sceau-or.png" width="400" height="396" alt="Sceau Lignée, maison fondée en 2026" loading="lazy">
-<p>Le logement de votre proche, pris en charge du premier tri jusqu'à la vente. Intervention partout en France.</p>
+<p>Lignée, la maison funéraire au juste prix. Cercueils et urnes à prix affichés, assurance obsèques claire, souvenirs et succession. Partout en France.</p>
 </div>
-<div><h4>Le logement</h4><ul>
-<li><a href="formules.html">Nos formules</a></li><li><a href="methode.html">Comment ça marche</a></li>
-<li><a href="notaires.html">Notaires et professionnels</a></li><li><a href="guide.html">Guide : que faire après un décès</a></li></ul></div>
-<div><h4>Lignée</h4><ul>
-<li><a href="souvenirs.html">Confection souvenir</a></li><li><a href="boutique.html">La boutique</a></li>
-<li><a href="anticiper.html">Obsèques et prévoyance</a></li><li><a href="a-propos.html">À propos</a></li></ul></div>
+<div><h4>Obsèques</h4><ul>
+<li><a href="cercueils.html">Cercueils et urnes</a></li><li><a href="cercueils.html#prix">Nos prix</a></li>
+<li><a href="anticiper.html">Assurance obsèques</a></li><li><a href="anticiper.html#volontes">Coffret «&nbsp;Mes volontés&nbsp;»</a></li><li><a href="guide.html">Que faire après un décès</a></li></ul></div>
+<div><h4>Après</h4><ul>
+<li><a href="souvenirs.html">Souvenirs confectionnés</a></li><li><a href="formules.html">Succession et logement</a></li>
+<li><a href="methode.html">Comment ça marche</a></li><li><a href="notaires.html">Notaires et professionnels</a></li><li><a href="a-propos.html">La maison Lignée</a></li></ul></div>
 <div><h4>Nous joindre</h4><ul>
 <li><a href="tel:03XXXXXXXX">03 XX XX XX XX</a></li><li><a href="https://wa.me/33XXXXXXXXX?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20vos%20services." target="_blank" rel="noopener">WhatsApp</a></li>
-<li><a href="mailto:contact@lignee.fr">contact@lignee.fr</a></li><li><a href="contact.html#visite">Demander une visite gratuite</a></li></ul></div>
+<li><a href="mailto:contact@lignee.fr">contact@lignee.fr</a></li><li><a href="contact.html">Devis gratuit en 24 h</a></li></ul></div>
 </div>
 <div class="pied-bas">
 <p>Lignée, une société du Groupe Cohesif</p>
@@ -754,8 +819,8 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 </div></footer>
 <nav class="barre-appel" aria-label="Nous joindre">
 <a href="tel:03XXXXXXXX"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Appeler</a>
-<a href="https://wa.me/33XXXXXXXXX?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20vos%20services." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/></svg>WhatsApp</a>
-<a class="principal" href="contact.html#visite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Visite gratuite</a>
+<a href="cercueils.html#prix"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 2.5h6l3 5-2 14H8l-2-14z"/></svg>Nos prix</a>
+<a class="principal" href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Devis gratuit</a>
 </nav>
 <script>
 (function(){
@@ -944,6 +1009,14 @@ button[aria-selected="true"] .nom-f{font-style:italic}
     var go=function(){choisir(def.getAttribute('data-f'),+def.getAttribute('data-n'),true);};
     if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();setTimeout(go,250);}},{threshold:.35});io.observe(z);}else go();
   });
+})();
+
+(function(){
+  var s=document.querySelector('[data-sujet]');if(!s)return;
+  var m=location.search.match(/[?&]sujet=([a-z]+)/);if(m)s.value=m[1];
+  if(!m&&location.hash==='#visite')s.value='logement';
+  function maj(){document.querySelectorAll('[data-si]').forEach(function(el){el.hidden=el.getAttribute('data-si')!==s.value;});}
+  s.addEventListener('change',maj);maj();
 })();
 </script>
 
