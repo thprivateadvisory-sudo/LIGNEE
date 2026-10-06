@@ -4,15 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script>document.documentElement.classList.add('js')</script>
-<title>Obsèques au juste prix et assurance obsèques en clair · Lignée</title>
-<meta name="description" content="Cercueils et urnes au plus près de leur coût, assurance obsèques lisible, coffret « Mes volontés ». Inscription prioritaire.">
-<link rel="canonical" href="https://lignee.fr/anticiper.html">
+<title>Assurance obsèques claire, frais affichés · Lignée</title>
+<meta name="description" content="Une assurance obsèques lisible en une page, aux frais affichés, avec un conseil honnête. Étude gratuite sous 48 heures, coffret « Mes volontés » offert.">
+<link rel="canonical" href="https://lignee.fr/anticiper">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Lignée">
-<meta property="og:title" content="Obsèques au juste prix et assurance obsèques en clair · Lignée">
-<meta property="og:description" content="Cercueils et urnes au plus près de leur coût, assurance obsèques lisible, coffret « Mes volontés ». Inscription prioritaire.">
-<meta property="og:url" content="https://lignee.fr/anticiper.html">
+<meta property="og:title" content="Assurance obsèques claire, frais affichés · Lignée">
+<meta property="og:description" content="Une assurance obsèques lisible en une page, aux frais affichés, avec un conseil honnête. Étude gratuite sous 48 heures, coffret « Mes volontés » offert.">
+<meta property="og:url" content="https://lignee.fr/anticiper">
 <meta name="theme-color" content="#1B2A41">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
@@ -677,46 +677,145 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 /* Signature du pied de page */
 .signature{font-family:var(--f-titre);font-weight:300;font-size:clamp(2.4rem,7vw,5.4rem);line-height:1;color:var(--clair);padding-bottom:2.4rem;margin-bottom:2.4rem;border-bottom:1px solid #33435E;letter-spacing:-.01em}
 .signature em{color:var(--or-clair);font-style:italic}
+
+/* ===== Maison funéraire au juste prix ===== */
+.vh-titre{max-width:20ch}
+/* Échelle de prix : le marché contre Lignée */
+.echelle{display:grid;gap:1.4rem;padding-block:clamp(1.6rem,3vw,2.4rem);border-top:1px solid rgba(217,185,127,.4)}
+.ech-ligne{display:grid;grid-template-columns:minmax(0,13rem) minmax(0,1fr);gap:.6rem 2rem;align-items:center}
+.ech-nom{display:grid;gap:.1rem}
+.ech-nom b{font-family:var(--f-titre);font-weight:400;font-size:1.45rem;line-height:1.15}
+.ech-nom span{font-size:.85rem;color:rgba(245,241,232,.66)}
+.ech-piste{position:relative;height:46px;border-bottom:1px solid rgba(245,241,232,.18)}
+.ech-zone{position:absolute;top:12px;height:22px;border-radius:2px;background:repeating-linear-gradient(135deg,rgba(245,241,232,.22) 0 6px,rgba(245,241,232,.1) 6px 12px);border:1px solid rgba(245,241,232,.35)}
+.ech-zone.lig{background:var(--or-clair);border-color:var(--or-clair)}
+.ech-zone em{position:absolute;left:calc(100% + .7rem);top:50%;transform:translateY(-50%);font-style:normal;font-family:var(--f-titre);font-size:1.3rem;white-space:nowrap;color:var(--clair)}
+.ech-zone em.dedans{left:.8rem;right:auto;color:var(--clair);text-shadow:0 1px 6px rgba(0,0,0,.5)}
+@media (max-width:420px){.ech-zone em.dedans{top:50%;transform:translateY(-50%);left:.6rem}}
+.ech-zone.lig em{color:var(--or-clair);font-weight:500}
+.js .echelle .ech-zone{transform-origin:left;transform:scaleX(0);transition:transform 1.6s cubic-bezier(.2,.7,.2,1)}
+.js .echelle.vu .ech-zone{transform:scaleX(1)}
+.js .echelle .ech-zone em{opacity:0;transition:opacity .6s 1.2s}
+.js .echelle.vu .ech-zone em{opacity:1}
+.ech-axe{display:flex;justify-content:space-between;font-size:.75rem;color:rgba(245,241,232,.5);margin-left:calc(13rem + 2rem);font-variant-numeric:tabular-nums}
+@media (max-width:760px){.ech-ligne{grid-template-columns:minmax(0,1fr)}.ech-axe{margin-left:0}.ech-zone em{font-size:1.1rem}}
+@media (max-width:420px){.ech-zone em{left:auto;right:0;top:-1.15rem;transform:none;font-size:1rem}}
+.ech-note{font-size:.8rem;color:rgba(245,241,232,.55);max-width:46rem}
+@media (prefers-reduced-motion:reduce){.js .echelle .ech-zone{transform:none}.js .echelle .ech-zone em{opacity:1}}
+
+/* Gamme : modèles à prix affichés */
+.gamme{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--nuit)}
+.gamme.trois{grid-template-columns:repeat(3,minmax(0,1fr))}
+.modele{display:grid;grid-template-rows:auto auto auto 1fr auto;gap:.8rem;padding:1.8rem clamp(1rem,2vw,1.8rem) 2rem;border-left:1px solid var(--ligne);min-width:0;position:relative}
+.modele:first-child{border-left:0;padding-left:0}
+.modele.mise{background:linear-gradient(180deg,rgba(184,155,94,.12),transparent 70%)}
+.modele.mise:first-child{padding-left:clamp(1rem,2vw,1.8rem)}
+.modele svg{width:100%;max-width:220px;height:88px;fill:none;stroke:var(--or-texte);stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.modele .usage{font-size:.72rem;font-weight:500;letter-spacing:.12em;white-space:nowrap;text-transform:uppercase;color:var(--or-texte)}
+.modele h3{font-size:2rem;font-weight:400;line-height:1}
+.modele ul{list-style:none;margin:0;padding:0;display:grid;gap:.35rem;align-content:start;font-size:.94rem;color:var(--ardoise)}
+.modele li{padding-left:1.1rem;position:relative}
+.modele li::before{content:"";position:absolute;left:0;top:.75em;width:.55rem;height:1px;background:var(--or)}
+.prix-m{display:grid;gap:.15rem;border-top:1px solid var(--ligne);padding-top:1rem}
+.prix-m b{font-family:var(--f-titre);font-weight:400;font-size:2.6rem;line-height:1;font-variant-numeric:tabular-nums}
+.prix-m span{font-size:.82rem;color:var(--ardoise)}
+.prix-m s{color:var(--ardoise);font-size:.9rem;text-decoration-color:#9B3B2E}
+.repere{display:block;margin-top:.35rem;font-family:var(--f-texte);font-style:normal;font-size:.8rem;font-weight:500;letter-spacing:.04em;color:var(--or-texte)}
+@media (max-width:980px){.gamme,.gamme.trois{grid-template-columns:repeat(2,minmax(0,1fr))}.modele:nth-child(3){border-left:0;padding-left:0}.modele:nth-child(n+3){border-top:1px solid var(--ligne)}}
+@media (max-width:560px){.gamme,.gamme.trois{grid-template-columns:minmax(0,1fr)}.modele{border-left:0;padding-inline:0;border-top:1px solid var(--ligne)}.modele:first-child{border-top:0}.modele.mise,.modele.mise:first-child{padding-inline:1rem}}
+.inclus{display:flex;flex-wrap:wrap;gap:.5rem 2rem;padding-top:1.4rem;margin-top:.4rem;border-top:1px solid var(--ligne);font-size:.92rem;color:var(--ardoise)}
+.inclus li{display:flex;align-items:center;gap:.5rem}
+.inclus li::before{content:"";width:11px;height:6px;border-left:1.5px solid var(--or-texte);border-bottom:1.5px solid var(--or-texte);transform:rotate(-45deg) translateY(-2px)}
+.inclus{list-style:none;margin:0;padding-left:0}
+
+/* Chiffres clés en bandeau */
+.chiffres{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--nuit)}
+.chiffres div{display:grid;gap:.4rem;align-content:start;padding:1.6rem clamp(1rem,2vw,1.8rem) 1.8rem;border-left:1px solid var(--ligne);min-width:0}
+.chiffres div:first-child{border-left:0;padding-left:0}
+.chiffres b{font-family:var(--f-titre);font-weight:300;font-size:clamp(2.6rem,5vw,3.8rem);line-height:1;color:var(--or-texte);font-variant-numeric:tabular-nums}
+.chiffres span{color:var(--ardoise);font-size:.95rem}
+.chiffres small{font-size:.75rem;color:var(--ardoise);opacity:.8}
+@media (max-width:760px){.chiffres{grid-template-columns:minmax(0,1fr)}.chiffres div{border-left:0;padding-left:0;border-top:1px solid var(--ligne)}.chiffres div:first-child{border-top:0}}
+
+/* Trois garanties */
+.garanties{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid rgba(217,185,127,.4)}
+.garanties div{display:grid;gap:.7rem;align-content:start;padding:2rem clamp(1rem,2.4vw,2.2rem) 1rem;border-left:1px solid #33435E;min-width:0}
+.garanties div:first-child{border-left:0;padding-left:0}
+.g-n{font-family:var(--f-titre);font-style:italic;font-size:2.4rem;line-height:1;color:var(--or-clair)}
+.garanties h3{font-size:1.9rem;font-weight:400;color:var(--clair)}
+.garanties p{color:#C9CED6}
+@media (max-width:820px){.garanties{grid-template-columns:minmax(0,1fr)}.garanties div{border-left:0;padding-left:0;border-top:1px solid #33435E}.garanties div:first-child{border-top:0}}
+.parcours .n{font-size:1rem}
+
+/* Mention réglementaire discrète */
+.mention{font-size:.82rem;color:var(--ardoise);max-width:46rem}
+.sec-bloc.nuit .mention{color:#9AA3B0}
+
+/* Contact : champs selon le sujet */
+.js [data-si][hidden]{display:none!important}
 </style>
 </head>
 <body>
-<header class="entete"><div class="alerte"><p class="alerte-in"><span>Un proche vient de nous quitter&nbsp;?</span> <a href="guide.html">Les premières démarches</a><span class="alerte-tel"> · <a href="tel:03XXXXXXXX">03 XX XX XX XX</a></span></p></div><div class="wrap">
+<header class="entete"><div class="alerte"><p class="alerte-in"><span>Un décès à organiser&nbsp;?</span> <a href="cercueils.html#prix">Nos prix</a><span aria-hidden="true">·</span><a href="guide.html">Les premières démarches</a><span class="alerte-tel"> · <a href="tel:03XXXXXXXX">03 XX XX XX XX</a></span></p></div><div class="wrap">
 <a class="marque" href="index.html" aria-label="Lignée, accueil"><img class="marque-mono" src="images/monogramme-entete.png" width="96" height="89" alt=""><span>LIGNÉE</span></a>
-<nav class="nav" aria-label="Navigation principale"><a href="formules.html">Le logement</a><a href="souvenirs.html">Souvenirs</a><a href="boutique.html">Boutique</a><a href="anticiper.html" aria-current="page">Obsèques</a><a href="notaires.html">Notaires</a><a href="guide.html">Guide</a><a href="contact.html">Contact</a></nav>
-<a class="btn" href="contact.html#visite">Demander une visite gratuite</a>
+<nav class="nav" aria-label="Navigation principale"><a href="cercueils.html">Cercueils et urnes</a><a href="anticiper.html" aria-current="page">Assurance obsèques</a><a href="souvenirs.html">Souvenirs</a><a href="formules.html">Succession et logement</a><a href="guide.html">Guide</a><a href="contact.html">Contact</a></nav>
+<a class="btn" href="contact.html">Devis gratuit en 24 h</a>
 <button class="menu-btn" type="button" aria-expanded="false">Menu</button>
 </div></header>
 <main>
 
-<section class="heros-ciel aube avec-video"><div class="video-fond" aria-hidden="true"><video data-auto muted loop playsinline autoplay preload="auto" poster="videos/brume-campagne.jpg" aria-hidden="true"><source src="videos/brume-campagne.mp4" type="video/mp4"></video></div><div class="wrap"><div class="heros-texte"><nav class="ariane" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><span aria-hidden="true">/</span><span aria-current="page">Obsèques et prévoyance</span></nav>
-<p class="sur">Obsèques et prévoyance</p>
-<h1>Des obsèques au juste prix, <em>une assurance en clair.</em></h1>
-<p class="chapo">Cercueils et urnes vendus au plus près de leur coût, assurance obsèques lisible en une page, coffret pour transmettre ses volontés. Ces services ouvrent bientôt&nbsp;: inscrivez-vous pour être informé de leur ouverture.</p>
-<div class="btns"><a class="btn" href="#prevenu">Être informé de l'ouverture</a></div>
+<section class="heros-ciel aube avec-video"><div class="video-fond" aria-hidden="true"><video data-auto muted loop playsinline autoplay preload="auto" poster="videos/rideaux-soleil.jpg" aria-hidden="true"><source src="videos/rideaux-soleil.mp4" type="video/mp4"></video></div><div class="wrap"><div class="heros-texte"><nav class="ariane" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><span aria-hidden="true">/</span><span aria-current="page">Assurance obsèques</span></nav>
+<p class="sur">Assurance obsèques</p>
+<h1>Protéger les siens, <em>sans payer deux fois.</em></h1>
+<p class="chapo">Un contrat lisible en une page, des frais affichés, un capital versé à vos proches le jour venu. Et un conseil honnête&nbsp;: si une autre solution vous convient mieux, nous vous le dirons.</p>
+<div class="btns"><a class="btn" href="#etude">Recevoir une étude gratuite</a><a class="btn sec" href="tel:03XXXXXXXX">Parler à un conseiller</a></div>
 </div></div></section>
 <section class="sec-bloc"><div class="wrap">
-<article class="offre rv" id="juste-prix"><div class="tete-o"><p class="sur">Pendant les obsèques</p><h2>Cercueils et urnes <em>au juste prix.</em></h2><span class="statut bientot">Ouverture prochaine</span></div>
-<div class="corps"><p class="jp-chiffre-clair"><b>650 à 3 800 €</b>&nbsp;: le prix habituel d'un cercueil en France (sources&nbsp;: Mutuelle SMI, France Conso).</p><p>Le cercueil représente souvent 20 à 40 % de la facture des obsèques, et les familles n'ont ni le temps ni l'énergie de comparer. Nous préparons une gamme simple et digne, vendue au plus près de son coût.</p><p class="note">Disponible après obtention de notre habilitation funéraire préfectorale.</p></div></article>
-<article class="offre rv"><div class="tete-o"><p class="sur">Avant, pour protéger les siens</p><h2>L'assurance obsèques, <em>en clair.</em></h2><span class="statut bientot">Ouverture prochaine</span></div>
-<div class="corps"><p class="jp-chiffre-clair"><b>40 %</b>&nbsp;: la part des cotisations des contrats obsèques individuels reversée en moyenne (source&nbsp;: UFC-Que Choisir et Unaf, cités par Moneyvox).</p><p>Un contrat simple, aux frais affichés, avec un assureur partenaire. Nous voulons une offre que l'on comprend en le lisant une fois, et une comparaison honnête avec les autres solutions.</p><p class="note">Cette offre sera proposée après notre inscription au registre des intermédiaires en assurance (ORIAS), en partenariat avec un assureur.</p></div></article>
-<article class="offre rv"><div class="tete-o"><p class="sur">Avant</p><h2>Le coffret <em>«&nbsp;Mes volontés&nbsp;»</em></h2><span class="statut bientot">Ouverture prochaine</span></div>
-<div class="corps"><p>Un coffret pour rassembler vos documents importants, vos codes et mots de passe, vos souhaits pour vos obsèques et des lettres à vos proches.</p><p>Le jour venu, votre famille sait où chercher et quoi faire. C'est souvent le plus beau cadeau qu'on puisse leur laisser.</p></div></article>
-</div></section>
-<section class="sec-bloc nuit"><div class="wrap souv">
-<div class="chiffre rv"><b>4 730 €</b><span>C'est le coût moyen des obsèques en France. Préparer à l'avance, c'est éviter à ses proches de décider dans l'urgence.</span><small>Source&nbsp;: étude Silver Alliance et Simplifia, citée par la Mutuelle SMI.</small></div>
-<div class="prose rv"><p class="sur" style="color:var(--or-clair)">En attendant</p><p class="chapo">Si vous devez faire face à un décès aujourd'hui, nous pouvons déjà prendre en charge le logement et vous guider dans les démarches.</p><div class="btns"><a class="btn sec" href="guide.html">Lire le guide</a><a class="btn sec" href="formules.html">Le service logement</a></div></div>
-</div></section>
-<section class="sec-bloc pierre" id="prevenu"><div class="wrap form-zone">
-<div class="prose rv">
-<p class="sur">Ouverture prochaine</p>
-<h2 style="margin-top:0">Soyez prévenu en premier.</h2>
-<p class="muted">Un seul e-mail, quand ces services ouvriront. Pas de démarchage, ni maintenant ni plus tard.</p>
+<div class="tete rv"><p class="sur">Le constat</p><h2 class="grand">Une assurance utile, <em>souvent mal vendue.</em></h2></div>
+<div class="chiffres rv">
+<div><b>4&nbsp;730&nbsp;€</b><span>le coût moyen des obsèques en France.</span><small>Silver Alliance et Simplifia, cités par la Mutuelle SMI.</small></div>
+<div><b>40&nbsp;%</b><span>des cotisations des contrats individuels reversées en moyenne.</span><small>UFC-Que Choisir et Unaf, cités par Moneyvox.</small></div>
+<div><b>1 page</b><span>pour comprendre notre contrat&nbsp;: garanties, frais et durée.</span><small>Engagement Lignée.</small></div>
 </div>
-<form class="form" data-form="Liste d'attente anticiper" data-ok="Merci. Nous vous écrirons dès l'ouverture, et seulement pour cela." novalidate>
-<div class="champ"><label for="a-mail">Votre adresse e-mail</label><input id="a-mail" name="email" type="email" required autocomplete="email"></div>
-<fieldset class="choix"><legend>Ce qui vous intéresse <span class="opt" style="font-weight:400;color:var(--ardoise)">(facultatif)</span></legend><label><input type="checkbox" name="interets" value="Coffret « Mes volontés »" id="a-0"> Coffret «&nbsp;Mes volontés&nbsp;»</label><label><input type="checkbox" name="interets" value="Assurance obsèques" id="a-1"> Assurance obsèques</label><label><input type="checkbox" name="interets" value="Cercueils et urnes au juste prix" id="a-2"> Cercueils et urnes au juste prix</label></fieldset>
-<label class="consent"><input type="checkbox" name="consentement" required id="a-consent"> <span>J'accepte que Lignée m'écrive pour me prévenir de l'ouverture. Voir notre <a href="confidentialite.html">politique de confidentialité</a>.</span></label>
-<button class="btn" type="submit">Être prévenu</button>
+</div></section>
+<section class="sec-bloc pierre"><div class="wrap colle">
+<div class="tete rv"><p class="sur">Notre approche</p><h2 class="grand">Une assurance <em>en clair.</em></h2><p class="chapo">Nous comparons pour vous, avec un assureur partenaire, et nous vous expliquons ce que vous payez.</p></div>
+<div class="raisons">
+<div class="rv"><h3>Des frais affichés</h3><p>Frais d'entrée, frais de gestion, coût total sur la durée&nbsp;: tout est écrit, en euros, avant de signer.</p></div>
+<div class="rv"><h3>Un capital, pas un piège</h3><p>Le capital est versé au bénéficiaire que vous désignez pour régler les obsèques. Vous choisissez une cotisation unique, temporaire ou viagère, en connaissant le total.</p></div>
+<div class="rv"><h3>Vos volontés respectées</h3><p>Inhumation ou crémation, cérémonie, musique, lieu&nbsp;: vos souhaits sont consignés et transmis à vos proches.</p></div>
+<div class="rv"><h3>Une comparaison honnête</h3><p>Selon votre âge et votre épargne, une assurance-vie ou un livret peut être plus avantageux. Nous vous le montrons, chiffres à l'appui.</p></div>
+</div>
+</div></section>
+<section class="sec-bloc" id="volontes"><div class="wrap souv avec-video">
+<div style="display:grid;gap:2rem;min-width:0">
+<div class="tete rv" style="margin:0"><p class="sur">Offert avec chaque contrat</p><h2 class="grand">Le coffret <em>«&nbsp;Mes volontés&nbsp;».</em></h2><p class="chapo">Un coffret pour rassembler vos documents importants, vos souhaits pour vos obsèques et des lettres à vos proches. Le jour venu, votre famille sait où chercher et quoi faire.</p></div>
+<ul class="souv-liste rv">
+<li><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="9" y="7" width="30" height="34" rx="1.5"/><path d="M15 16h18M15 23h18M15 30h11"/></svg><span>Vos souhaits pour la cérémonie</span></li>
+<li><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 14h32v22H8z"/><path d="M8 14l16 12 16-12"/></svg><span>Des lettres à vos proches</span></li>
+<li><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M14 22v-6a10 10 0 0 1 20 0v6"/><rect x="10" y="22" width="28" height="18" rx="2"/><path d="M24 29v4"/></svg><span>Contrats, comptes et accès importants</span></li>
+</ul>
+</div>
+<figure class="cadre-video portrait rv"><video data-auto muted loop playsinline preload="none" poster="videos/photos-mains.jpg" aria-hidden="true"><source src="videos/photos-mains.mp4" type="video/mp4"></video><figcaption>Mes volontés</figcaption></figure>
+</div></section>
+<section class="sec-bloc pierre" id="etude"><div class="wrap form-zone">
+<div class="prose rv">
+<p class="sur">Étude gratuite</p>
+<h2 style="margin-top:0">Combien cela vous coûterait, vraiment.</h2>
+<p class="muted">Indiquez votre âge et la façon dont vous souhaitez cotiser. Un conseiller vous adresse une étude chiffrée, frais compris, sous 48 heures. Sans engagement, et sans relance insistante.</p>
+<p class="mention">L'assurance obsèques est proposée par Lignée en qualité d'intermédiaire en assurance immatriculé à l'ORIAS, en partenariat avec un assureur. Numéro d'immatriculation dans les <a href="mentions-legales.html">mentions légales</a>.</p>
+</div>
+<form class="form" data-form="Étude assurance obsèques" data-ok="Merci. Un conseiller vous adresse votre étude sous 48 heures." novalidate>
+<div class="champs">
+<div class="champ"><label for="a-nom">Nom</label><input id="a-nom" name="nom" required autocomplete="name"></div>
+<div class="champ"><label for="a-tel">Téléphone</label><input id="a-tel" name="telephone" type="tel" required autocomplete="tel"></div>
+<div class="champ plein"><label for="a-mail">E-mail</label><input id="a-mail" name="email" type="email" required autocomplete="email"></div>
+<div class="champ"><label for="a-age">Votre âge</label><input id="a-age" name="age" inputmode="numeric" required></div>
+<div class="champ"><label for="a-cot">Cotisation souhaitée</label><select id="a-cot" name="cotisation"><option>Je ne sais pas encore</option><option>En une seule fois</option><option>Sur quelques années</option><option>Chaque mois, à vie</option></select></div>
+<div class="champ plein"><label for="a-cap">Capital envisagé</label><select id="a-cap" name="capital"><option>Je ne sais pas encore</option><option>Environ 3 000 €</option><option>Environ 5 000 €</option><option>Environ 7 000 € et plus</option></select></div>
+</div>
+<label class="consent"><input type="checkbox" name="consentement" required id="a-consent"> <span>J'accepte que Lignée utilise ces informations pour m'adresser mon étude. Voir notre <a href="confidentialite.html">politique de confidentialité</a>.</span></label>
+<button class="btn" type="submit">Recevoir mon étude</button>
 <p class="form-msg" role="status" hidden></p>
 </form>
 </div></section>
@@ -727,17 +826,17 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 <div class="pied-haut">
 <div style="display:grid;gap:1rem;align-content:start">
 <img class="sceau" src="images/sceau-or.png" width="400" height="396" alt="Sceau Lignée, maison fondée en 2026" loading="lazy">
-<p>Le logement de votre proche, pris en charge du premier tri jusqu'à la vente. Intervention partout en France.</p>
+<p>Lignée, les plus beaux cercueils au prix le plus bas garanti. Assurance obsèques claire, souvenirs et succession. Partout en France.</p>
 </div>
-<div><h4>Le logement</h4><ul>
-<li><a href="formules.html">Nos formules</a></li><li><a href="methode.html">Comment ça marche</a></li>
-<li><a href="notaires.html">Notaires et professionnels</a></li><li><a href="guide.html">Guide : que faire après un décès</a></li></ul></div>
-<div><h4>Lignée</h4><ul>
-<li><a href="souvenirs.html">Confection souvenir</a></li><li><a href="boutique.html">La boutique</a></li>
-<li><a href="anticiper.html">Obsèques et prévoyance</a></li><li><a href="a-propos.html">À propos</a></li></ul></div>
+<div><h4>Obsèques</h4><ul>
+<li><a href="cercueils.html">Cercueils et urnes</a></li><li><a href="cercueils.html#prix">Nos prix</a></li>
+<li><a href="anticiper.html">Assurance obsèques</a></li><li><a href="anticiper.html#volontes">Coffret «&nbsp;Mes volontés&nbsp;»</a></li><li><a href="guide.html">Que faire après un décès</a></li></ul></div>
+<div><h4>Après</h4><ul>
+<li><a href="souvenirs.html">Souvenirs confectionnés</a></li><li><a href="formules.html">Succession et logement</a></li>
+<li><a href="methode.html">Comment ça marche</a></li><li><a href="notaires.html">Notaires et professionnels</a></li><li><a href="a-propos.html">La maison Lignée</a></li></ul></div>
 <div><h4>Nous joindre</h4><ul>
 <li><a href="tel:03XXXXXXXX">03 XX XX XX XX</a></li><li><a href="https://wa.me/33XXXXXXXXX?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20vos%20services." target="_blank" rel="noopener">WhatsApp</a></li>
-<li><a href="mailto:contact@lignee.fr">contact@lignee.fr</a></li><li><a href="contact.html#visite">Demander une visite gratuite</a></li></ul></div>
+<li><a href="mailto:contact@lignee.fr">contact@lignee.fr</a></li><li><a href="contact.html">Devis gratuit en 24 h</a></li></ul></div>
 </div>
 <div class="pied-bas">
 <p>Lignée, une société du Groupe Cohesif</p>
@@ -746,8 +845,8 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 </div></footer>
 <nav class="barre-appel" aria-label="Nous joindre">
 <a href="tel:03XXXXXXXX"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Appeler</a>
-<a href="https://wa.me/33XXXXXXXXX?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20vos%20services." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/></svg>WhatsApp</a>
-<a class="principal" href="contact.html#visite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Visite gratuite</a>
+<a href="cercueils.html#prix"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 2.5h6l3 5-2 14H8l-2-14z"/></svg>Nos prix</a>
+<a class="principal" href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Devis gratuit</a>
 </nav>
 <script>
 (function(){

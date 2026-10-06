@@ -1,6 +1,6 @@
 # Lignée — site internet
 
-Site statique de Lignée (accompagnement du logement après un décès), construit d'après le business plan et le kit de construction.
+Site statique de Lignée, maison funéraire au juste prix : cercueils et urnes à prix affichés (argument d'entrée), assurance obsèques, souvenirs confectionnés, puis succession et logement.
 
 Un fichier HTML autonome par page (12 pages), tous au même niveau (styles et scripts inclus dans chaque page) :
 
@@ -10,8 +10,8 @@ Un fichier HTML autonome par page (12 pages), tous au même niveau (styles et sc
 | `formules.html` | Nos formules (Essentiel, Complet, Sérénité) |
 | `methode.html` | Comment ça marche |
 | `souvenirs.html` | Confection souvenir (sur devis, formulaire de devis) |
-| `boutique.html` | Boutique (ouverture prochaine, liste d'attente) |
-| `anticiper.html` | Coffret « Mes volontés », assurance obsèques, cercueils et urnes (bientôt, liste d'attente) |
+| `cercueils.html` | Cercueils et urnes : gamme, prix TTC, comparaison avec le marché |
+| `anticiper.html` | Assurance obsèques, coffret « Mes volontés », étude gratuite |
 | `notaires.html` | Notaires et professionnels (formulaire pro) |
 | `guide.html` | Guide gratuit : que faire après un décès |
 | `a-propos.html` | À propos |
@@ -42,7 +42,13 @@ Rechercher et remplacer dans les 9 fichiers :
 
 À faire relire par un juriste : mentions légales, confidentialité, guide « que faire après un décès ». Les CGV restent à rédiger avant le premier dossier.
 
-Cercueils, urnes et assurance obsèques sont présentés comme « bientôt », sans prix ni vente : ils ne pourront être proposés qu'après l'habilitation funéraire préfectorale et l'inscription ORIAS.
+## Prix et engagements à valider avant la mise en ligne
+
+Les prix de la gamme (cercueils 340 à 1 190 €, urnes 49 à 149 €), la livraison incluse et les descriptions des modèles sont des propositions à valider avec les coûts fournisseurs. Ils sont définis à un seul endroit dans le script de génération ; sinon, rechercher `390&nbsp;€`, `690&nbsp;€`, etc. dans `index.html` et `cercueils.html`.
+
+Les trois garanties affichées (prix le plus bas garanti avec remboursement de la différence, bois massif contrôlé un par un avec remplacement en cas de défaut, livraison avant les obsèques ou remboursement) sont des engagements contractuels : à reprendre dans les CGV et à tenir dans la réalité, sinon ils deviennent une pratique commerciale trompeuse.
+
+La vente de cercueils et d'urnes exige l'habilitation funéraire préfectorale, l'assurance obsèques l'inscription ORIAS : leurs numéros sont à renseigner dans `mentions-legales.html` avant toute vente.
 
 ## Vidéos
 
