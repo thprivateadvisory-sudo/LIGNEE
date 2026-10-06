@@ -776,7 +776,7 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 <div class="ligne-c"><span class="sur">E-mail</span><span class="val" style="font-size:1.25rem">contact@lignee.fr</span></div>
 <div class="ligne-c" style="border:0"><span class="sur">Livraison et intervention</span><span>Partout en France métropolitaine</span></div>
 </div>
-<form class="form" data-form="Demande de devis" data-ok="Merci. Nous vous rappelons sous 24 heures ouvrées." novalidate>
+<form class="form" id="formulaire" data-form="Demande de devis" data-ok="Merci. Nous vous rappelons sous 24 heures ouvrées." novalidate>
 <div><h2 style="font-size:1.9rem">Demander un devis gratuit</h2></div>
 <div class="champs">
 <div class="champ"><label for="v-nom">Nom</label><input id="v-nom" name="nom" required autocomplete="name"></div>
@@ -1025,6 +1025,8 @@ button[aria-selected="true"] .nom-f{font-style:italic}
   var s=document.querySelector('[data-sujet]');if(!s)return;
   var m=location.search.match(/[?&]sujet=([a-z]+)/);if(m)s.value=m[1];
   if(!m&&location.hash==='#visite')s.value='logement';
+  var c=location.search.match(/[?&]choix=([^&#]+)/),msg=document.getElementById('v-msg');
+  if(c&&msg&&!msg.value)msg.value='Je souhaite ce cercueil : '+decodeURIComponent(c[1].replace(/\+/g,' '));
   function maj(){document.querySelectorAll('[data-si]').forEach(function(el){el.hidden=el.getAttribute('data-si')!==s.value;});}
   s.addEventListener('change',maj);maj();
 })();
