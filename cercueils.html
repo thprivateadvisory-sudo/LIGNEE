@@ -748,20 +748,47 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 .perso-ligne{display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr);gap:1.2rem 3rem;padding:2rem 0;border-bottom:1px solid var(--ligne)}
 .perso-tete h3{font-size:1.6rem;font-weight:400;margin-bottom:.35rem}
 .perso-tete p{margin:0;font-size:.92rem;color:var(--ardoise)}
-.choix{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(9.5rem,1fr));gap:1rem}
-.choix figure{margin:0;display:grid;gap:.55rem}
+.finitions{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(9.5rem,1fr));gap:1rem}
+.finitions figure{margin:0;display:grid;gap:.55rem}
 .vign{display:grid;place-items:center;height:8.5rem;background:#fff;border:1px solid var(--ligne)}
 .vign img{display:block;width:120px;height:auto}
 .vign.haute img{width:70px}
 .vign.plaque img{width:110px}
 .vign.vide{font-family:var(--f-titre);font-style:italic;font-size:1.15rem;color:var(--ardoise)}
-.choix figcaption{display:grid;gap:.1rem;font-size:.9rem;line-height:1.35}
-.choix figcaption b{font-weight:500;color:var(--nuit)}
-.choix figcaption span{font-size:.8rem;color:var(--ardoise)}
+.finitions figcaption{display:grid;gap:.1rem;font-size:.9rem;line-height:1.35}
+.finitions figcaption b{font-weight:500;color:var(--nuit)}
+.finitions figcaption span{font-size:.8rem;color:var(--ardoise)}
 .perso-pied{margin:2rem 0 0;font-size:.98rem;color:var(--ardoise);max-width:var(--mesure)}
 .perso-pied a{color:var(--nuit);font-weight:500;text-underline-offset:3px}
+/* Vitrine produit, preuves vérifiables, contrôle qualité. */
+.heros-ciel .wrap.split{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(2rem,4vw,4.5rem);align-items:center}
+.vitrine{margin:0;justify-self:end;width:100%;max-width:31rem;background:linear-gradient(180deg,#FBF9F4 0%,#ECE6DA 100%);padding:clamp(1.2rem,2.4vw,1.8rem) clamp(1.2rem,2.4vw,1.8rem) 1.3rem;color:var(--nuit);box-shadow:0 40px 80px -30px rgba(0,0,0,.55);position:relative}
+.vitrine::before{content:"";position:absolute;inset:.55rem;border:1px solid rgba(184,155,94,.45);pointer-events:none}
+.vitrine img{display:block;width:100%;height:auto;mix-blend-mode:multiply}
+.vitrine figcaption{position:relative;display:flex;justify-content:space-between;align-items:end;gap:1rem;border-top:1px solid var(--ligne);padding-top:1rem;margin-top:.4rem}
+.vitrine .v-sur{display:block;font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--or-texte);margin-bottom:.3rem}
+.vitrine .v-nom{font-family:var(--f-titre);font-size:1.9rem;line-height:1}
+.vitrine .v-prix{text-align:right;font-size:.78rem;color:var(--ardoise)}
+.vitrine .v-prix b{display:block;font-family:var(--f-titre);font-weight:400;font-size:1.9rem;line-height:1;color:var(--nuit)}
+@media (max-width:980px){.heros-ciel .wrap.split{grid-template-columns:minmax(0,1fr)}.vitrine{justify-self:start;max-width:28rem}}
+.photo{background:var(--ivoire);border:0;border-bottom:1px solid var(--ligne)}
+.pierre .photo{background:var(--pierre)}
+.modele.mise .photo{background:color-mix(in srgb,var(--ivoire) 89%,#B89B5E)}
+.pierre .modele.mise .photo{background:color-mix(in srgb,var(--pierre) 89%,#B89B5E)}
+.photo img{mix-blend-mode:multiply}
+.preuves-v{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--nuit);list-style:none;margin:0;padding:0}
+.preuves-v li{display:grid;gap:.6rem;align-content:start;padding:1.8rem clamp(1rem,2vw,1.8rem) 0;border-left:1px solid var(--ligne);min-width:0}
+.preuves-v li:first-child{border-left:0;padding-left:0}
+.preuves-v svg{width:34px;height:34px;fill:none;stroke:var(--or-texte);stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.preuves-v h3{font-size:1.45rem;font-weight:400}
+.preuves-v p{margin:0;font-size:.94rem;color:var(--ardoise)}
+.preuves-v a{color:var(--nuit);text-underline-offset:3px}
+@media (max-width:980px){.preuves-v{grid-template-columns:repeat(2,minmax(0,1fr))}.preuves-v li:nth-child(3){border-left:0;padding-left:0}.preuves-v li:nth-child(n+3){padding-top:2rem}}
+@media (max-width:560px){.preuves-v{grid-template-columns:minmax(0,1fr)}.preuves-v li{border-left:0;padding-left:0;padding-bottom:1.6rem;border-bottom:1px solid var(--ligne)}}
+.parcours.quatre ol{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:900px){.parcours.quatre ol{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:760px){.perso-ligne,.groupe-tete{grid-template-columns:minmax(0,1fr)}}
-@media (max-width:560px){.gamme.deux{grid-template-columns:minmax(0,1fr)}.choix{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.gamme.deux{grid-template-columns:minmax(0,1fr)}.finitions{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 /* Chiffres clés en bandeau */
 .chiffres{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--nuit)}
@@ -799,12 +826,12 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 </div></header>
 <main>
 
-<section class="heros-ciel aube avec-video"><div class="video-fond" aria-hidden="true"><video data-auto muted loop playsinline autoplay preload="auto" poster="videos/bois-poncage.jpg" aria-hidden="true"><source src="videos/bois-poncage.mp4" type="video/mp4"></video></div><div class="wrap"><div class="heros-texte"><nav class="ariane" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><span aria-hidden="true">/</span><span aria-current="page">Cercueils et urnes</span></nav>
+<section class="heros-ciel aube avec-video"><div class="video-fond" aria-hidden="true"><video data-auto muted loop playsinline autoplay preload="auto" poster="videos/bois-poncage.jpg" aria-hidden="true"><source src="videos/bois-poncage.mp4" type="video/mp4"></video></div><div class="wrap split"><div class="heros-texte"><nav class="ariane" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><span aria-hidden="true">/</span><span aria-current="page">Cercueils et urnes</span></nav>
 <p class="sur">Cercueils et urnes</p>
 <h1>Les plus beaux cercueils, <em>au prix le plus bas.</em></h1>
 <p class="chapo">Bois massif, contrôlés un par un, dès 340&nbsp;€ livraison comprise. Prix le plus bas garanti&nbsp;: si vous trouvez moins cher, nous remboursons la différence. Vous gardez la pompe funèbre de votre choix.</p>
 <div class="btns"><a class="btn" href="#prix">Voir les prix</a><a class="btn sec" href="tel:03XXXXXXXX">Parler à un conseiller</a></div>
-</div></div></section>
+</div><figure class="vitrine"><img src="images/catalogue/vitrine-heritage.webp" width="690" height="385" alt="Cercueil Héritage, teinte acajou vernie, poignées demi-lune dorées" fetchpriority="high" decoding="async"><figcaption><span><span class="v-sur">Modèle signature</span><span class="v-nom">Héritage</span></span><span class="v-prix"><b>1 190&nbsp;€</b>TTC, livraison incluse</span></figcaption></figure></div></section>
 <section class="engagements" aria-label="Nos engagements"><div class="wrap"><ul><li><b>Prix le plus bas garanti</b><span>Moins cher ailleurs&nbsp;? Nous remboursons la différence.</span></li><li><b>Bois massif uniquement</b><span>Jamais d'aggloméré, contrôlé un par un.</span></li><li><b>Livré à temps</b><span>Au délai écrit sur le devis, ou remboursé.</span></li><li><b>Livraison incluse</b><span>Partout en France métropolitaine.</span></li></ul></div></section>
 <section class="sec-bloc" id="prix"><div class="wrap">
 <div class="tete rv"><p class="sur">Cercueils</p><h2 class="grand">Quatre modèles, <em>un prix chacun.</em></h2><p class="chapo">Deux modèles en stock pour l'urgence, deux sur commande pour ceux qui prennent le temps de choisir. Chacun est livré avec son capiton, ses poignées, son emblème et une plaque d'identité gravée. Le prix indiqué est le prix payé.</p></div>
@@ -814,11 +841,20 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 <section class="sec-bloc pierre" id="personnaliser"><div class="wrap">
 <div class="tete rv"><p class="sur">Personnaliser</p><h2 class="grand">Les finitions de votre choix, <em>sans supplément.</em></h2><p class="chapo">Poignées, emblème du couvercle et plaque d'identité&nbsp;: vous choisissez, nous posons. Sur tous les modèles, y compris ceux en stock.</p></div>
 <div class="perso rv">
-<div class="perso-ligne"><div class="perso-tete"><h3>Poignées</h3><p>Métal moulé, quatre styles. Six poignées par cercueil, quatre pour le modèle Sobre.</p></div><ul class="choix"><li><figure><div class="vign"><img src="images/catalogue/poignee-barre.webp" width="240" height="110" alt="Poignée barre droite à platines carrées, bronze vieilli" loading="lazy" decoding="async"></div><figcaption><b>Barre</b><span>Bronze vieilli, 30&nbsp;cm</span></figcaption></figure></li><li><figure><div class="vign"><img src="images/catalogue/poignee-demi-lune.webp" width="240" height="110" alt="Poignée demi-lune, laiton vieilli" loading="lazy" decoding="async"></div><figcaption><b>Demi-lune</b><span>Laiton vieilli, 20,5&nbsp;cm</span></figcaption></figure></li><li><figure><div class="vign"><img src="images/catalogue/poignee-etrier.webp" width="240" height="110" alt="Poignée étrier à embouts, laiton" loading="lazy" decoding="async"></div><figcaption><b>Étrier</b><span>Laiton, 19&nbsp;cm</span></figcaption></figure></li><li><figure><div class="vign"><img src="images/catalogue/poignee-rosaces.webp" width="240" height="110" alt="Poignée à rosaces, laiton vieilli" loading="lazy" decoding="async"></div><figcaption><b>À rosaces</b><span>Laiton vieilli, 20&nbsp;cm</span></figcaption></figure></li></ul></div>
-<div class="perso-ligne"><div class="perso-tete"><h3>Emblème du couvercle</h3><p>Selon les convictions du défunt, ou aucun.</p></div><ul class="choix"><li><figure><div class="vign haute"><img src="images/catalogue/emblem-crucifix.webp" width="140" height="230" alt="Crucifix de couvercle, laiton vieilli" loading="lazy" decoding="async"></div><figcaption><b>Crucifix</b><span>Laiton vieilli, 45&nbsp;cm</span></figcaption></figure></li><li><figure><div class="vign haute"><img src="images/catalogue/emblem-croix.webp" width="140" height="230" alt="Croix latine élancée, sans Christ, laiton" loading="lazy" decoding="async"></div><figcaption><b>Croix latine</b><span>Laiton, 58&nbsp;cm</span></figcaption></figure></li><li><figure><div class="vign haute"><img src="images/catalogue/emblem-huguenote.webp" width="140" height="230" alt="Croix huguenote surmontée d'une colombe, bronze" loading="lazy" decoding="async"></div><figcaption><b>Croix huguenote</b><span>Bronze, 15&nbsp;cm</span></figcaption></figure></li><li><figure><div class="vign haute"><img src="images/catalogue/emblem-etoile.webp" width="140" height="230" alt="Étoile de David dorée" loading="lazy" decoding="async"></div><figcaption><b>Étoile de David</b><span>Doré, 18,7&nbsp;cm</span></figcaption></figure></li><li><figure><div class="vign haute"><img src="images/catalogue/emblem-rose.webp" width="140" height="230" alt="Rose en bronze avec sa tige et ses feuilles" loading="lazy" decoding="async"></div><figcaption><b>Rose</b><span>Bronze, 38&nbsp;cm</span></figcaption></figure></li><li><figure><div class="vign vide" aria-hidden="true">Sans emblème</div><figcaption><b>Sans emblème</b><span>Couvercle nu</span></figcaption></figure></li></ul></div>
-<div class="perso-ligne"><div class="perso-tete"><h3>Plaque d'identité</h3><p>Gravée au nom, avec les dates de naissance et de décès.</p></div><ul class="choix"><li><figure><div class="vign plaque"><img src="images/catalogue/plaque.webp" width="150" height="101" alt="Plaque d'identité rectangulaire, finition laiton brossé" loading="lazy" decoding="async"></div><figcaption><b>Plaque gravée</b><span>Finition laiton brossé, 17,5&nbsp;×&nbsp;11&nbsp;cm</span></figcaption></figure></li></ul></div>
+<div class="perso-ligne"><div class="perso-tete"><h3>Poignées</h3><p>Métal moulé, quatre styles. Six poignées par cercueil, quatre pour le modèle Sobre.</p></div><ul class="finitions"><li><figure><div class="vign"><img src="images/catalogue/poignee-barre.webp" width="240" height="110" alt="Poignée barre droite à platines carrées, bronze vieilli" loading="lazy" decoding="async"></div><figcaption><b>Barre</b><span>Bronze vieilli, 30&nbsp;cm</span></figcaption></figure></li><li><figure><div class="vign"><img src="images/catalogue/poignee-demi-lune.webp" width="240" height="110" alt="Poignée demi-lune, laiton vieilli" loading="lazy" decoding="async"></div><figcaption><b>Demi-lune</b><span>Laiton vieilli, 20,5&nbsp;cm</span></figcaption></figure></li><li><figure><div class="vign"><img src="images/catalogue/poignee-etrier.webp" width="240" height="110" alt="Poignée étrier à embouts, laiton" loading="lazy" decoding="async"></div><figcaption><b>Étrier</b><span>Laiton, 19&nbsp;cm</span></figcaption></figure></li><li><figure><div class="vign"><img src="images/catalogue/poignee-rosaces.webp" width="240" height="110" alt="Poignée à rosaces, laiton vieilli" loading="lazy" decoding="async"></div><figcaption><b>À rosaces</b><span>Laiton vieilli, 20&nbsp;cm</span></figcaption></figure></li></ul></div>
+<div class="perso-ligne"><div class="perso-tete"><h3>Emblème du couvercle</h3><p>Selon les convictions du défunt, ou aucun.</p></div><ul class="finitions"><li><figure><div class="vign haute"><img src="images/catalogue/emblem-crucifix.webp" width="140" height="230" alt="Crucifix de couvercle, laiton vieilli" loading="lazy" decoding="async"></div><figcaption><b>Crucifix</b><span>Laiton vieilli, 45&nbsp;cm</span></figcaption></figure></li><li><figure><div class="vign haute"><img src="images/catalogue/emblem-croix.webp" width="140" height="230" alt="Croix latine élancée, sans Christ, laiton" loading="lazy" decoding="async"></div><figcaption><b>Croix latine</b><span>Laiton, 58&nbsp;cm</span></figcaption></figure></li><li><figure><div class="vign haute"><img src="images/catalogue/emblem-huguenote.webp" width="140" height="230" alt="Croix huguenote surmontée d'une colombe, bronze" loading="lazy" decoding="async"></div><figcaption><b>Croix huguenote</b><span>Bronze, 15&nbsp;cm</span></figcaption></figure></li><li><figure><div class="vign haute"><img src="images/catalogue/emblem-etoile.webp" width="140" height="230" alt="Étoile de David dorée" loading="lazy" decoding="async"></div><figcaption><b>Étoile de David</b><span>Doré, 18,7&nbsp;cm</span></figcaption></figure></li><li><figure><div class="vign haute"><img src="images/catalogue/emblem-rose.webp" width="140" height="230" alt="Rose en bronze avec sa tige et ses feuilles" loading="lazy" decoding="async"></div><figcaption><b>Rose</b><span>Bronze, 38&nbsp;cm</span></figcaption></figure></li><li><figure><div class="vign vide" aria-hidden="true">Sans emblème</div><figcaption><b>Sans emblème</b><span>Couvercle nu</span></figcaption></figure></li></ul></div>
+<div class="perso-ligne"><div class="perso-tete"><h3>Plaque d'identité</h3><p>Gravée au nom, avec les dates de naissance et de décès.</p></div><ul class="finitions"><li><figure><div class="vign plaque"><img src="images/catalogue/plaque.webp" width="150" height="101" alt="Plaque d'identité rectangulaire, finition laiton brossé" loading="lazy" decoding="async"></div><figcaption><b>Plaque gravée</b><span>Finition laiton brossé, 17,5&nbsp;×&nbsp;11&nbsp;cm</span></figcaption></figure></li></ul></div>
 </div>
 <p class="perso-pied rv">Vous préparez vos propres obsèques&nbsp;? Choisissez dès aujourd'hui votre modèle et ses finitions&nbsp;: ils sont inscrits dans votre contrat obsèques et seront respectés à la lettre. <a href="anticiper.html">Choisir de son vivant</a></p>
+</div></section>
+<section class="sec-bloc" id="controle"><div class="wrap">
+<div class="tete rv"><p class="sur">Notre contrôle qualité</p><h2 class="grand">Chaque cercueil, <em>vérifié quatre fois.</em></h2><p class="chapo">Un cercueil ne se rend pas. Il doit être parfait le jour où vous le découvrez. Voici ce que nous vérifions, sur chaque pièce, avant qu'elle ne quitte nos mains.</p></div>
+<div class="parcours quatre rv"><svg viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M0 10H100"/></svg><ol>
+<li><span class="n">Un</span><h3>Le bois</h3><p>Essence, épaisseur réglementaire, absence de fente ou de nœud fragile, assemblages serrés.</p></li>
+<li><span class="n">Deux</span><h3>Les finitions</h3><p>Vernis régulier, teinte uniforme, moulures et gravures nettes, aucune rayure.</p></li>
+<li><span class="n">Trois</span><h3>L'intérieur</h3><p>Capiton propre et bien tendu, oreiller en place, étanchéité du fond.</p></li>
+<li><span class="n">Quatre</span><h3>Votre commande</h3><p>Poignées, emblème et plaque posés selon votre commande, gravure relue lettre par lettre.</p></li>
+</ol></div>
 </div></section>
 <section class="sec-bloc nuit" id="garanties"><div class="wrap">
 <div class="tete rv"><p class="sur">Nos trois garanties</p><h2 class="grand">Le meilleur, <em>et nous l'écrivons.</em></h2><p class="chapo">N'importe qui peut se dire le meilleur. Nous, nous nous y engageons par écrit, sur chaque commande.</p></div>
@@ -827,6 +863,10 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 <div class="rv"><span class="g-n">II</span><h3>Qualité garantie</h3><p>Bois massif uniquement, jamais d'aggloméré. Chaque cercueil est contrôlé un par un. Au moindre défaut à la livraison, il est remplacé immédiatement.</p></div>
 <div class="rv"><span class="g-n">III</span><h3>Livré à temps, garanti</h3><p>Modèle en stock&nbsp;: il arrive avant les obsèques, partout en France. Modèle sur commande&nbsp;: au délai écrit sur le devis. Sinon, il vous est intégralement remboursé.</p></div>
 </div>
+</div></section>
+<section class="sec-bloc" id="preuves"><div class="wrap">
+<div class="tete rv"><p class="sur">Une maison sérieuse</p><h2 class="grand">Ne nous croyez pas sur parole. <em>Vérifiez.</em></h2><p class="chapo">Tout le monde promet. Voici ce que vous pouvez contrôler vous-même, avant de nous confier quoi que ce soit.</p></div>
+<ul class="preuves-v rv"><li><svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="14" r="9"/><path d="M12 21.5 10 32l7-3.5 7 3.5-2-10.5"/><path d="m13.5 14 2.5 2.5 5-5"/></svg><h3>Habilitation préfectorale</h3><p>Lignée est un opérateur funéraire habilité par la préfecture. Le numéro figure dans nos <a href="mentions-legales.html">mentions légales</a>.</p></li><li><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M8 3h13l6 6v22H8z"/><path d="M21 3v6h6M12 15h11M12 20h11M12 25h6"/></svg><h3>Devis écrit, d'abord</h3><p>Un devis détaillé, au prix affiché sur ce site. Rien n'est commandé ni facturé sans votre signature.</p></li><li><svg viewBox="0 0 34 34" aria-hidden="true"><rect x="3" y="8" width="28" height="19" rx="2"/><path d="M3 14h28M8 21h6"/></svg><h3>Paiement sécurisé</h3><p>Par carte ou par virement, après signature. La banque du défunt peut régler directement, sur facture.</p></li><li><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M17 4v26M10 30h14M6 9h22"/><path d="m6 9-4 9a4 4 0 0 0 8 0zM28 9l-4 9a4 4 0 0 0 8 0z"/></svg><h3>Médiateur indépendant</h3><p>En cas de désaccord, vous disposez d'un recours gratuit auprès d'un médiateur de la consommation.</p></li></ul>
 </div></section>
 <section class="sec-bloc pierre" id="urnes"><div class="wrap">
 <div class="tete rv"><p class="sur">Urnes</p><h2 class="grand">Pour une crémation, <em>trois urnes.</em></h2><p class="chapo">Pour un columbarium, un caveau, la maison ou une dispersion. Gravure et livraison comprises.</p></div>

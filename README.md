@@ -59,6 +59,8 @@ Photos tirées du catalogue fournisseur, modèles de style européen uniquement,
 
 Finitions au choix (section « Personnaliser » de `cercueils.html`) : poignées H001, H005, H012, H032 ; emblèmes D051 (crucifix), D055 (croix latine), D010 (croix huguenote), D009 (étoile de David), D014 (rose) ; plaque DP011.
 
+Engagements affichés à tenir réellement (sections « Notre contrôle qualité » et « Vérifiez ») : contrôle en quatre points de chaque cercueil (bois, finitions, intérieur, commande), devis signé avant toute commande, paiement après signature, adhésion à un médiateur de la consommation, numéro d'habilitation dans les mentions légales.
+
 À confirmer auprès du fournisseur avant la mise en ligne : essence du bois (le site affirme « bois massif uniquement »), épaisseur réglementaire, compatibilité crémation des modèles Sobre, Tradition et Floral, délais réels des modèles sur commande.
 
 Les trois garanties affichées (prix le plus bas garanti avec remboursement de la différence, bois massif contrôlé un par un avec remplacement en cas de défaut, livraison avant les obsèques ou remboursement) sont des engagements contractuels : à reprendre dans les CGV et à tenir dans la réalité, sinon ils deviennent une pratique commerciale trompeuse.
