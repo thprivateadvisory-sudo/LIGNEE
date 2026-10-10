@@ -64,6 +64,21 @@ Fichiers dans `js/` : `fiche.js` (fiche, données des modèles), `cercueil3d.js`
 
 À confirmer auprès du fournisseur : les cinq teintes (chêne clair, naturel, miel, acajou, noyer) et les trois capitons (blanc, ivoire, champagne) proposés pour chaque modèle, et la remise d'une attestation de conformité du fabricant (promise dans l'onglet Conformité).
 
+## Souvenirs : forfaits à prix fixe
+
+Page `souvenirs.html`, « Fait dans nos ateliers » (à n'afficher que pour ce qui est réellement confectionné par Lignée). Prix proposés, à valider avec les coûts réels :
+
+| Forfait | Prix TTC |
+|---|---|
+| Coussin | 59 € |
+| Doudou | 89 € |
+| Cadre | 69 € |
+| Boîte en bois | 149 € |
+| Bijou empreinte digitale ou écriture | 129 € |
+| Bijou mèche de cheveux | 149 € |
+
+Offre affichée : à partir de trois objets, le quatrième est offert. Section « Votre idée, nous la fabriquons » : tout autre objet sur devis gratuit sous 48 heures. Aucun bijou contenant des cendres (interdit par la loi).
+
 ## Gamme photographiée (catalogue fournisseur)
 
 Photos tirées du catalogue fournisseur, modèles de style européen uniquement, dans `images/catalogue/` :
