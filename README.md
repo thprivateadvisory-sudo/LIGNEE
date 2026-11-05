@@ -105,3 +105,13 @@ La vente de cercueils et d'urnes exige l'habilitation funéraire préfectorale, 
 ## Vidéos
 
 Les vidéos du dossier `videos/` viennent de Pexels (licence Pexels : utilisation libre, y compris commerciale, sans attribution obligatoire). Elles sont téléchargées et compressées par l'Action GitHub `.github/workflows/videos.yml` à partir de la liste `videos/sources.txt` (une ligne `final <id Pexels> <nom>` par vidéo). Pour en ajouter une, ajoutez une ligne et poussez : l'Action ajoute `videos/<nom>.mp4` et son image d'affiche `videos/<nom>.jpg`.
+
+## Objection « pompe funèbre » (test persona, novembre 2026)
+
+Sur 20 familles simulées, 20 refusent pour la même raison : leur pompe funèbre. Réponses ajoutées au site, à tenir dans la réalité :
+
+- Lignée appelle elle-même la pompe funèbre et obtient son **accord écrit avant tout paiement** (copie au client). Sans accord, rien n'est dû (CGV art. 2 et 4).
+- Garantie « Livré à temps » : créneau écrit, et en cas d'imprévu **un cercueil en stock de valeur égale ou supérieure livré sans supplément** (CGV art. 6). Obsèques dans les 7 jours : modèles en stock uniquement (CGV art. 5). Cela suppose un stock réel et un transporteur express.
+- Calculateur d'économie (`cercueils.html#economie`) : prix du cercueil sur le devis de la pompe funèbre, comparé au modèle Lignée.
+- Nouvelle page `pompes-funebres.html` : programme partenaire (charte de réception sans frais de manutention, familles adressées, tarifs pros sur demande). À créer réellement : la charte d'une page et la liste des partenaires.
+- À faire valider par le juriste : la phrase de la FAQ sur le libre choix du prestataire et la ligne cercueil séparée sur le devis.

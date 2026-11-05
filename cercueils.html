@@ -193,6 +193,15 @@ th{font-weight:500;width:38%}
 .a-completer{background:#F3E6C4;padding:0 .25rem;border-radius:2px}
 
 /* Pied de page */
+.calcul{margin-top:clamp(2.5rem,5vw,3.5rem);background:rgba(245,241,232,.06);border:1px solid #33435E;border-radius:6px;padding:clamp(1.5rem,4vw,2.5rem);max-width:820px;display:grid;gap:1rem}
+.calcul h3{font-size:1.6rem;margin:0}
+.calcul p{margin:0;color:#C9CED6}
+.calcul-f{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1rem}
+.calcul .champ label{display:block;font-size:.9rem;margin-bottom:.35rem;color:#C9CED6}
+.calcul .calcul-r{font-family:var(--f-titre);font-size:1.45rem;color:var(--ivoire);line-height:1.3}
+.calcul .calcul-r b{color:var(--or);font-weight:500;font-size:1.25em}
+.calcul .btn{justify-self:start}
+.calcul .calcul-n{font-size:.85rem}
 .pied{background:var(--nuit);color:#C9CED6;padding-block:3.5rem 2rem;font-size:.95rem}
 .pied a{color:var(--ivoire);text-decoration:none}
 .pied a:hover{color:var(--or)}
@@ -926,14 +935,34 @@ input:focus-visible+.pastille{outline:2px solid var(--or-texte)}
 <section class="heros-ciel aube avec-video"><div class="video-fond" aria-hidden="true"><video data-auto muted loop playsinline autoplay preload="auto" poster="videos/bois-poncage.jpg" aria-hidden="true"><source src="videos/bois-poncage.mp4" type="video/mp4"></video></div><div class="wrap split"><div class="heros-texte"><nav class="ariane" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><span aria-hidden="true">/</span><span aria-current="page">Cercueils et urnes</span></nav>
 <p class="sur">Cercueils et urnes</p>
 <h1>Les plus beaux cercueils, <em>au prix le plus bas.</em></h1>
-<p class="chapo">Bois massif, contrôlés un par un, dès 340&nbsp;€ livraison comprise. Prix le plus bas garanti&nbsp;: si vous trouvez moins cher, nous remboursons la différence. Vous gardez la pompe funèbre de votre choix.</p>
+<p class="chapo">Bois massif, contrôlés un par un, dès 340&nbsp;€ livraison comprise. Prix le plus bas garanti&nbsp;: si vous trouvez moins cher, nous remboursons la différence. Vous gardez votre pompe funèbre&nbsp;: nous l'appelons pour vous et vous ne payez rien avant son accord écrit.</p>
 <div class="btns"><a class="btn" href="#prix">Voir les prix</a><a class="btn sec" href="contact.html#formulaire">Être rappelé par un conseiller</a></div>
 </div><figure class="vitrine"><img src="images/catalogue/vitrine-heritage.webp" width="650" height="356" alt="Cercueil Héritage, teinte acajou vernie, poignées demi-lune dorées" fetchpriority="high" decoding="async"><figcaption><span><span class="v-sur">Modèle signature</span><span class="v-nom">Héritage</span></span><span class="v-prix"><b>1 190&nbsp;€</b>TTC, livraison incluse</span></figcaption><a class="voir-3d" href="#modele-heritage" data-modele="heritage">Voir en 3D et personnaliser</a></figure></div></section>
-<section class="engagements" aria-label="Nos engagements"><div class="wrap"><ul><li><b>Prix le plus bas garanti</b><span>Moins cher ailleurs&nbsp;? Nous remboursons la différence.</span></li><li><b>Bois massif uniquement</b><span>Jamais d'aggloméré, contrôlé un par un.</span></li><li><b>Livré à temps</b><span>Au délai écrit sur le devis, ou remboursé.</span></li><li><b>Livraison incluse</b><span>Partout en France métropolitaine.</span></li></ul></div></section>
+<section class="engagements" aria-label="Nos engagements"><div class="wrap"><ul><li><b>Prix le plus bas garanti</b><span>Moins cher ailleurs&nbsp;? Nous remboursons la différence.</span></li><li><b>Bois massif uniquement</b><span>Jamais d'aggloméré, contrôlé un par un.</span></li><li><b>Votre pompe funèbre d'accord</b><span>Son accord écrit avant tout paiement.</span></li><li><b>Livré à temps</b><span>Créneau écrit, cercueil de secours prêt.</span></li></ul></div></section>
 <section class="sec-bloc" id="prix"><div class="wrap">
 <div class="tete rv"><p class="sur">Cercueils</p><h2 class="grand">Quatre modèles, <em>un prix chacun.</em></h2><p class="chapo">Deux modèles en stock pour l'urgence, deux sur commande pour ceux qui prennent le temps de choisir. Chacun est livré avec son capiton, ses poignées, son emblème et une plaque d'identité gravée. Le prix indiqué est le prix payé.</p></div>
 <div class="deux-gammes"><div class="groupe"><div class="groupe-tete rv"><h3>En stock</h3><p>Disponibles immédiatement et livrés avant les obsèques. Pour un décès soudain, quand tout doit aller vite.</p></div><div class="gamme deux"><article class="modele photo-m rv"><a class="photo-lien" href="#modele-sobre" data-modele="sobre" aria-label="Voir le modèle Sobre en 3D"><figure class="photo"><img src="images/catalogue/cercueil-sobre.webp" width="674" height="270" alt="Cercueil Sobre : lignes droites, couvercle à pans, bois clair au vernis naturel" loading="lazy" decoding="async"></figure></a><p class="dispo-l"><span class="dispo">En stock</span></p><p class="usage">Inhumation, crémation</p><h4>Sobre</h4><ul><li>Lignes droites, couvercle à pans</li><li>Vernis naturel, teinte claire</li><li>Capiton et oreiller en coton</li></ul><p class="prix-m"><b>340&nbsp;€</b><span>TTC, livraison incluse</span></p><a class="voir-3d" href="#modele-sobre" data-modele="sobre">Voir en 3D et personnaliser</a></article><article class="modele photo-m mise rv"><a class="photo-lien" href="#modele-tradition" data-modele="tradition" aria-label="Voir le modèle Tradition en 3D"><figure class="photo"><img src="images/catalogue/cercueil-tradition.webp" width="724" height="245" alt="Cercueil Tradition : flancs galbés, couvercle mouluré, teinte miel satinée" loading="lazy" decoding="async"></figure></a><p class="dispo-l"><span class="dispo">En stock</span></p><p class="usage">Inhumation, crémation</p><h4>Tradition <span class="repere">Le plus choisi</span></h4><ul><li>Flancs galbés, couvercle mouluré</li><li>Teinte miel, finition satinée</li><li>Capiton satiné, six poignées</li></ul><p class="prix-m"><b>690&nbsp;€</b><span>TTC, livraison incluse</span></p><a class="voir-3d" href="#modele-tradition" data-modele="tradition">Voir en 3D et personnaliser</a></article></div></div><div class="groupe"><div class="groupe-tete rv"><h3>Sur commande</h3><p>Choisis sur catalogue et préparés pour vous. Délai garanti par écrit sur le devis. Idéal pour préparer ses obsèques à l'avance.</p></div><div class="gamme deux"><article class="modele photo-m rv"><a class="photo-lien" href="#modele-floral" data-modele="floral" aria-label="Voir le modèle Floral en 3D"><figure class="photo"><img src="images/catalogue/cercueil-floral.webp" width="735" height="178" alt="Cercueil Floral : gravure florale sur le flanc, bois clair satiné, double moulure" loading="lazy" decoding="async"></figure></a><p class="dispo-l"><span class="dispo cmd">Sur commande</span></p><p class="usage">Inhumation, crémation</p><h4>Floral</h4><ul><li>Gravure florale sur le flanc</li><li>Bois clair, double moulure</li><li>Capiton satiné, six poignées</li></ul><p class="prix-m"><b>890&nbsp;€</b><span>TTC, livraison incluse</span></p><a class="voir-3d" href="#modele-floral" data-modele="floral">Voir en 3D et personnaliser</a></article><article class="modele photo-m rv"><a class="photo-lien" href="#modele-heritage" data-modele="heritage" aria-label="Voir le modèle Héritage en 3D"><figure class="photo"><img src="images/catalogue/cercueil-heritage.webp" width="650" height="356" alt="Cercueil Héritage : teinte acajou vernie brillante, couvercle à gradins, poignées demi-lune dorées" loading="lazy" decoding="async"></figure></a><p class="dispo-l"><span class="dispo cmd">Sur commande</span></p><p class="usage">Inhumation</p><h4>Héritage</h4><ul><li>Teinte acajou, vernis brillant</li><li>Couvercle à gradins</li><li>Capiton brodé, six poignées laiton</li></ul><p class="prix-m"><b>1 190&nbsp;€</b><span>TTC, livraison incluse</span></p><a class="voir-3d" href="#modele-heritage" data-modele="heritage">Voir en 3D et personnaliser</a></article></div></div></div>
 <ul class="inclus rv"><li>Bois massif, contrôlé un par un</li><li>Livraison incluse en France métropolitaine</li><li>Prix le plus bas garanti</li><li>Conformes à la réglementation funéraire française</li></ul>
+</div></section>
+<section class="sec-bloc nuit" id="pompe-funebre"><div class="wrap">
+<div class="tete rv"><p class="sur">Votre pompe funèbre</p><h2 class="grand">Vous gardez votre pompe funèbre. <em>Nous l'appelons pour vous.</em></h2><p class="chapo">Vous n'avez pas un interlocuteur de plus&nbsp;: vous avez un appel de moins. Nous parlons à votre pompe funèbre, nous obtenons son accord écrit, et nous livrons chez elle. Elle pose le cercueil comme n'importe quel autre&nbsp;: le jour des obsèques, rien ne distingue un cercueil Lignée.</p></div>
+<ol class="etapes rv">
+<li><div><h3>Vous nous donnez son nom</h3><p>Le nom de votre pompe funèbre et la date des obsèques, si elle est connue. C'est tout ce que nous vous demandons.</p></div></li>
+<li><div><h3>Nous obtenons son accord, par écrit</h3><p>Nous l'appelons, nous convenons avec elle du lieu et du créneau de livraison, et vous recevez sa confirmation écrite. Si elle refuse, ou facture un supplément qui annule l'économie, nous vous le disons et vous ne payez rien.</p></div></li>
+<li><div><h3>Vous signez, puis vous payez</h3><p>Un devis au prix affiché, avec la date et le créneau de livraison écrits noir sur blanc. Rien n'est commandé ni payé avant.</p></div></li>
+<li><div><h3>Nous livrons chez elle</h3><p>Directement à la pompe funèbre ou au funérarium, au créneau convenu. Vous et elle recevez une confirmation de livraison.</p></div></li>
+</ol>
+<div class="calcul rv" id="economie">
+<h3>Combien économisez-vous&nbsp;?</h3>
+<p>Sur le devis de votre pompe funèbre, le cercueil figure sur une ligne à part. Indiquez son prix&nbsp;: nous calculons l'écart avec le modèle Lignée équivalent.</p>
+<form class="calcul-f" novalidate onsubmit="return false">
+<div class="champ"><label for="c-prix">Prix du cercueil sur votre devis</label><input id="c-prix" type="number" inputmode="numeric" min="0" step="10" placeholder="ex. 1 450"></div>
+<div class="champ"><label for="c-modele">Modèle Lignée comparé</label><select id="c-modele"><option value="340">Sobre, 340&nbsp;€</option><option value="690" selected>Tradition, 690&nbsp;€</option><option value="890">Floral, 890&nbsp;€</option><option value="1190">Héritage, 1&nbsp;190&nbsp;€</option></select></div>
+</form>
+<p class="calcul-r" id="c-res" role="status" aria-live="polite">Saisissez le prix du cercueil pour voir l'économie.</p>
+<a class="btn" id="c-cta" href="contact.html?sujet=cercueil#formulaire">Vérifier avec un conseiller</a>
+<p class="calcul-n">Indicatif&nbsp;: l'économie réelle est confirmée par écrit sur votre devis Lignée, après l'accord de votre pompe funèbre.</p>
+</div>
 </div></section>
 <section class="sec-bloc pierre" id="personnaliser"><div class="wrap">
 <div class="tete rv"><p class="sur">Personnaliser</p><h2 class="grand">Les finitions de votre choix, <em>sans supplément.</em></h2><p class="chapo">Poignées, emblème du couvercle et plaque d'identité&nbsp;: vous choisissez, nous posons. Sur tous les modèles, y compris ceux en stock.</p></div>
@@ -958,12 +987,12 @@ input:focus-visible+.pastille{outline:2px solid var(--or-texte)}
 <div class="garanties">
 <div class="rv"><span class="g-n">I</span><h3>Prix le plus bas garanti</h3><p>Vous trouvez le même modèle moins cher ailleurs, livraison comprise&nbsp;? Nous vous remboursons la différence. Sans discussion.</p></div>
 <div class="rv"><span class="g-n">II</span><h3>Qualité garantie</h3><p>Bois massif uniquement, jamais d'aggloméré. Chaque cercueil est contrôlé un par un. Au moindre défaut à la livraison, il est remplacé immédiatement.</p></div>
-<div class="rv"><span class="g-n">III</span><h3>Livré à temps, garanti</h3><p>Modèle en stock&nbsp;: il arrive avant les obsèques, partout en France. Modèle sur commande&nbsp;: au délai écrit sur le devis. Sinon, il vous est intégralement remboursé.</p></div>
+<div class="rv"><span class="g-n">III</span><h3>Livré à temps, garanti</h3><p>Le créneau de livraison est écrit sur le devis et confirmé à votre pompe funèbre. En cas d'imprévu, nous livrons à temps un cercueil en stock de valeur égale ou supérieure, sans supplément. Un remboursement ne remplace pas un cercueil&nbsp;: notre engagement, c'est qu'il soit là.</p></div>
 </div>
 </div></section>
 <section class="sec-bloc" id="preuves"><div class="wrap">
 <div class="tete rv"><p class="sur">Une maison sérieuse</p><h2 class="grand">Ne nous croyez pas sur parole. <em>Vérifiez.</em></h2><p class="chapo">Tout le monde promet. Voici ce que vous pouvez contrôler vous-même, avant de nous confier quoi que ce soit.</p></div>
-<ul class="preuves-v rv"><li><svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="14" r="9"/><path d="M12 21.5 10 32l7-3.5 7 3.5-2-10.5"/><path d="m13.5 14 2.5 2.5 5-5"/></svg><h3>Habilitation préfectorale</h3><p>Lignée est un opérateur funéraire habilité par la préfecture. Le numéro figure dans nos <a href="mentions-legales.html">mentions légales</a>.</p></li><li><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M8 3h13l6 6v22H8z"/><path d="M21 3v6h6M12 15h11M12 20h11M12 25h6"/></svg><h3>Devis écrit, d'abord</h3><p>Un devis détaillé, au prix affiché sur ce site. Rien n'est commandé ni facturé sans votre signature.</p></li><li><svg viewBox="0 0 34 34" aria-hidden="true"><rect x="3" y="8" width="28" height="19" rx="2"/><path d="M3 14h28M8 21h6"/></svg><h3>Paiement sécurisé</h3><p>Par carte ou par virement, après signature. La banque du défunt peut régler directement, sur facture.</p></li><li><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M17 4v26M10 30h14M6 9h22"/><path d="m6 9-4 9a4 4 0 0 0 8 0zM28 9l-4 9a4 4 0 0 0 8 0z"/></svg><h3>Médiateur indépendant</h3><p>En cas de désaccord, vous disposez d'un recours gratuit auprès d'un médiateur de la consommation.</p></li></ul>
+<ul class="preuves-v rv"><li><svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="14" r="9"/><path d="M12 21.5 10 32l7-3.5 7 3.5-2-10.5"/><path d="m13.5 14 2.5 2.5 5-5"/></svg><h3>Habilitation préfectorale</h3><p>Lignée est un opérateur funéraire habilité par la préfecture. Le numéro figure dans nos <a href="mentions-legales.html">mentions légales</a>.</p></li><li><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M8 3h13l6 6v22H8z"/><path d="M21 3v6h6M12 15h11M12 20h11M12 25h6"/></svg><h3>Devis écrit, d'abord</h3><p>Un devis détaillé, au prix affiché sur ce site. Rien n'est commandé ni facturé sans votre signature.</p></li><li><svg viewBox="0 0 34 34" aria-hidden="true"><rect x="3" y="8" width="28" height="19" rx="2"/><path d="M3 14h28M8 21h6"/></svg><h3>Rien à payer d'avance</h3><p>Aucun paiement avant l'accord écrit de votre pompe funèbre et la signature du devis. Par carte ou virement&nbsp;; la banque du défunt peut régler sur facture.</p></li><li><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M17 4v26M10 30h14M6 9h22"/><path d="m6 9-4 9a4 4 0 0 0 8 0zM28 9l-4 9a4 4 0 0 0 8 0z"/></svg><h3>Médiateur indépendant</h3><p>En cas de désaccord, vous disposez d'un recours gratuit auprès d'un médiateur de la consommation.</p></li></ul>
 </div></section>
 <section class="sec-bloc pierre" id="urnes"><div class="wrap">
 <div class="tete rv"><p class="sur">Urnes</p><h2 class="grand">Pour une crémation, <em>trois urnes.</em></h2><p class="chapo">Pour un columbarium, un caveau, la maison ou une dispersion. Gravure et livraison comprises.</p></div>
@@ -978,18 +1007,15 @@ input:focus-visible+.pastille{outline:2px solid var(--or-texte)}
 </div>
 <div class="jp-pied rv"><p class="ech-note">Prix habituels&nbsp;: sources Mutuelle SMI et France Conso. Prix Lignée TTC, livraison incluse en France métropolitaine.</p></div>
 </div></section>
-<section class="sec-bloc"><div class="wrap">
-<div class="tete rv"><p class="sur">Comment ça se passe</p><h2 class="grand">Trois étapes, <em>une seule demande.</em></h2></div>
-<div class="parcours trois rv"><svg viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M0 10H100"/></svg><ol>
-<li><span class="n">Un</span><h3>Vous nous contactez</h3><p>Un conseiller vous rappelle, vous écoute, vous aide à choisir et vous adresse un devis écrit, au prix affiché.</p></li>
-<li><span class="n">Deux</span><h3>Nous nous coordonnons</h3><p>Nous contactons la pompe funèbre ou le funérarium de votre choix pour convenir du lieu et de l'heure de livraison.</p></li>
-<li><span class="n">Trois</span><h3>Nous livrons</h3><p>Le cercueil ou l'urne arrive avant les obsèques, partout en France. Vous recevez une confirmation de livraison.</p></li>
-</ol></div>
-</div></section>
 <section class="sec-bloc pierre"><div class="wrap">
 <div class="tete rv"><p class="sur">Questions fréquentes</p><h2 class="grand">Avant de <em>choisir.</em></h2></div>
 <div class="rv"><div class="faq">
-<details><summary>Ma pompe funèbre acceptera-t-elle un cercueil acheté chez vous&nbsp;?</summary><p>Vous êtes libre de choisir chacun de vos prestataires funéraires. Nous prenons contact avec l'opérateur que vous avez retenu pour organiser la livraison, et nous vous prévenons s'il y a la moindre difficulté.</p></details>
+<details open><summary>Ma pompe funèbre acceptera-t-elle un cercueil Lignée&nbsp;?</summary><p>La loi vous laisse libre de choisir un prestataire différent pour chaque fourniture, et le devis de votre pompe funèbre doit détailler le cercueil sur une ligne à part. Vous n'avez pas à le lui demander vous-même&nbsp;: nous l'appelons, et vous recevez son accord écrit avant de payer quoi que ce soit. Si elle refuse ou ajoute un supplément qui annule l'économie, nous vous le disons franchement et vous ne nous devez rien.</p></details>
+<details><summary>Je n'ai pas la force de gérer un interlocuteur de plus.</summary><p>C'est précisément ce que nous évitons. Vous nous donnez le nom de votre pompe funèbre, nous faisons le lien avec elle du début à la fin. Vous signez un devis, et c'est tout.</p></details>
+<details><summary>Et si le cercueil n'arrive pas à temps&nbsp;?</summary><p>Le créneau de livraison est écrit sur le devis et confirmé à votre pompe funèbre. Nous gardons des modèles en stock pour l'urgence&nbsp;: en cas d'imprévu, nous livrons à temps un cercueil de valeur égale ou supérieure, sans supplément. Pour des obsèques dans les jours qui viennent, nous ne proposons que des modèles en stock.</p></details>
+<details><summary>Acheter un cercueil à part, est-ce que cela se verra&nbsp;?</summary><p>Non. Le cercueil est livré à votre pompe funèbre, qui le prépare et le pose comme n'importe quel autre. Bois massif, capiton, poignées et emblème de votre choix&nbsp;: votre famille voit un beau cercueil, pas un prix. Vous pouvez voir le modèle en 3D, recevoir des photos détaillées du bois et des finitions, ou nous en parler en visio avant de décider.</p></details>
+<details><summary>J'ai déjà le devis de la pompe funèbre. Cela vaut-il le coup&nbsp;?</summary><p>Envoyez-le-nous&nbsp;: nous vous disons, chiffres à l'appui, ce que vous économiseriez. Si l'écart est faible, nous vous le dirons aussi. Si vous avez déjà signé, nous regardons avec vous ce qui est encore possible.</p></details>
+<details><summary>Il y a déjà un contrat obsèques. Est-ce utile&nbsp;?</summary><p>Cela dépend du contrat. Si le cercueil y est déjà prévu et payé, gardez-le&nbsp;: nous vous le dirons. Si le contrat verse un capital, sans imposer de cercueil, ce que vous économisez sur le cercueil reste à la famille. Envoyez-nous le contrat, nous vérifions gratuitement.</p></details>
 <details><summary>Quelle différence entre un cercueil d'inhumation et de crémation&nbsp;?</summary><p>Pour une crémation, le cercueil doit répondre aux exigences des crématoriums. Les modèles Sobre, Tradition et Floral conviennent aux deux usages&nbsp;: nous les préparons en conséquence. Le modèle Héritage est réservé à l'inhumation.</p></details>
 <details><summary>Quelle différence entre un modèle en stock et un modèle sur commande&nbsp;?</summary><p>Les modèles en stock sont prêts à partir&nbsp;: nous les livrons avant les obsèques, même lorsque tout se décide en quelques jours. Les modèles sur commande sont préparés pour vous&nbsp;; leur délai est indiqué par écrit sur le devis avant toute signature. Dans les deux cas, poignées, emblème et plaque sont à votre choix.</p></details>
 <details><summary>Puis-je choisir mon cercueil de mon vivant&nbsp;?</summary><p>Oui. Vous choisissez le modèle et ses finitions, nous les inscrivons dans un devis détaillé, et vous les financez par un contrat obsèques. Le jour venu, vos proches n'ont rien à décider&nbsp;: nous livrons exactement ce que vous avez choisi. <a href="anticiper.html">En savoir plus</a></p></details>
@@ -1060,7 +1086,7 @@ input:focus-visible+.pastille{outline:2px solid var(--or-texte)}
 <li><a href="anticiper.html">Assurance obsèques</a></li><li><a href="anticiper.html#volontes">Coffret «&nbsp;Mes volontés&nbsp;»</a></li><li><a href="guide.html">Que faire après un décès</a></li></ul></div>
 <div><h4>Après</h4><ul>
 <li><a href="souvenirs.html">Souvenirs confectionnés</a></li><li><a href="formules.html">Succession et logement</a></li>
-<li><a href="methode.html">Comment ça marche</a></li><li><a href="notaires.html">Notaires et professionnels</a></li><li><a href="a-propos.html">La maison Lignée</a></li></ul></div>
+<li><a href="methode.html">Comment ça marche</a></li><li><a href="notaires.html">Notaires et professionnels</a></li><li><a href="pompes-funebres.html">Pompes funèbres partenaires</a></li><li><a href="a-propos.html">La maison Lignée</a></li></ul></div>
 <div><h4>Nous joindre</h4><ul>
 <li><a href="contact.html#formulaire">Être rappelé</a></li>
 <li><a href="mailto:contact@lignee.fr">contact@lignee.fr</a></li><li><a href="contact.html">Devis gratuit en 24 h</a></li></ul></div>
@@ -1265,6 +1291,23 @@ input:focus-visible+.pastille{outline:2px solid var(--or-texte)}
 })();
 </script>
 
+<script>
+(function(){
+  var p=document.getElementById('c-prix'),m=document.getElementById('c-modele'),r=document.getElementById('c-res'),a=document.getElementById('c-cta');
+  if(!p)return;
+  var fmt=function(n){return Math.round(n).toLocaleString('fr-FR')+'\u00a0€';};
+  var maj=function(){
+    var v=parseFloat(p.value),l=parseFloat(m.value),nom=m.options[m.selectedIndex].text.split(',')[0];
+    var base='contact.html?sujet=cercueil&choix=';
+    if(!(v>0)){r.textContent="Saisissez le prix du cercueil pour voir l'économie.";a.href='contact.html?sujet=cercueil#formulaire';return;}
+    var e=v-l;
+    if(e>0){r.innerHTML='Économie estimée avec le modèle '+nom+'&nbsp;: <b>'+fmt(e)+'</b>';}
+    else{r.textContent='Le modèle '+nom+' n\u2019est pas moins cher que votre devis. Essayez un autre modèle, ou gardez votre devis : nous vous le dirons aussi.';}
+    a.href=base+encodeURIComponent('Cercueil sur le devis de ma pompe funèbre : '+fmt(v)+'. Modèle Lignée envisagé : '+nom+'. Merci de contacter ma pompe funèbre pour obtenir son accord écrit.')+'#formulaire';
+  };
+  p.addEventListener('input',maj);m.addEventListener('change',maj);
+})();
+</script>
 <script type="module" src="js/fiche.js"></script>
 </body>
 </html>
