@@ -17,6 +17,7 @@ Un fichier HTML autonome par page (12 pages), tous au même niveau (styles et sc
 | `a-propos.html` | À propos |
 | `contact.html` | Contact et demande de visite gratuite |
 | `mentions-legales.html` | Mentions légales |
+| `cgv.html` | Conditions générales de vente |
 | `confidentialite.html` | Politique de confidentialité |
 
 Hébergement : GitHub Pages (aucune étape de build).
@@ -38,10 +39,10 @@ Rechercher et remplacer dans les 9 fichiers :
 
 - Téléphone et WhatsApp : volontairement absents au lancement (pas encore de centre d'appels). Le contact passe par « Être rappelé » (formulaire de `contact.html#formulaire`) et par e-mail. À l'arrivée d'un numéro en 09 ou 03, le rajouter dans l'en-tête, le pied de page, la barre mobile, `contact.html`, le catalogue imprimé et les messages d'erreur des formulaires.
 - `A_RENSEIGNER` : clé d'accès Web3Forms (https://web3forms.com), pour que les formulaires envoient les demandes par e-mail. Tant qu'elle n'est pas renseignée, les formulaires affichent un message invitant à appeler.
-- `à compléter` (mentions légales, confidentialité) : capital, siège, SIREN/RCS, TVA, directeur de publication, une fois la SAS créée.
+- Mentions légales : seul le nom (LIGNÉE) et l'e-mail sont affichés. Les autres lignes (forme, capital, siège, SIREN/RCS, TVA, directeur de publication, habilitation, ORIAS) sont en commentaire HTML dans `mentions-legales.html` : les compléter puis les décommenter. Idem pour le médiateur (section « Médiation »). Le siège peut aussi être ajouté dans `confidentialite.html`.
 - `contact@lignee.fr` et `https://lignee.fr` (balises canoniques, `sitemap.xml`, `robots.txt`) si le domaine final est différent.
 
-À faire relire par un juriste : mentions légales, confidentialité, guide « que faire après un décès ». Les CGV restent à rédiger avant le premier dossier.
+À faire relire par un juriste : mentions légales, confidentialité, guide « que faire après un décès ». Les CGV (`cgv.html`, liées dans le pied de page) sont une première version à faire valider par le juriste, notamment les conditions des trois garanties et le droit de rétractation.
 
 ## Prix et engagements à valider avant la mise en ligne
 
