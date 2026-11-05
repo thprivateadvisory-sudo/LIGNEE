@@ -28,6 +28,8 @@ Hébergement : GitHub Pages (aucune étape de build).
 3. Le site est en ligne en une ou deux minutes à l'adresse indiquée par GitHub.
 4. Nom de domaine : dans Settings → Pages → Custom domain, saisir le domaine (ex. `lignee.fr`), puis créer chez le registraire les enregistrements DNS indiqués par GitHub. Cocher ensuite « Enforce HTTPS ».
 
+Polices : Cormorant Garamond et Inter sont hébergées avec le site dans `polices/` (licence SIL OFL), sans appel à Google Fonts. Les adresses canoniques et `sitemap.xml` utilisent les URL sans `.html` (ex. `https://lignee.fr/contact`), que GitHub Pages sert directement.
+
 Le fichier `.nojekyll` indique à GitHub Pages de servir les fichiers tels quels.
 
 ## À compléter avant la mise en ligne
