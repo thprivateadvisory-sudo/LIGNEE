@@ -115,3 +115,9 @@ Sur 20 familles simulées, 20 refusent pour la même raison : leur pompe funèbr
 - Calculateur d'économie (`cercueils.html#economie`) : prix du cercueil sur le devis de la pompe funèbre, comparé au modèle Lignée.
 - Nouvelle page `pompes-funebres.html` : programme partenaire (charte de réception sans frais de manutention, familles adressées, tarifs pros sur demande). À créer réellement : la charte d'une page et la liste des partenaires.
 - À faire valider par le juriste : la phrase de la FAQ sur le libre choix du prestataire et la ligne cercueil séparée sur le devis.
+
+## Lancement (novembre 2026) : en attendant l'habilitation et l'ORIAS
+
+- Le site ne mentionne plus l'habilitation préfectorale (encart remplacé par « Aucune pression »). **Aucune vente de cercueil ou d'urne avant l'habilitation** : on recueille des demandes et on rappelle, sans signer de devis.
+- Assurance obsèques : Lignée n'est pas intermédiaire. Elle transmet la demande à un partenaire immatriculé à l'ORIAS (consentement dans le formulaire, mention dans `confidentialite.html`). Au rappel, ne pas présenter ni conseiller de contrat : passer la main au partenaire. Piste : se faire inscrire comme mandataire d'intermédiaire par ce partenaire.
+- Quand les numéros arrivent : les renseigner dans `mentions-legales.html` et remettre l'encart « Habilitation préfectorale » (historique git).
