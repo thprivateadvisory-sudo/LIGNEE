@@ -17,9 +17,14 @@
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <meta property="og:image" content="https://lignee.fr/images/partage.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap">
+<link rel="preload" href="polices/cormorant-garamond.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="polices/inter.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* Polices hébergées avec le site (aucun appel à Google) : Cormorant Garamond et Inter, licence SIL OFL, voir polices/. */
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:300 600;font-display:swap;src:url(polices/cormorant-garamond.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:300 400;font-display:swap;src:url(polices/cormorant-garamond-italique.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Inter';font-style:normal;font-weight:300 500;font-display:swap;src:url(polices/inter.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+</style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Lignée", "url": "https://lignee.fr/", "logo": "https://lignee.fr/images/icone-512.png", "email": "contact@lignee.fr", "areaServed": "FR", "parentOrganization": {"@type": "Organization", "name": "Groupe Cohesif"}, "description": "Prise en charge du logement d'un proche disparu : tri, vente des biens, débarras, nettoyage, remise en état et vente du logement, partout en France."}</script>
 <style>
 /* Colonne de lecture aérée, sections alternées ivoire / pierre, filets or comme seule ornementation. */
@@ -910,7 +915,7 @@ input:focus-visible+.pastille{outline:2px solid var(--or-texte)}
 </style>
 </head>
 <body>
-<header class="entete"><div class="alerte"><p class="alerte-in"><span>Un décès à organiser&nbsp;?</span> <a href="cercueils.html#prix">Nos prix</a><span aria-hidden="true">·</span><a href="guide.html">Les premières démarches</a><span class="alerte-tel"> · <a href="tel:03XXXXXXXX">03 XX XX XX XX</a></span></p></div><div class="wrap">
+<header class="entete"><div class="alerte"><p class="alerte-in"><span>Un décès à organiser&nbsp;?</span> <a href="cercueils.html#prix">Nos prix</a><span aria-hidden="true">·</span><a href="guide.html">Les premières démarches</a><span class="alerte-tel"> · <a href="contact.html#formulaire">Être rappelé</a></span></p></div><div class="wrap">
 <a class="marque" href="index.html" aria-label="Lignée, accueil"><img class="marque-mono" src="images/monogramme-entete.png" width="96" height="89" alt=""><span>LIGNÉE</span></a>
 <nav class="nav" aria-label="Navigation principale"><a href="cercueils.html" aria-current="page">Cercueils et urnes</a><a href="anticiper.html">Assurance obsèques</a><a href="souvenirs.html">Souvenirs</a><a href="formules.html">Succession et logement</a><a href="guide.html">Guide</a><a href="contact.html">Contact</a></nav>
 <a class="btn" href="contact.html">Devis gratuit en 24 h</a>
@@ -922,7 +927,7 @@ input:focus-visible+.pastille{outline:2px solid var(--or-texte)}
 <p class="sur">Cercueils et urnes</p>
 <h1>Les plus beaux cercueils, <em>au prix le plus bas.</em></h1>
 <p class="chapo">Bois massif, contrôlés un par un, dès 340&nbsp;€ livraison comprise. Prix le plus bas garanti&nbsp;: si vous trouvez moins cher, nous remboursons la différence. Vous gardez la pompe funèbre de votre choix.</p>
-<div class="btns"><a class="btn" href="#prix">Voir les prix</a><a class="btn sec" href="tel:03XXXXXXXX">Parler à un conseiller</a></div>
+<div class="btns"><a class="btn" href="#prix">Voir les prix</a><a class="btn sec" href="contact.html#formulaire">Être rappelé par un conseiller</a></div>
 </div><figure class="vitrine"><img src="images/catalogue/vitrine-heritage.webp" width="650" height="356" alt="Cercueil Héritage, teinte acajou vernie, poignées demi-lune dorées" fetchpriority="high" decoding="async"><figcaption><span><span class="v-sur">Modèle signature</span><span class="v-nom">Héritage</span></span><span class="v-prix"><b>1 190&nbsp;€</b>TTC, livraison incluse</span></figcaption><a class="voir-3d" href="#modele-heritage" data-modele="heritage">Voir en 3D et personnaliser</a></figure></div></section>
 <section class="engagements" aria-label="Nos engagements"><div class="wrap"><ul><li><b>Prix le plus bas garanti</b><span>Moins cher ailleurs&nbsp;? Nous remboursons la différence.</span></li><li><b>Bois massif uniquement</b><span>Jamais d'aggloméré, contrôlé un par un.</span></li><li><b>Livré à temps</b><span>Au délai écrit sur le devis, ou remboursé.</span></li><li><b>Livraison incluse</b><span>Partout en France métropolitaine.</span></li></ul></div></section>
 <section class="sec-bloc" id="prix"><div class="wrap">
@@ -974,9 +979,9 @@ input:focus-visible+.pastille{outline:2px solid var(--or-texte)}
 <div class="jp-pied rv"><p class="ech-note">Prix habituels&nbsp;: sources Mutuelle SMI et France Conso. Prix Lignée TTC, livraison incluse en France métropolitaine.</p></div>
 </div></section>
 <section class="sec-bloc"><div class="wrap">
-<div class="tete rv"><p class="sur">Comment ça se passe</p><h2 class="grand">Trois étapes, <em>un seul appel.</em></h2></div>
+<div class="tete rv"><p class="sur">Comment ça se passe</p><h2 class="grand">Trois étapes, <em>une seule demande.</em></h2></div>
 <div class="parcours trois rv"><svg viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M0 10H100"/></svg><ol>
-<li><span class="n">Un</span><h3>Vous nous appelez</h3><p>Un conseiller vous écoute, vous aide à choisir et vous adresse un devis écrit, au prix affiché.</p></li>
+<li><span class="n">Un</span><h3>Vous nous contactez</h3><p>Un conseiller vous rappelle, vous écoute, vous aide à choisir et vous adresse un devis écrit, au prix affiché.</p></li>
 <li><span class="n">Deux</span><h3>Nous nous coordonnons</h3><p>Nous contactons la pompe funèbre ou le funérarium de votre choix pour convenir du lieu et de l'heure de livraison.</p></li>
 <li><span class="n">Trois</span><h3>Nous livrons</h3><p>Le cercueil ou l'urne arrive avant les obsèques, partout en France. Vous recevez une confirmation de livraison.</p></li>
 </ol></div>
@@ -1000,7 +1005,7 @@ input:focus-visible+.pastille{outline:2px solid var(--or-texte)}
 <p class="sur rv">Devis gratuit · Réponse sous 24 heures</p>
 <h2 class="rv">Parlons-en, <em>sans engagement.</em></h2>
 <p class="chapo rv">Un conseiller vous écoute, répond à vos questions et vous adresse un devis écrit, au prix affiché. Aucune pression, jamais.</p>
-<div class="btns rv"><a class="btn" href="contact.html">Demander un devis gratuit</a><a class="btn sec" href="tel:03XXXXXXXX">Nous appeler · 03 XX XX XX XX</a></div>
+<div class="btns rv"><a class="btn" href="contact.html">Demander un devis gratuit</a><a class="btn sec" href="contact.html#formulaire">Être rappelé</a></div>
 <form class="rappel rv" data-form="Être rappelé" data-ok="Merci. Un conseiller vous rappelle sous 24 heures ouvrées." novalidate>
 <p class="rappel-titre">Être rappelé gratuitement</p>
 <div class="rappel-champs">
@@ -1035,7 +1040,7 @@ input:focus-visible+.pastille{outline:2px solid var(--or-texte)}
 <fieldset><legend>Emblème du couvercle</legend><div class="choix-l" data-choix="embleme"></div></fieldset>
 <fieldset><legend>Capiton</legend><div class="choix-l" data-choix="capiton"></div></fieldset>
 <fieldset><legend>Gravure de la plaque</legend><div class="gravure"><input data-l1 maxlength="40" placeholder="Prénom Nom" aria-label="Nom à graver"><input data-l2 maxlength="24" placeholder="1940 – 2026" aria-label="Dates à graver"></div></fieldset>
-<div class="actions"><a class="btn" data-commander href="contact.html?sujet=cercueil">Demander ce cercueil</a><a class="btn sec" href="tel:03XXXXXXXX">Parler à un conseiller</a></div>
+<div class="actions"><a class="btn" data-commander href="contact.html?sujet=cercueil">Demander ce cercueil</a><a class="btn sec" href="contact.html#formulaire">Être rappelé par un conseiller</a></div>
 <p class="resume" data-resume aria-live="polite"></p>
 <details open><summary>Caractéristiques</summary><dl data-carac></dl></details>
 <details><summary>Conformité et qualité</summary><ul class="conf" data-conformite></ul></details>
@@ -1057,7 +1062,7 @@ input:focus-visible+.pastille{outline:2px solid var(--or-texte)}
 <li><a href="souvenirs.html">Souvenirs confectionnés</a></li><li><a href="formules.html">Succession et logement</a></li>
 <li><a href="methode.html">Comment ça marche</a></li><li><a href="notaires.html">Notaires et professionnels</a></li><li><a href="a-propos.html">La maison Lignée</a></li></ul></div>
 <div><h4>Nous joindre</h4><ul>
-<li><a href="tel:03XXXXXXXX">03 XX XX XX XX</a></li><li><a href="https://wa.me/33XXXXXXXXX?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20vos%20services." target="_blank" rel="noopener">WhatsApp</a></li>
+<li><a href="contact.html#formulaire">Être rappelé</a></li>
 <li><a href="mailto:contact@lignee.fr">contact@lignee.fr</a></li><li><a href="contact.html">Devis gratuit en 24 h</a></li></ul></div>
 </div>
 <div class="pied-bas">
@@ -1066,7 +1071,7 @@ input:focus-visible+.pastille{outline:2px solid var(--or-texte)}
 </div>
 </div></footer>
 <nav class="barre-appel" aria-label="Nous joindre">
-<a href="tel:03XXXXXXXX"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Appeler</a>
+<a href="contact.html#formulaire"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Être rappelé</a>
 <a href="cercueils.html#prix"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 2.5h6l3 5-2 14H8l-2-14z"/></svg>Nos prix</a>
 <a class="principal" href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Devis gratuit</a>
 </nav>
@@ -1203,14 +1208,14 @@ input:focus-visible+.pastille{outline:2px solid var(--or-texte)}
       msg.hidden=false;msg.classList.remove('erreur');
       if(CLE==='A_RENSEIGNER'){
         msg.classList.add('erreur');
-        msg.textContent="Le formulaire est en cours de branchement : votre demande n'a pas encore été envoyée. Appelez-nous au 03 XX XX XX XX ou écrivez à contact@lignee.fr.";
+        msg.textContent="Le formulaire est en cours de branchement : votre demande n'a pas encore été envoyée. Écrivez-nous à contact@lignee.fr.";
         return;
       }
       var fd=new FormData(f);fd.append('access_key',CLE);fd.append('subject','Lignée · '+f.getAttribute('data-form'));
       msg.textContent='Envoi en cours…';
       fetch('https://api.web3forms.com/submit',{method:'POST',body:fd}).then(function(r){return r.json();}).then(function(j){
         if(j.success){f.reset();msg.textContent=f.getAttribute('data-ok');}else{throw new Error();}
-      }).catch(function(){msg.classList.add('erreur');msg.textContent="L'envoi n'a pas abouti. Appelez-nous au 03 XX XX XX XX ou écrivez à contact@lignee.fr.";});
+      }).catch(function(){msg.classList.add('erreur');msg.textContent="L'envoi n'a pas abouti. Écrivez-nous à contact@lignee.fr.";});
     });
   });
 })();
