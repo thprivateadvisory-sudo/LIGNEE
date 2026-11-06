@@ -4,19 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script>document.documentElement.classList.add('js')</script>
-<title>Lignée : choisissez votre cercueil de votre vivant</title>
-<meta name="description" content="Choisissez votre cercueil de votre vivant, sans urgence : bois massif dès 340 €, prix affiché, inscrit dans votre contrat obsèques. Vos proches n'auront rien à décider.">
-<link rel="canonical" href="https://lignee.fr/">
+<title>Maison Lignée : souvenirs faits main et accompagnement obsèques</title>
+<meta name="description" content="Doudous, coussins et souvenirs cousus à la main à partir des vêtements d'un proche. Assurance obsèques avec notre partenaire et guide gratuit après un décès.">
+<link rel="canonical" href="https://maison-lignee.fr/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Lignée">
 <meta property="og:title" content="Lignée : choisissez votre cercueil de votre vivant">
 <meta property="og:description" content="Choisissez votre cercueil de votre vivant, sans urgence : bois massif dès 340 €, prix affiché, inscrit dans votre contrat obsèques. Vos proches n'auront rien à décider.">
-<meta property="og:url" content="https://lignee.fr/">
+<meta property="og:url" content="https://maison-lignee.fr/">
 <meta name="theme-color" content="#1B2A41">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-<meta property="og:image" content="https://lignee.fr/images/partage.jpg">
+<meta property="og:image" content="https://maison-lignee.fr/images/partage.jpg">
 <link rel="preload" href="polices/cormorant-garamond.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="polices/inter.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -25,7 +25,7 @@
 @font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:300 400;font-display:swap;src:url(polices/cormorant-garamond-italique.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Inter';font-style:normal;font-weight:300 500;font-display:swap;src:url(polices/inter.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Lignée", "url": "https://lignee.fr/", "logo": "https://lignee.fr/images/icone-512.png", "email": "contact@lignee.fr", "areaServed": "FR", "parentOrganization": {"@type": "Organization", "name": "Groupe Cohesif"}, "description": "Choisissez votre cercueil de votre vivant, sans urgence : bois massif dès 340 €, prix affiché, inscrit dans votre contrat obsèques. Vos proches n'auront rien à décider."}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Lignée", "url": "https://maison-lignee.fr/", "logo": "https://maison-lignee.fr/images/icone-512.png", "email": "contact@maison-lignee.fr", "areaServed": "FR", "parentOrganization": {"@type": "Organization", "name": "Groupe Cohesif"}, "description": "Choisissez votre cercueil de votre vivant, sans urgence : bois massif dès 340 €, prix affiché, inscrit dans votre contrat obsèques. Vos proches n'auront rien à décider."}</script>
 <style>
 /* Colonne de lecture aérée, sections alternées ivoire / pierre, filets or comme seule ornementation. */
 :root{
@@ -904,12 +904,48 @@ input:focus-visible+.pastille{outline:2px solid var(--or-texte)}
 /* Contact : champs selon le sujet */
 .js [data-si][hidden]{display:none!important}
 </style>
+<style>
+/* Nouvelles sections : univers, boutique, étapes, fiche produit */
+.lg-grille{display:grid;gap:1.25rem;grid-template-columns:1fr}
+@media(min-width:760px){.lg-grille.trois{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.lg-carte{background:var(--blanc);border:1px solid var(--ligne);display:flex;flex-direction:column;min-width:0;text-decoration:none;color:var(--nuit)}
+.lg-carte img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;max-width:100%}
+.lg-carte .lg-corps{padding:1.25rem;display:flex;flex-direction:column;gap:.6rem;flex:1}
+.lg-carte h3{margin:0;font-family:var(--f-titre);font-size:1.5rem;line-height:1.15}
+.lg-carte p{margin:0;color:var(--ardoise)}
+.lg-carte .lg-lien{margin-top:auto;font-weight:600;color:var(--or-texte)}
+.lg-statut{align-self:flex-start;font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:.2rem .6rem;border-radius:99px;background:var(--pierre);color:var(--or-texte)}
+.lg-statut.ok{background:#E3EEDF;color:#2E5A26}.lg-statut.gratuit{background:#E2E8F0;color:#2B3D57}
+.lg-produits{display:grid;gap:1rem;grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(min-width:900px){.lg-produits{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.lg-produits .lg-carte img{aspect-ratio:1/1}
+.lg-produits .lg-carte .lg-visuel{aspect-ratio:1/1;background:var(--pierre);display:grid;place-items:center}
+.lg-produits .lg-carte .lg-visuel img{width:42%;aspect-ratio:auto;opacity:.8}
+.lg-produits .lg-carte h3{font-size:1.25rem}
+.lg-prix{font-weight:600;color:var(--nuit);font-variant-numeric:tabular-nums}
+.lg-prix small{font-weight:400;color:var(--ardoise)}
+.lg-etapes{display:grid;gap:1.25rem;grid-template-columns:1fr;counter-reset:e;list-style:none;padding:0;margin:0}
+@media(min-width:760px){.lg-etapes{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.lg-etapes li{display:flex;gap:.9rem;align-items:flex-start;min-width:0}
+.lg-etapes li::before{counter-increment:e;content:counter(e);flex:none;width:2.2rem;height:2.2rem;border-radius:50%;border:1px solid var(--or);display:grid;place-items:center;font-family:var(--f-titre);font-size:1.2rem;color:var(--or-texte);background:var(--blanc)}
+.nuit .lg-etapes li::before{background:transparent;color:var(--or-clair,#D9B97F)}
+.lg-etapes b{display:block}
+.lg-etapes span{color:var(--ardoise)}
+.nuit .lg-etapes span{color:inherit;opacity:.8}
+.lg-confiance{display:grid;gap:1rem;grid-template-columns:repeat(2,minmax(0,1fr));list-style:none;padding:0;margin:0}
+@media(min-width:760px){.lg-confiance{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.lg-confiance li{border-top:1px solid var(--or);padding-top:.7rem}
+.lg-confiance b{display:block;font-family:var(--f-titre);font-size:1.25rem}
+.lg-deux{display:grid;gap:2rem;align-items:center}
+@media(min-width:760px){.lg-deux{grid-template-columns:1fr 1fr}}
+.lg-deux img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+</style>
 </head>
 <body>
-<header class="entete"><div class="alerte"><p class="alerte-in"><span>Un décès à organiser&nbsp;?</span> <a href="cercueils.html#prix">Nos prix</a><span aria-hidden="true">·</span><a href="guide.html">Les premières démarches</a><span class="alerte-tel"> · <a href="contact.html#formulaire">Être rappelé</a></span></p></div><div class="wrap">
+<header class="entete"><div class="alerte"><p class="alerte-in"><span>Un décès&nbsp;?</span> <a href="guide.html">Les premières démarches</a><span aria-hidden="true">·</span><a href="souvenirs.html">Boutique souvenirs</a><span class="alerte-tel"> · <a href="contact.html#formulaire">Être rappelé</a></span></p></div><div class="wrap">
 <a class="marque" href="index.html" aria-label="Lignée, accueil"><img class="marque-mono" src="images/monogramme-entete.png" width="96" height="89" alt=""><span>LIGNÉE</span></a>
-<nav class="nav" aria-label="Navigation principale"><a href="cercueils.html">Cercueils et urnes</a><a href="anticiper.html">Assurance obsèques</a><a href="souvenirs.html">Souvenirs</a><a href="formules.html">Succession et logement</a><a href="guide.html">Guide</a><a href="contact.html">Contact</a></nav>
-<a class="btn" href="contact.html">Devis gratuit en 24 h</a>
+<nav class="nav" aria-label="Navigation principale"><a href="souvenirs.html">Boutique souvenirs</a><a href="anticiper.html">Préparer ses obsèques</a><a href="guide.html">Après un décès</a><a href="a-propos.html">À propos</a><a href="contact.html">Contact</a></nav>
+<a class="btn" href="souvenirs.html">Boutique souvenirs</a>
 <button class="menu-btn" type="button" aria-expanded="false">Menu</button>
 </div></header>
 <main>
@@ -917,11 +953,11 @@ input:focus-visible+.pastille{outline:2px solid var(--or-texte)}
 <div class="ciel-fond" aria-hidden="true"><canvas id="ciel"></canvas></div>
 <section class="ouverture">
 <img class="mono-or" src="images/monogramme-or.png" width="600" height="561" alt="Monogramme Lignée">
-<p class="sur" style="color:var(--or-clair)">Préparer ses obsèques · Partout en France</p>
-<h1>Choisissez votre cercueil de votre vivant. <em>Vos proches n'auront rien à décider.</em></h1>
-<p class="chapo">Prenez le temps de choisir, tranquillement&nbsp;: le modèle, le bois, les poignées, l'emblème. Bois massif dès 340&nbsp;€, prix affiché. Votre choix est inscrit dans votre contrat obsèques et, le jour venu, il est respecté à la lettre.</p>
-<div class="btns"><a class="btn" href="cercueils.html#prix">Choisir mon cercueil</a><a class="btn sec" href="contact.html?sujet=cercueil#formulaire">Recevoir mon devis gratuit</a></div>
-<ul class="preuves"><li>Choisi sans urgence</li><li>Bois massif uniquement</li><li>Prix affiché</li><li>Respecté à la lettre</li></ul>
+<p class="sur" style="color:var(--or-clair)">Maison Lignée · Partout en France</p>
+<h1>Ce qui compte <em>se transmet.</em></h1>
+<p class="chapo">Des souvenirs cousus et façonnés à la main à partir de ses vêtements et de ses affaires. Et, quand vous en avez besoin, de l'aide pour préparer ou traverser ce moment.</p>
+<div class="btns"><a class="btn" href="souvenirs.html">Voir la boutique souvenirs</a><a class="btn sec" href="anticiper.html">Préparer ses obsèques</a></div>
+<ul class="preuves"><li>Fait main en France</li><li>Prix fixes affichés</li><li>Vos vêtements protégés</li><li>Une personne à l'écoute</li></ul>
 <div class="defiler" aria-hidden="true">Faire défiler<span></span></div>
 <div class="video-fond" aria-hidden="true"><video data-auto muted loop playsinline autoplay preload="auto" poster="videos/aube-champs.jpg" aria-hidden="true"><source src="videos/aube-champs.mp4" type="video/mp4"></video></div>
 </section>
@@ -942,113 +978,56 @@ input:focus-visible+.pastille{outline:2px solid var(--or-texte)}
 <path class="trait trace" pathLength="1" style="stroke-dasharray:1;stroke-dashoffset:1" d="M-20 520H430V330L600 205L680 264V214H712V288L770 330V520H1220"/>
 <path class="trait fil" pathLength="1" style="stroke-dasharray:1;stroke-dashoffset:1" d="M600 585C700 585 800 560 880 515C960 470 1000 410 960 385C920 362 878 410 912 452C952 500 1060 492 1140 440C1180 414 1210 396 1240 390"/>
 </svg>
-<div class="chaps"><article class="chap"><p class="sur">Une vie</p><h2>Une vie entière <em>mérite le plus bel adieu.</em></h2><p class="txt">Le jour venu, chaque famille veut bien faire. Pour celui ou celle qui part, et pour ceux qui restent.</p></article><article class="chap"><p class="sur">Le jour même</p><h2>Puis tout va <em>très vite.</em></h2><p class="txt">Le chagrin, les démarches, les devis illisibles. Quelques jours pour tout décider, sans savoir par où commencer. Et un cercueil qui pèse souvent 20 à 40&nbsp;% de la facture.</p></article><article class="chap"><p class="sur">Lignée</p><h2>Le plus beau, <em>au prix le plus bas.</em></h2><p class="txt">Des cercueils en bois massif, contrôlés un par un, au prix le plus bas garanti. Un conseiller vous guide pas à pas. Vous n'avez plus qu'à dire au revoir.</p></article><article class="chap"><p class="sur">Et après</p><h2>Ce qui compte <em>se transmet.</em></h2><p class="txt">Assurance obsèques, souvenirs confectionnés, logement à libérer&nbsp;: nous restons à vos côtés aussi longtemps qu'il le faut.</p><div class="btns"><a class="btn" href="cercueils.html#prix">Voir nos prix</a><a class="btn sec" href="contact.html">Devis gratuit</a></div></article></div>
+<div class="chaps"><article class="chap"><p class="sur">Une vie</p><h2>Une vie entière <em>mérite le plus bel adieu.</em></h2><p class="txt">Le jour venu, chaque famille veut bien faire. Pour celui ou celle qui part, et pour ceux qui restent.</p></article><article class="chap"><p class="sur">Le jour même</p><h2>Puis tout va <em>très vite.</em></h2><p class="txt">Le chagrin, les démarches, les papiers. Quelques jours pour tout décider, sans savoir par où commencer.</p></article><article class="chap"><p class="sur">Lignée</p><h2>Une maison <em>à vos côtés.</em></h2><p class="txt">Un guide clair pour les démarches, une assurance pour ne rien laisser à la charge des siens, et une personne à l'écoute.</p></article><article class="chap"><p class="sur">Et après</p><h2>Ce qui compte <em>se transmet.</em></h2><p class="txt">Sa chemise devient un doudou, son pull un coussin. Des souvenirs cousus à la main, pour que chacun garde un peu de lui.</p><div class="btns"><a class="btn" href="souvenirs.html">Boutique souvenirs</a><a class="btn sec" href="anticiper.html">Préparer ses obsèques</a></div></article></div>
 <div class="progress" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 </div></section>
 <div class="contenu">
-<section class="engagements" aria-label="Nos engagements"><div class="wrap"><ul><li><b>Prix le plus bas garanti</b><span>Moins cher ailleurs&nbsp;? Nous remboursons la différence.</span></li><li><b>Bois massif uniquement</b><span>Jamais d'aggloméré, contrôlé un par un.</span></li><li><b>Votre pompe funèbre d'accord</b><span>Nous l'appelons. Son accord écrit avant tout paiement.</span></li><li><b>Guidé pas à pas</b><span>Un seul conseiller, du premier appel à la dernière démarche.</span></li></ul></div></section>
-<section class="sec-bloc pierre" id="gamme"><div class="wrap">
-<div class="tete rv"><p class="sur">La gamme Lignée</p><h2 class="grand">Le plus beau cercueil <em>n'a pas à être le plus cher.</em></h2><p class="chapo">Quatre modèles en bois massif, deux en stock pour l'urgence, deux sur commande. Poignées et emblème au choix, sans supplément le jour venu.</p></div>
-<div class="gamme"><article class="modele photo-m rv"><a class="photo-lien" href="cercueils.html#modele-sobre" aria-label="Voir le modèle Sobre en 3D"><figure class="photo"><img src="images/catalogue/cercueil-sobre.webp" width="674" height="270" alt="Cercueil Sobre : lignes droites, couvercle à pans, bois clair au vernis naturel" loading="lazy" decoding="async"></figure></a><p class="dispo-l"><span class="dispo">En stock</span></p><p class="usage">Inhumation, crémation</p><h3>Sobre</h3><ul><li>Lignes droites, couvercle à pans</li><li>Vernis naturel, teinte claire</li><li>Capiton et oreiller en coton</li></ul><p class="prix-m"><b>340&nbsp;€</b><span>TTC, livraison incluse</span></p><a class="voir-3d" href="cercueils.html#modele-sobre">Voir en 3D et personnaliser</a></article><article class="modele photo-m mise rv"><a class="photo-lien" href="cercueils.html#modele-tradition" aria-label="Voir le modèle Tradition en 3D"><figure class="photo"><img src="images/catalogue/cercueil-tradition.webp" width="724" height="245" alt="Cercueil Tradition : flancs galbés, couvercle mouluré, teinte miel satinée" loading="lazy" decoding="async"></figure></a><p class="dispo-l"><span class="dispo">En stock</span></p><p class="usage">Inhumation, crémation</p><h3>Tradition <span class="repere">Le plus choisi</span></h3><ul><li>Flancs galbés, couvercle mouluré</li><li>Teinte miel, finition satinée</li><li>Capiton satiné, six poignées</li></ul><p class="prix-m"><b>690&nbsp;€</b><span>TTC, livraison incluse</span></p><a class="voir-3d" href="cercueils.html#modele-tradition">Voir en 3D et personnaliser</a></article><article class="modele photo-m rv"><a class="photo-lien" href="cercueils.html#modele-floral" aria-label="Voir le modèle Floral en 3D"><figure class="photo"><img src="images/catalogue/cercueil-floral.webp" width="735" height="178" alt="Cercueil Floral : gravure florale sur le flanc, bois clair satiné, double moulure" loading="lazy" decoding="async"></figure></a><p class="dispo-l"><span class="dispo cmd">Sur commande</span></p><p class="usage">Inhumation, crémation</p><h3>Floral</h3><ul><li>Gravure florale sur le flanc</li><li>Bois clair, double moulure</li><li>Capiton satiné, six poignées</li></ul><p class="prix-m"><b>890&nbsp;€</b><span>TTC, livraison incluse</span></p><a class="voir-3d" href="cercueils.html#modele-floral">Voir en 3D et personnaliser</a></article><article class="modele photo-m rv"><a class="photo-lien" href="cercueils.html#modele-heritage" aria-label="Voir le modèle Héritage en 3D"><figure class="photo"><img src="images/catalogue/cercueil-heritage.webp" width="650" height="356" alt="Cercueil Héritage : teinte acajou vernie brillante, couvercle à gradins, poignées demi-lune dorées" loading="lazy" decoding="async"></figure></a><p class="dispo-l"><span class="dispo cmd">Sur commande</span></p><p class="usage">Inhumation</p><h3>Héritage</h3><ul><li>Teinte acajou, vernis brillant</li><li>Couvercle à gradins</li><li>Capiton brodé, six poignées laiton</li></ul><p class="prix-m"><b>1 190&nbsp;€</b><span>TTC, livraison incluse</span></p><a class="voir-3d" href="cercueils.html#modele-heritage">Voir en 3D et personnaliser</a></article></div>
-<ul class="inclus rv"><li>Bois massif, contrôlé un par un</li><li>Livraison incluse en France métropolitaine</li><li>Prix le plus bas garanti</li><li>Conformes à la réglementation funéraire française</li></ul>
-<div class="btns rv" style="margin-top:2rem"><a class="btn" href="cercueils.html">Voir les cercueils et les urnes</a><a class="btn sec" href="contact.html">Demander un devis</a></div>
-</div></section>
-<section class="juste-prix" id="juste-prix"><div class="video-fond" aria-hidden="true"><video data-auto muted loop playsinline preload="none" poster="videos/brume-campagne.jpg" aria-hidden="true"><source src="videos/brume-campagne.mp4" type="video/mp4"></video></div><div class="wrap">
-<div class="tete rv"><p class="sur">La meilleure qualité, le meilleur prix</p><h2 class="grand">Un plus bel adieu, <em>pour bien moins cher.</em></h2><p class="chapo">En France, un cercueil coûte habituellement de 650 à 3&nbsp;800&nbsp;€. Au moment le plus difficile, personne n'a la force de comparer. Alors nous l'avons fait pour vous&nbsp;: la meilleure qualité, au prix le plus bas, garanti par écrit.</p></div>
-<div class="echelle rv" role="img" aria-label="Un cercueil coûte habituellement de 650 à 3 800 euros en France. Chez Lignée, à partir de 340 euros.">
-<div class="ech-ligne"><p class="ech-nom"><b>Prix habituel</b><span>Cercueil, en France</span></p><div class="ech-piste"><span class="ech-zone" style="left:16.25%;width:78.75%"><em class="dedans">650 à 3&nbsp;800&nbsp;€</em></span></div></div>
-<div class="ech-ligne"><p class="ech-nom"><b>Lignée</b><span>Même usage, prix affiché</span></p><div class="ech-piste"><span class="ech-zone lig" style="left:0;width:8.50%"><em>dès 340&nbsp;€</em></span></div></div>
-<p class="ech-axe" aria-hidden="true"><span>0&nbsp;€</span><span>1&nbsp;000&nbsp;€</span><span>2&nbsp;000&nbsp;€</span><span>3&nbsp;000&nbsp;€</span><span>4&nbsp;000&nbsp;€</span></p>
+<section class="sec-bloc" id="univers"><div class="wrap">
+<div class="tete rv"><p class="sur">Nos trois univers</p><h2 class="grand">Lignée vous accompagne <em>à chaque moment.</em></h2></div>
+<div class="lg-grille trois">
+<a class="lg-carte" href="souvenirs.html"><img src="videos/couture-machine.jpg" alt="Couture d'un souvenir" loading="lazy"><div class="lg-corps"><span class="lg-statut ok">Commander en ligne</span><h3>Se souvenir</h3><p>Doudous, coussins, cadres, boîtes et bijoux, faits main à partir de ses affaires.</p><span class="lg-lien">Boutique souvenirs →</span></div></a>
+<a class="lg-carte" href="anticiper.html"><img src="videos/aube-champs.jpg" alt="" loading="lazy"><div class="lg-corps"><span class="lg-statut">Sur rendez-vous</span><h3>Préparer</h3><p>Assurance obsèques avec notre partenaire, coffret «&nbsp;Mes volontés&nbsp;», et bientôt le choix de son cercueil.</p><span class="lg-lien">Préparer ses obsèques →</span></div></a>
+<a class="lg-carte" href="guide.html"><img src="videos/brume-campagne.jpg" alt="" loading="lazy"><div class="lg-corps"><span class="lg-statut gratuit">Gratuit</span><h3>Traverser</h3><p>Que faire après un décès&nbsp;: la checklist complète, étape par étape, et nos conseils face à la pompe funèbre.</p><span class="lg-lien">Le guide gratuit →</span></div></a>
 </div>
-<div class="jp-pied rv">
-<a class="btn" href="cercueils.html#prix">Voir toute la gamme</a>
-<p class="ech-note">Prix habituels&nbsp;: sources Mutuelle SMI et France Conso. Prix Lignée TTC, livraison incluse en France métropolitaine.</p>
-</div>
-</div></section>
-<section class="sec-bloc nuit" id="garanties"><div class="wrap">
-<div class="tete rv"><p class="sur">Nos trois garanties</p><h2 class="grand">Le meilleur, <em>et nous l'écrivons.</em></h2><p class="chapo">N'importe qui peut se dire le meilleur. Nous, nous nous y engageons par écrit, sur chaque commande.</p></div>
-<div class="garanties">
-<div class="rv"><span class="g-n">I</span><h3>Prix le plus bas garanti</h3><p>Vous trouvez le même modèle moins cher ailleurs, livraison comprise&nbsp;? Nous vous remboursons la différence. Sans discussion.</p></div>
-<div class="rv"><span class="g-n">II</span><h3>Qualité garantie</h3><p>Bois massif uniquement, jamais d'aggloméré. Chaque cercueil est contrôlé un par un. Au moindre défaut à la livraison, il est remplacé immédiatement.</p></div>
-<div class="rv"><span class="g-n">III</span><h3>Livré à temps, garanti</h3><p>Créneau de livraison écrit et confirmé à votre pompe funèbre. En cas d'imprévu, un cercueil en stock de valeur égale ou supérieure est livré à temps, sans supplément.</p></div>
-</div>
-</div></section>
-<section class="sec-bloc" id="preuves"><div class="wrap">
-<div class="tete rv"><p class="sur">Une maison sérieuse</p><h2 class="grand">Ne nous croyez pas sur parole. <em>Vérifiez.</em></h2><p class="chapo">Tout le monde promet. Voici ce que vous pouvez contrôler vous-même, avant de nous confier quoi que ce soit.</p></div>
-<ul class="preuves-v rv"><li><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M6 8h22v15H14l-6 5v-5H6z"/><path d="M11 14h12M11 18h8"/></svg><h3>Aucune pression</h3><p>Nous ne démarchons jamais. Un conseiller vous rappelle seulement si vous le demandez, et rien ne se signe au premier appel.</p></li><li><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M8 3h13l6 6v22H8z"/><path d="M21 3v6h6M12 15h11M12 20h11M12 25h6"/></svg><h3>Devis écrit, d'abord</h3><p>Un devis détaillé, au prix affiché sur ce site. Rien n'est commandé ni facturé sans votre signature.</p></li><li><svg viewBox="0 0 34 34" aria-hidden="true"><rect x="3" y="8" width="28" height="19" rx="2"/><path d="M3 14h28M8 21h6"/></svg><h3>Rien à payer d'avance</h3><p>Aucun paiement avant l'accord écrit de votre pompe funèbre et la signature du devis. La banque du défunt peut régler sur facture.</p></li><li><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M17 4v26M10 30h14M6 9h22"/><path d="m6 9-4 9a4 4 0 0 0 8 0zM28 9l-4 9a4 4 0 0 0 8 0z"/></svg><h3>Médiateur indépendant</h3><p>En cas de désaccord, vous disposez d'un recours gratuit auprès d'un médiateur de la consommation.</p></li></ul>
 </div></section>
 <section class="sec-bloc pierre"><div class="wrap">
-<div class="tete rv"><p class="sur">Vous ne savez pas par où commencer&nbsp;?</p><h2 class="grand">C'est normal. <em>Nous, nous savons.</em></h2><p class="chapo">Un décès arrive toujours trop tôt, et personne n'y est préparé. Votre conseiller Lignée vous dit quoi faire, dans quel ordre, et s'occupe de tout ce qui peut l'être.</p></div>
-<div class="parcours trois rv"><svg viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M0 10H100"/></svg><ol>
-<li><span class="n">Les premières heures</span><h3>Nous vous rappelons</h3><p>Nous vous expliquons simplement les démarches urgentes et répondons à toutes vos questions, sans jargon.</p></li>
-<li><span class="n">Les jours suivants</span><h3>Vous choisissez, sereinement</h3><p>Vous gardez votre pompe funèbre&nbsp;: nous l'appelons pour vous et obtenons son accord écrit. Puis un devis clair, au prix affiché, et la livraison chez elle.</p></li>
-<li><span class="n">Et ensuite</span><h3>Nous restons là</h3><p>Souvenirs, logement, succession&nbsp;: le même conseiller vous accompagne aussi longtemps qu'il le faut.</p></li>
-</ol></div>
-<div class="btns rv" style="margin-top:2.4rem"><a class="btn" href="contact.html#formulaire">Être rappelé par un conseiller</a><a class="btn sec" href="guide.html">Lire le guide des démarches</a></div>
+<div class="tete rv"><p class="sur">Un souvenir en quatre étapes</p><h2 class="grand">Simple, <em>à votre rythme.</em></h2></div>
+<ol class="lg-etapes">
+<li><div><b>Vous commandez</b><span>Prix fixe affiché, sans surprise.</span></div></li>
+<li><div><b>Vous nous confiez ses vêtements</b><span>Guide d'envoi fourni, ou dépôt en main propre.</span></div></li>
+<li><div><b>Nous cousons à la main</b><span>Des photos vous sont envoyées pendant la confection.</span></div></li>
+<li><div><b>Vous le recevez</b><span>Avec les tissus restants et une carte signée.</span></div></li>
+</ol>
+<div class="btns" style="margin-top:2rem"><a class="btn" href="souvenirs.html">Voir les souvenirs</a></div>
 </div></section>
-<section class="sec-bloc"><div class="wrap colle">
-<div class="tete rv"><p class="sur">Comment est-ce possible&nbsp;?</p><h2 class="grand">Meilleur et moins cher, <em>sans aucun secret.</em></h2><p class="chapo">Ce n'est ni un rabais ni une promotion. C'est une autre façon de travailler, et nous vous la montrons.</p></div>
-<div class="raisons">
-<div class="rv"><h3>Achat direct aux fabricants</h3><p>Nous travaillons en direct avec des ateliers sélectionnés et commandons en volume. Aucun intermédiaire ne prend sa part au passage.</p></div>
-<div class="rv"><h3>Pas de vitrine, pas de commission</h3><p>Pas de salon d'exposition à financer en centre-ville. Nous vous conseillons par téléphone et livrons directement là où ont lieu les obsèques.</p></div>
-<div class="rv"><h3>Une marge fixe, affichée</h3><p>Le même prix pour tout le monde, quel que soit le moment ou l'émotion. Ce que vous lisez ici est ce que vous payez.</p></div>
-<div class="rv"><h3>Une exigence de qualité sans compromis</h3><p>Bois massif uniquement, finitions soignées, chaque cercueil contrôlé un par un avant expédition. Nous économisons sur les intermédiaires, jamais sur le bois.</p></div>
-</div>
+<section class="sec-bloc"><div class="wrap lg-deux">
+<img src="videos/photos-mains.jpg" alt="Mains d'artisane au travail" loading="lazy">
+<div class="tete" style="margin:0"><p class="sur">Fait main, en France</p><h2 class="grand">Chaque pièce est <em>unique, comme lui.</em></h2><p class="chapo">Nos souvenirs sont cousus et façonnés à la main par des artisanes partenaires, en France. Vous savez toujours qui a confectionné le vôtre&nbsp;: son prénom figure sur la carte jointe.</p></div>
 </div></section>
-<section class="sec-bloc"><div class="wrap">
-<div class="tete rv"><p class="sur">Une seule maison</p><h2 class="grand">Avant, pendant, <em>et longtemps après.</em></h2><p class="chapo">Lignée accompagne les familles à chaque moment, avec la même règle&nbsp;: un prix clair, un seul interlocuteur.</p></div>
-<div class="temps rv">
-<a href="anticiper.html"><span class="moment">Avant</span><h3>Assurance obsèques</h3><p>Un contrat lisible en une page, aux frais affichés, pour épargner ses proches.</p><span class="suite">Comprendre l'assurance</span></a>
-<a href="cercueils.html"><span class="moment">Pendant</span><h3>Cercueils et urnes</h3><p>Dès 340&nbsp;€, livrés à la pompe funèbre de votre choix, partout en France.</p><span class="suite">Voir nos prix</span></a>
-<a href="souvenirs.html"><span class="moment">Mémoire</span><h3>Souvenirs</h3><p>Ses vêtements, le bois de ses meubles, ses photos, transformés en objets à garder.</p><span class="suite">Les souvenirs</span></a>
-<a href="formules.html"><span class="moment">Après</span><h3>Succession et logement</h3><p>Tri, vente des biens, débarras et remise en état, en lien avec le notaire.</p><span class="suite">Le service logement</span></a>
-</div>
-</div></section>
-<section class="sec-bloc nuit"><div class="wrap souv">
-<div class="chiffre rv"><b>40&nbsp;%</b><span>C'est la part des cotisations des contrats obsèques individuels reversée en moyenne aux familles.</span><small>Source&nbsp;: UFC-Que Choisir et Unaf, cités par Moneyvox.</small></div>
-<div class="prose rv"><p class="sur" style="color:var(--or-clair)">L'assurance obsèques</p><p class="citation">Protéger les siens, <em>sans payer deux fois.</em></p><p class="chapo">Un capital versé à vos proches, des frais affichés, et une comparaison honnête avec l'épargne classique. Si un contrat ne vous convient pas, nous vous le dirons.</p><div class="btns"><a class="btn" href="anticiper.html">Comprendre l'assurance obsèques</a></div></div>
-</div></section>
-<section class="film"><div class="video-fond" aria-hidden="true"><video data-auto muted loop playsinline preload="none" poster="videos/photos-boite.jpg" aria-hidden="true"><source src="videos/photos-boite.mp4" type="video/mp4"></video></div><div class="wrap">
-<p class="sur rv" style="color:var(--or-clair)">Les souvenirs</p>
-<p class="citation rv">Chaque objet <em>raconte quelqu'un.</em></p>
-<p class="chapo rv">Une lettre, une photo, une chemise. Nous en faisons des objets à garder, à offrir à chacun.</p>
-</div></section>
-<section class="sec-bloc pierre"><div class="wrap souv avec-video">
-<div style="display:grid;gap:2rem;min-width:0">
-<div class="tete rv" style="margin:0"><p class="sur">Confection souvenir</p><h2 class="grand">Sa chemise préférée devient <em>un coussin.</em></h2><p class="chapo">Pendant le tri, mettez de côté un vêtement, le bois d'un meuble, des photos. Nous en faisons des objets uniques, à garder ou à offrir à chacun.</p></div>
-<ul class="souv-liste rv">
-<li><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 13Q24 7 38 13Q43 24 38 35Q24 41 10 35Q5 24 10 13Z"/><circle cx="24" cy="24" r="1.6"/><path d="M15 18Q24 15 33 18M15 30Q24 33 33 30"/></svg><span>Coussin ou plaid dans ses chemises</span></li>
-<li><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="18" width="32" height="20" rx="1.5"/><path d="M6 18h36v-5H6z"/><path d="M12 25q6-3 12 0t12 0M12 31q6-3 12 0t12 0"/></svg><span>Boîte ou cadre taillé dans le bois de ses meubles</span></li>
-<li><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 14C18 10 10 10 6 12V36C10 34 18 34 24 38C30 34 38 34 42 36V12C38 10 30 10 24 14Z"/><path d="M24 14V38"/></svg><span>Livre souvenir et photos numérisées</span></li>
-<li><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 6Q24 22 38 6"/><path d="M24 20v3"/><circle cx="24" cy="31" r="8"/><path d="M20 31q4-5 8 0M21.5 34q2.5-3 5 0M19 28q5-6 10 0"/></svg><span>Bijou avec son empreinte ou son écriture</span></li>
+<section class="sec-bloc pierre"><div class="wrap">
+<ul class="lg-confiance">
+<li><b>Fait main en France</b>Par des artisanes partenaires</li>
+<li><b>Prix fixes</b>Affichés, sans surprise</li>
+<li><b>Vêtements protégés</b>Envoi suivi, tissus restants rendus</li>
+<li><b>Une personne à l'écoute</b>Réponse sous 24 h ouvrées</li>
 </ul>
-<div class="btns rv"><a class="btn" href="souvenirs.html">Découvrir les souvenirs</a></div>
-</div>
-<figure class="cadre-video portrait rv"><video data-auto muted loop playsinline preload="none" poster="videos/couture-machine.jpg" aria-hidden="true"><source src="videos/couture-machine.mp4" type="video/mp4"></video><figcaption>Confection souvenir</figcaption></figure>
-</div></section>
-<section class="sec-bloc charte"><div class="wrap">
-<div class="charte-tete"><div class="tete rv" style="margin:0"><p class="sur">Notre charte</p><h2 class="grand">Six engagements, <em>écrits noir sur blanc.</em></h2></div>
-<img class="rv" src="images/sceau.png" width="600" height="594" alt="Sceau Lignée, maison fondée en 2026" loading="lazy"></div>
-<ol class="charte-liste"><li class="rv"><h3>Le prix, avant tout</h3><p>Chaque prix est affiché TTC, livraison comprise. Le devis que vous signez est celui que vous payez.</p></li><li class="rv"><h3>Jamais de démarchage</h3><p>Nous ne sollicitons jamais une famille en deuil. C'est vous qui nous contactez.</p></li><li class="rv"><h3>Aucune pression</h3><p>Pas de vente forcée, pas d'option imposée. Vous pouvez prendre le temps d'en parler en famille.</p></li><li class="rv"><h3>Libres de choisir</h3><p>Vous gardez la pompe funèbre de votre choix. Nous livrons là où ont lieu les obsèques.</p></li><li class="rv"><h3>Une qualité sans compromis</h3><p>Bois massif uniquement, conforme à la réglementation française, contrôlé un par un avant chaque livraison.</p></li><li class="rv"><h3>Vos données protégées</h3><p>Elles servent à vous répondre. Elles ne sont jamais revendues.</p></li></ol>
-<p class="charte-sig rv">Lignée, une société du Groupe Cohesif.</p>
 </div></section>
 <section class="sec-bloc"><div class="wrap">
 <div class="tete rv"><p class="sur">Questions fréquentes</p><h2 class="grand">Vos questions, <em>nos réponses.</em></h2></div>
-<div class="rv"><div class="faq">
-<details><summary>Puis-je acheter le cercueil chez Lignée et garder ma pompe funèbre&nbsp;?</summary><p>Oui. Vous restez libre de choisir vos prestataires. Nous livrons le cercueil ou l'urne à l'opérateur funéraire que vous avez retenu et nous nous coordonnons avec lui pour la date et l'heure.</p></details>
-<details><summary>Pourquoi vos prix sont-ils si bas&nbsp;?</summary><p>Nous achetons en direct aux fabricants, nous n'avons pas de salon d'exposition à financer et notre marge est fixe. Les matériaux et les finitions sont ceux d'un cercueil classique, conformes à la réglementation.</p></details>
-<details><summary>En combien de temps le cercueil est-il livré&nbsp;?</summary><p>Les obsèques ont lieu dans les six jours ouvrables qui suivent le décès. Nous livrons dans ce délai, partout en France métropolitaine, à l'adresse indiquée par l'opérateur funéraire.</p></details>
-<details><summary>Comment régler les obsèques&nbsp;?</summary><p>Par carte ou par virement. Les frais d'obsèques peuvent aussi être prélevés sur le compte bancaire du défunt, dans la limite de 5&nbsp;910&nbsp;€, sur présentation de la facture à la banque.</p></details>
-<details><summary>Proposez-vous aussi la prise en charge du logement&nbsp;?</summary><p>Oui. Après les obsèques, nous pouvons trier, vendre les biens, débarrasser et remettre en état le logement, en lien avec le notaire, partout en France.</p></details>
-</div></div>
+<div class="faq">
+<details><summary>Comment vous envoyer ses vêtements&nbsp;?</summary><p>Après votre commande, nous vous adressons un guide d'envoi&nbsp;: quels vêtements choisir, comment les emballer, l'adresse. Envoi suivi, et photo à la réception.</p></details>
+<details><summary>Récupère-t-on les tissus qui n'ont pas servi&nbsp;?</summary><p>Oui. Tout ce qui n'a pas été utilisé vous est rendu avec votre souvenir.</p></details>
+<details><summary>Vendez-vous des cercueils&nbsp;?</summary><p>Bientôt. Notre gamme de cercueils en bois massif ouvrira prochainement. Vous pouvez vous inscrire sur la page Cercueils pour être prévenu.</p></details>
+<details><summary>Lignée vend-elle de l'assurance obsèques&nbsp;?</summary><p>Non. Avec votre accord, nous transmettons votre demande à notre partenaire, professionnel de l'assurance immatriculé à l'ORIAS, qui seul vous présente et vous conseille un contrat.</p></details>
+</div>
 </div></section>
 <section class="heros-ciel aube fin"><div class="wrap">
 <img class="mono-or rv" src="images/monogramme-or.png" width="600" height="561" alt="" loading="lazy">
-<p class="sur rv">Devis gratuit · Réponse sous 24 heures</p>
+<p class="sur rv">Une question · Réponse sous 24 heures</p>
 <h2 class="rv">Parlons-en, <em>sans engagement.</em></h2>
-<p class="chapo rv">Un conseiller vous écoute, répond à vos questions et vous adresse un devis écrit, au prix affiché. Aucune pression, jamais.</p>
-<div class="btns rv"><a class="btn" href="contact.html">Demander un devis gratuit</a><a class="btn sec" href="contact.html#formulaire">Être rappelé</a></div>
-<form class="rappel rv" data-form="Être rappelé" data-ok="Merci. Un conseiller vous rappelle sous 24 heures ouvrées." novalidate>
+<p class="chapo rv">Une personne vous écoute et répond à vos questions, sans pression.</p>
+<div class="btns rv"><a class="btn" href="souvenirs.html">Voir la boutique souvenirs</a><a class="btn sec" href="contact.html">Nous écrire</a></div>
+<form class="rappel rv" data-form="Être rappelé" data-ok="Merci. Nous vous rappelons sous 24 heures ouvrées." novalidate>
 <p class="rappel-titre">Être rappelé gratuitement</p>
 <div class="rappel-champs">
 <label class="vh" for="r-nom">Votre nom</label><input id="r-nom" name="nom" placeholder="Votre nom" required autocomplete="name">
@@ -1067,17 +1046,15 @@ input:focus-visible+.pastille{outline:2px solid var(--or-texte)}
 <div class="pied-haut">
 <div style="display:grid;gap:1rem;align-content:start">
 <img class="sceau" src="images/sceau-or.png" width="400" height="396" alt="Sceau Lignée, maison fondée en 2026" loading="lazy">
-<p>Lignée, les plus beaux cercueils au prix le plus bas garanti. Assurance obsèques claire, souvenirs et succession. Partout en France.</p>
+<p>Maison Lignée. Des souvenirs cousus et façonnés à la main à partir de ses affaires, et un accompagnement pour préparer ou traverser un décès. Partout en France.</p>
 </div>
-<div><h4>Obsèques</h4><ul>
-<li><a href="cercueils.html">Cercueils et urnes</a></li><li><a href="cercueils.html#prix">Nos prix</a></li>
-<li><a href="anticiper.html">Assurance obsèques</a></li><li><a href="anticiper.html#volontes">Coffret «&nbsp;Mes volontés&nbsp;»</a></li><li><a href="guide.html">Que faire après un décès</a></li></ul></div>
-<div><h4>Après</h4><ul>
-<li><a href="souvenirs.html">Souvenirs confectionnés</a></li><li><a href="formules.html">Succession et logement</a></li>
-<li><a href="methode.html">Comment ça marche</a></li><li><a href="notaires.html">Notaires et professionnels</a></li><li><a href="pompes-funebres.html">Pompes funèbres partenaires</a></li><li><a href="a-propos.html">La maison Lignée</a></li></ul></div>
+<div><h4>Se souvenir</h4><ul>
+<li><a href="souvenirs.html">Boutique souvenirs</a></li><li><a href="doudou.html">Doudou souvenir</a></li><li><a href="souvenirs.html#idee">Votre idée, sur devis</a></li><li><a href="souvenirs.html#commande">Commander</a></li></ul></div>
+<div><h4>Préparer et traverser</h4><ul>
+<li><a href="anticiper.html">Assurance obsèques</a></li><li><a href="anticiper.html#volontes">Coffret «&nbsp;Mes volontés&nbsp;»</a></li><li><a href="cercueils.html">Cercueils (bientôt)</a></li><li><a href="guide.html">Que faire après un décès</a></li><li><a href="pompes-funebres.html">Pompes funèbres partenaires</a></li><li><a href="a-propos.html">La maison Lignée</a></li></ul></div>
 <div><h4>Nous joindre</h4><ul>
 <li><a href="contact.html#formulaire">Être rappelé</a></li>
-<li><a href="mailto:contact@lignee.fr">contact@lignee.fr</a></li><li><a href="contact.html">Devis gratuit en 24 h</a></li></ul></div>
+<li><a href="mailto:contact@maison-lignee.fr">contact@maison-lignee.fr</a></li><li><a href="contact.html">Nous écrire</a></li></ul></div>
 </div>
 <div class="pied-bas">
 <p>Lignée, une société du Groupe Cohesif</p>
@@ -1086,8 +1063,8 @@ input:focus-visible+.pastille{outline:2px solid var(--or-texte)}
 </div></footer>
 <nav class="barre-appel" aria-label="Nous joindre">
 <a href="contact.html#formulaire"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Être rappelé</a>
-<a href="cercueils.html#prix"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 2.5h6l3 5-2 14H8l-2-14z"/></svg>Nos prix</a>
-<a class="principal" href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Devis gratuit</a>
+<a href="guide.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 4h10l4 4v12H5z"/><path d="M9 12h6M9 16h6"/></svg>Démarches</a>
+<a class="principal" href="souvenirs.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>Souvenirs</a>
 </nav>
 <script>
 (function(){
@@ -1222,14 +1199,14 @@ input:focus-visible+.pastille{outline:2px solid var(--or-texte)}
       msg.hidden=false;msg.classList.remove('erreur');
       if(CLE==='A_RENSEIGNER'){
         msg.classList.add('erreur');
-        msg.textContent="Le formulaire est en cours de branchement : votre demande n'a pas encore été envoyée. Écrivez-nous à contact@lignee.fr.";
+        msg.textContent="Le formulaire est en cours de branchement : votre demande n'a pas encore été envoyée. Écrivez-nous à contact@maison-lignee.fr.";
         return;
       }
       var fd=new FormData(f);fd.append('access_key',CLE);fd.append('subject','Lignée · '+f.getAttribute('data-form'));
       msg.textContent='Envoi en cours…';
       fetch('https://api.web3forms.com/submit',{method:'POST',body:fd}).then(function(r){return r.json();}).then(function(j){
         if(j.success){f.reset();msg.textContent=f.getAttribute('data-ok');}else{throw new Error();}
-      }).catch(function(){msg.classList.add('erreur');msg.textContent="L'envoi n'a pas abouti. Écrivez-nous à contact@lignee.fr.";});
+      }).catch(function(){msg.classList.add('erreur');msg.textContent="L'envoi n'a pas abouti. Écrivez-nous à contact@maison-lignee.fr.";});
     });
   });
 })();

@@ -87,7 +87,7 @@ function init() {
     const m = MODELES[cle], n = (l, id) => l.find(x => x.id === id).nom;
     const txt = `Modèle ${m.nom} (${m.prix} €) · teinte ${n(TEINTES, etat.teinte)} · poignées ${n(POIGNEES, etat.poignee)} · emblème ${n(EMBLEMES, etat.embleme)} · capiton ${n(CAPITONS, etat.capiton)}` + (etat.l1 ? ` · gravure : ${etat.l1}${etat.l2 ? ', ' + etat.l2 : ''}` : '');
     $('[data-resume]').textContent = txt;
-    $('[data-commander]').href = 'contact.html?sujet=cercueil&choix=' + encodeURIComponent(txt) + '#formulaire';
+    $('[data-commander]').href = 'cercueils.html#atelier&choix=' + encodeURIComponent(txt) + '#formulaire';
   }
 
   function maj3d() { if (vue3d) vue3d.afficher(config()); }
