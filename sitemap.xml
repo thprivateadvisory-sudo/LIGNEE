@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://maison-lignee.fr/</loc></url>
-  <url><loc>https://maison-lignee.fr/formules</loc></url>
-  <url><loc>https://maison-lignee.fr/methode</loc></url>
-  <url><loc>https://maison-lignee.fr/souvenirs</loc></url>
-  <url><loc>https://maison-lignee.fr/cercueils</loc></url>
-  <url><loc>https://maison-lignee.fr/anticiper</loc></url>
-  <url><loc>https://maison-lignee.fr/notaires</loc></url>
-  <url><loc>https://maison-lignee.fr/pompes-funebres</loc></url>
-  <url><loc>https://maison-lignee.fr/guide</loc></url>
-  <url><loc>https://maison-lignee.fr/a-propos</loc></url>
-  <url><loc>https://maison-lignee.fr/contact</loc></url>
-  <url><loc>https://maison-lignee.fr/mentions-legales</loc></url>
-  <url><loc>https://maison-lignee.fr/cgv</loc></url>
-  <url><loc>https://maison-lignee.fr/confidentialite</loc></url>
-  <url><loc>https://maison-lignee.fr/doudou</loc></url>
+  <url><loc>https://maison-lignee.fr/</loc><lastmod>2026-11-06</lastmod><priority>1.0</priority></url>
+  <url><loc>https://maison-lignee.fr/souvenirs</loc><lastmod>2026-11-06</lastmod><priority>0.9</priority></url>
+  <url><loc>https://maison-lignee.fr/doudou</loc><lastmod>2026-11-06</lastmod><priority>0.9</priority></url>
+  <url><loc>https://maison-lignee.fr/coussin</loc><lastmod>2026-11-06</lastmod><priority>0.9</priority></url>
+  <url><loc>https://maison-lignee.fr/vetements-defunt</loc><lastmod>2026-11-06</lastmod><priority>0.8</priority></url>
+  <url><loc>https://maison-lignee.fr/guide</loc><lastmod>2026-11-06</lastmod><priority>0.8</priority></url>
+  <url><loc>https://maison-lignee.fr/anticiper</loc><lastmod>2026-11-06</lastmod><priority>0.7</priority></url>
+  <url><loc>https://maison-lignee.fr/cercueils</loc><lastmod>2026-11-06</lastmod><priority>0.6</priority></url>
+  <url><loc>https://maison-lignee.fr/pompes-funebres</loc><lastmod>2026-11-06</lastmod><priority>0.5</priority></url>
+  <url><loc>https://maison-lignee.fr/a-propos</loc><lastmod>2026-11-06</lastmod><priority>0.5</priority></url>
+  <url><loc>https://maison-lignee.fr/contact</loc><lastmod>2026-11-06</lastmod><priority>0.5</priority></url>
+  <url><loc>https://maison-lignee.fr/formules</loc><lastmod>2026-11-06</lastmod><priority>0.3</priority></url>
+  <url><loc>https://maison-lignee.fr/methode</loc><lastmod>2026-11-06</lastmod><priority>0.3</priority></url>
+  <url><loc>https://maison-lignee.fr/notaires</loc><lastmod>2026-11-06</lastmod><priority>0.3</priority></url>
+  <url><loc>https://maison-lignee.fr/mentions-legales</loc><lastmod>2026-11-06</lastmod><priority>0.1</priority></url>
+  <url><loc>https://maison-lignee.fr/cgv</loc><lastmod>2026-11-06</lastmod><priority>0.1</priority></url>
+  <url><loc>https://maison-lignee.fr/confidentialite</loc><lastmod>2026-11-06</lastmod><priority>0.1</priority></url>
 </urlset>
