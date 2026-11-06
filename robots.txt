@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://lignee.fr/sitemap.xml
+Sitemap: https://maison-lignee.fr/sitemap.xml
