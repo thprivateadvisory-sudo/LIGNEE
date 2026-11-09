@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script>document.documentElement.classList.add('js')</script>
 <title>Nous contacter · Lignée</title>
-<meta name="description" content="Cercueil, urne, assurance obsèques, souvenir ou logement : un conseiller Lignée vous répond sous 24 heures. Devis gratuit et sans engagement.">
+<meta name="description" content="Souvenir, assurance obsèques ou liste d'attente des cercueils : un conseiller Lignée vous répond sous 24 heures, sans engagement.">
 <link rel="canonical" href="https://maison-lignee.fr/contact">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Lignée">
 <meta property="og:title" content="Devis gratuit en 24 heures · Lignée">
-<meta property="og:description" content="Cercueil, urne, assurance obsèques, souvenir ou logement : un conseiller Lignée vous répond sous 24 heures. Devis gratuit et sans engagement.">
+<meta property="og:description" content="Souvenir, assurance obsèques ou liste d'attente des cercueils : un conseiller Lignée vous répond sous 24 heures, sans engagement.">
 <meta property="og:url" content="https://maison-lignee.fr/contact">
 <meta name="theme-color" content="#1B2A41">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
@@ -26,7 +26,7 @@
 @font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:300 400;font-display:swap;src:url(polices/cormorant-garamond-italique.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Inter';font-style:normal;font-weight:300 500;font-display:swap;src:url(polices/inter.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Lignée", "url": "https://maison-lignee.fr/", "logo": "https://maison-lignee.fr/images/icone-512.png", "email": "contact@maison-lignee.fr", "areaServed": "FR", "description": "Prise en charge du logement d'un proche disparu : tri, vente des biens, débarras, nettoyage, remise en état et vente du logement, partout en France."}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Lignée", "url": "https://maison-lignee.fr/", "logo": "https://maison-lignee.fr/images/icone-512.png", "email": "contact@maison-lignee.fr", "areaServed": "FR", "description": "Souvenirs cousus et façonnés à la main à partir des vêtements d'un proche disparu (doudous, coussins, cadres, bijoux), et accompagnement pour préparer ou traverser un décès."}</script>
 <style>
 /* Colonne de lecture aérée, sections alternées ivoire / pierre, filets or comme seule ornementation. */
 :root{
@@ -787,7 +787,7 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 <div class="champ"><label for="v-nom">Nom</label><input id="v-nom" name="nom" required autocomplete="name"></div>
 <div class="champ"><label for="v-tel">Téléphone</label><input id="v-tel" name="telephone" type="tel" required autocomplete="tel"></div>
 <div class="champ plein"><label for="v-mail">E-mail</label><input id="v-mail" name="email" type="email" required autocomplete="email"></div>
-<div class="champ plein"><label for="v-sujet">Votre demande concerne</label><select id="v-sujet" name="sujet" required data-sujet><option value="">Choisir</option><option value="cercueil">Les cercueils (liste d'attente)</option><option value="assurance">L'assurance obsèques</option><option value="souvenir">Un souvenir (boutique)</option><option value="logement">Le logement d'un proche</option><option value="autre">Autre chose</option></select></div><div class="champ" data-si="cercueil"><label for="v-date">Date des obsèques <span class="opt">(si connue)</span></label><input id="v-date" name="date_obseques" type="date"></div><div class="champ" data-si="cercueil"><label for="v-pf">Votre pompe funèbre <span class="opt">(nous l'appelons pour vous)</span></label><input id="v-pf" name="pompe_funebre" placeholder="Nom et ville"></div><div class="champ" data-si="cercueil"><label for="v-devis">Prix du cercueil sur son devis <span class="opt">(si connu)</span></label><input id="v-devis" name="prix_cercueil_devis" inputmode="numeric" placeholder="ex. 1 450 €"></div><div class="champ"><label for="v-ville">Ville</label><input id="v-ville" name="ville" required></div>
+<div class="champ plein"><label for="v-sujet">Votre demande concerne</label><select id="v-sujet" name="sujet" required data-sujet><option value="">Choisir</option><option value="cercueil">Les cercueils (liste d'attente)</option><option value="assurance">L'assurance obsèques</option><option value="souvenir">Un souvenir (boutique)</option><option value="logement">Le logement d'un proche</option><option value="autre">Autre chose</option></select></div><div class="champ"><label for="v-ville">Ville</label><input id="v-ville" name="ville" required></div>
 <div class="champ" data-si="logement"><label for="v-type">Type de logement</label><select id="v-type" name="type"><option value="">Choisir</option><option>Maison</option><option>Appartement</option><option>Chambre en EHPAD ou résidence</option><option>Autre</option></select></div>
 <div class="champ" data-si="logement"><label for="v-surface">Surface approximative</label><select id="v-surface" name="surface"><option value="">Je ne sais pas</option><option>Moins de 40 m²</option><option>40 à 60 m²</option><option>60 à 90 m²</option><option>90 à 120 m²</option><option>Plus de 120 m²</option></select></div>
 <div class="champ" data-si="logement"><label for="v-formule">Formule souhaitée</label><select id="v-formule" name="formule"><option>Je ne sais pas encore</option><option>Essentiel</option><option>Complet</option><option>Sérénité</option></select></div>
@@ -803,8 +803,8 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 <div class="tete"><p class="sur">Questions fréquentes</p><h2>Avant de nous écrire.</h2></div>
 <div class="faq">
 <details><summary>Le devis est-il vraiment gratuit&nbsp;?</summary><p>Oui, et sans engagement. Vous recevez un devis écrit, au prix affiché sur le site, et vous prenez le temps d'en parler en famille.</p></details>
-<details><summary>Le décès vient d'avoir lieu, que faire en premier&nbsp;?</summary><p>Faites constater le décès par un médecin, puis contactez l'opérateur funéraire de votre choix. Notre <a href="guide.html">guide des premières démarches</a> détaille chaque étape. Vous pouvez aussi nous appeler&nbsp;: nous vous orientons.</p></details>
-<details><summary>Puis-je garder ma pompe funèbre et acheter le cercueil chez vous&nbsp;?</summary><p>Oui. Vous restez libre de choisir vos prestataires. Nous livrons le cercueil ou l'urne là où ont lieu les obsèques, en lien avec l'opérateur.</p></details>
+<details><summary>Le décès vient d'avoir lieu, que faire en premier&nbsp;?</summary><p>Faites constater le décès par un médecin, puis contactez l'opérateur funéraire de votre choix. Notre <a href="guide.html">guide des premières démarches</a> détaille chaque étape. Vous pouvez aussi nous écrire&nbsp;: nous vous orientons.</p></details>
+<details><summary>Puis-je garder ma pompe funèbre et acheter le cercueil chez vous&nbsp;?</summary><p>Oui, dès l'ouverture de la vente des cercueils, qui aura lieu prochainement. Vous restez libre de choisir vos prestataires&nbsp;: nous livrerons le cercueil ou l'urne là où ont lieu les obsèques, en lien avec l'opérateur. <a href="cercueils.html#atelier">Être prévenu de l'ouverture</a></p></details>
 <details><summary>Je n'habite pas à proximité, est-ce un problème&nbsp;?</summary><p>Non. Tout se fait à distance&nbsp;: nous vous rappelons et échangeons par e-mail, et nous intervenons partout en France.</p></details>
 </div>
 </div></section>
