@@ -55,7 +55,7 @@ Les prix de la gamme (cercueils 340 à 1 190 €, urnes 49 à 149 €), la livra
 - Format fini A4 (210 × 297 mm), fonds perdus de 3 mm inclus (fichier en 216 × 303 mm), sans traits de coupe. Polices intégrées (TrueType). Couleurs en RVB : l'imprimeur les convertit en CMJN.
 - Conseil d'impression : 8 pages, piqûre à cheval (2 agrafes), papier couché demi-mat 170 g.
 - Régénérer après modification de `catalogue/catalogue.html` : `python3 catalogue/generer.py` (Playwright et Chromium).
-- Avant impression, remplacer dans `catalogue/catalogue.html` : le numéro d'habilitation `XX-XX-XXX`, et vérifier que `maison-lignee.fr` est en ligne (le QR code pointe vers `https://maison-lignee.fr/cercueils.html`). Faire valider prix et engagements comme pour le site.
+- Avant impression, vérifier que `maison-lignee.fr` est en ligne (le QR code pointe vers `https://maison-lignee.fr/cercueils.html`). Faire valider prix et engagements comme pour le site.
 - Les photos viennent du PDF fournisseur (environ 180 ppi réels une fois imprimées) : avec les photos haute définition du fabricant, l'impression sera plus nette.
 
 ## Fiche produit et vue 3D
@@ -120,7 +120,7 @@ Sur 20 familles simulées, 20 refusent pour la même raison : leur pompe funèbr
 
 - Le site ne mentionne plus l'habilitation préfectorale (encart remplacé par « Aucune pression »). **Aucune vente de cercueil ou d'urne avant l'habilitation** : on recueille des demandes et on rappelle, sans signer de devis.
 - Assurance obsèques : Lignée n'est pas intermédiaire. Elle transmet la demande à un partenaire immatriculé à l'ORIAS (consentement dans le formulaire, mention dans `confidentialite.html`). Au rappel, ne pas présenter ni conseiller de contrat : passer la main au partenaire. Piste : se faire inscrire comme mandataire d'intermédiaire par ce partenaire.
-- Quand les numéros arrivent : les renseigner dans `mentions-legales.html` et remettre l'encart « Habilitation préfectorale » (historique git).
+- Quand les numéros arrivent : les renseigner dans `mentions-legales.html`, remettre la phrase d'habilitation dans les mentions du catalogue (`catalogue/catalogue.html`, page 8) et remettre l'encart « Habilitation préfectorale » (historique git).
 
 ## Nouvelle structure (7 novembre 2026) : trois univers
 
