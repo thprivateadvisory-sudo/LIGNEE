@@ -85,9 +85,8 @@ function init() {
 
   function resume() {
     const m = MODELES[cle], n = (l, id) => l.find(x => x.id === id).nom;
-    const txt = `Modèle ${m.nom} (${m.prix} €) · teinte ${n(TEINTES, etat.teinte)} · poignées ${n(POIGNEES, etat.poignee)} · emblème ${n(EMBLEMES, etat.embleme)} · capiton ${n(CAPITONS, etat.capiton)}` + (etat.l1 ? ` · gravure : ${etat.l1}${etat.l2 ? ', ' + etat.l2 : ''}` : '');
+    const txt = `Modèle ${m.nom} · teinte ${n(TEINTES, etat.teinte)} · poignées ${n(POIGNEES, etat.poignee)} · emblème ${n(EMBLEMES, etat.embleme)} · capiton ${n(CAPITONS, etat.capiton)}` + (etat.l1 ? ` · gravure : ${etat.l1}${etat.l2 ? ', ' + etat.l2 : ''}` : '');
     $('[data-resume]').textContent = txt;
-    $('[data-commander]').href = 'cercueils.html#atelier&choix=' + encodeURIComponent(txt) + '#formulaire';
   }
 
   function maj3d() { if (vue3d) vue3d.afficher(config()); }
@@ -97,13 +96,13 @@ function init() {
     $('[data-nom]').textContent = m.nom;
     $('[data-accroche]').textContent = m.accroche;
     $('[data-usage]').textContent = m.usage;
-    $('[data-prix]').innerHTML = `${m.prix}&nbsp;€`;
-    const dsp = $('[data-dispo]'); dsp.textContent = m.stock ? 'En stock' : 'Sur commande'; dsp.classList.toggle('cmd', !m.stock);
+    $('[data-prix]').innerHTML = 'Ouverture prochaine';
+    const dsp = $('[data-dispo]'); dsp.textContent = m.stock ? 'Essentiel' : 'Signature'; dsp.classList.toggle('cmd', !m.stock);
     $('[data-carac]').innerHTML = m.carac.map(([a, b]) => `<div><dt>${a}</dt><dd>${b}</dd></div>`).join('');
     $('[data-conformite]').innerHTML = CONFORMITE.concat(m.cremation ? ["Apte à la crémation&nbsp;: préparé selon les exigences du crématorium."] : ["Destiné à l'inhumation."]).map(t => `<li>${t}</li>`).join('');
     $('[data-livraison]').innerHTML = m.stock
-      ? "En stock&nbsp;: livré avant les obsèques, à la pompe funèbre de votre choix, partout en France métropolitaine. Sinon, intégralement remboursé."
-      : "Sur commande&nbsp;: délai garanti par écrit sur le devis, avant toute signature. Idéal pour préparer ses obsèques à l'avance, dans le cadre d'un contrat obsèques.";
+      ? "À l'ouverture de la vente&nbsp;: modèle tenu en stock, livré avant les obsèques à la pompe funèbre de votre choix, partout en France métropolitaine."
+      : "À l'ouverture de la vente&nbsp;: modèle préparé sur commande, délai écrit sur le devis avant toute signature.";
     const ph = $('.vue-photo img'); ph.src = `images/catalogue/cercueil-${cle}.webp`; ph.alt = `Photo du modèle ${m.nom}`;
     for (const k of ['teinte', 'poignee', 'embleme', 'capiton']) dlg.querySelector(`input[name="${k}"][value="${etat[k]}"]`).checked = true;
     $('[data-l1]').value = etat.l1; $('[data-l2]').value = etat.l2;
@@ -146,6 +145,7 @@ function init() {
   });
   dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
   $('[data-fermer]').addEventListener('click', () => dlg.close());
+  $('[data-commander]').addEventListener('click', () => dlg.close());
   dlg.querySelectorAll('[data-onglet]').forEach(b => b.addEventListener('click', () => montrer(b.dataset.onglet)));
   dlg.querySelectorAll('[data-modele-nav]').forEach(b => b.addEventListener('click', () => ouvrir(b.dataset.modeleNav)));
   dlg.querySelectorAll('[data-vue]').forEach(b => b.addEventListener('click', () => vue3d && vue3d.vue(b.dataset.vue)));
