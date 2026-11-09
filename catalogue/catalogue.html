@@ -107,6 +107,12 @@ ul.coches li::before{content:"";position:absolute;left:.6mm;top:1.3mm;width:2.8m
 .prix{display:flex;align-items:baseline;gap:3mm;margin-top:5mm;padding-top:4mm;border-top:.2mm solid var(--ligne)}
 .prix b{font-family:var(--titre);font-weight:400;font-size:32pt;line-height:1}
 .prix span{font-size:8pt;color:var(--ardoise)}
+.prix.bientot b{font-size:15pt;font-style:italic;color:var(--or-texte,#8A6D3B)}
+.urne .prix.bientot b{font-size:11pt}
+.attente{margin-top:9mm;padding:6mm 7mm;border:.3mm solid var(--or,#B89B5E);border-radius:1.5mm;background:rgba(184,155,94,.08)}
+.attente h3{margin:2mm 0 2mm;font-size:15pt}
+.attente p{margin:0 0 1.5mm}
+.attente .ou{font-size:8pt;letter-spacing:.06em;color:var(--ardoise)}
 
 /* Personnalisation */
 .bloc-perso{display:grid;grid-template-columns:42mm 1fr;gap:6mm;padding:6mm 0;border-bottom:.2mm solid var(--ligne)}
@@ -168,9 +174,9 @@ ul.coches li::before{content:"";position:absolute;left:.6mm;top:1.3mm;width:2.8m
   <img class="mono" src="../images/monogramme-or.png" alt="">
   <p class="marque">LIGNÉE</p>
   <h1>Nos cercueils, <em>au juste prix.</em></h1>
-  <p class="sous">Quatre modèles en bois, des finitions au choix et un prix affiché, livraison comprise, partout en France.</p>
+  <p class="sous">Quatre modèles en bois et des finitions au choix. Ouverture prochaine&nbsp;: inscrivez-vous sur la liste d'attente.</p>
   <img class="vitrine" src="images/heritage.png" alt="Cercueil Héritage">
-  <p class="pied">Catalogue 2026 · Maison funéraire au juste prix</p>
+  <p class="pied">Catalogue 2026 · Avant-première</p>
 </section>
 
 <!-- 2. Pourquoi Lignée a été créée -->
@@ -187,17 +193,16 @@ ul.coches li::before{content:"";position:absolute;left:.6mm;top:1.3mm;width:2.8m
       <p>Autour de ce juste prix, nous avons bâti une maison complète, avec une seule règle&nbsp;: un prix clair, un seul interlocuteur.</p>
     </div>
   </div>
-  <div class="echelle">
-    <p class="sur">Le prix d'un cercueil en France</p>
-    <div class="ech-l"><b>Prix habituel</b><div class="ech-p"><span class="hab">de 650 à 3&nbsp;800&nbsp;€</span></div></div>
-    <div class="ech-l"><b>Chez Lignée</b><div class="ech-p"><span class="lig"><em>dès 340&nbsp;€, livraison comprise</em></span></div></div>
-    <p class="ech-axe"><span>0&nbsp;€</span><span>1&nbsp;000&nbsp;€</span><span>2&nbsp;000&nbsp;€</span><span>3&nbsp;000&nbsp;€</span><span>4&nbsp;000&nbsp;€</span></p>
-    <p class="source">Prix habituels&nbsp;: sources Mutuelle SMI et France Conso. Prix Lignée TTC, livraison incluse en France métropolitaine.</p>
+  <div class="attente">
+    <p class="sur">Ouverture prochaine</p>
+    <h3>La vente des cercueils et des urnes ouvrira prochainement.</h3>
+    <p>Ce catalogue vous présente nos modèles en avant-première. Inscrivez-vous sur la liste d'attente&nbsp;: vous serez prévenu en premier, avec les prix, dès l'ouverture. Sans engagement.</p>
+    <p class="ou">maison-lignee.fr/cercueils · ou scannez le QR code au dos</p>
   </div>
   <div class="engag">
-    <div><h3>La transparence</h3><p>Des prix affichés TTC, livraison comprise. Le devis signé est celui que vous payez.</p></div>
+    <div><h3>La transparence</h3><p>Des prix affichés TTC dès l'ouverture. Le devis signé sera celui que vous payez.</p></div>
     <div><h3>La discrétion</h3><p>Nous ne démarchons jamais les familles. Ce sont elles qui nous contactent.</p></div>
-    <div><h3>La liberté</h3><p>Vous gardez la pompe funèbre de votre choix. Nous livrons là où ont lieu les obsèques.</p></div>
+    <div><h3>La liberté</h3><p>Vous gardez la pompe funèbre de votre choix.</p></div>
     <div><h3>La durée</h3><p>Avant, pendant et après les obsèques&nbsp;: un seul interlocuteur, aussi longtemps qu'il le faut.</p></div>
   </div>
   <p class="folio"><span>Lignée · Catalogue 2026</span><span>2</span></p>
@@ -207,80 +212,80 @@ ul.coches li::before{content:"";position:absolute;left:.6mm;top:1.3mm;width:2.8m
 <section class="page">
   <p class="sur">Comment choisir</p>
   <h2>Trois questions, <em>et c'est tout.</em></h2>
-  <p class="chapo">Prenez le temps qu'il vous faut. Un conseiller peut aussi tout faire avec vous, par téléphone ou en boutique.</p>
+  <p class="chapo">Prenez le temps qu'il vous faut&nbsp;: choisir de son vivant, c'est épargner cette décision à ses proches.</p>
   <div class="etapes">
-    <div class="etape"><span class="n">1</span><div><h3>Est-ce urgent&nbsp;?</h3><p>Selon votre situation, choisissez parmi nos modèles en stock ou sur commande.</p>
+    <div class="etape"><span class="n">1</span><div><h3>Quel usage&nbsp;?</h3><p>Chaque modèle convient à l'inhumation&nbsp;; trois conviennent aussi à la crémation.</p>
       <div class="choix2">
-        <div class="carte"><b><i class="pt"></i>En stock</b><p>Pour un décès récent. Livré avant les obsèques, partout en France, ou intégralement remboursé.</p></div>
-        <div class="carte"><b><i class="pt cmd"></i>Sur commande</b><p>Pour préparer ses obsèques à l'avance. Délai garanti par écrit sur le devis.</p></div>
+        <div class="carte"><b><i class="pt"></i>Essentiels</b><p>Sobre et Tradition&nbsp;: des lignes classiques, sans rien céder sur la qualité.</p></div>
+        <div class="carte"><b><i class="pt cmd"></i>Signature</b><p>Floral et Héritage&nbsp;: des pièces travaillées, pour ceux qui prennent le temps de choisir.</p></div>
       </div></div></div>
-    <div class="etape"><span class="n">2</span><div><h3>Quel modèle&nbsp;?</h3><p>Quatre modèles, un prix chacun, de 340 à 1&nbsp;190&nbsp;€. Chaque modèle convient à l'inhumation&nbsp;; trois conviennent aussi à la crémation.</p></div></div>
+    <div class="etape"><span class="n">2</span><div><h3>Quel modèle&nbsp;?</h3><p>Quatre modèles en bois, présentés dans les pages suivantes.</p></div></div>
     <div class="etape"><span class="n">3</span><div><h3>Quelles finitions&nbsp;?</h3><p>Teinte du bois, poignées, emblème du couvercle, capiton et gravure de la plaque. Tout est au choix, sans supplément.</p></div></div>
   </div>
   <div class="inclus">
-    <h3>Le prix affiché est le prix payé. Il comprend&nbsp;:</h3>
+    <h3>Chaque cercueil comprendra&nbsp;:</h3>
     <ul class="coches">
       <li>Le cercueil, contrôlé un par un</li>
       <li>Le capiton et l'oreiller</li>
       <li>Les poignées de votre choix</li>
       <li>L'emblème de votre choix</li>
       <li>La plaque d'identité gravée</li>
-      <li>La livraison en France métropolitaine</li>
+      <li>Un prix affiché, sans frais cachés</li>
     </ul>
   </div>
   <p class="folio"><span>Lignée · Catalogue 2026</span><span>3</span></p>
 </section>
 
-<!-- 4. Modèles en stock -->
+<!-- 4. Modèles essentiels -->
 <section class="page">
-  <p class="sur">Nos modèles · En stock</p>
-  <h2>Disponibles <em>immédiatement.</em></h2>
-  <p class="chapo">Pour un décès soudain, quand tout doit aller vite. Livrés avant les obsèques, à la pompe funèbre de votre choix.</p>
+  <p class="sur">Nos modèles · Essentiels</p>
+  <h2>Simples, <em>et soignés.</em></h2>
+  <p class="chapo">Des lignes classiques, en bois, contrôlés un par un. Les modèles que choisissent le plus souvent les familles.</p>
   <div style="margin-top:8mm">
   <article class="modele">
     <figure><img src="images/sobre.png" alt="Cercueil Sobre"><figcaption>Photo du modèle, finition d'origine</figcaption></figure>
     <div>
-      <p class="dispo"><i class="pt"></i>En stock</p><p class="usage">Inhumation ou crémation</p>
+      <p class="dispo"><i class="pt"></i>Essentiel</p><p class="usage">Inhumation ou crémation</p>
       <h3>Sobre</h3><p class="accroche">La simplicité, sans rien céder sur la qualité.</p>
       <ul><li>Forme parisienne, lignes droites</li><li>Couvercle à pans, cache-vis dorés</li><li>Vernis naturel satiné</li><li>Capiton coton et oreiller</li><li>4 poignées au choix, plaque gravée</li></ul>
-      <p class="prix"><b>340&nbsp;€</b><span>TTC, livraison incluse</span></p>
+      <p class="prix bientot"><b>Ouverture prochaine</b><span>Prix communiqué à l'ouverture</span></p>
     </div>
   </article>
   <article class="modele">
     <figure><img src="images/tradition.png" alt="Cercueil Tradition"><figcaption>Photo du modèle, finition d'origine</figcaption></figure>
     <div>
-      <p class="dispo"><i class="pt"></i>En stock · Le plus choisi</p><p class="usage">Inhumation ou crémation</p>
+      <p class="dispo"><i class="pt"></i>Essentiel · Le classique</p><p class="usage">Inhumation ou crémation</p>
       <h3>Tradition</h3><p class="accroche">Le classique des familles françaises, aux flancs galbés.</p>
       <ul><li>Forme parisienne, flancs galbés</li><li>Couvercle mouluré, cache-vis dorés</li><li>Finition satinée, teinte miel</li><li>Capiton satiné et oreiller</li><li>6 poignées au choix, plaque gravée</li></ul>
-      <p class="prix"><b>690&nbsp;€</b><span>TTC, livraison incluse</span></p>
+      <p class="prix bientot"><b>Ouverture prochaine</b><span>Prix communiqué à l'ouverture</span></p>
     </div>
   </article>
   </div>
   <p class="folio"><span>Lignée · Catalogue 2026</span><span>4</span></p>
 </section>
 
-<!-- 5. Modèles sur commande -->
+<!-- 5. Modèles signature -->
 <section class="page">
-  <p class="sur">Nos modèles · Sur commande</p>
+  <p class="sur">Nos modèles · Signature</p>
   <h2>Choisis <em>avec soin.</em></h2>
-  <p class="chapo">Préparés pour vous, au délai écrit sur le devis. Idéals pour choisir ses propres obsèques, dans le cadre d'un contrat obsèques.</p>
+  <p class="chapo">Des pièces travaillées, à choisir sans urgence, pour ses propres obsèques.</p>
   <div style="margin-top:8mm">
   <article class="modele">
     <figure><img src="images/floral.png" alt="Cercueil Floral"><figcaption>Photo du modèle, finition d'origine</figcaption></figure>
     <div>
-      <p class="dispo"><i class="pt cmd"></i>Sur commande</p><p class="usage">Inhumation ou crémation</p>
+      <p class="dispo"><i class="pt cmd"></i>Signature</p><p class="usage">Inhumation ou crémation</p>
       <h3>Floral</h3><p class="accroche">Une gravure florale en bas-relief sur chaque flanc.</p>
       <ul><li>Forme parisienne, flancs gravés</li><li>Couvercle à bord arrondi</li><li>Vernis brillant, bois clair</li><li>Capiton satiné et oreiller</li><li>4 poignées au choix, plaque gravée</li></ul>
-      <p class="prix"><b>890&nbsp;€</b><span>TTC, livraison incluse</span></p>
+      <p class="prix bientot"><b>Ouverture prochaine</b><span>Prix communiqué à l'ouverture</span></p>
     </div>
   </article>
   <article class="modele">
     <figure><img src="images/heritage.png" alt="Cercueil Héritage"><figcaption>Photo du modèle, finition d'origine</figcaption></figure>
     <div>
-      <p class="dispo"><i class="pt cmd"></i>Sur commande · Modèle signature</p><p class="usage">Inhumation</p>
+      <p class="dispo"><i class="pt cmd"></i>Signature · Modèle phare</p><p class="usage">Inhumation</p>
       <h3>Héritage</h3><p class="accroche">Verni comme un meuble de famille.</p>
       <ul><li>Forme parisienne, socle à gradins</li><li>Couvercle en pointe de diamant</li><li>Teinte acajou, vernis brillant</li><li>Capiton brodé et oreiller</li><li>6 poignées laiton, plaque gravée</li></ul>
-      <p class="prix"><b>1&nbsp;190&nbsp;€</b><span>TTC, livraison incluse</span></p>
+      <p class="prix bientot"><b>Ouverture prochaine</b><span>Prix communiqué à l'ouverture</span></p>
     </div>
   </article>
   </div>
@@ -291,7 +296,7 @@ ul.coches li::before{content:"";position:absolute;left:.6mm;top:1.3mm;width:2.8m
 <section class="page">
   <p class="sur">Personnaliser</p>
   <h2>Les finitions de votre choix, <em>sans supplément.</em></h2>
-  <p class="chapo">Sur tous les modèles, y compris ceux en stock&nbsp;: vous choisissez, nous posons.</p>
+  <p class="chapo">Sur tous les modèles&nbsp;: vous choisissez, nous posons.</p>
   <div class="bloc-perso"><div><h3>Teinte du bois</h3><p class="d">Cinq teintes.</p></div>
     <div><div class="teintes">
       <span class="teinte"><i style="background:#D4AF7D"></i>Chêne clair</span>
@@ -331,17 +336,17 @@ ul.coches li::before{content:"";position:absolute;left:.6mm;top:1.3mm;width:2.8m
   <p class="sur">Urnes</p>
   <h2>Pour une crémation, <em>trois urnes.</em></h2>
   <div class="urnes">
-    <div class="urne"><svg viewBox="0 0 64 64"><path d="M24 6h16v5c10 4 14 13 14 23 0 13-7 21-15 24H25c-8-3-15-11-15-24 0-10 4-19 14-23z"/><path d="M21 11h22M16 52h32"/></svg><p class="usage">Biodégradable</p><h3>Terre</h3><p>Pour une dispersion ou une inhumation en pleine terre. Fibres végétales.</p><p class="prix"><b>49&nbsp;€</b><span>TTC</span></p></div>
-    <div class="urne"><svg viewBox="0 0 64 64"><path d="M24 6h16v5c10 4 14 13 14 23 0 13-7 21-15 24H25c-8-3-15-11-15-24 0-10 4-19 14-23z"/><path d="M21 11h22M16 52h32"/></svg><p class="usage">Columbarium ou maison</p><h3>Céramique</h3><p>Céramique émaillée, trois teintes. Plaque gravée incluse.</p><p class="prix"><b>89&nbsp;€</b><span>TTC</span></p></div>
-    <div class="urne"><svg viewBox="0 0 64 64"><path d="M24 6h16v5c10 4 14 13 14 23 0 13-7 21-15 24H25c-8-3-15-11-15-24 0-10 4-19 14-23z"/><path d="M21 11h22M16 52h32"/></svg><p class="usage">Columbarium ou caveau</p><h3>Laiton</h3><p>Laiton brossé, fermeture vissée. Gravure du nom et des dates.</p><p class="prix"><b>149&nbsp;€</b><span>TTC</span></p></div>
+    <div class="urne"><svg viewBox="0 0 64 64"><path d="M24 6h16v5c10 4 14 13 14 23 0 13-7 21-15 24H25c-8-3-15-11-15-24 0-10 4-19 14-23z"/><path d="M21 11h22M16 52h32"/></svg><p class="usage">Biodégradable</p><h3>Terre</h3><p>Pour une dispersion ou une inhumation en pleine terre. Fibres végétales.</p><p class="prix bientot"><b>Bientôt</b></p></div>
+    <div class="urne"><svg viewBox="0 0 64 64"><path d="M24 6h16v5c10 4 14 13 14 23 0 13-7 21-15 24H25c-8-3-15-11-15-24 0-10 4-19 14-23z"/><path d="M21 11h22M16 52h32"/></svg><p class="usage">Columbarium ou maison</p><h3>Céramique</h3><p>Céramique émaillée, trois teintes. Plaque gravée incluse.</p><p class="prix bientot"><b>Bientôt</b></p></div>
+    <div class="urne"><svg viewBox="0 0 64 64"><path d="M24 6h16v5c10 4 14 13 14 23 0 13-7 21-15 24H25c-8-3-15-11-15-24 0-10 4-19 14-23z"/><path d="M21 11h22M16 52h32"/></svg><p class="usage">Columbarium ou caveau</p><h3>Laiton</h3><p>Laiton brossé, fermeture vissée. Gravure du nom et des dates.</p><p class="prix bientot"><b>Bientôt</b></p></div>
   </div>
-  <p class="note">Gravure et livraison comprises.</p>
-  <p class="sur" style="margin-top:11mm">Nos garanties</p>
-  <h2 style="font-size:28pt">Nous nous y engageons <em>par écrit.</em></h2>
+  <p class="note">Gravure comprise. Vente à l'ouverture.</p>
+  <p class="sur" style="margin-top:11mm">Nos engagements à l'ouverture</p>
+  <h2 style="font-size:28pt">Ils figureront <em>sur chaque devis.</em></h2>
   <div class="garanties">
     <div><span class="r">I</span><h3>Prix le plus bas</h3><p>Le même modèle moins cher ailleurs, livraison comprise&nbsp;? Nous remboursons la différence.</p></div>
     <div><span class="r">II</span><h3>Qualité</h3><p>Chaque cercueil est contrôlé un par un. Au moindre défaut à la livraison, il est remplacé.</p></div>
-    <div><span class="r">III</span><h3>Livré à temps</h3><p>En stock&nbsp;: avant les obsèques. Sur commande&nbsp;: au délai écrit sur le devis. Sinon, remboursé.</p></div>
+    <div><span class="r">III</span><h3>Livré à temps</h3><p>Un délai écrit sur le devis, accepté par votre pompe funèbre. Sinon, remboursé.</p></div>
   </div>
   <div class="conf">
     <h3>Conformité</h3>
@@ -358,19 +363,19 @@ ul.coches li::before{content:"";position:absolute;left:.6mm;top:1.3mm;width:2.8m
 <section class="page nuit dos">
   <img class="sceau" src="../images/sceau-or.png" alt="">
   <p class="sur">Nous contacter</p>
-  <h2>Parlons-en, <em>sans engagement.</em></h2>
-  <p class="chapo">Un conseiller vous écoute, répond à vos questions et vous adresse un devis écrit, au prix affiché. Aucune pression, jamais.</p>
+  <h2>Soyez prévenu <em>en premier.</em></h2>
+  <p class="chapo">La vente ouvrira prochainement. Inscrivez-vous sur la liste d'attente&nbsp;: nous vous écrirons à l'ouverture, une seule fois. Sans engagement, aucune relance.</p>
   <div class="grille">
     <div class="contact">
-      <div><p class="l">Être rappelé</p><p class="v p">maison-lignee.fr/contact</p></div>
+      <div><p class="l">Liste d'attente</p><p class="v p">maison-lignee.fr/cercueils</p></div>
       <div><p class="l">Site internet</p><p class="v p">maison-lignee.fr</p></div>
       <div><p class="l">E-mail</p><p class="v p">contact@maison-lignee.fr</p></div>
-      <div><p class="l">Devis</p><p class="v p">Gratuit, réponse sous 24 heures</p></div>
+      <div><p class="l">Une question&nbsp;?</p><p class="v p">maison-lignee.fr/contact</p></div>
     </div>
-    <div class="qr"><img src="images/qr-cercueils.svg" alt="QR code vers maison-lignee.fr/cercueils"><p><b>Voir en 3D</b>Scannez pour faire tourner chaque cercueil et essayer les teintes.</p></div>
+    <div class="qr"><img src="images/qr-cercueils.svg" alt="QR code vers la liste d'attente"><p><b>Liste d'attente</b>Scannez pour vous inscrire et voir chaque modèle en 3D.</p></div>
   </div>
   <div class="cachet">Cachet de votre conseiller</div>
-  <p class="mentions">Prix TTC en vigueur au 6 octobre 2026, livraison incluse en France métropolitaine. Photos des modèles réels en finition d'origine&nbsp;; teintes imprimées indicatives. Lignée, une société du Groupe Cohesif.</p>
+  <p class="mentions">Catalogue de présentation&nbsp;: la vente des cercueils et des urnes n'est pas encore ouverte. Photos des modèles réels en finition d'origine&nbsp;; teintes imprimées indicatives. Lignée, une société du Groupe Cohesif.</p>
   <p class="folio"><span>Lignée · Catalogue 2026</span><span>8</span></p>
 </section>
 
