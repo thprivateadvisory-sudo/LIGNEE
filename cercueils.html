@@ -26,7 +26,7 @@
 @font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:300 400;font-display:swap;src:url(polices/cormorant-garamond-italique.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Inter';font-style:normal;font-weight:300 500;font-display:swap;src:url(polices/inter.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Lignée", "url": "https://maison-lignee.fr/", "logo": "https://maison-lignee.fr/images/icone-512.png", "email": "contact@maison-lignee.fr", "areaServed": "FR", "description": "Souvenirs cousus et façonnés à la main à partir des vêtements d'un proche disparu (doudous, coussins, cadres, bijoux), accompagnement pour préparer ou traverser un décès, et prise en charge du logement d'un proche (tri, débarras, nettoyage, vente)."}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Lignée", "url": "https://maison-lignee.fr/", "logo": "https://maison-lignee.fr/images/icone-512.png", "email": "contact@maison-lignee.fr", "areaServed": "FR", "description": "Souvenirs cousus et façonnés à la main à partir des vêtements d'un proche disparu (doudous, coussins, cadres, bijoux), accompagnement pour préparer ou traverser un décès, et prise en charge du logement d'un proche (tri, débarras, nettoyage, vente).", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://maison-lignee.fr/"}, {"@type": "ListItem", "position": 2, "name": "Cercueils", "item": "https://maison-lignee.fr/cercueils"}]}]}</script>
 <style>
 /* Colonne de lecture aérée, sections alternées ivoire / pierre, filets or comme seule ornementation. */
 :root{
@@ -935,7 +935,7 @@ input:focus-visible+.pastille{outline:2px solid var(--or-texte)}
 <header class="entete"><div class="alerte"><p class="alerte-in"><span>Un décès&nbsp;?</span> <a href="guide.html">Les premières démarches</a><span aria-hidden="true">·</span><a href="souvenirs.html">Boutique souvenirs</a><span class="alerte-tel"> · <a href="contact.html#formulaire">Être rappelé</a></span></p></div><div class="wrap">
 <a class="marque" href="index.html" aria-label="Lignée, accueil"><img class="marque-mono" src="images/monogramme-entete.png" width="96" height="89" alt=""><span>LIGNÉE</span></a>
 <nav class="nav" aria-label="Navigation principale"><a href="souvenirs.html">Boutique souvenirs</a><a href="anticiper.html" aria-current="page">Préparer ses obsèques</a><a href="guide.html">Après un décès</a><a href="formules.html">Le logement</a><a href="a-propos.html">À propos</a><a href="contact.html">Contact</a></nav>
-<a class="btn" href="souvenirs.html">Boutique souvenirs</a>
+<a class="btn" href="souvenirs.html#commande">Réserver un souvenir</a>
 <button class="menu-btn" type="button" aria-expanded="false">Menu</button>
 </div></header>
 <main>
@@ -1071,7 +1071,7 @@ input:focus-visible+.pastille{outline:2px solid var(--or-texte)}
 <div class="vue-onglets" role="tablist" aria-label="Affichage"><button type="button" role="tab" data-onglet="3d" aria-selected="true">Vue 3D</button><button type="button" role="tab" data-onglet="photo" aria-selected="false">Photo réelle</button></div>
 <div class="vue-3d"><canvas aria-label="Cercueil en trois dimensions. Faites glisser pour tourner, pincez ou utilisez la molette pour zoomer."></canvas><p class="vue-charge">Préparation de la vue 3D…</p><p class="vue-aide">Faites glisser pour tourner · molette ou pincement pour zoomer</p>
 <div class="vue-outils"><button type="button" data-couvercle aria-pressed="false">Ouvrir le couvercle</button><span class="sep" aria-hidden="true"></span><button type="button" data-tourner="-0.785" aria-label="Tourner vers la gauche">↺</button><button type="button" data-tourner="0.785" aria-label="Tourner vers la droite">↻</button><button type="button" data-zoom="0.75" aria-label="Rapprocher">+</button><button type="button" data-zoom="1.33" aria-label="Éloigner">−</button><span class="sep" aria-hidden="true"></span><button type="button" data-vue="troisquarts">3/4</button><button type="button" data-vue="profil">Profil</button><button type="button" data-vue="dessus">Dessus</button></div></div>
-<figure class="vue-photo" hidden><img src="" alt=""><figcaption>Photo du modèle réel, finition d'origine.</figcaption></figure>
+<figure class="vue-photo" hidden><img alt=""><figcaption>Photo du modèle réel, finition d'origine.</figcaption></figure>
 <div><div class="vue-modeles" aria-label="Autres modèles"><button type="button" data-modele-nav="sobre">Sobre</button><button type="button" data-modele-nav="tradition">Tradition</button><button type="button" data-modele-nav="floral">Floral</button><button type="button" data-modele-nav="heritage">Héritage</button></div>
 <p class="vue-note">Vue 3D indicative pour visualiser teintes et finitions. Le modèle, sa teinte et ses finitions seront confirmés sur votre devis.</p></div>
 </div>
