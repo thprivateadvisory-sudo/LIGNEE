@@ -1,5 +1,5 @@
 // Rend chaque texte de scenes.json en PNG transparent 1080 x 1920.
-// Usage : node textes.js <dossier_sortie>
+// Usage : node textes.js <dossier_sortie> [scenes.json]
 const { chromium } = require('playwright');
 const fs = require('fs');
 const path = require('path');
@@ -8,7 +8,7 @@ const ici = __dirname;
 const racine = path.resolve(ici, '../../..');
 const sortie = path.resolve(process.argv[2] || path.join(ici, 'build'));
 fs.mkdirSync(sortie, { recursive: true });
-const { scenes } = JSON.parse(fs.readFileSync(path.join(ici, 'scenes.json'), 'utf8'));
+const { scenes } = JSON.parse(fs.readFileSync(path.resolve(process.argv[3] || path.join(ici, 'scenes.json')), 'utf8'));
 const police = (f) => 'file://' + path.join(racine, 'polices', f);
 const logo = 'file://' + path.join(racine, 'images', 'logo-lignee.png');
 
@@ -41,11 +41,16 @@ em{font-style:italic;color:#E2C68E}
 .fin .site{font:600 50px/1 Inter;letter-spacing:1px;color:#1B2A41}
 .fin .pseudo{font:500 34px/1 Inter;color:#7D6431;margin-top:18px}
 .fin hr{width:80px;border:0;border-top:2px solid #B89B5E;margin:56px 0 40px}
+.chiffre{top:560px;font:600 64px/1.15 Cormorant}
+.chiffre big{display:block;font:600 250px/1 Cormorant;color:#E2C68E;margin:14px 0 6px;letter-spacing:-4px}
+.pilier{top:860px;font:600 84px/1.1 Cormorant;padding:50px 0;background:radial-gradient(ellipse 60% 55% at 50% 50%,rgba(10,16,28,.42),rgba(10,16,28,0) 100%)}
+.pilier b{display:block;font:600 34px/1 Inter;letter-spacing:7px;text-transform:uppercase;color:#E2C68E;margin-bottom:30px}
+.chiffre{padding:50px 0;background:radial-gradient(ellipse 60% 55% at 50% 50%,rgba(10,16,28,.42),rgba(10,16,28,0) 100%)}
 .fin .partage{font:500 40px/1.4 Inter;color:#5B6472;max-width:820px}
 `;
 
 const fin = `<img src="${logo}"><div class="dev">Le funéraire, enfin humain.</div>
-<div class="site">maison-lignee.fr</div><div class="pseudo">@maisonlignee</div><hr>
+<div class="site">maison-lignee.fr</div><div class="pseudo">@maison.lignee</div><hr>
 <div class="partage">Envoyez cette vidéo à quelqu'un<br>qui n'ose pas ouvrir l'armoire.</div>`;
 
 (async () => {
@@ -53,7 +58,7 @@ const fin = `<img src="${logo}"><div class="dev">Le funéraire, enfin humain.</d
   const page = await nav.newPage({ viewport: { width: 1080, height: 1920 } });
   for (const [i, s] of scenes.entries()) {
     for (const [j, t] of s.textes.entries()) {
-      const html = t.style === 'fin' ? fin : t.html;
+      const html = t.style === 'fin' ? (t.html ? `<img src="${logo}">` + t.html : fin) : t.html;
       const f = path.join(sortie, '_texte.html');
       fs.writeFileSync(f, `<!doctype html><meta charset="utf-8"><style>${css}</style><div class="t ${t.style}">${html}</div>`);
       await page.goto('file://' + f);

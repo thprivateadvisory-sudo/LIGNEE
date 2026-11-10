@@ -3,7 +3,7 @@
 
 Sources : les vidéos Pexels du site (dossier videos/), les polices et le logo du site.
 Étapes : textes en PNG (Playwright), un segment par scène (ffmpeg), puis fondus enchaînés.
-Usage : python3 reseaux/tiktok/presentation/construire.py
+Usage : python3 reseaux/tiktok/presentation/construire.py [scenes.json] [sortie.mp4]
 """
 import json, subprocess, sys
 from pathlib import Path
@@ -11,9 +11,11 @@ from PIL import Image, ImageDraw
 
 ICI = Path(__file__).resolve().parent
 RACINE = ICI.parents[2]
-BUILD = ICI / "build"
-BUILD.mkdir(exist_ok=True)
-CFG = json.loads((ICI / "scenes.json").read_text())
+SCENES = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else ICI / "scenes.json"
+CIBLE = Path(sys.argv[2]).resolve() if len(sys.argv) > 2 else ICI / "lignee-presentation-tiktok.mp4"
+BUILD = ICI / "build" / SCENES.stem
+BUILD.mkdir(parents=True, exist_ok=True)
+CFG = json.loads(SCENES.read_text())
 FPS, FONDU = CFG["fps"], CFG["fondu"]
 W, H = 1080, 1920
 CX, CY, CW, CH = 60, 220, 960, 1200  # carte vidéo au format 4:5
@@ -110,8 +112,7 @@ def assembler(segs, cible):
 
 if __name__ == "__main__":
     masques()
-    run(["node", str(ICI / "textes.js"), str(BUILD)])
+    run(["node", str(ICI / "textes.js"), str(BUILD), str(SCENES)])
     segs = [segment(i, s) for i, s in enumerate(CFG["scenes"])]
-    cible = ICI / "lignee-presentation-tiktok.mp4"
-    total = assembler(segs, cible)
-    print(f"OK {cible} ({total:.1f} s)")
+    total = assembler(segs, CIBLE)
+    print(f"OK {CIBLE} ({total:.1f} s)")

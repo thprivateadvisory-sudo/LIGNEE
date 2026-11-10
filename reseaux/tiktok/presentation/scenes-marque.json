@@ -1,0 +1,63 @@
+{
+  "fps": 30,
+  "fondu": 0.6,
+  "scenes": [
+    {
+      "clip": "brume-campagne", "debut": 0.0, "duree": 4.6,
+      "textes": [
+        {"de": 0.1, "a": 4.6, "style": "chiffre", "html": "En France, une famille a<big>6 jours</big>pour organiser des obsèques."}
+      ]
+    },
+    {
+      "clip": "photos-mains", "debut": 3.4, "duree": 4.0,
+      "textes": [
+        {"de": 0.3, "a": 4.0, "style": "grand", "html": "Six jours<br>pour tout décider."},
+        {"de": 1.6, "a": 4.0, "style": "grand-bas", "html": "En plein chagrin."}
+      ]
+    },
+    {
+      "clip": "rideaux-soleil", "debut": 4.5, "duree": 4.0,
+      "textes": [
+        {"de": 0.3, "a": 4.0, "style": "grand", "html": "Et personne ne nous<br>a appris à le faire."}
+      ]
+    },
+    {
+      "clip": "photos-boite", "debut": 5.5, "duree": 4.8,
+      "textes": [
+        {"de": 0.3, "a": 4.8, "style": "grand", "html": "<em>Lignée</em> est née<br>de ce constat."},
+        {"de": 1.8, "a": 4.8, "style": "petit-bas", "html": "Une maison qui accompagne les familles<br>avant, pendant et après un décès."}
+      ]
+    },
+    {
+      "clip": "bois-poncage", "debut": 2.0, "duree": 4.4,
+      "textes": [
+        {"de": 0.3, "a": 4.4, "style": "pilier", "html": "<b>01 · Préparer</b>Écrire ses volontés<br>pour épargner ses proches."}
+      ]
+    },
+    {
+      "clip": "aube-champs", "debut": 0.0, "duree": 4.4,
+      "textes": [
+        {"de": 0.3, "a": 4.4, "style": "pilier", "html": "<b>02 · Traverser</b>Un guide clair<br>pour chaque démarche."}
+      ]
+    },
+    {
+      "clip": "couture-gros-plan", "debut": 3.5, "duree": 4.4,
+      "textes": [
+        {"de": 0.3, "a": 4.4, "style": "pilier", "html": "<b>03 · Se souvenir</b>Des objets faits main<br>pour garder un lien."}
+      ]
+    },
+    {
+      "clip": "aube-champs", "debut": 8.5, "duree": 5.2,
+      "textes": [
+        {"de": 0.3, "a": 5.2, "style": "grand-haut", "html": "Notre ambition :<br>rendre le funéraire<br>plus humain."},
+        {"de": 1.8, "a": 5.2, "style": "trio", "html": "<span>Plus simple</span><i>·</i><span>Plus clair</span><i>·</i><span>Plus doux</span>"}
+      ]
+    },
+    {
+      "clip": "fin", "debut": 0.0, "duree": 5.4,
+      "textes": [
+        {"de": 0.2, "a": 5.4, "style": "fin", "html": "<div class=\"dev\">Le funéraire, enfin humain.</div><div class=\"site\">maison-lignee.fr</div><div class=\"pseudo\">@maison.lignee</div><hr><div class=\"partage\">Partagez-la.<br>Un jour, quelqu'un en aura besoin.</div>"}
+      ]
+    }
+  ]
+}
