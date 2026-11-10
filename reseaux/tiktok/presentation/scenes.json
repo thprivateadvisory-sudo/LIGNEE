@@ -1,0 +1,146 @@
+{
+  "fps": 30,
+  "fondu": 0.6,
+  "scenes": [
+    {
+      "clip": "rideaux-soleil",
+      "debut": 0.0,
+      "duree": 4.2,
+      "textes": [
+        {
+          "de": 0.15,
+          "a": 4.2,
+          "style": "accroche",
+          "html": "Que faire<br>des vêtements<br>d'un proche disparu&nbsp;?"
+        }
+      ]
+    },
+    {
+      "clip": "photos-mains",
+      "debut": 0.5,
+      "duree": 4.6,
+      "textes": [
+        {
+          "de": 0.3,
+          "a": 4.6,
+          "style": "grand",
+          "html": "On n'ose pas<br>les donner."
+        },
+        {
+          "de": 1.9,
+          "a": 4.6,
+          "style": "grand-bas",
+          "html": "On n'ose pas<br>les jeter."
+        }
+      ]
+    },
+    {
+      "clip": "brume-campagne",
+      "debut": 0.0,
+      "duree": 4.4,
+      "textes": [
+        {
+          "de": 0.3,
+          "a": 4.4,
+          "style": "grand",
+          "html": "Alors ils restent<br>au fond d'une armoire."
+        },
+        {
+          "de": 2.0,
+          "a": 4.4,
+          "style": "petit-bas",
+          "html": "Pendant des années."
+        }
+      ]
+    },
+    {
+      "clip": "couture-gros-plan",
+      "debut": 0.5,
+      "duree": 4.4,
+      "textes": [
+        {
+          "de": 0.3,
+          "a": 4.4,
+          "style": "grand",
+          "html": "Chez <em>Lignée</em>,<br>on en fait des souvenirs."
+        }
+      ]
+    },
+    {
+      "clip": "couture-machine",
+      "debut": 1.0,
+      "duree": 5.6,
+      "textes": [
+        {
+          "de": 0.3,
+          "a": 5.6,
+          "style": "grand-haut",
+          "html": "Un doudou<br>dans sa chemise.<br>Un coussin<br>dans son pull."
+        },
+        {
+          "de": 2.4,
+          "a": 5.6,
+          "style": "etiquette",
+          "html": "Cousu à la main en France<br>par une couturière partenaire"
+        }
+      ]
+    },
+    {
+      "clip": "photos-boite",
+      "debut": 1.0,
+      "duree": 5.4,
+      "textes": [
+        {
+          "de": 0.3,
+          "a": 5.4,
+          "style": "liste",
+          "html": "<span>Des photos pendant la confection</span><span>Les tissus restants rendus</span><span>Une carte signée de la couturière</span>"
+        }
+      ]
+    },
+    {
+      "clip": "aube-champs",
+      "debut": 2.0,
+      "duree": 6.4,
+      "textes": [
+        {
+          "de": 0.3,
+          "a": 3.3,
+          "style": "grand",
+          "html": "Pourquoi <em>Lignée</em>&nbsp;?"
+        },
+        {
+          "de": 0.9,
+          "a": 3.3,
+          "style": "petit-bas",
+          "html": "Parce qu'après un décès,<br>tout va trop vite."
+        },
+        {
+          "de": 3.4,
+          "a": 6.4,
+          "style": "grand-haut",
+          "html": "On accompagne<br>les familles avant,<br>pendant et après."
+        },
+        {
+          "de": 4.2,
+          "a": 6.4,
+          "style": "trio",
+          "html": "<span>Préparer</span><i>·</i><span>Traverser</span><i>·</i><span>Se souvenir</span>"
+        }
+      ]
+    },
+    {
+      "clip": "fin",
+      "debut": 0.0,
+      "duree": 5.4,
+      "textes": [
+        {
+          "de": 0.2,
+          "a": 5.4,
+          "style": "fin",
+          "html": ""
+        }
+      ]
+    }
+  ]
+}
