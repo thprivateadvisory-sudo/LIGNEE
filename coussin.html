@@ -156,6 +156,9 @@ p{margin:0}
 
 /* Formulaires */
 .form-zone{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:clamp(2rem,5vw,4rem);align-items:start}
+.photo-produit{position:relative;margin:0 0 1.75rem}
+.photo-produit img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;border:1px solid var(--ligne)}
+.mention-illu{position:absolute;right:.5rem;bottom:.5rem;font-size:.7rem;line-height:1.4;padding:.15rem .5rem;background:rgba(245,241,232,.88);color:#4A5568;border-radius:2px;pointer-events:none}
 @media (max-width:860px){.form-zone{grid-template-columns:minmax(0,1fr)}}
 .form{background:var(--blanc);border:1px solid var(--ligne);border-radius:6px;padding:clamp(1.25rem,4vw,2.25rem);display:grid;gap:1.1rem;min-width:0}
 .champs{display:grid;gap:1.1rem;grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -822,6 +825,7 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 </div></div></section>
 <section class="sec-bloc pierre" id="commande"><div class="wrap form-zone">
 <div class="prose rv">
+<figure class="photo-produit"><img src="images/souvenirs/coussin.webp" width="800" height="800" alt="Coussin cousu dans une chemise à carreaux, avec sa patte de boutonnage et sa poche" decoding="async"><figcaption class="mention-illu">Photo d'illustration</figcaption></figure>
 <p class="sur">69&nbsp;€ · 55&nbsp;€ les suivants</p>
 <h2 style="margin-top:0">Réservez votre place.</h2>
 <p class="muted">Le premier coussin est à 69&nbsp;€, chaque coussin suivant de la même commande à 55&nbsp;€, avec les mêmes vêtements ou d'autres. Nos premières confections démarrent très bientôt : réservez votre place, nous vous écrivons dès qu'elle est prête avec le délai et un lien de paiement sécurisé. Rien n'est dû avant.</p>
