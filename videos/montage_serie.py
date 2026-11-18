@@ -1,7 +1,8 @@
-"""TikTok « Ne résiliez pas tout de suite son téléphone » (format de la vidéo vêtements).
+"""Série TikTok « Si vous venez de perdre quelqu'un » (format de la vidéo vêtements).
 
-Usage : python3 videos/montage_voix.py [sortie.mp4]
-Plans Pexels du dossier videos/, texte façon TikTok (cartouches blancs), carton final Lignée.
+Usage : python3 videos/montage_serie.py [voix|parfum|armoire|ecriture|tout]
+Sortie : videos/tiktok-<nom>.mp4. Plans Pexels du dossier videos/,
+texte façon TikTok (cartouches blancs), carton final Lignée, sans musique.
 """
 import os, subprocess, sys, tempfile
 from PIL import Image, ImageDraw, ImageFont
@@ -12,14 +13,39 @@ W, H, FPS = 1080, 1920, 30
 POLICE = "/usr/share/fonts/opentype/inter/Inter-Bold.otf"
 POLICE_FINE = "/usr/share/fonts/opentype/inter/Inter-Medium.otf"
 
+ACCROCHE = ("aube-champs", 1.0, 3.2, ["Enregistrez cette vidéo.", "Pour vous, ou pour quelqu'un", "qui en aura besoin."], 50, 0.40)
+
 # (clip, début dans le clip, durée, lignes, taille, position verticale du bloc)
-SCENES = [
-    ("aube-champs", 1.0, 3.2, ["Enregistrez cette vidéo.", "Pour vous, ou pour quelqu'un", "qui en aura besoin."], 50, 0.40),
-    ("brume-campagne", 0.5, 3.8, ["Si vous venez de perdre quelqu'un,", "ne résiliez pas tout de suite", "son téléphone."], 56, 0.24),
-    ("photos-mains", 0.5, 3.6, ["Sa messagerie peut s'effacer", "avec la ligne.", "Et sa voix avec elle."], 56, 0.24),
-    ("photos-boite", 1.0, 4.0, ["Enregistrez ses messages vocaux.", "Gardez ses SMS,", "ses mots écrits à la main."], 56, 0.24),
-    ("rideaux-soleil", 2.0, 3.8, ["Un jour, vous aurez besoin", "de l'entendre dire", "votre prénom."], 56, 0.24),
-]
+VIDEOS = {
+    "voix": [
+        ACCROCHE,
+        ("brume-campagne", 0.5, 3.8, ["Si vous venez de perdre quelqu'un,", "ne résiliez pas tout de suite", "son téléphone."], 56, 0.24),
+        ("photos-mains", 0.5, 3.6, ["Sa messagerie peut s'effacer", "avec la ligne.", "Et sa voix avec elle."], 56, 0.24),
+        ("photos-boite", 1.0, 4.0, ["Enregistrez ses messages vocaux.", "Gardez ses SMS,", "ses mots écrits à la main."], 56, 0.24),
+        ("rideaux-soleil", 2.0, 3.8, ["Un jour, vous aurez besoin", "de l'entendre dire", "votre prénom."], 56, 0.24),
+    ],
+    "parfum": [
+        ACCROCHE,
+        ("rideaux-soleil", 4.5, 3.8, ["Si vous venez de perdre quelqu'un,", "ne jetez pas son parfum."], 56, 0.24),
+        ("brume-campagne", 3.0, 3.8, ["L'odeur est ce qui ramène", "un souvenir le plus vite."], 56, 0.24),
+        ("photos-mains", 4.0, 3.8, ["Gardez le flacon, même presque vide.", "Bien fermé, à l'abri de la lumière."], 54, 0.24),
+        ("aube-champs", 8.0, 3.8, ["Un jour, une goutte suffira", "à ramener sa présence", "dans la pièce."], 56, 0.24),
+    ],
+    "armoire": [
+        ACCROCHE,
+        ("rideaux-soleil", 0.2, 3.8, ["Si vous venez de perdre quelqu'un,", "ne videz pas son armoire", "seul, ni trop vite."], 56, 0.24),
+        ("brume-campagne", 1.5, 3.6, ["Rien ne presse.", "Ses vêtements peuvent attendre", "des mois."], 56, 0.24),
+        ("photos-boite", 6.0, 4.0, ["Faites-le à plusieurs.", "Chacun garde une pièce", "qui lui parle."], 56, 0.24),
+        ("couture-machine", 1.0, 4.0, ["Et ceux que vous n'osez", "ni donner ni jeter", "peuvent devenir autre chose."], 56, 0.24),
+    ],
+    "ecriture": [
+        ACCROCHE,
+        ("photos-mains", 0.2, 3.6, ["Si vous venez de perdre quelqu'un,", "photographiez son écriture."], 56, 0.24),
+        ("photos-boite", 3.5, 4.0, ["Une liste de courses.", "Une carte d'anniversaire.", "Un mot sur le frigo."], 56, 0.24),
+        ("brume-campagne", 2.0, 3.8, ["Ces papiers se perdent", "dans les cartons.", "Prenez-les en photo, un par un."], 56, 0.24),
+        ("rideaux-soleil", 5.0, 3.8, ["Son écriture, c'est encore", "un peu de sa main", "dans la vôtre."], 56, 0.24),
+    ],
+}
 FIN = 2.8
 CREME = (243, 238, 230)
 MARINE = (27, 42, 74)
@@ -64,11 +90,11 @@ def run(cmd):
     subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
 
 
-def main():
-    sortie = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ICI, "tiktok-voix.mp4")
+def monter(nom):
+    sortie = os.path.join(ICI, f"tiktok-{nom}.mp4")
     tmp = tempfile.mkdtemp()
     morceaux = []
-    for i, (clip, debut, duree, lignes, taille, y) in enumerate(SCENES):
+    for i, (clip, debut, duree, lignes, taille, y) in enumerate(VIDEOS[nom]):
         png = os.path.join(tmp, f"t{i}.png")
         cartouche(lignes, taille, y, png)
         out = os.path.join(tmp, f"s{i}.mp4")
@@ -97,4 +123,6 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    choix = sys.argv[1] if len(sys.argv) > 1 else "tout"
+    for nom in (VIDEOS if choix == "tout" else [choix]):
+        monter(nom)
