@@ -130,7 +130,7 @@ Parcours : clic sur un objet (`souvenirs.html`, ou lien direct `souvenirs.html#d
 
 Textes, prix et liens de paiement : un seul fichier, `js/souvenirs.js`.
 
-**Brancher le paiement (à faire une fois)** : dans Stripe, créer un lien de paiement (Payment Link) par objet, au même prix TTC, avec « ajuster la quantité » autorisé (1 à 10) et la redirection après paiement vers `https://lignee.fr/merci?paye=1`. Coller chaque lien dans `STRIPE` en haut de `js/souvenirs.js`. Le site transmet l'e-mail du client et un numéro de commande (`client_reference_id`, ex. `LS-261119-AB12`) qu'on retrouve dans Stripe et dans l'e-mail de commande Web3Forms (adresse, variante du bijou, prénom du proche, message).
+**Paiement branché (novembre 2026)** : 7 liens de paiement Stripe en mode réel (compte cohesifcommerce.fr), un par objet, au prix TTC, quantité réglable de 1 à 10, facture automatique, retour vers `https://maison-lignee.fr/merci.html?paye=1`. Ils sont dans `STRIPE` en haut de `js/souvenirs.js`. Un changement de prix se fait dans Stripe (nouveau lien) **et** dans `js/souvenirs.js`. TVA comprise dans le prix, Stripe Tax non activé. Le site transmet l'e-mail du client et un numéro de commande (`client_reference_id`, ex. `LS-261119-AB12`) qu'on retrouve dans Stripe et dans l'e-mail de commande Web3Forms (adresse, variante du bijou, prénom du proche, message).
 
 Tant qu'un lien est vide, la commande arrive quand même par e-mail et le client lit qu'il reçoit son lien de paiement sécurisé dans l'heure (jours ouvrés) : il faut alors lui envoyer un lien Stripe à la main.
 

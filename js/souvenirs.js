@@ -3,7 +3,7 @@
 
    PAIEMENT. Pour chaque objet à prix fixe, créer dans Stripe un « Payment Link » (Produits → Liens de paiement) :
    - prix TTC identique à celui ci-dessous, « Autoriser les clients à ajuster la quantité » coché (1 à 10) ;
-   - Après le paiement → « Rediriger vers votre site » : https://lignee.fr/merci?paye=1
+   - Après le paiement → « Rediriger vers votre site » : https://maison-lignee.fr/merci.html?paye=1
    puis coller le lien (https://buy.stripe.com/...) dans STRIPE ci-dessous.
    Tant qu'un lien est vide, la commande est quand même enregistrée (e-mail Web3Forms) et le client
    est prévenu qu'il reçoit son lien de paiement sécurisé par e-mail. */
@@ -11,13 +11,13 @@
   'use strict';
 
   var STRIPE={
-    coussin:'',
-    doudou:'',
-    cadre:'',
-    boite:'',
-    empreinte:'',
-    ecriture:'',
-    meche:''
+    coussin:'https://buy.stripe.com/9B6aEZcr85FW4IMenfaVa0Q',
+    doudou:'https://buy.stripe.com/fZu6oJ3UCecs4IMa6ZaVa0P',
+    cadre:'https://buy.stripe.com/00w14p76O8S8gru6UNaVa0R',
+    boite:'https://buy.stripe.com/7sYeVf62Kfgw7UY6UNaVa0S',
+    empreinte:'https://buy.stripe.com/dRm4gBezg5FW3EI4MFaVa0T',
+    ecriture:'https://buy.stripe.com/fZu14p9eWc4k1wAdjbaVa0U',
+    meche:'https://buy.stripe.com/14A14pgHofgw8Z21AtaVa0V'
   };
   var CLE='264f0919-dc05-41b5-aeb6-cbdd337fcb32'; // Web3Forms (même clé que les formulaires du site)
 
