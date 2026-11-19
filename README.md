@@ -9,7 +9,9 @@ Un fichier HTML autonome par page (12 pages), tous au même niveau (styles et sc
 | `index.html` | Accueil |
 | `formules.html` | Nos formules (Essentiel, Complet, Sérénité) |
 | `methode.html` | Comment ça marche |
-| `souvenirs.html` | Confection souvenir (sur devis, formulaire de devis) |
+| `souvenirs.html` | Confection souvenir : fiche détaillée au clic sur chaque objet, devis pour le reste |
+| `commande.html` | Page de paiement des souvenirs à prix fixe (`commande.html?p=doudou`) |
+| `merci.html` | Confirmation de commande (retour de Stripe : `merci.html?paye=1`) |
 | `cercueils.html` | Cercueils et urnes : gamme, prix TTC, comparaison avec le marché |
 | `anticiper.html` | Assurance obsèques, coffret « Mes volontés », étude gratuite |
 | `notaires.html` | Notaires et professionnels (formulaire pro) |
@@ -121,3 +123,17 @@ Sur 20 familles simulées, 20 refusent pour la même raison : leur pompe funèbr
 - Le site ne mentionne plus l'habilitation préfectorale (encart remplacé par « Aucune pression »). **Aucune vente de cercueil ou d'urne avant l'habilitation** : on recueille des demandes et on rappelle, sans signer de devis.
 - Assurance obsèques : Lignée n'est pas intermédiaire. Elle transmet la demande à un partenaire immatriculé à l'ORIAS (consentement dans le formulaire, mention dans `confidentialite.html`). Au rappel, ne pas présenter ni conseiller de contrat : passer la main au partenaire. Piste : se faire inscrire comme mandataire d'intermédiaire par ce partenaire.
 - Quand les numéros arrivent : les renseigner dans `mentions-legales.html` et remettre l'encart « Habilitation préfectorale » (historique git).
+
+## Souvenirs : commande et paiement en ligne
+
+Parcours : clic sur un objet (`souvenirs.html`, ou lien direct `souvenirs.html#doudou`) → fiche avec tout expliqué (ce que l'on reçoit, ce qu'il faut confier, délai, étapes, garanties, questions) → « Commander » → `commande.html?p=doudou` (quantité, coordonnées, CGV) → paiement Stripe → `merci.html?paye=1`. Clés : `coussin`, `doudou`, `cadre`, `boite`, `empreinte`, `ecriture`, `meche`. Les objets sur devis (numérisation, livre, film, arbre) ont aussi une fiche, qui renvoie au formulaire de devis pré-rempli.
+
+Textes, prix et liens de paiement : un seul fichier, `js/souvenirs.js`.
+
+**Brancher le paiement (à faire une fois)** : dans Stripe, créer un lien de paiement (Payment Link) par objet, au même prix TTC, avec « ajuster la quantité » autorisé (1 à 10) et la redirection après paiement vers `https://lignee.fr/merci?paye=1`. Coller chaque lien dans `STRIPE` en haut de `js/souvenirs.js`. Le site transmet l'e-mail du client et un numéro de commande (`client_reference_id`, ex. `LS-261119-AB12`) qu'on retrouve dans Stripe et dans l'e-mail de commande Web3Forms (adresse, variante du bijou, prénom du proche, message).
+
+Tant qu'un lien est vide, la commande arrive quand même par e-mail et le client lit qu'il reçoit son lien de paiement sécurisé dans l'heure (jours ouvrés) : il faut alors lui envoyer un lien Stripe à la main.
+
+Quatrième objet offert : le lien Stripe encaisse le prix plein, la page affiche le total remisé. **Rembourser le quatrième objet dans Stripe sous 48 h** (CGV art. 9).
+
+Engagements affichés, à tenir réellement (et à valider) : étiquette d'envoi prépayée sous 24 h ouvrées, photo de l'objet avant expédition, livraison offerte en France métropolitaine, remboursement intégral si les affaires ne permettent pas la confection, annulation remboursée tant que la confection n'a pas commencé, restitution des affaires. Dimensions et délais des fiches (doudou 30 cm, coussin 40 × 40 cm, cadre 13 × 18, boîte 25 × 18 × 10 cm, 3 à 4 semaines) et détails (étiquette avec prénom, boutons en façade, écrin, épreuve avant gravure) : à confirmer avec l'atelier, sinon les corriger dans `js/souvenirs.js`. CGV art. 2, 4 et 9 et `confidentialite.html` (Stripe) mis à jour : à faire relire par le juriste.
