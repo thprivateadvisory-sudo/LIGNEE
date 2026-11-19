@@ -883,6 +883,8 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 </div></div></section>
 <section class="sec-bloc pierre"><div class="wrap merci-z" id="merci">
 <p class="chapo" data-etat="paye">Votre paiement est confirmé. Un e-mail de confirmation vient de vous être envoyé.</p>
+<p class="chapo" data-etat="verif" hidden>Nous vérifions votre paiement. Vous recevez un e-mail de confirmation dès qu'il est validé.</p>
+<div data-etat="echec" hidden style="display:grid;gap:1rem"><p class="chapo">Le paiement n'a pas abouti&nbsp;: aucune somme n'a été prélevée.</p><div class="btns"><a class="btn m-reessayer" href="commande.html">Réessayer le paiement</a><a class="btn sec" href="contact.html#formulaire">Être rappelé</a></div></div>
 <p class="chapo" data-etat="attente" hidden>Votre commande est bien enregistrée. Nous vous envoyons votre lien de paiement sécurisé par e-mail dans l'heure (jours ouvrés). Rien n'est commencé avant votre paiement.</p>
 <div class="m-recap" hidden>
 <div><span>Commande</span><b class="m-num"></b></div>

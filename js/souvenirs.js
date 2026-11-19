@@ -6,7 +6,11 @@
    - Après le paiement → « Rediriger vers votre site » : https://maison-lignee.fr/merci.html?paye=1
    puis coller le lien (https://buy.stripe.com/...) dans STRIPE ci-dessous.
    Tant qu'un lien est vide, la commande est quand même enregistrée (e-mail Web3Forms) et le client
-   est prévenu qu'il reçoit son lien de paiement sécurisé par e-mail. */
+   est prévenu qu'il reçoit son lien de paiement sécurisé par e-mail.
+
+   PAIEMENT INTÉGRÉ (carte, Apple Pay, Google Pay dans la page, sans ouvrir Stripe) : renseigner PAIEMENT
+   ci-dessous (adresse du serveur api/worker.js et clé publiable pk_live_…). Tant que c'est vide, ou si le
+   serveur ne répond pas, le site bascule sur les liens de paiement STRIPE. */
 (function(){
   'use strict';
 
@@ -19,6 +23,11 @@
     ecriture:'https://buy.stripe.com/fZu14p9eWc4k1wAdjbaVa0U',
     meche:'https://buy.stripe.com/14A14pgHofgw8Z21AtaVa0V'
   };
+  var PAIEMENT={
+    api:'',   // ex. https://lignee-paiement.<compte>.workers.dev
+    cle:''    // clé publiable Stripe pk_live_…
+  };
+  var INTEGRE=!!(PAIEMENT.api&&PAIEMENT.cle);
   var CLE='264f0919-dc05-41b5-aeb6-cbdd337fcb32'; // Web3Forms (même clé que les formulaires du site)
 
   var I={
@@ -228,40 +237,108 @@
       $('.rc-q').textContent=q>1?'× '+q:'';
       var r=$('.rc-remise');r.hidden=!off;r.querySelector('b').textContent='− '+eur(off);
       $('.rc-total').textContent=eur(t);
-      $('.payer-montant').textContent=eur(t);
+      [].forEach.call(zone.querySelectorAll('.payer-montant'),function(x){x.textContent=eur(t);});
       $('.q-note').textContent=q>=3&&q<4?'Ajoutez-en un quatrième : il est offert.':(off?'Le quatrième objet est offert.':'');
       form.elements.quantite.value=q;form.elements.total.value=eur(t);
     }
-    $('.q-moins').addEventListener('click',function(){if(q>1){q--;maj();}});
-    $('.q-plus').addEventListener('click',function(){if(q<10){q++;maj();}});
+    $('.q-moins').addEventListener('click',function(){if(q>1){q--;maj();reinit();}});
+    $('.q-plus').addEventListener('click',function(){if(q<10){q++;maj();reinit();}});
     maj();
+
+    /* Paiement intégré dans la page (Stripe Elements) */
+    var zp=d.getElementById('paiement-zone'),btnSuite=form.querySelector('.payer'),btnCarte=d.getElementById('payer-carte');
+    var msg=form.querySelector('.form-msg'),sess=null;
+    function info(t,err){msg.hidden=!t;msg.textContent=t||'';msg.classList.toggle('erreur',!!err);}
+    function reinit(){
+      if(!sess)return;
+      try{sess.ex.destroy();sess.pe.destroy();}catch(er){}
+      sess=null;zp.hidden=true;btnSuite.hidden=false;btnSuite.disabled=false;btnSuite.classList.remove('en-cours');info('');
+    }
+    if(INTEGRE){
+      btnSuite.innerHTML='Continuer vers le paiement · <span class="payer-montant">'+eur(total(p.prix,q))+'</span>';
+      v.addEventListener('change',reinit);form.elements.email.addEventListener('change',reinit);
+      chargerStripe().catch(function(){});
+    }
+    function chargerStripe(){
+      return new Promise(function(ok,ko){
+        if(window.Stripe)return ok();
+        var sc=d.querySelector('script[data-stripe]');
+        if(!sc){sc=d.createElement('script');sc.src='https://js.stripe.com/endive/stripe.js';sc.setAttribute('data-stripe','');d.head.appendChild(sc);}
+        sc.addEventListener('load',function(){ok();});sc.addEventListener('error',ko);
+        setTimeout(function(){if(window.Stripe)ok();else ko(new Error('stripe'));},12000);
+      });
+    }
+    function preparer(ordre){
+      return fetch(PAIEMENT.api.replace(/\/$/,'')+'/session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+        p:k,q:q,variante:v.value||'',email:ordre.email,numero:ordre.numero,nom:form.elements.nom.value,tel:form.elements.telephone.value,
+        adresse:form.elements.adresse.value,cp:form.elements.code_postal.value,ville:form.elements.ville.value,
+        proche:form.elements.prenom_du_proche.value,message:form.elements.message.value
+      })}).then(function(r){return r.json().then(function(j){if(!r.ok||!j.clientSecret)throw new Error(j.erreur||'serveur');return j.clientSecret;});});
+    }
+    function resultat(res){
+      if(res&&res.type==='error'){btnCarte.disabled=false;btnCarte.classList.remove('en-cours');info(res.error.message||'Le paiement n\'a pas abouti. Vérifiez vos informations ou essayez un autre moyen de paiement.',true);}
+    }
+    function monter(secret){
+      var stripe=window.Stripe(PAIEMENT.cle,{locale:'fr'});
+      var init=stripe.initCheckoutElementsSdk||stripe.initCheckout;
+      var checkout=init.call(stripe,{clientSecret:secret,elementsOptions:{
+        fonts:[{family:'Inter',src:'url('+location.origin+'/polices/inter.woff2)',weight:'400'}],
+        appearance:{theme:'stripe',variables:{colorPrimary:'#1B2A41',colorBackground:'#F5F1E8',colorText:'#1B2A41',colorDanger:'#9B3B2E',fontFamily:'Inter, system-ui, sans-serif',borderRadius:'4px',spacingUnit:'4px'}}
+      }});
+      var ex=checkout.createExpressCheckoutElement({buttonHeight:50,buttonType:{applePay:'buy',googlePay:'buy'},buttonTheme:{applePay:'black',googlePay:'black'}});
+      ex.mount('#express');
+      ex.on('ready',function(ev){
+        var m=ev&&ev.availablePaymentMethods,dispo=!!m&&Object.keys(m).some(function(x){return m[x];});
+        zp.querySelector('.ou').hidden=!dispo;d.getElementById('express').hidden=!dispo;
+      });
+      ex.on('confirm',function(ev){
+        checkout.loadActions().then(function(r){if(r.type!=='success')throw r.error||new Error();return r.actions.confirm({expressCheckoutConfirmEvent:ev});}).then(resultat,function(er){resultat({type:'error',error:er||{}});});
+      });
+      var pe=checkout.createPaymentElement({layout:'tabs'});
+      pe.mount('#carte');
+      sess={checkout:checkout,ex:ex,pe:pe};
+      zp.hidden=false;btnSuite.hidden=true;info('');
+      zp.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    btnCarte.addEventListener('click',function(){
+      if(!sess)return;
+      btnCarte.disabled=true;btnCarte.classList.add('en-cours');info('Paiement en cours…');
+      sess.checkout.loadActions().then(function(r){if(r.type!=='success')throw r.error||new Error();return r.actions.confirm();})
+        .then(resultat,function(er){resultat({type:'error',error:er||{}});});
+    });
 
     form.addEventListener('submit',function(e){
       e.preventDefault();
-      var msg=form.querySelector('.form-msg'),btn=form.querySelector('.payer');
+      var btn=btnSuite;
       if(!form.checkValidity()){form.reportValidity();return;}
       var num='LS-'+new Date().toISOString().slice(2,10).replace(/-/g,'')+'-'+Math.random().toString(36).slice(2,6).toUpperCase();
       var lien=STRIPE[k];
       form.elements.numero.value=num;
       var t=total(p.prix,q);
-      var ordre={numero:num,produit:p.nom,cle:k,quantite:q,total:t,variante:v.value||'',email:form.elements.email.value,prenom:form.elements.nom.value.split(' ')[0],paiement:lien?'stripe':'lien'};
+      var ordre={numero:num,produit:p.nom,cle:k,quantite:q,total:t,variante:v.value||'',email:form.elements.email.value,prenom:form.elements.nom.value.split(' ')[0],paiement:INTEGRE?'integre':(lien?'stripe':'lien')};
       try{localStorage.setItem('lignee-commande',JSON.stringify(ordre));}catch(err){}
       btn.disabled=true;btn.classList.add('en-cours');
-      msg.hidden=false;msg.classList.remove('erreur');
-      msg.textContent=lien?'Redirection vers le paiement sécurisé…':'Enregistrement de votre commande…';
+      info(INTEGRE?'Préparation du paiement sécurisé…':(lien?'Redirection vers le paiement sécurisé…':'Enregistrement de votre commande…'));
       var fd=new FormData(form);
       fd.append('access_key',CLE);
-      fd.append('subject','Lignée · Commande souvenir '+num+' · '+p.nom+' × '+q+' · '+eur(t)+(lien?' (paiement Stripe en cours)':' (lien de paiement à envoyer)'));
+      fd.append('subject','Lignée · Commande souvenir '+num+' · '+p.nom+' × '+q+' · '+eur(t)+(lien||INTEGRE?' (paiement en cours)':' (lien de paiement à envoyer)'));
       var envoi=fetch('https://api.web3forms.com/submit',{method:'POST',body:fd,keepalive:true}).then(function(r){return r.json();});
-      if(lien){
+      function versLien(){
         var url=lien+(lien.indexOf('?')<0?'?':'&')+'prefilled_email='+encodeURIComponent(ordre.email)+'&client_reference_id='+encodeURIComponent(num);
         var parti=false,go=function(){if(!parti){parti=true;location.href=url;}};
         envoi.then(go,go);setTimeout(go,2500);
+      }
+      if(INTEGRE){
+        Promise.all([chargerStripe(),preparer(ordre)]).then(function(r){monter(r[1]);}).catch(function(){
+          if(lien){info('Redirection vers le paiement sécurisé…');versLien();}
+          else{btn.disabled=false;btn.classList.remove('en-cours');info("Le paiement n'a pas pu être préparé. Réessayez dans un instant, ou écrivez-nous à contact@lignee.fr.",true);}
+        });
+      }else if(lien){
+        versLien();
       }else{
         envoi.then(function(j){if(!j.success)throw new Error();location.href='merci.html';}).catch(function(){
           btn.disabled=false;btn.classList.remove('en-cours');
-          msg.classList.add('erreur');
-          msg.textContent="L'envoi n'a pas abouti. Réessayez, ou écrivez-nous à contact@lignee.fr en indiquant l'objet choisi.";
+          info("L'envoi n'a pas abouti. Réessayez, ou écrivez-nous à contact@lignee.fr en indiquant l'objet choisi.",true);
         });
       }
     });
@@ -271,9 +348,15 @@
   function merci(){
     var z=d.getElementById('merci');if(!z)return;
     var o=null;try{o=JSON.parse(localStorage.getItem('lignee-commande')||'null');}catch(e){}
-    var paye=/[?&]paye=1/.test(location.search);
-    z.querySelector('[data-etat="paye"]').hidden=!paye;
-    z.querySelector('[data-etat="attente"]').hidden=paye;
+    var sid=new URLSearchParams(location.search).get('session_id');
+    function etat(e){[].forEach.call(z.querySelectorAll('[data-etat]'),function(x){x.hidden=x.getAttribute('data-etat')!==e;});}
+    if(sid&&PAIEMENT.api){
+      etat('verif');
+      fetch(PAIEMENT.api.replace(/\/$/,'')+'/session?id='+encodeURIComponent(sid)).then(function(r){return r.json();}).then(function(j){
+        if(j.statut==='complete'){etat('paye');}
+        else{etat('echec');var h=d.querySelector('h1');if(h)h.innerHTML='Votre commande <em>n\'est pas encore payée.</em>';var a=z.querySelector('.m-reessayer');if(a&&o&&o.cle)a.href='commande.html?p='+o.cle;}
+      }).catch(function(){etat('verif');});
+    }else{etat(/[?&]paye=1/.test(location.search)?'paye':'attente');}
     if(o){
       z.querySelector('.m-recap').hidden=false;
       z.querySelector('.m-num').textContent=o.numero;

@@ -858,6 +858,10 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 .payer{width:100%;justify-self:stretch!important;padding-block:1.05rem;font-size:1.05rem}
 .payer.en-cours{opacity:.7;cursor:wait}
 .payer svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8}
+.paiement-zone{display:grid;gap:1rem;padding:1.2rem;border:1px solid var(--ligne);border-radius:6px;background:var(--ivoire);scroll-margin-top:calc(var(--hdr) + 1rem)}
+.paiement-zone .ou{display:flex;align-items:center;gap:.8rem;font-size:.85rem;color:var(--ardoise)}
+.paiement-zone .ou::before,.paiement-zone .ou::after{content:"";flex:1;height:1px;background:var(--ligne)}
+#carte{min-height:120px}
 .securite{display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem 1rem;font-size:.8rem;color:var(--ardoise);text-align:center}
 .retour{font-size:.9rem}
 .choix-grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1rem}
@@ -918,8 +922,14 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 <ul class="rc-gar rc-gar-m"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Remboursé intégralement si ses affaires ne permettent pas la confection</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Annulation possible tant que la confection n'a pas commencé</li></ul>
 <label class="consent"><input type="checkbox" name="cgv" required> <span>J'accepte les <a href="cgv.html#souvenirs" target="_blank">conditions générales de vente</a>. L'objet étant confectionné à partir des affaires que je confie, je peux annuler et être remboursé tant que la confection n'a pas commencé.</span></label>
 <button class="btn payer" type="submit"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="1.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Payer <span class="payer-montant"></span> en toute sécurité</button>
+<div id="paiement-zone" class="paiement-zone" hidden>
+<div id="express"></div>
+<p class="ou" hidden><span>ou payer par carte</span></p>
+<div id="carte"></div>
+<button class="btn payer" type="button" id="payer-carte"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="1.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Payer <span class="payer-montant"></span></button>
+</div>
 <p class="form-msg" role="status" hidden></p>
-<p class="securite"><span>Paiement sécurisé par Stripe</span><span>Carte bancaire, Apple Pay, Google Pay</span><span>Aucune donnée bancaire stockée par Lignée</span></p>
+<p class="securite"><span>Paiement chiffré et sécurisé</span><span>Carte bancaire, Apple Pay, Google Pay</span><span>Aucune donnée bancaire stockée par Lignée</span></p>
 </form>
 
 <aside class="recap" aria-label="Récapitulatif">
