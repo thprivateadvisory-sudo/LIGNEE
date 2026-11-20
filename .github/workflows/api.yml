@@ -33,5 +33,5 @@ jobs:
           curl -s -w "  HTTP %{http_code}\n" "$URL/session?id=faux"
           echo "Préparation d'un paiement d'essai (aucun débit, expire sous 24 h) :"
           R=$(curl -s -X POST "$URL/session" -H "Origin: https://maison-lignee.fr" -H "Content-Type: application/json" \
-            -d '{"p":"coussin","q":1,"taille":"petit","livraison":"relais","email":"verification@maison-lignee.fr","numero":"LS-VERIF","nom":"Vérification automatique"}')
+            -d '{"p":"coussin","q":1,"taille":"petit","livraison":"relais","numero":"LS-VERIF","nom":"Vérification automatique"}')
           if echo "$R" | grep -q '"clientSecret"'; then echo "  OK : Stripe accepte la clé, le paiement intégré fonctionne."; else echo "  ÉCHEC : $R"; exit 1; fi
