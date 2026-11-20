@@ -1,0 +1,37 @@
+# Déploie le serveur de paiement (api/worker.js) sur Cloudflare Workers.
+# Secrets GitHub à créer (Settings → Secrets and variables → Actions) :
+#   CLOUDFLARE_API_TOKEN   jeton Cloudflare « Edit Cloudflare Workers »
+#   STRIPE_SECRET_KEY      clé secrète Stripe (sk_live_…)
+name: Serveur de paiement
+
+on:
+  push:
+    paths:
+      - 'api/**'
+      - '.github/workflows/api.yml'
+  workflow_dispatch:
+
+jobs:
+  deployer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          wranglerVersion: '4.165.0'
+          workingDirectory: api
+          secrets: |
+            STRIPE_SECRET_KEY
+        env:
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+      - name: Vérifier le serveur et la clé Stripe
+        run: |
+          URL=https://lignee-paiement.muddy-fog-dddb.workers.dev
+          sleep 5
+          echo "Serveur (identifiant volontairement faux, réponse attendue 400) :"
+          curl -s -w "  HTTP %{http_code}\n" "$URL/session?id=faux"
+          echo "Préparation d'un paiement d'essai (aucun débit, expire sous 24 h) :"
+          R=$(curl -s -X POST "$URL/session" -H "Origin: https://maison-lignee.fr" -H "Content-Type: application/json" \
+            -d '{"p":"coussin","q":1,"taille":"petit","livraison":"relais","email":"verification@maison-lignee.fr","numero":"LS-VERIF","nom":"Vérification automatique"}')
+          if echo "$R" | grep -q '"clientSecret"'; then echo "  OK : Stripe accepte la clé, le paiement intégré fonctionne."; else echo "  ÉCHEC : $R"; exit 1; fi
