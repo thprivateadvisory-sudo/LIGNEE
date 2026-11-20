@@ -25,7 +25,7 @@
   };
   var PAIEMENT={
     api:'https://lignee-paiement.muddy-fog-dddb.workers.dev',
-    cle:''    // clé publiable Stripe pk_live_…
+    cle:'pk_live_51TOybqRmrarRZT7ezNz8gy54YSqyGtY5gY4g6RvyBxl7JWYAbFNFMadiSR7C1pKUnVnwDMRn8LrX3Ds0JeNlE5g400ndJUulYO' // clé publiable Stripe (publique)
   };
   var INTEGRE=!!(PAIEMENT.api&&PAIEMENT.cle);
   var CLE='264f0919-dc05-41b5-aeb6-cbdd337fcb32'; // Web3Forms (même clé que les formulaires du site)
