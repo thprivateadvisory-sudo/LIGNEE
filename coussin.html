@@ -809,17 +809,17 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 .lg-deux img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
 
 /* ===== Achat en un geste (doudou, coussin) ===== */
-.achat{background:var(--pierre);padding:calc(var(--hdr,96px) + clamp(16px,3vw,40px)) 0 clamp(48px,7vw,88px)}
+.achat{background:var(--pierre);padding:calc(var(--entete,var(--hdr,96px)) + clamp(16px,3vw,40px)) 0 clamp(48px,7vw,88px)}
 .achat-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.5rem,4vw,3.5rem);align-items:start}
 @media (max-width:860px){.achat-in{grid-template-columns:minmax(0,1fr)}}
 .achat-photo{position:relative;margin:0}
 .achat-photo img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:6px}
-@media (min-width:861px){.achat-photo{position:sticky;top:calc(var(--hdr,96px) + 1.5rem)}}
+@media (min-width:861px){.achat-photo{position:sticky;top:calc(var(--entete,var(--hdr,96px)) + 1.5rem)}}
 .achat-info{display:grid;gap:1rem;min-width:0}
 .achat-info .ariane{font-size:.8rem;color:var(--ardoise)}
 .achat-info .ariane a{color:inherit}
 .achat-info .ariane [aria-current]{color:var(--nuit)}
-@media (max-width:860px){.achat-photo img{aspect-ratio:4/3}.achat{padding-top:calc(var(--hdr,96px) + 8px)}}
+@media (max-width:860px){.achat{padding-top:calc(var(--entete,var(--hdr,96px)) + 12px)}}
 .achat-info h1{font-size:clamp(2.3rem,5vw,3.4rem);font-weight:400;line-height:1.05}
 .achat-lead{font-size:1.1rem;color:var(--ardoise);margin:0}
 .achat-prix{display:flex;align-items:baseline;flex-wrap:wrap;gap:.3rem 1rem;margin:.2rem 0 0}
@@ -885,7 +885,7 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 <p class="achat-lead">Ses chemises, ses pulls, son écharpe deviennent un coussin pour le canapé, le lit ou son fauteuil. On le reconnaît au premier regard&nbsp;: les boutons, la poche, le motif.</p>
 <p class="achat-prix"><b class="a-total">69&nbsp;€</b><span>Les suivants 55&nbsp;€&nbsp;: un pour chacun de ses enfants.</span></p>
 <form class="achat-form" data-paiement="coussin" data-p1="69" data-ps="55" data-unite="coussin" novalidate>
-<fieldset class="choix"><legend>Taille</legend><label><input type="radio" name="taille" value="petit" checked><span><b>40 × 40 cm</b>format classique</span></label><label><input type="radio" name="taille" value="grand"><span><b>50 × 50 cm</b>grand format · +10 €</span></label></fieldset>
+<fieldset class="choix" data-option="taille"><legend>Taille</legend><label><input type="radio" name="taille" value="petit" data-plus="0" checked><span><b>40 × 40 cm</b>format classique</span></label><label><input type="radio" name="taille" value="grand" data-plus="10"><span><b>50 × 50 cm</b>grand format · +10 €</span></label></fieldset>
 <div class="qte"><span class="legende">Combien&nbsp;?</span><div class="q-boite"><button type="button" class="q-moins" aria-label="Un de moins">−</button><output class="q-val" aria-live="polite">1</output><button type="button" class="q-plus" aria-label="Un de plus">+</button></div></div>
 <fieldset class="choix"><legend>Retour chez vous</legend><label><input type="radio" name="livraison" value="relais" checked><span><b>Point relais</b>inclus</span></label><label><input type="radio" name="livraison" value="domicile"><span><b>À domicile</b>+5 €</span></label></fieldset>
 <p class="achat-detail" aria-live="polite"></p>
@@ -951,7 +951,7 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 </div>
 <div class="btns" style="margin-top:2rem"><a class="btn sec" href="souvenirs.html">Voir tous les souvenirs</a></div>
 </div></section>
-<script src="js/paiement.js"></script>
+<script src="js/paiement.js?v=5"></script>
 
 </main>
 <footer class="pied"><div class="wrap">
@@ -962,7 +962,7 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 <p>Lignée. Des souvenirs cousus et façonnés à la main à partir de ses affaires, et un accompagnement pour préparer ou traverser un décès. Partout en France.</p>
 </div>
 <div><h4>Se souvenir</h4><ul>
-<li><a href="souvenirs.html">Boutique souvenirs</a></li><li><a href="doudou.html">Doudou souvenir</a></li><li><a href="coussin.html">Coussin souvenir</a></li><li><a href="vetements-defunt.html">Que faire de ses vêtements</a></li><li><a href="souvenirs.html#idee">Votre idée, sur devis</a></li><li><a href="souvenirs.html#commande">Commander</a></li></ul></div>
+<li><a href="souvenirs.html">Boutique souvenirs</a></li><li><a href="doudou.html">Doudou souvenir</a></li><li><a href="coussin.html">Coussin souvenir</a></li><li><a href="cadre.html">Cadre tissu et photo</a></li><li><a href="boite.html">Boîte à souvenirs</a></li><li><a href="bijou.html">Bijou empreinte</a></li><li><a href="plaque.html">Plaque gravée</a></li><li><a href="vetements-defunt.html">Que faire de ses vêtements</a></li><li><a href="souvenirs.html#idee">Votre idée, sur devis</a></li><li><a href="souvenirs.html#commande">Commander</a></li></ul></div>
 <div><h4>Préparer et traverser</h4><ul>
 <li><a href="anticiper.html">Assurance obsèques</a></li><li><a href="anticiper.html#volontes">Coffret «&nbsp;Mes volontés&nbsp;»</a></li><li><a href="cercueils.html">Cercueils (bientôt)</a></li><li><a href="guide.html">Que faire après un décès</a></li><li><a href="formules.html">Le logement d'un proche</a></li><li><a href="notaires.html">Notaires et professionnels</a></li><li><a href="pompes-funebres.html">Pompes funèbres partenaires</a></li><li><a href="a-propos.html">La maison Lignée</a></li></ul></div>
 <div><h4>Nous joindre</h4><ul>

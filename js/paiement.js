@@ -33,10 +33,18 @@
     var q=1,stripe=null,sess=null,jeton=0,minuteur=null,horsLigne=false;
 
     function val(n){var x=form.querySelector('input[name='+n+']:checked');return x?x.value:'';}
+    function options(){
+      var o={},plus=0;
+      [].forEach.call(form.querySelectorAll('fieldset[data-option]'),function(fs){
+        var x=fs.querySelector('input:checked');if(!x)return;
+        o[fs.getAttribute('data-option')]=x.value;plus+=+(x.getAttribute('data-plus')||0);
+      });
+      return {choix:o,plus:plus};
+    }
     function calcul(){
-      var g=val('taille')==='grand'?10:0,dom=val('livraison')==='domicile';
+      var g=options().plus,dom=val('livraison')==='domicile';
       var a=p1+g,b=ps+g,t=a+(q-1)*b+(dom?5:0);
-      var det=q===1?'1 '+unite+' · '+eur(a):'1 × '+eur(a)+' + '+(q-1)+' × '+eur(b);
+      var det=q===1?'1 '+unite+' · '+eur(a):(a===b?q+' × '+eur(a):'1 × '+eur(a)+' + '+(q-1)+' × '+eur(b));
       if(dom)det+=' · retour à domicile +5 €';
       return {total:t,detail:det};
     }
@@ -66,7 +74,7 @@
       detruire();
       d.getElementById('carte').innerHTML='<p class="chargement">Chargement du paiement sécurisé…</p>';
       d.getElementById('express').innerHTML='';
-      var corps={p:produit,q:q,taille:val('taille')||'petit',livraison:val('livraison')||'relais',numero:num};
+      var corps={p:produit,q:q,options:options().choix,livraison:val('livraison')||'relais',numero:num};
       Promise.all([chargerStripe(),fetch(API+'/session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(corps)})
         .then(function(r){return r.json().then(function(j){if(!r.ok||!j.clientSecret)throw new Error(j.erreur||'serveur');return j.clientSecret;});})])
       .then(function(r){
@@ -113,7 +121,7 @@
       var c=calcul();
       if(horsLigne){
         payer.disabled=true;
-        aviser({subject:'Lignée · Commande '+unite+' à finaliser · '+eur(c.total),objet:produit,quantite:q,taille:val('taille'),livraison:val('livraison'),total:eur(c.total),email:email})
+        aviser({subject:'Lignée · Commande '+unite+' à finaliser · '+eur(c.total),objet:produit,quantite:q,options:JSON.stringify(options().choix),livraison:val('livraison'),total:eur(c.total),email:email})
           .then(function(j){if(!j.success)throw new Error();info('Merci. Nous vous envoyons votre lien de paiement dans l’heure (jours ouvrés).');})
           .catch(function(){payer.disabled=false;info("L'envoi n'a pas abouti. Écrivez-nous à contact@maison-lignee.fr.",true);});
         return;
@@ -141,10 +149,11 @@
       if(!o)return;
       z.querySelector('.m-recap').hidden=false;
       z.querySelector('.m-num').textContent=o.numero||'';
-      z.querySelector('.m-obj').textContent=(o.produit==='coussin'?'Coussin souvenir':'Doudou souvenir')+(o.quantite>1?' × '+o.quantite:'');
+      var NOMS={doudou:'Doudou souvenir',coussin:'Coussin souvenir',cadre:'Cadre tissu et photo',boite:'Boîte à souvenirs en bois',bijou:'Bijou empreinte ou écriture',plaque:'Plaque souvenir gravée'};
+      z.querySelector('.m-obj').textContent=(NOMS[o.produit]||'Souvenir')+(o.quantite>1?' × '+o.quantite:'');
       z.querySelector('.m-total').textContent=o.total;
       z.querySelector('.m-mail').textContent=email||o.email||'';
-      var a=z.querySelector('.m-reessayer');if(a)a.href=(o.produit==='coussin'?'coussin':'doudou')+'.html#commande';
+      var a=z.querySelector('.m-reessayer');if(a)a.href=(NOMS[o.produit]?o.produit:'souvenirs')+'.html#commande';
     }
     recap();
     var sid=new URLSearchParams(location.search).get('session_id');
@@ -156,11 +165,13 @@
         if(j.nom)d.querySelector('.m-prenom').textContent=', '+String(j.nom).split(' ')[0];
         // Avis de commande à Lignée, une seule fois par paiement.
         var cle='lignee-avis-'+sid,deja=false;try{deja=!!localStorage.getItem(cle);localStorage.setItem(cle,'1');}catch(e){}
-        if(!deja)aviser({subject:'Lignée · Commande payée '+(j.numero||'')+' · '+(j.total/100)+' €',numero:j.numero||'',objet:j.objet||'',quantite:j.quantite||'',taille:j.taille||'',livraison:j.livraison||'',total:(j.total/100)+' €',nom:j.nom||'',email:j.email||''}).catch(function(){});
+        if(!deja)aviser({subject:'Lignée · Commande payée '+(j.numero||'')+' · '+(j.total/100)+' €',numero:j.numero||'',objet:j.objet||'',quantite:j.quantite||'',options:j.options||'',livraison:j.livraison||'',total:(j.total/100)+' €',nom:j.nom||'',email:j.email||''}).catch(function(){});
       }else{etat('echec');var h=d.querySelector('h1');if(h)h.innerHTML='Votre commande <em>n’est pas encore payée.</em>';}
     }).catch(function(){etat('verif');});
   }
 
+  function entete(){var e=d.querySelector('.entete');if(e)d.documentElement.style.setProperty('--entete',e.offsetHeight+'px');}
+  entete();addEventListener('resize',entete);if(d.fonts&&d.fonts.ready)d.fonts.ready.then(entete);
   var f=d.querySelector('form[data-paiement]');if(f)achat(f);
   var z=d.getElementById('merci');if(z)merci(z);
 })();

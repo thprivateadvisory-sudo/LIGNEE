@@ -9,20 +9,33 @@ const SITE = 'https://maison-lignee.fr';
 const ORIGINES = [SITE, 'https://www.maison-lignee.fr'];
 const VERSION_STRIPE = '2026-10-28.endive'; // même série que js.stripe.com/endive/stripe.js
 
-// Prix TTC en centimes, identiques aux pages doudou.html et coussin.html :
-// 1er objet au prix plein, les suivants de la même commande au prix réduit,
-// +10 € par pièce en grande taille, +5 € pour le retour à domicile (point relais inclus).
+// Prix TTC en centimes, identiques aux pages du site (doudou, coussin, cadre, boite, bijou, plaque).
+// premier : 1re pièce ; suivant : pièces suivantes de la même commande.
+// options : choix proposés sur la page, avec leur supplément par pièce.
+// Retour à domicile : +5 € par commande (point relais inclus).
 const PRODUITS = {
-  doudou:  { nom: 'Doudou souvenir', premier: 9900, suivant: 7900, tailles: { petit: 'petit, environ 25 cm', grand: 'grand, environ 35 cm' } },
-  coussin: { nom: 'Coussin souvenir', premier: 6900, suivant: 5500, tailles: { petit: '40 × 40 cm', grand: '50 × 50 cm' } }
+  doudou:  { nom: 'Doudou souvenir', premier: 9900, suivant: 7900,
+             options: { taille: { petit: ['petit, environ 25 cm', 0], grand: ['grand, environ 35 cm', 1000] } } },
+  coussin: { nom: 'Coussin souvenir', premier: 6900, suivant: 5500,
+             options: { taille: { petit: ['40 × 40 cm', 0], grand: ['50 × 50 cm', 1000] } } },
+  cadre:   { nom: 'Cadre tissu et photo', premier: 6900, suivant: 6900, options: {} },
+  boite:   { nom: 'Boîte à souvenirs en bois', premier: 14900, suivant: 14900, options: {} },
+  bijou:   { nom: 'Bijou empreinte ou écriture', premier: 12900, suivant: 12900,
+             options: { forme: { pendentif: ['pendentif', 0], bague: ['bague', 0], bracelet: ['bracelet', 0] },
+                        trace: { empreinte: ['empreinte digitale', 0], ecriture: ['écriture manuscrite', 0] } } },
+  plaque:  { nom: 'Plaque souvenir gravée', premier: 8900, suivant: 8900, options: {} }
 };
-const SUPPLEMENT_GRAND = 1000;
 const RETOUR_DOMICILE = 500;
 const QUANTITE_MAX = 20;
 
-export function montant(p, taille, q, livraison) {
-  const g = taille === 'grand' ? SUPPLEMENT_GRAND : 0;
-  return (p.premier + g) + (q - 1) * (p.suivant + g) + (livraison === 'domicile' ? RETOUR_DOMICILE : 0);
+// Options choisies, validées : chaque option prend la valeur envoyée si elle existe, sinon la première.
+export function choix(p, demande) {
+  const res = {};
+  for (const [cle, valeurs] of Object.entries(p.options)) {
+    const v = demande && Object.prototype.hasOwnProperty.call(valeurs, demande[cle]) ? demande[cle] : Object.keys(valeurs)[0];
+    res[cle] = { valeur: v, libelle: valeurs[v][0], plus: valeurs[v][1] };
+  }
+  return res;
 }
 
 function entetes(origine) {
@@ -73,20 +86,20 @@ export function parametresSession(d) {
   // E-mail facultatif : Apple Pay / Google Pay le fournissent, la carte le transmet au paiement.
   const email = court(d.email, 200);
   if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) throw new Error('E-mail invalide');
-  const taille = d.taille === 'grand' ? 'grand' : 'petit';
+  const ch = choix(p, d.options || { taille: d.taille });
+  const plus = Object.values(ch).reduce((t, o) => t + o.plus, 0);
   const livraison = d.livraison === 'domicile' ? 'domicile' : 'relais';
-  const g = taille === 'grand' ? SUPPLEMENT_GRAND : 0;
-  const nom = `${p.nom} (${p.tailles[taille]})`;
+  const libelles = Object.values(ch).map(o => o.libelle);
+  const nom = p.nom + (libelles.length ? ` (${libelles.join(', ')})` : '');
   const ligne = (name, amount, quantity) => ({ price_data: { currency: 'eur', unit_amount: amount, product_data: { name } }, quantity });
-  const lignes = [ligne(nom, p.premier + g, 1)];
-  if (q > 1) lignes.push(ligne(`${nom}, pièce${q > 2 ? 's' : ''} suivante${q > 2 ? 's' : ''}`, p.suivant + g, q - 1));
+  const lignes = p.premier === p.suivant
+    ? [ligne(nom, p.premier + plus, q)]
+    : [ligne(nom, p.premier + plus, 1)];
+  if (p.premier !== p.suivant && q > 1) lignes.push(ligne(`${nom}, pièce${q > 2 ? 's' : ''} suivante${q > 2 ? 's' : ''}`, p.suivant + plus, q - 1));
   if (livraison === 'domicile') lignes.push(ligne('Retour à domicile', RETOUR_DOMICILE, 1));
   const numero = court(d.numero, 40);
-  const meta = {
-    numero, objet: d.p, quantite: String(q), taille, livraison,
-    nom: court(d.nom, 120), telephone: court(d.tel, 40), rappel: d.rappel ? 'oui' : '',
-    message: court(d.message, 450)
-  };
+  const meta = { numero, objet: d.p, quantite: String(q), livraison, options: court(libelles.join(', '), 200) };
+  for (const [cle, o] of Object.entries(ch)) meta[cle] = o.valeur;
   return {
     mode: 'payment',
     ui_mode: 'elements',
@@ -123,7 +136,7 @@ export default {
           nom: s.customer_details && s.customer_details.name,
           numero: s.client_reference_id,
           objet: s.metadata && s.metadata.objet, quantite: s.metadata && s.metadata.quantite,
-          taille: s.metadata && s.metadata.taille, livraison: s.metadata && s.metadata.livraison
+          options: s.metadata && s.metadata.options, livraison: s.metadata && s.metadata.livraison
         }, 200, origine);
       }
       return reponse({ erreur: 'Introuvable' }, 404, origine);
