@@ -134,6 +134,23 @@ Textes, prix et liens de paiement : un seul fichier, `js/souvenirs.js`.
 
 Tant qu'un lien est vide, la commande arrive quand même par e-mail et le client lit qu'il reçoit son lien de paiement sécurisé dans l'heure (jours ouvrés) : il faut alors lui envoyer un lien Stripe à la main.
 
-Quatrième objet offert : le lien Stripe encaisse le prix plein, la page affiche le total remisé. **Rembourser le quatrième objet dans Stripe sous 48 h** (CGV art. 9).
+Quatrième objet offert : avec le paiement intégré, le montant payé est déjà remisé. Seulement si le site bascule sur un lien de paiement Stripe (prix plein), **rembourser le quatrième objet dans Stripe sous 48 h** (CGV art. 9).
 
 Engagements affichés, à tenir réellement (et à valider) : étiquette d'envoi prépayée sous 24 h ouvrées, photo de l'objet avant expédition, livraison offerte en France métropolitaine, remboursement intégral si les affaires ne permettent pas la confection, annulation remboursée tant que la confection n'a pas commencé, restitution des affaires. Dimensions et délais des fiches (doudou 30 cm, coussin 40 × 40 cm, cadre 13 × 18, boîte 25 × 18 × 10 cm, 3 à 4 semaines) et détails (étiquette avec prénom, boutons en façade, écrin, épreuve avant gravure) : à confirmer avec l'atelier, sinon les corriger dans `js/souvenirs.js`. CGV art. 2, 4 et 9 et `confidentialite.html` (Stripe) mis à jour : à faire relire par le juriste.
+
+### Paiement intégré dans la page (carte, Apple Pay, Google Pay)
+
+Le client paie sur `commande.html` sans quitter le site : boutons Apple Pay / Google Pay et champ carte (Stripe Elements), puis retour sur `merci.html?session_id=…` qui vérifie le paiement.
+
+Pièces :
+- `api/worker.js` : petit serveur (Cloudflare Workers, gratuit) qui prépare chaque paiement. **Les prix y sont fixés côté serveur** (à garder identiques à `js/souvenirs.js`). Le 4e objet offert est déduit directement du montant : plus de remboursement manuel.
+- `.github/workflows/api.yml` : déploie ce serveur à chaque modification de `api/`.
+- `js/souvenirs.js`, objet `PAIEMENT` : adresse du serveur et clé publiable Stripe. **Tant qu'il est vide, ou si le serveur ne répond pas, le site utilise les liens de paiement Stripe** (page Stripe).
+- Domaine `maison-lignee.fr` enregistré dans Stripe pour Apple Pay, Google Pay et Link (actif).
+
+Mise en service (une fois) :
+1. Créer un compte gratuit sur cloudflare.com. Noter l'« Account ID » (Workers & Pages, colonne de droite). Créer un jeton : My Profile → API Tokens → Create Token → modèle « Edit Cloudflare Workers ».
+2. Stripe → Développeurs → Clés API : copier la clé secrète `sk_live_…` et la clé publiable `pk_live_…`.
+3. GitHub → Settings → Secrets and variables → Actions → New repository secret : `CLOUDFLARE_API_TOKEN`, `STRIPE_SECRET_KEY` (l'ID de compte Cloudflare est dans `api/wrangler.toml`). La clé secrète ne va **que** là, jamais dans le code ni dans une conversation.
+4. GitHub → Actions → « Serveur de paiement » → Run workflow. L'adresse du serveur s'affiche dans le journal (`https://lignee-paiement.<compte>.workers.dev`).
+5. Renseigner `PAIEMENT.api` (cette adresse) et `PAIEMENT.cle` (`pk_live_…`, publique) dans `js/souvenirs.js`.
