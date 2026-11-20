@@ -2,3 +2,4 @@ name = "lignee-paiement"
 main = "worker.js"
 compatibility_date = "2026-10-01"
 workers_dev = true
+account_id = "9ed1a01cb0cc27dcf9d6b107b7f97df5"

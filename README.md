@@ -151,6 +151,6 @@ Pièces :
 Mise en service (une fois) :
 1. Créer un compte gratuit sur cloudflare.com. Noter l'« Account ID » (Workers & Pages, colonne de droite). Créer un jeton : My Profile → API Tokens → Create Token → modèle « Edit Cloudflare Workers ».
 2. Stripe → Développeurs → Clés API : copier la clé secrète `sk_live_…` et la clé publiable `pk_live_…`.
-3. GitHub → Settings → Secrets and variables → Actions → New repository secret : `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `STRIPE_SECRET_KEY`. La clé secrète ne va **que** là, jamais dans le code ni dans une conversation.
+3. GitHub → Settings → Secrets and variables → Actions → New repository secret : `CLOUDFLARE_API_TOKEN`, `STRIPE_SECRET_KEY` (l'ID de compte Cloudflare est dans `api/wrangler.toml`). La clé secrète ne va **que** là, jamais dans le code ni dans une conversation.
 4. GitHub → Actions → « Serveur de paiement » → Run workflow. L'adresse du serveur s'affiche dans le journal (`https://lignee-paiement.<compte>.workers.dev`).
 5. Renseigner `PAIEMENT.api` (cette adresse) et `PAIEMENT.cle` (`pk_live_…`, publique) dans `js/souvenirs.js`.

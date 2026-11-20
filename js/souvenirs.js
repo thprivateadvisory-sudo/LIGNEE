@@ -24,7 +24,7 @@
     meche:'https://buy.stripe.com/14A14pgHofgw8Z21AtaVa0V'
   };
   var PAIEMENT={
-    api:'',   // ex. https://lignee-paiement.<compte>.workers.dev
+    api:'https://lignee-paiement.muddy-fog-dddb.workers.dev',
     cle:''    // clé publiable Stripe pk_live_…
   };
   var INTEGRE=!!(PAIEMENT.api&&PAIEMENT.cle);
