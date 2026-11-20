@@ -813,7 +813,7 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 <header class="entete"><div class="alerte"><p class="alerte-in"><span>Un décès&nbsp;?</span> <a href="guide.html">Les premières démarches</a><span aria-hidden="true">·</span><a href="souvenirs.html">Boutique souvenirs</a><span class="alerte-tel"> · <a href="contact.html#formulaire">Être rappelé</a></span></p></div><div class="wrap">
 <a class="marque" href="index.html" aria-label="Lignée, accueil"><img class="marque-mono" src="images/monogramme-entete.png" width="96" height="89" alt=""><span>LIGNÉE</span></a>
 <nav class="nav" aria-label="Navigation principale"><a href="souvenirs.html" aria-current="page">Boutique souvenirs</a><a href="anticiper.html">Préparer ses obsèques</a><a href="guide.html">Après un décès</a><a href="formules.html">Le logement</a><a href="a-propos.html">À propos</a><a href="contact.html">Contact</a></nav>
-<a class="btn" href="souvenirs.html#commande">Réserver un souvenir</a>
+<a class="btn" href="souvenirs.html#commande">Commander un souvenir</a>
 <button class="menu-btn" type="button" aria-expanded="false">Menu</button>
 </div></header>
 <main>
@@ -827,13 +827,13 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 <div class="prose rv">
 <figure class="photo-produit"><img src="images/souvenirs/doudou.webp" width="800" height="800" alt="Doudou ours cousu dans un pull en laine torsadée grise, à côté du pull d'origine" decoding="async"><figcaption class="mention-illu">Photo d'illustration</figcaption></figure>
 <p class="sur">99&nbsp;€ · 79&nbsp;€ les suivants</p>
-<h2 style="margin-top:0">Réservez votre place.</h2>
-<p class="muted">Le premier doudou est à 99&nbsp;€, chaque doudou suivant de la même commande à 79&nbsp;€, avec les mêmes vêtements ou d'autres. Nos premières confections démarrent très bientôt : réservez votre place, nous vous écrivons dès qu'elle est prête avec le délai et un lien de paiement sécurisé. Rien n'est dû avant.</p>
+<h2 style="margin-top:0">Commandez votre doudou.</h2>
+<p class="muted">Le premier doudou est à 99&nbsp;€, chaque doudou suivant de la même commande à 79&nbsp;€, avec les mêmes vêtements ou d'autres. Paiement sécurisé directement sur cette page, par carte, Apple Pay ou Google Pay. Juste après, nous vous écrivons avec l'adresse pour nous confier ses vêtements et le délai de confection.</p>
 <ul class="lg-confiance" style="margin-top:1.5rem;grid-template-columns:repeat(2,minmax(0,1fr))">
 <li><b>Fait main</b>En France</li><li><b>Photos</b>Pendant la confection</li><li><b>Tissus rendus</b>Avec le doudou</li><li><b>Carte signée</b>Par l'artisane</li>
 </ul>
 </div>
-<form class="form" data-form="Commande doudou" data-ok="Merci, votre place est réservée. Nous vous écrivons dès qu'elle est prête, avec le délai et le lien de paiement. Nous ne vous écrirons que pour votre commande." novalidate>
+<form class="form" data-paiement="doudou" data-form="Commande doudou" data-ok="Merci, votre place est réservée. Nous vous écrivons dès qu'elle est prête, avec le délai et le lien de paiement. Nous ne vous écrirons que pour votre commande." novalidate>
 <div class="champs">
 <div class="champ"><label for="d-taille">Taille</label><select id="d-taille" name="taille"><option value="petit">Petit, environ 25 cm</option><option value="grand">Grand, environ 35 cm (+10 € par doudou)</option></select></div>
 <div class="champ"><label for="d-qte">Nombre de doudous</label><input id="d-qte" name="quantite" type="number" min="1" max="20" value="1" inputmode="numeric"></div>
@@ -844,10 +844,10 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 <div class="champ plein"><label for="d-mail">E-mail</label><input id="d-mail" name="email" type="email" required autocomplete="email"></div>
 <div class="champ plein"><label for="d-msg">Précisions <span class="opt">(facultatif)</span></label><textarea id="d-msg" name="message" placeholder="Par exemple : deux doudous dans sa chemise bleue, prénoms à broder."></textarea></div>
 </div>
-<label class="consent"><input type="checkbox" name="rappel" value="oui" id="d-rappel"> <span>Je préfère être rappelé(e) avant la confirmation.</span></label>
-<label class="consent"><input type="checkbox" name="consentement" required id="d-consent"> <span>J'accepte que Lignée utilise ces informations pour traiter ma commande. Voir notre <a href="confidentialite.html">politique de confidentialité</a>.</span></label>
-<button class="btn" type="submit">Réserver ma place</button>
-<p class="opt" style="margin:0">Rien n'est dû avant notre confirmation. Nous ne vous écrirons que pour votre commande, sans aucune relance commerciale.</p>
+<label class="consent"><input type="checkbox" name="rappel" value="oui" id="d-rappel"> <span>Je souhaite être rappelé(e) après ma commande.</span></label>
+<label class="consent"><input type="checkbox" name="consentement" required id="d-consent"> <span>J'accepte les <a href="cgv.html">conditions générales de vente</a> et que Lignée utilise ces informations pour traiter ma commande (<a href="confidentialite.html">confidentialité</a>).</span></label>
+<button class="btn" type="submit">Continuer vers le paiement</button>
+<p class="opt" style="margin:0">Vous pouvez annuler et être remboursé tant que la confection n'a pas commencé. Nous ne vous écrirons que pour votre commande, sans aucune relance commerciale.</p>
 <p class="form-msg" role="status" hidden></p>
 </form>
 </div></section>
@@ -885,7 +885,7 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 <section class="sec-bloc"><div class="wrap">
 <div class="tete rv"><p class="sur">Comment ça se passe</p><h2 class="grand">Quatre étapes, <em>à votre rythme.</em></h2></div>
 <ol class="lg-etapes">
-<li><div><b>Vous réservez</b><span>Nous vous écrivons dès que votre place est prête.</span></div></li>
+<li><div><b>Vous commandez</b><span>Paiement en ligne sécurisé, puis nous vous écrivons avec l'adresse d'envoi.</span></div></li>
 <li><div><b>Vous nous confiez ses vêtements</b><span>Un vêtement adulte suffit pour un petit doudou.</span></div></li>
 <li><div><b>Nous cousons à la main</b><span>Des photos vous sont envoyées pendant la confection.</span></div></li>
 <li><div><b>Vous le recevez</b><span>Avec les tissus restants et une carte signée.</span></div></li>
@@ -914,6 +914,7 @@ button[aria-selected="true"] .nom-f{font-style:italic}
   [t,q,l].forEach(function(e){e.addEventListener('input',calcul);e.addEventListener('change',calcul);});calcul();
 })();
 </script>
+<script src="js/paiement.js"></script>
 
 </main>
 <footer class="pied"><div class="wrap">
@@ -924,7 +925,7 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 <p>Lignée. Des souvenirs cousus et façonnés à la main à partir de ses affaires, et un accompagnement pour préparer ou traverser un décès. Partout en France.</p>
 </div>
 <div><h4>Se souvenir</h4><ul>
-<li><a href="souvenirs.html">Boutique souvenirs</a></li><li><a href="doudou.html">Doudou souvenir</a></li><li><a href="coussin.html">Coussin souvenir</a></li><li><a href="vetements-defunt.html">Que faire de ses vêtements</a></li><li><a href="souvenirs.html#idee">Votre idée, sur devis</a></li><li><a href="souvenirs.html#commande">Réserver</a></li></ul></div>
+<li><a href="souvenirs.html">Boutique souvenirs</a></li><li><a href="doudou.html">Doudou souvenir</a></li><li><a href="coussin.html">Coussin souvenir</a></li><li><a href="vetements-defunt.html">Que faire de ses vêtements</a></li><li><a href="souvenirs.html#idee">Votre idée, sur devis</a></li><li><a href="souvenirs.html#commande">Commander</a></li></ul></div>
 <div><h4>Préparer et traverser</h4><ul>
 <li><a href="anticiper.html">Assurance obsèques</a></li><li><a href="anticiper.html#volontes">Coffret «&nbsp;Mes volontés&nbsp;»</a></li><li><a href="cercueils.html">Cercueils (bientôt)</a></li><li><a href="guide.html">Que faire après un décès</a></li><li><a href="formules.html">Le logement d'un proche</a></li><li><a href="notaires.html">Notaires et professionnels</a></li><li><a href="pompes-funebres.html">Pompes funèbres partenaires</a></li><li><a href="a-propos.html">La maison Lignée</a></li></ul></div>
 <div><h4>Nous joindre</h4><ul>

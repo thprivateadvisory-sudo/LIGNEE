@@ -131,3 +131,14 @@ Sur 20 familles simulées, 20 refusent pour la même raison : leur pompe funèbr
 - **Le logement** (remis en ligne le 9 novembre 2026, rattaché à « Après un décès ») : `formules.html` (formules Essentiel, Complet, Sérénité), `methode.html`, `notaires.html`. Entrée « Le logement » dans le menu, liens dans le pied de page, section `guide.html#logement`, carte « Traverser » de l'accueil. Demandes par `contact.html#visite` (sujet « Le logement d'un proche »). Hors CGV : devis et mandat signés par intervention.
 - Domaine : `maison-lignee.fr` (adresse `contact@maison-lignee.fr` à créer). Le fichier `CNAME` n'est ajouté qu'une fois les DNS configurés chez le registraire, sinon le site devient inaccessible.
 - Catalogue PDF : à régénérer (`python3 catalogue/generer.py`) avant impression, le QR code pointe désormais vers maison-lignee.fr.
+
+## Paiement en ligne du doudou et du coussin
+
+Sur `doudou.html` et `coussin.html`, le client paie dans la page (carte, Apple Pay, Google Pay) sans quitter le site, puis arrive sur `merci.html`, qui vérifie le paiement.
+
+- `js/paiement.js` : affichage du paiement (Stripe Elements). Repli si le serveur ne répond pas : la commande part en réservation par e-mail et Lignée envoie un lien de paiement.
+- `api/worker.js` : serveur de paiement (Cloudflare Workers, `https://lignee-paiement.muddy-fog-dddb.workers.dev`). **Les prix y sont recalculés** : 1er objet 99 € (doudou) ou 69 € (coussin), suivants 79 € ou 55 €, +10 € par pièce en grande taille, +5 € retour à domicile. **Tout changement de prix se fait dans les pages ET dans `api/worker.js`.**
+- `.github/workflows/api.yml` : met le serveur en ligne à chaque modification de `api/`, puis vérifie qu'il répond et que Stripe accepte la clé. Secrets GitHub : `CLOUDFLARE_API_TOKEN`, `STRIPE_SECRET_KEY` (clé limitée Stripe).
+- Domaine `maison-lignee.fr` enregistré dans Stripe pour Apple Pay, Google Pay et Link.
+- Chaque commande arrive aussi par e-mail (Web3Forms) avec son numéro `LS-…`, retrouvable dans Stripe.
+- À tenir : e-mail sous 24 h ouvrées après le paiement (adresse d'envoi des vêtements et délai) ; remboursement intégral en cas d'annulation avant le début de la confection (CGV art. 7).
