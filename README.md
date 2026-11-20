@@ -9,9 +9,7 @@ Un fichier HTML autonome par page (12 pages), tous au même niveau (styles et sc
 | `index.html` | Accueil |
 | `formules.html` | Nos formules (Essentiel, Complet, Sérénité) |
 | `methode.html` | Comment ça marche |
-| `souvenirs.html` | Confection souvenir : fiche détaillée au clic sur chaque objet, devis pour le reste |
-| `commande.html` | Page de paiement des souvenirs à prix fixe (`commande.html?p=doudou`) |
-| `merci.html` | Confirmation de commande (retour de Stripe : `merci.html?paye=1`) |
+| `souvenirs.html` | Confection souvenir (sur devis, formulaire de devis) |
 | `cercueils.html` | Cercueils et urnes : gamme, prix TTC, comparaison avec le marché |
 | `anticiper.html` | Assurance obsèques, coffret « Mes volontés », étude gratuite |
 | `notaires.html` | Notaires et professionnels (formulaire pro) |
@@ -29,9 +27,9 @@ Hébergement : GitHub Pages (aucune étape de build).
 1. Sur GitHub : Settings → Pages.
 2. Source : « Deploy from a branch », choisir la branche du site et le dossier `/ (root)`, puis Save.
 3. Le site est en ligne en une ou deux minutes à l'adresse indiquée par GitHub.
-4. Nom de domaine : dans Settings → Pages → Custom domain, saisir le domaine (ex. `lignee.fr`), puis créer chez le registraire les enregistrements DNS indiqués par GitHub. Cocher ensuite « Enforce HTTPS ».
+4. Nom de domaine : dans Settings → Pages → Custom domain, saisir le domaine (ex. `maison-lignee.fr`), puis créer chez le registraire les enregistrements DNS indiqués par GitHub. Cocher ensuite « Enforce HTTPS ».
 
-Polices : Cormorant Garamond et Inter sont hébergées avec le site dans `polices/` (licence SIL OFL), sans appel à Google Fonts. Les adresses canoniques et `sitemap.xml` utilisent les URL sans `.html` (ex. `https://lignee.fr/contact`), que GitHub Pages sert directement.
+Polices : Cormorant Garamond et Inter sont hébergées avec le site dans `polices/` (licence SIL OFL), sans appel à Google Fonts. Les adresses canoniques et `sitemap.xml` utilisent les URL sans `.html` (ex. `https://maison-lignee.fr/contact`), que GitHub Pages sert directement.
 
 Le fichier `.nojekyll` indique à GitHub Pages de servir les fichiers tels quels.
 
@@ -42,7 +40,7 @@ Rechercher et remplacer dans les 9 fichiers :
 - Téléphone et WhatsApp : volontairement absents au lancement (pas encore de centre d'appels). Le contact passe par « Être rappelé » (formulaire de `contact.html#formulaire`) et par e-mail. À l'arrivée d'un numéro en 09 ou 03, le rajouter dans l'en-tête, le pied de page, la barre mobile, `contact.html`, le catalogue imprimé et les messages d'erreur des formulaires.
 - Formulaires : clé Web3Forms installée (variable `CLE` dans chaque page). Les demandes arrivent sur l'adresse du compte Web3Forms.
 - Mentions légales : seul le nom (LIGNÉE) et l'e-mail sont affichés. Les autres lignes (forme, capital, siège, SIREN/RCS, TVA, directeur de publication, habilitation, ORIAS) sont en commentaire HTML dans `mentions-legales.html` : les compléter puis les décommenter. Idem pour le médiateur (section « Médiation »). Le siège peut aussi être ajouté dans `confidentialite.html`.
-- `contact@lignee.fr` et `https://lignee.fr` (balises canoniques, `sitemap.xml`, `robots.txt`) si le domaine final est différent.
+- `contact@maison-lignee.fr` et `https://maison-lignee.fr` (balises canoniques, `sitemap.xml`, `robots.txt`) si le domaine final est différent.
 
 À faire relire par un juriste : mentions légales, confidentialité, guide « que faire après un décès ». Les CGV (`cgv.html`, liées dans le pied de page) sont une première version à faire valider par le juriste, notamment les conditions des trois garanties et le droit de rétractation.
 
@@ -57,7 +55,7 @@ Les prix de la gamme (cercueils 340 à 1 190 €, urnes 49 à 149 €), la livra
 - Format fini A4 (210 × 297 mm), fonds perdus de 3 mm inclus (fichier en 216 × 303 mm), sans traits de coupe. Polices intégrées (TrueType). Couleurs en RVB : l'imprimeur les convertit en CMJN.
 - Conseil d'impression : 8 pages, piqûre à cheval (2 agrafes), papier couché demi-mat 170 g.
 - Régénérer après modification de `catalogue/catalogue.html` : `python3 catalogue/generer.py` (Playwright et Chromium).
-- Avant impression, remplacer dans `catalogue/catalogue.html` : le numéro d'habilitation `XX-XX-XXX`, et vérifier que `lignee.fr` est en ligne (le QR code pointe vers `https://lignee.fr/cercueils.html`). Faire valider prix et engagements comme pour le site.
+- Avant impression, vérifier que `maison-lignee.fr` est en ligne (le QR code pointe vers la liste d'attente `https://maison-lignee.fr/cercueils.html#atelier`). Faire valider prix et engagements comme pour le site.
 - Les photos viennent du PDF fournisseur (environ 180 ppi réels une fois imprimées) : avec les photos haute définition du fabricant, l'impression sera plus nette.
 
 ## Fiche produit et vue 3D
@@ -122,35 +120,25 @@ Sur 20 familles simulées, 20 refusent pour la même raison : leur pompe funèbr
 
 - Le site ne mentionne plus l'habilitation préfectorale (encart remplacé par « Aucune pression »). **Aucune vente de cercueil ou d'urne avant l'habilitation** : on recueille des demandes et on rappelle, sans signer de devis.
 - Assurance obsèques : Lignée n'est pas intermédiaire. Elle transmet la demande à un partenaire immatriculé à l'ORIAS (consentement dans le formulaire, mention dans `confidentialite.html`). Au rappel, ne pas présenter ni conseiller de contrat : passer la main au partenaire. Piste : se faire inscrire comme mandataire d'intermédiaire par ce partenaire.
-- Quand les numéros arrivent : les renseigner dans `mentions-legales.html` et remettre l'encart « Habilitation préfectorale » (historique git).
+- Quand les numéros arrivent : les renseigner dans `mentions-legales.html`, remettre la phrase d'habilitation dans les mentions du catalogue (`catalogue/catalogue.html`, page 8) et remettre l'encart « Habilitation préfectorale » (historique git).
 
-## Souvenirs : commande et paiement en ligne
+## Nouvelle structure (7 novembre 2026) : trois univers
 
-Parcours : clic sur un objet (`souvenirs.html`, ou lien direct `souvenirs.html#doudou`) → fiche avec tout expliqué (ce que l'on reçoit, ce qu'il faut confier, délai, étapes, garanties, questions) → « Commander » → `commande.html?p=doudou` (quantité, coordonnées, CGV) → paiement Stripe → `merci.html?paye=1`. Clés : `coussin`, `doudou`, `cadre`, `boite`, `empreinte`, `ecriture`, `meche`. Les objets sur devis (numérisation, livre, film, arbre) ont aussi une fiche, qui renvoie au formulaire de devis pré-rempli.
+- Menu : Boutique souvenirs · Préparer ses obsèques · Après un décès · À propos · Contact.
+- **Se souvenir** : `souvenirs.html` (boutique, 6 produits, formulaire de commande `#commande`, présélection par `#commande?produit=coussin`), `doudou.html` (fiche avec total calculé). Prix : doudou 99 € puis 79 €, coussin 69 € puis 55 €, grand format +10 €, retour à domicile +5 € (à confirmer avec la couturière). Paiement : la commande arrive par Web3Forms, on confirme sous 24 h avec un lien de paiement (Stripe dès que la société est créée).
+- **Préparer** : `anticiper.html` (emplacement du partenaire assureur prêt en commentaire HTML, à décommenter une fois signé) ; `cercueils.html` en « Ouverture prochaine » avec liste d'attente (`#atelier`), aucune vente avant l'habilitation.
+- **Traverser** : `guide.html`.
+- **Le logement** (remis en ligne le 9 novembre 2026, rattaché à « Après un décès ») : `formules.html` (formules Essentiel, Complet, Sérénité), `methode.html`, `notaires.html`. Entrée « Le logement » dans le menu, liens dans le pied de page, section `guide.html#logement`, carte « Traverser » de l'accueil. Demandes par `contact.html#visite` (sujet « Le logement d'un proche »). Hors CGV : devis et mandat signés par intervention.
+- Domaine : `maison-lignee.fr` (adresse `contact@maison-lignee.fr` à créer). Le fichier `CNAME` n'est ajouté qu'une fois les DNS configurés chez le registraire, sinon le site devient inaccessible.
+- Catalogue PDF : à régénérer (`python3 catalogue/generer.py`) avant impression, le QR code pointe désormais vers maison-lignee.fr.
 
-Textes, prix et liens de paiement : un seul fichier, `js/souvenirs.js`.
+## Paiement en ligne du doudou et du coussin
 
-**Paiement branché (novembre 2026)** : 7 liens de paiement Stripe en mode réel (compte cohesifcommerce.fr), un par objet, au prix TTC, quantité réglable de 1 à 10, facture automatique, retour vers `https://maison-lignee.fr/merci.html?paye=1`. Ils sont dans `STRIPE` en haut de `js/souvenirs.js`. Un changement de prix se fait dans Stripe (nouveau lien) **et** dans `js/souvenirs.js`. TVA comprise dans le prix, Stripe Tax non activé. Le site transmet l'e-mail du client et un numéro de commande (`client_reference_id`, ex. `LS-261119-AB12`) qu'on retrouve dans Stripe et dans l'e-mail de commande Web3Forms (adresse, variante du bijou, prénom du proche, message).
+Sur `doudou.html` et `coussin.html`, le client paie dans la page (carte, Apple Pay, Google Pay) sans quitter le site, puis arrive sur `merci.html`, qui vérifie le paiement.
 
-Tant qu'un lien est vide, la commande arrive quand même par e-mail et le client lit qu'il reçoit son lien de paiement sécurisé dans l'heure (jours ouvrés) : il faut alors lui envoyer un lien Stripe à la main.
-
-Quatrième objet offert : avec le paiement intégré, le montant payé est déjà remisé. Seulement si le site bascule sur un lien de paiement Stripe (prix plein), **rembourser le quatrième objet dans Stripe sous 48 h** (CGV art. 9).
-
-Engagements affichés, à tenir réellement (et à valider) : étiquette d'envoi prépayée sous 24 h ouvrées, photo de l'objet avant expédition, livraison offerte en France métropolitaine, remboursement intégral si les affaires ne permettent pas la confection, annulation remboursée tant que la confection n'a pas commencé, restitution des affaires. Dimensions et délais des fiches (doudou 30 cm, coussin 40 × 40 cm, cadre 13 × 18, boîte 25 × 18 × 10 cm, 3 à 4 semaines) et détails (étiquette avec prénom, boutons en façade, écrin, épreuve avant gravure) : à confirmer avec l'atelier, sinon les corriger dans `js/souvenirs.js`. CGV art. 2, 4 et 9 et `confidentialite.html` (Stripe) mis à jour : à faire relire par le juriste.
-
-### Paiement intégré dans la page (carte, Apple Pay, Google Pay)
-
-Le client paie sur `commande.html` sans quitter le site : boutons Apple Pay / Google Pay et champ carte (Stripe Elements), puis retour sur `merci.html?session_id=…` qui vérifie le paiement.
-
-Pièces :
-- `api/worker.js` : petit serveur (Cloudflare Workers, gratuit) qui prépare chaque paiement. **Les prix y sont fixés côté serveur** (à garder identiques à `js/souvenirs.js`). Le 4e objet offert est déduit directement du montant : plus de remboursement manuel.
-- `.github/workflows/api.yml` : déploie ce serveur à chaque modification de `api/`.
-- `js/souvenirs.js`, objet `PAIEMENT` : adresse du serveur et clé publiable Stripe. **Tant qu'il est vide, ou si le serveur ne répond pas, le site utilise les liens de paiement Stripe** (page Stripe).
-- Domaine `maison-lignee.fr` enregistré dans Stripe pour Apple Pay, Google Pay et Link (actif).
-
-Mise en service (une fois) :
-1. Créer un compte gratuit sur cloudflare.com. Noter l'« Account ID » (Workers & Pages, colonne de droite). Créer un jeton : My Profile → API Tokens → Create Token → modèle « Edit Cloudflare Workers ».
-2. Stripe → Développeurs → Clés API : copier la clé secrète `sk_live_…` et la clé publiable `pk_live_…`.
-3. GitHub → Settings → Secrets and variables → Actions → New repository secret : `CLOUDFLARE_API_TOKEN`, `STRIPE_SECRET_KEY` (l'ID de compte Cloudflare est dans `api/wrangler.toml`). La clé secrète ne va **que** là, jamais dans le code ni dans une conversation.
-4. GitHub → Actions → « Serveur de paiement » → Run workflow. L'adresse du serveur s'affiche dans le journal (`https://lignee-paiement.<compte>.workers.dev`).
-5. Renseigner `PAIEMENT.api` (cette adresse) et `PAIEMENT.cle` (`pk_live_…`, publique) dans `js/souvenirs.js`.
+- `js/paiement.js` : affichage du paiement (Stripe Elements). Repli si le serveur ne répond pas : la commande part en réservation par e-mail et Lignée envoie un lien de paiement.
+- `api/worker.js` : serveur de paiement (Cloudflare Workers, `https://lignee-paiement.muddy-fog-dddb.workers.dev`). **Les prix y sont recalculés** : 1er objet 99 € (doudou) ou 69 € (coussin), suivants 79 € ou 55 €, +10 € par pièce en grande taille, +5 € retour à domicile. **Tout changement de prix se fait dans les pages ET dans `api/worker.js`.**
+- `.github/workflows/api.yml` : met le serveur en ligne à chaque modification de `api/`, puis vérifie qu'il répond et que Stripe accepte la clé. Secrets GitHub : `CLOUDFLARE_API_TOKEN`, `STRIPE_SECRET_KEY` (clé limitée Stripe).
+- Domaine `maison-lignee.fr` enregistré dans Stripe pour Apple Pay, Google Pay et Link.
+- Chaque commande arrive aussi par e-mail (Web3Forms) avec son numéro `LS-…`, retrouvable dans Stripe.
+- À tenir : e-mail sous 24 h ouvrées après le paiement (adresse d'envoi des vêtements et délai) ; remboursement intégral en cas d'annulation avant le début de la confection (CGV art. 7).

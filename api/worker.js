@@ -9,17 +9,21 @@ const SITE = 'https://maison-lignee.fr';
 const ORIGINES = [SITE, 'https://www.maison-lignee.fr'];
 const VERSION_STRIPE = '2026-10-28.endive'; // même série que js.stripe.com/endive/stripe.js
 
-// Prix TTC en centimes. À garder identiques à js/souvenirs.js.
+// Prix TTC en centimes, identiques aux pages doudou.html et coussin.html :
+// 1er objet au prix plein, les suivants de la même commande au prix réduit,
+// +10 € par pièce en grande taille, +5 € pour le retour à domicile (point relais inclus).
 const PRODUITS = {
-  coussin:   { nom: 'Coussin souvenir Lignée', prix: 5900 },
-  doudou:    { nom: 'Doudou souvenir Lignée', prix: 8900 },
-  cadre:     { nom: 'Cadre souvenir Lignée', prix: 6900 },
-  boite:     { nom: 'Boîte en bois souvenir Lignée', prix: 14900 },
-  empreinte: { nom: 'Bijou empreinte digitale Lignée', prix: 12900 },
-  ecriture:  { nom: 'Bijou écriture manuscrite Lignée', prix: 12900 },
-  meche:     { nom: 'Bijou mèche de cheveux Lignée', prix: 14900 }
+  doudou:  { nom: 'Doudou souvenir', premier: 9900, suivant: 7900, tailles: { petit: 'petit, environ 25 cm', grand: 'grand, environ 35 cm' } },
+  coussin: { nom: 'Coussin souvenir', premier: 6900, suivant: 5500, tailles: { petit: '40 × 40 cm', grand: '50 × 50 cm' } }
 };
-const VARIANTES = ['', 'Pendentif', 'Bague', 'Bracelet'];
+const SUPPLEMENT_GRAND = 1000;
+const RETOUR_DOMICILE = 500;
+const QUANTITE_MAX = 20;
+
+export function montant(p, taille, q, livraison) {
+  const g = taille === 'grand' ? SUPPLEMENT_GRAND : 0;
+  return (p.premier + g) + (q - 1) * (p.suivant + g) + (livraison === 'domicile' ? RETOUR_DOMICILE : 0);
+}
 
 function entetes(origine) {
   const ok = ORIGINES.includes(origine) || /^http:\/\/localhost(:\d+)?$/.test(origine || '');
@@ -65,33 +69,34 @@ export function parametresSession(d) {
   const p = PRODUITS[d.p];
   if (!p) throw new Error('Objet inconnu');
   const q = Math.floor(Number(d.q));
-  if (!(q >= 1 && q <= 10)) throw new Error('Quantité invalide');
+  if (!(q >= 1 && q <= QUANTITE_MAX)) throw new Error('Quantité invalide');
   const email = court(d.email, 200);
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) throw new Error('E-mail invalide');
-  const variante = VARIANTES.includes(d.variante) ? d.variante : '';
-  const offerts = Math.floor(q / 4);
-  const nom = p.nom + (variante ? ' (' + variante.toLowerCase() + ')' : '');
-  const ligne = offerts
-    ? { price_data: { currency: 'eur', unit_amount: p.prix * (q - offerts), product_data: { name: `${nom} × ${q}, dont ${offerts} offert${offerts > 1 ? 's' : ''}` } }, quantity: 1 }
-    : { price_data: { currency: 'eur', unit_amount: p.prix, product_data: { name: nom } }, quantity: q };
+  const taille = d.taille === 'grand' ? 'grand' : 'petit';
+  const livraison = d.livraison === 'domicile' ? 'domicile' : 'relais';
+  const g = taille === 'grand' ? SUPPLEMENT_GRAND : 0;
+  const nom = `${p.nom} (${p.tailles[taille]})`;
+  const ligne = (name, amount, quantity) => ({ price_data: { currency: 'eur', unit_amount: amount, product_data: { name } }, quantity });
+  const lignes = [ligne(nom, p.premier + g, 1)];
+  if (q > 1) lignes.push(ligne(`${nom}, pièce${q > 2 ? 's' : ''} suivante${q > 2 ? 's' : ''}`, p.suivant + g, q - 1));
+  if (livraison === 'domicile') lignes.push(ligne('Retour à domicile', RETOUR_DOMICILE, 1));
   const numero = court(d.numero, 40);
   const meta = {
-    numero, objet: d.p, quantite: String(q), variante,
-    nom: court(d.nom, 120), telephone: court(d.tel, 40),
-    adresse: court([d.adresse, d.cp, d.ville].filter(Boolean).join(', '), 450),
-    proche: court(d.proche, 120), message: court(d.message, 450)
+    numero, objet: d.p, quantite: String(q), taille, livraison,
+    nom: court(d.nom, 120), telephone: court(d.tel, 40), rappel: d.rappel ? 'oui' : '',
+    message: court(d.message, 450)
   };
   return {
     mode: 'payment',
     ui_mode: 'elements',
     locale: 'fr',
-    line_items: [ligne],
+    line_items: lignes,
     customer_email: email,
     client_reference_id: numero,
     return_url: SITE + '/merci.html?session_id={CHECKOUT_SESSION_ID}',
     metadata: meta,
-    payment_intent_data: { description: nom + ' · ' + numero, statement_descriptor_suffix: 'LIGNEE', metadata: meta },
-    invoice_creation: { enabled: true, invoice_data: { description: 'Lignée · Souvenirs faits main', footer: 'Lignée · maison-lignee.fr · contact@lignee.fr', metadata: { numero } } }
+    payment_intent_data: { description: `${p.nom} × ${q} · ${numero}`, statement_descriptor_suffix: 'LIGNEE', metadata: meta },
+    invoice_creation: { enabled: true, invoice_data: { description: 'Lignée · Souvenirs faits main', footer: 'Lignée · maison-lignee.fr · contact@maison-lignee.fr', metadata: { numero } } }
   };
 }
 
