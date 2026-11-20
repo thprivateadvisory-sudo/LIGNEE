@@ -807,6 +807,64 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 .lg-deux{display:grid;gap:2rem;align-items:center}
 @media(min-width:760px){.lg-deux{grid-template-columns:1fr 1fr}}
 .lg-deux img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+
+/* ===== Achat en un geste (doudou, coussin) ===== */
+.achat{background:var(--pierre);padding:calc(var(--hdr,96px) + clamp(16px,3vw,40px)) 0 clamp(48px,7vw,88px)}
+.achat-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.5rem,4vw,3.5rem);align-items:start}
+@media (max-width:860px){.achat-in{grid-template-columns:minmax(0,1fr)}}
+.achat-photo{position:relative;margin:0}
+.achat-photo img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:6px}
+@media (min-width:861px){.achat-photo{position:sticky;top:calc(var(--hdr,96px) + 1.5rem)}}
+.achat-info{display:grid;gap:1rem;min-width:0}
+.achat-info .ariane{font-size:.8rem;color:var(--ardoise)}
+.achat-info .ariane a{color:inherit}
+.achat-info .ariane [aria-current]{color:var(--nuit)}
+@media (max-width:860px){.achat-photo img{aspect-ratio:4/3}.achat{padding-top:calc(var(--hdr,96px) + 8px)}}
+.achat-info h1{font-size:clamp(2.3rem,5vw,3.4rem);font-weight:400;line-height:1.05}
+.achat-lead{font-size:1.1rem;color:var(--ardoise);margin:0}
+.achat-prix{display:flex;align-items:baseline;flex-wrap:wrap;gap:.3rem 1rem;margin:.2rem 0 0}
+.achat-prix b{font-family:var(--f-titre);font-weight:500;font-size:2.6rem;line-height:1;font-variant-numeric:tabular-nums}
+.achat-prix span{color:var(--ardoise);font-size:.95rem}
+.achat-form{display:grid;gap:1rem;margin:0}
+.choix{border:0;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem;min-width:0}
+.choix legend{grid-column:1/-1;font-size:.78rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--or-texte);margin-bottom:.45rem;padding:0}
+.choix label{position:relative;cursor:pointer;display:block}
+.choix input{position:absolute;opacity:0;pointer-events:none}
+.choix label span{display:grid;gap:.1rem;padding:.75rem .9rem;border:1px solid #CFC5B1;border-radius:6px;background:var(--blanc);font-size:.88rem;color:var(--ardoise);line-height:1.3;transition:border-color .15s,box-shadow .15s}
+.choix label span b{font-weight:500;font-size:1rem;color:var(--nuit)}
+.choix input:checked+span{border-color:var(--nuit);box-shadow:inset 0 0 0 1px var(--nuit)}
+.choix input:focus-visible+span{outline:2px solid var(--or-texte);outline-offset:2px}
+.qte{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.qte .legende{font-size:.78rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--or-texte)}
+.q-boite{display:inline-flex;align-items:center;border:1px solid #CFC5B1;border-radius:999px;background:var(--blanc)}
+.q-boite button{width:2.8rem;height:2.8rem;border:0;background:none;font-size:1.35rem;cursor:pointer;color:var(--nuit);border-radius:50%}
+.q-boite button:disabled{opacity:.3;cursor:default}
+.q-boite output{min-width:2rem;text-align:center;font-weight:500;font-variant-numeric:tabular-nums}
+.achat-detail{margin:0;font-size:.9rem;color:var(--ardoise)}
+.paiement{display:grid;gap:.9rem;padding:1.1rem;border:1px solid var(--ligne);border-radius:8px;background:var(--blanc)}
+.paiement .ou{display:flex;align-items:center;gap:.8rem;font-size:.85rem;color:var(--ardoise);margin:0}
+.paiement .ou::before,.paiement .ou::after{content:"";flex:1;height:1px;background:var(--ligne)}
+.paiement .champ{display:grid;gap:.35rem}
+.paiement .champ label{font-size:.9rem;font-weight:500}
+.paiement .champ input{font:inherit;font-size:1rem;color:var(--nuit);background:var(--ivoire);border:1px solid #CFC5B1;border-radius:4px;padding:.75rem .85rem;width:100%}
+.paiement .chargement{font-size:.88rem;color:var(--ardoise);margin:0;padding:.6rem 0}
+#carte{min-height:40px}
+.payer{width:100%;padding-block:1rem;font-size:1.05rem}
+.payer.en-cours{opacity:.7;cursor:wait}
+.achat-cgv{margin:0;font-size:.78rem;color:var(--ardoise);line-height:1.5}
+.achat-rassure{list-style:none;margin:.3rem 0 0;padding:0;display:grid;gap:.45rem;font-size:.92rem}
+.achat-rassure li{display:grid;grid-template-columns:20px minmax(0,1fr);gap:.55rem;align-items:start}
+.achat-rassure svg{width:20px;height:20px;margin-top:.15rem;fill:none;stroke:#2F6B52;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.apres{counter-reset:a;list-style:none;margin:0;padding:0;display:grid;gap:1.25rem;grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:760px){.apres{grid-template-columns:minmax(0,1fr)}}
+.apres li{counter-increment:a;display:grid;gap:.3rem}
+.apres li::before{content:counter(a);width:2.2rem;height:2.2rem;border-radius:50%;border:1px solid var(--or);display:grid;place-items:center;font-family:var(--f-titre);font-size:1.2rem;color:var(--or-texte)}
+.apres b{font-family:var(--f-titre);font-size:1.35rem;font-weight:500}
+.apres span{color:var(--ardoise)}
+.barre-appel.barre-achat{grid-template-columns:minmax(0,1fr)}
+.barre-appel.barre-achat a{flex-direction:row;justify-content:center;gap:.5rem;font-size:1rem;padding-block:.85rem}
+.barre-appel.cache{transform:translateY(110%)}
+.barre-appel{transition:transform .25s}
 </style>
 </head>
 <body>
@@ -818,38 +876,43 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 </div></header>
 <main>
 
-<section class="heros-ciel nuit avec-video"><div class="video-fond" aria-hidden="true"><video data-auto disablepictureinpicture disableremoteplayback muted loop playsinline autoplay preload="auto" poster="videos/couture-gros-plan.jpg" aria-hidden="true"><source src="videos/couture-gros-plan.mp4" type="video/mp4"></video></div><div class="wrap"><div class="heros-texte"><nav class="ariane" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><span aria-hidden="true">/</span><a href="souvenirs.html">Boutique souvenirs</a><span aria-hidden="true">/</span><span aria-current="page">Doudou souvenir</span></nav>
-<p class="sur">Cousu main · à partir de ses vêtements</p>
-<h1>Doudou <em>souvenir.</em></h1>
-<p class="chapo">Un doudou cousu dans sa chemise, son pull ou sa robe préférée. Pour les enfants, les petits-enfants, ou pour soi.</p>
-</div></div></section>
-<section class="sec-bloc pierre" id="commande"><div class="wrap form-zone">
-<div class="prose rv">
-<figure class="photo-produit"><img src="images/souvenirs/doudou.webp" width="800" height="800" alt="Doudou ours cousu dans un pull en laine torsadée grise, à côté du pull d'origine" decoding="async"><figcaption class="mention-illu">Photo d'illustration</figcaption></figure>
-<p class="sur">99&nbsp;€ · 79&nbsp;€ les suivants</p>
-<h2 style="margin-top:0">Commandez votre doudou.</h2>
-<p class="muted">Le premier doudou est à 99&nbsp;€, chaque doudou suivant de la même commande à 79&nbsp;€, avec les mêmes vêtements ou d'autres. Paiement sécurisé directement sur cette page, par carte, Apple Pay ou Google Pay. Juste après, nous vous écrivons avec l'adresse pour nous confier ses vêtements et le délai de confection.</p>
-<ul class="lg-confiance" style="margin-top:1.5rem;grid-template-columns:repeat(2,minmax(0,1fr))">
-<li><b>Fait main</b>En France</li><li><b>Photos</b>Pendant la confection</li><li><b>Tissus rendus</b>Avec le doudou</li><li><b>Carte signée</b>Par l'artisane</li>
+<section class="achat" id="commande"><div class="wrap achat-in">
+<figure class="achat-photo"><img src="images/souvenirs/doudou.webp" width="800" height="800" alt="Doudou ours cousu dans un pull en laine torsadée grise, à côté du pull d'origine" decoding="async" fetchpriority="high"><figcaption class="mention-illu">Photo d'illustration</figcaption></figure>
+<div class="achat-info">
+<nav class="ariane" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a> / <a href="souvenirs.html">Boutique souvenirs</a> / <span aria-current="page">Doudou souvenir</span></nav>
+<p class="sur" style="margin:0">Cousu main en France · dans ses vêtements</p>
+<h1>Le serrer encore <em>contre vous.</em></h1>
+<p class="achat-lead">Sa chemise, son pull du dimanche, la robe qu'elle aimait&nbsp;: nous en faisons un doudou, cousu à la main. Pour l'enfant qui a perdu son papi. Pour vous, aussi.</p>
+<p class="achat-prix"><b class="a-total">99&nbsp;€</b><span>Les suivants 79&nbsp;€&nbsp;: un pour chaque petit-enfant.</span></p>
+<form class="achat-form" data-paiement="doudou" data-p1="99" data-ps="79" data-unite="doudou" novalidate>
+<fieldset class="choix"><legend>Taille</legend><label><input type="radio" name="taille" value="petit" checked><span><b>Petit</b>environ 25 cm</span></label><label><input type="radio" name="taille" value="grand"><span><b>Grand</b>environ 35 cm · +10 €</span></label></fieldset>
+<div class="qte"><span class="legende">Combien&nbsp;?</span><div class="q-boite"><button type="button" class="q-moins" aria-label="Un de moins">−</button><output class="q-val" aria-live="polite">1</output><button type="button" class="q-plus" aria-label="Un de plus">+</button></div></div>
+<fieldset class="choix"><legend>Retour chez vous</legend><label><input type="radio" name="livraison" value="relais" checked><span><b>Point relais</b>inclus</span></label><label><input type="radio" name="livraison" value="domicile"><span><b>À domicile</b>+5 €</span></label></fieldset>
+<p class="achat-detail" aria-live="polite"></p>
+<div class="paiement">
+<div id="express"></div>
+<p class="ou"><span>ou par carte</span></p>
+<div class="champ"><label for="a-mail">Votre e-mail</label><input id="a-mail" name="email" type="email" autocomplete="email" inputmode="email" placeholder="pour recevoir la confirmation"></div>
+<div id="carte"><p class="chargement">Chargement du paiement sécurisé…</p></div>
+<button class="btn payer" type="submit">Payer <span class="a-total">99&nbsp;€</span></button>
+<p class="form-msg" role="status" hidden></p>
+<p class="achat-cgv">En payant, vous acceptez nos <a href="cgv.html">conditions de vente</a>. Paiement chiffré et sécurisé&nbsp;: Lignée ne voit jamais vos données bancaires.</p>
+</div>
+</form>
+<ul class="achat-rassure">
+<li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Ses vêtements vous sont rendus avec le doudou</li>
+<li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Des photos pendant la couture, une carte signée par l'artisane</li>
+<li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Remboursé intégralement tant que la couture n'a pas commencé</li>
 </ul>
 </div>
-<form class="form" data-paiement="doudou" data-form="Commande doudou" data-ok="Merci, votre place est réservée. Nous vous écrivons dès qu'elle est prête, avec le délai et le lien de paiement. Nous ne vous écrirons que pour votre commande." novalidate>
-<div class="champs">
-<div class="champ"><label for="d-taille">Taille</label><select id="d-taille" name="taille"><option value="petit">Petit, environ 25 cm</option><option value="grand">Grand, environ 35 cm (+10 € par doudou)</option></select></div>
-<div class="champ"><label for="d-qte">Nombre de doudous</label><input id="d-qte" name="quantite" type="number" min="1" max="20" value="1" inputmode="numeric"></div>
-<div class="champ plein"><label for="d-livr">Retour</label><select id="d-livr" name="livraison"><option value="relais">En point relais (inclus)</option><option value="domicile">À domicile (+5 €)</option></select></div>
-<div class="champ plein"><p class="lg-prix" style="font-size:1.5rem;margin:0" aria-live="polite">Total TTC&nbsp;: <span id="d-total">99 €</span></p><input type="hidden" name="total" id="d-total-champ" value="99 €"><span class="opt" id="d-detail">1 doudou à 99 €</span></div>
-<div class="champ"><label for="d-nom">Nom</label><input id="d-nom" name="nom" required autocomplete="name"></div>
-<div class="champ"><label for="d-tel">Téléphone</label><input id="d-tel" name="telephone" type="tel" required autocomplete="tel"></div>
-<div class="champ plein"><label for="d-mail">E-mail</label><input id="d-mail" name="email" type="email" required autocomplete="email"></div>
-<div class="champ plein"><label for="d-msg">Précisions <span class="opt">(facultatif)</span></label><textarea id="d-msg" name="message" placeholder="Par exemple : deux doudous dans sa chemise bleue, prénoms à broder."></textarea></div>
-</div>
-<label class="consent"><input type="checkbox" name="rappel" value="oui" id="d-rappel"> <span>Je souhaite être rappelé(e) après ma commande.</span></label>
-<label class="consent"><input type="checkbox" name="consentement" required id="d-consent"> <span>J'accepte les <a href="cgv.html">conditions générales de vente</a> et que Lignée utilise ces informations pour traiter ma commande (<a href="confidentialite.html">confidentialité</a>).</span></label>
-<button class="btn" type="submit">Continuer vers le paiement</button>
-<p class="opt" style="margin:0">Vous pouvez annuler et être remboursé tant que la confection n'a pas commencé. Nous ne vous écrirons que pour votre commande, sans aucune relance commerciale.</p>
-<p class="form-msg" role="status" hidden></p>
-</form>
+</div></section>
+<section class="sec-bloc"><div class="wrap">
+<div class="tete rv"><p class="sur">Après votre commande</p><h2 class="grand">Simple, <em>et à votre rythme.</em></h2></div>
+<ol class="apres">
+<li><b>Nous vous écrivons</b><span>Sous 24 h&nbsp;: comment nous confier ses vêtements, et le délai.</span></li>
+<li><b>Vous nous les envoyez</b><span>Quand vous êtes prêt. Photo dès leur arrivée.</span></li>
+<li><b>Vous recevez son doudou</b><span>Avec les tissus restants et une carte signée.</span></li>
+</ol>
 </div></section>
 <section class="sec-bloc" id="le-doudou"><div class="wrap prose">
 <p class="sur">Le doudou souvenir</p>
@@ -882,15 +945,6 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 <p style="margin:0;color:var(--ardoise)">Vous habitez près de chez nous&nbsp;? Le dépôt en main propre est possible, sur rendez-vous.</p></div></div>
 </div>
 </div></section>
-<section class="sec-bloc"><div class="wrap">
-<div class="tete rv"><p class="sur">Comment ça se passe</p><h2 class="grand">Quatre étapes, <em>à votre rythme.</em></h2></div>
-<ol class="lg-etapes">
-<li><div><b>Vous commandez</b><span>Paiement en ligne sécurisé, puis nous vous écrivons avec l'adresse d'envoi.</span></div></li>
-<li><div><b>Vous nous confiez ses vêtements</b><span>Un vêtement adulte suffit pour un petit doudou.</span></div></li>
-<li><div><b>Nous cousons à la main</b><span>Des photos vous sont envoyées pendant la confection.</span></div></li>
-<li><div><b>Vous le recevez</b><span>Avec les tissus restants et une carte signée.</span></div></li>
-</ol>
-</div></section>
 <section class="sec-bloc pierre"><div class="wrap">
 <div class="tete rv"><p class="sur">Questions fréquentes</p><h2 class="grand">Vos <em>questions.</em></h2></div>
 <div class="faq">
@@ -901,19 +955,6 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 </div>
 <div class="btns" style="margin-top:2rem"><a class="btn sec" href="souvenirs.html">Voir tous les souvenirs</a></div>
 </div></section>
-<script>
-(function(){
-  var t=document.getElementById('d-taille'),q=document.getElementById('d-qte'),l=document.getElementById('d-livr');
-  function calcul(){
-    var n=Math.max(1,Math.min(20,parseInt(q.value,10)||1)),g=t.value==='grand'?10:0,dom=l.value==='domicile';
-    var p1=99+g,ps=79+g,tot=p1+(n-1)*ps+(dom?5:0);
-    var d=n===1?'1 doudou à '+p1+' €':'1 × '+p1+' € + '+(n-1)+' × '+ps+' €';if(dom)d+=' + 5 € domicile';
-    document.getElementById('d-total').textContent=tot+' €';document.getElementById('d-total-champ').value=tot+' € ('+d+')';
-    document.getElementById('d-detail').textContent=d;
-  }
-  [t,q,l].forEach(function(e){e.addEventListener('input',calcul);e.addEventListener('change',calcul);});calcul();
-})();
-</script>
 <script src="js/paiement.js"></script>
 
 </main>
@@ -937,11 +978,7 @@ button[aria-selected="true"] .nom-f{font-style:italic}
 <p><a href="mentions-legales.html">Mentions légales</a> · <a href="cgv.html">CGV</a> · <a href="confidentialite.html">Confidentialité</a> · <a href="mentions-legales.html#mediation">Médiation de la consommation</a> · <a href="a-propos.html">À propos</a></p>
 </div>
 </div></footer>
-<nav class="barre-appel" aria-label="Nous joindre">
-<a href="contact.html#formulaire"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Être rappelé</a>
-<a href="guide.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 4h10l4 4v12H5z"/><path d="M9 12h6M9 16h6"/></svg>Démarches</a>
-<a class="principal" href="souvenirs.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>Souvenirs</a>
-</nav>
+<nav class="barre-appel barre-achat" aria-label="Commander"><a class="principal" href="#commande">Commander · <span class="a-total">99&nbsp;€</span></a></nav>
 <script>
 (function(){
   var d=document,root=d.documentElement;

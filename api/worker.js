@@ -70,8 +70,9 @@ export function parametresSession(d) {
   if (!p) throw new Error('Objet inconnu');
   const q = Math.floor(Number(d.q));
   if (!(q >= 1 && q <= QUANTITE_MAX)) throw new Error('Quantité invalide');
+  // E-mail facultatif : Apple Pay / Google Pay le fournissent, la carte le transmet au paiement.
   const email = court(d.email, 200);
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) throw new Error('E-mail invalide');
+  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) throw new Error('E-mail invalide');
   const taille = d.taille === 'grand' ? 'grand' : 'petit';
   const livraison = d.livraison === 'domicile' ? 'domicile' : 'relais';
   const g = taille === 'grand' ? SUPPLEMENT_GRAND : 0;
@@ -91,7 +92,7 @@ export function parametresSession(d) {
     ui_mode: 'elements',
     locale: 'fr',
     line_items: lignes,
-    customer_email: email,
+    customer_email: email || undefined,
     client_reference_id: numero,
     return_url: SITE + '/merci.html?session_id={CHECKOUT_SESSION_ID}',
     metadata: meta,
@@ -118,7 +119,11 @@ export default {
         const s = await stripe(env, 'GET', 'checkout/sessions/' + id);
         return reponse({
           statut: s.status, paiement: s.payment_status, total: s.amount_total,
-          email: s.customer_details && s.customer_details.email, numero: s.client_reference_id
+          email: s.customer_details && s.customer_details.email,
+          nom: s.customer_details && s.customer_details.name,
+          numero: s.client_reference_id,
+          objet: s.metadata && s.metadata.objet, quantite: s.metadata && s.metadata.quantite,
+          taille: s.metadata && s.metadata.taille, livraison: s.metadata && s.metadata.livraison
         }, 200, origine);
       }
       return reponse({ erreur: 'Introuvable' }, 404, origine);
