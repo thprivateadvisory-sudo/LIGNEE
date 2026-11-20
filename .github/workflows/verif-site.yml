@@ -1,0 +1,56 @@
+# Vérifie, dans un vrai navigateur, que le paiement s'affiche sur le site en ligne.
+# Se lance après chaque mise à jour des pages (le temps que GitHub Pages publie), ou à la demande.
+name: Vérification du paiement en ligne
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '*.html'
+      - 'js/**'
+      - '.github/workflows/verif-site.yml'
+  workflow_dispatch:
+
+jobs:
+  verifier:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Attendre la publication du site
+        run: sleep 150
+      - name: Installer un navigateur
+        run: |
+          npm init -y >/dev/null
+          npm install playwright@1.48.2 >/dev/null
+          npx playwright install --with-deps chromium >/dev/null
+      - name: Ouvrir les pages et vérifier le paiement
+        run: |
+          cat > verif.js <<'EOF'
+          const { chromium } = require('playwright');
+          (async () => {
+            const b = await chromium.launch();
+            let echecs = 0;
+            for (const p of ['doudou', 'coussin', 'cadre', 'boite', 'bijou', 'plaque']) {
+              const pg = await b.newPage({ viewport: { width: 390, height: 844 } });
+              const erreurs = [];
+              pg.on('pageerror', e => erreurs.push(e.message));
+              pg.on('console', m => { if (m.type() === 'error') erreurs.push(m.text()); });
+              await pg.goto('https://maison-lignee.fr/' + p + '.html?verif=' + Date.now(), { waitUntil: 'load' });
+              let ok = false;
+              try { await pg.waitForSelector('#carte iframe', { timeout: 30000 }); ok = true; } catch (e) {}
+              const texte = (await pg.textContent('#carte').catch(() => '')).trim().slice(0, 160);
+              console.log((ok ? 'OK    ' : 'ÉCHEC ') + p + (ok ? ' : formulaire de paiement Stripe affiché' : ' : ' + texte));
+              if (!ok) { echecs++; erreurs.slice(0, 5).forEach(e => console.log('   erreur : ' + e)); }
+              await pg.screenshot({ path: p + '.png', fullPage: true });
+              await pg.close();
+            }
+            await b.close();
+            process.exit(echecs ? 1 : 0);
+          })();
+          EOF
+          node verif.js
+      - name: Garder les captures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: captures
+          path: '*.png'
