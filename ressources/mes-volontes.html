@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>Mes volontés · Lignée</title>
+<style>
+@font-face{font-family:"Cormorant Garamond";src:url("../polices/cormorant-garamond.woff2") format("woff2");font-weight:300 700}
+@font-face{font-family:"Cormorant Garamond";font-style:italic;src:url("../polices/cormorant-garamond-italique.woff2") format("woff2");font-weight:300 700}
+@font-face{font-family:"Inter";src:url("../polices/inter.woff2") format("woff2");font-weight:100 900}
+:root{--nuit:#1B2A41;--or:#B89B5E;--or-texte:#7D6431;--ivoire:#F5F1E8;--pierre:#ECE6DA;--ligne:#D9D0BE;--ardoise:#5B6472;--blanc:#FBF9F4}
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--blanc);color:var(--nuit);font-family:"Inter",sans-serif;font-size:10.5pt;line-height:1.5;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:210mm;height:297mm;padding:20mm 20mm 18mm;position:relative;page-break-after:always;overflow:hidden;background:var(--blanc)}
+.page:last-child{page-break-after:auto}
+.pied{position:absolute;left:20mm;right:20mm;bottom:10mm;display:flex;justify-content:space-between;font-size:7.5pt;color:var(--ardoise);letter-spacing:.04em}
+h1,h2,h3{font-family:"Cormorant Garamond",serif;font-weight:500;line-height:1.1}
+h2{font-size:30pt;margin-bottom:2mm}
+h2 .n{color:var(--or);font-style:italic;margin-right:3mm}
+h3{font-size:15pt;margin:6mm 0 2mm;color:var(--nuit)}
+.chapo{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:14pt;color:var(--ardoise);margin-bottom:6mm}
+.filet{width:22mm;height:1px;background:var(--or);margin:4mm 0 6mm}
+p{margin-bottom:2.5mm}
+.note{background:var(--pierre);border-left:2px solid var(--or);padding:3.5mm 4.5mm;font-size:9pt;color:#3a4558;margin:4mm 0}
+.note b{color:var(--nuit)}
+.ligne{border-bottom:1px solid var(--ligne);height:8.5mm}
+.champ{display:flex;align-items:flex-end;gap:3mm;margin-bottom:1mm}
+.champ span{white-space:nowrap;font-size:9.5pt;color:var(--ardoise);padding-bottom:1.2mm}
+.champ .ligne{flex:1}
+.cases{display:flex;flex-wrap:wrap;gap:2mm 7mm;margin:1mm 0 3mm}
+.case{display:flex;align-items:center;gap:2.2mm;font-size:10pt}
+.case i{display:inline-block;width:3.6mm;height:3.6mm;border:1px solid var(--or-texte);border-radius:.6mm}
+table{width:100%;border-collapse:collapse;margin:2mm 0 4mm}
+th{font-weight:500;font-size:8.5pt;text-transform:uppercase;letter-spacing:.08em;color:var(--or-texte);text-align:left;padding:1.5mm 2mm;border-bottom:1px solid var(--or)}
+td{border-bottom:1px solid var(--ligne);height:9mm;padding:1mm 2mm;font-size:9.5pt;vertical-align:bottom}
+td.l{color:var(--ardoise);width:42%}
+.deux{display:grid;grid-template-columns:1fr 1fr;gap:0 8mm}
+/* Couverture */
+.couv{background:var(--nuit);color:var(--ivoire);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30mm}
+.couv img{width:30mm;margin-bottom:10mm}
+.couv h1{font-size:58pt;font-weight:400;color:var(--ivoire)}
+.couv .sous{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:18pt;color:#D9B97F;margin:4mm 0 22mm}
+.couv .qui{width:110mm;text-align:left}
+.couv .qui .champ span{color:#c9c2b3}
+.couv .qui .ligne{border-color:#56627a}
+.couv .bas{position:absolute;bottom:16mm;left:0;right:0;font-size:8pt;letter-spacing:.18em;color:#9aa3b3;text-transform:uppercase}
+ol.etapes{margin:2mm 0 4mm 5mm}
+ol.etapes li{margin-bottom:2mm;padding-left:1mm}
+.lettre .ligne{height:9.5mm}
+.sign{display:grid;grid-template-columns:1fr 1fr;gap:8mm;margin-top:6mm}
+.cadre-sign{border:1px solid var(--ligne);height:32mm;border-radius:1mm;padding:2mm 3mm;font-size:8.5pt;color:var(--ardoise)}
+</style>
+</head>
+<body>
+
+<!-- 1. Couverture -->
+<section class="page couv">
+  <img src="../images/monogramme-or.png" alt="">
+  <h1>Mes volontés</h1>
+  <p class="sous">Pour que ceux que j’aime sachent quoi faire.</p>
+  <div class="qui">
+    <div class="champ"><span>Prénom et nom</span><div class="ligne"></div></div>
+    <div class="champ"><span>Né(e) le</span><div class="ligne"></div><span>à</span><div class="ligne"></div></div>
+    <div class="champ"><span>Rempli le</span><div class="ligne"></div></div>
+  </div>
+  <p class="bas">Lignée · maison-lignee.fr</p>
+</section>
+
+<!-- 2. Mode d'emploi -->
+<section class="page">
+  <h2>Avant de commencer</h2>
+  <p class="chapo">Une soirée suffit. Vous pouvez le remplir en plusieurs fois, et laisser des cases vides.</p>
+  <div class="filet"></div>
+  <h3>Pourquoi ce carnet</h3>
+  <p>Le jour venu, vos proches devront prendre beaucoup de décisions en quelques jours, souvent sans savoir ce que vous auriez voulu. Ces pages leur donnent vos réponses, et l’endroit où trouver vos papiers.</p>
+  <h3>Comment le remplir</h3>
+  <ol class="etapes">
+    <li>Écrivez à la main, au stylo. Vous pouvez barrer et corriger.</li>
+    <li>Répondez seulement à ce qui compte pour vous. « Je laisse le choix à mes proches » est une vraie réponse.</li>
+    <li>Datez et signez la dernière page.</li>
+    <li>Rangez le carnet dans un endroit simple à trouver, avec vos papiers importants. Évitez un coffre à la banque : il peut être difficile d’y accéder dans les premiers jours.</li>
+    <li>Dites à deux personnes de confiance que ce carnet existe et où il se trouve.</li>
+    <li>Relisez-le tous les deux ou trois ans, ou après un événement important. Notez la date de chaque relecture en dernière page.</li>
+  </ol>
+  <div class="note"><b>Vos souhaits pour vos obsèques.</b> En France, chacun peut décider de ses funérailles : inhumation ou crémation, cérémonie civile ou religieuse. Pour que ces souhaits aient le plus de poids, écrivez-les entièrement de votre main, datez-les et signez-les, comme vous le ferez à la fin de ce carnet.</div>
+  <div class="note"><b>Ce carnet ne remplace pas un testament.</b> Pour transmettre vos biens ou votre argent, un testament est nécessaire. Le plus sûr est d’en parler à un notaire. Les souhaits sur vos affaires notés ici (page 7) aident vos proches, mais ne les obligent pas.</div>
+  <div class="note"><b>Vos mots de passe.</b> Ne les écrivez pas dans ce carnet. Indiquez seulement où ils sont rangés et qui peut y accéder.</div>
+  <div class="pied"><span>Mes volontés</span><span>2</span></div>
+</section>
+
+<!-- 3. Qui prévenir -->
+<section class="page">
+  <h2><span class="n">1</span>Qui prévenir</h2>
+  <p class="chapo">Les personnes à appeler en premier, puis celles à informer.</p>
+  <div class="filet"></div>
+  <h3>Les personnes de confiance qui savent où est ce carnet</h3>
+  <table>
+    <tr><th>Prénom et nom</th><th>Lien</th><th>Téléphone</th></tr>
+    <tr><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td></tr>
+  </table>
+  <h3>À prévenir en premier</h3>
+  <table>
+    <tr><th>Prénom et nom</th><th>Lien</th><th>Téléphone</th></tr>
+    <tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td></tr>
+  </table>
+  <h3>Mes amis, mes groupes, mes associations</h3>
+  <p style="font-size:9.5pt;color:var(--ardoise)">Club, chorale, anciens collègues, voisins… et qui peut les prévenir.</p>
+  <div class="ligne"></div><div class="ligne"></div><div class="ligne"></div><div class="ligne"></div>
+  <h3>Mes professionnels</h3>
+  <table>
+    <tr><th></th><th>Nom</th><th>Téléphone</th></tr>
+    <tr><td class="l">Médecin traitant</td><td></td><td></td></tr>
+    <tr><td class="l">Notaire</td><td></td><td></td></tr>
+    <tr><td class="l">Employeur ou caisse de retraite</td><td></td><td></td></tr>
+  </table>
+  <div class="pied"><span>Mes volontés</span><span>3</span></div>
+</section>
+
+<!-- 4. Mes obsèques -->
+<section class="page">
+  <h2><span class="n">2</span>Mes obsèques</h2>
+  <p class="chapo">Cochez, complétez, ou laissez le choix à vos proches.</p>
+  <div class="filet"></div>
+  <h3>Je souhaite</h3>
+  <div class="cases"><span class="case"><i></i>Une inhumation</span><span class="case"><i></i>Une crémation</span><span class="case"><i></i>Je laisse le choix à mes proches</span></div>
+  <div class="champ"><span>Cimetière ou lieu souhaité</span><div class="ligne"></div></div>
+  <div class="champ"><span>Concession ou caveau familial existant (où, au nom de qui)</span><div class="ligne"></div></div>
+  <h3>Si je suis incinéré(e), mes cendres</h3>
+  <div class="cases"><span class="case"><i></i>Dispersées en pleine nature</span><span class="case"><i></i>Au jardin du souvenir</span><span class="case"><i></i>Dans un columbarium</span><span class="case"><i></i>Urne inhumée</span></div>
+  <div class="champ"><span>Où</span><div class="ligne"></div></div>
+  <p style="font-size:8.5pt;color:var(--ardoise)">La loi ne permet ni de garder l’urne à la maison, ni de partager les cendres.</p>
+  <h3>La cérémonie</h3>
+  <div class="cases"><span class="case"><i></i>Religieuse (laquelle)&nbsp;: ____________</span><span class="case"><i></i>Civile</span><span class="case"><i></i>Aucune cérémonie</span><span class="case"><i></i>Dans l’intimité</span></div>
+  <div class="deux">
+    <div><div class="champ"><span>Lieu</span><div class="ligne"></div></div><div class="champ"><span>Musique</span><div class="ligne"></div></div><div class="ligne"></div></div>
+    <div><div class="champ"><span>Textes, poèmes</span><div class="ligne"></div></div><div class="champ"><span>Qui prend la parole</span><div class="ligne"></div></div><div class="ligne"></div></div>
+  </div>
+  <div class="deux">
+    <div><div class="champ"><span>Tenue que je souhaite porter</span><div class="ligne"></div></div></div>
+    <div><div class="champ"><span>Fleurs, ou dons à</span><div class="ligne"></div></div></div>
+  </div>
+  <div class="champ"><span>Ce que je ne veux surtout pas</span><div class="ligne"></div></div>
+  <h3>Ce qui est déjà prévu</h3>
+  <div class="cases"><span class="case"><i></i>J’ai un contrat obsèques</span><span class="case"><i></i>J’ai déjà choisi une entreprise de pompes funèbres</span><span class="case"><i></i>Rien n’est prévu</span></div>
+  <div class="champ"><span>Organisme et numéro de contrat</span><div class="ligne"></div></div>
+  <div class="champ"><span>Où se trouve le contrat</span><div class="ligne"></div></div>
+  <div class="pied"><span>Mes volontés</span><span>4</span></div>
+</section>
+
+<!-- 5. Mon corps, ma santé -->
+<section class="page">
+  <h2><span class="n">3</span>Ma santé, mon corps</h2>
+  <p class="chapo">Des choix à faire connaître à vos proches de votre vivant.</p>
+  <div class="filet"></div>
+  <h3>Le don d’organes</h3>
+  <div class="cases"><span class="case"><i></i>J’accepte de donner mes organes</span><span class="case"><i></i>Je refuse</span><span class="case"><i></i>Je n’ai pas décidé</span></div>
+  <div class="note">En France, chacun est considéré comme donneur, sauf s’il a dit son refus. Le moyen le plus sûr de refuser est de s’inscrire au registre national des refus, sur registrenationaldesrefus.fr. Dans tous les cas, dites votre choix à vos proches : les médecins leur demanderont.</div>
+  <h3>Le don du corps à la science</h3>
+  <div class="cases"><span class="case"><i></i>Oui, j’ai fait les démarches auprès de&nbsp;: ________________________</span><span class="case"><i></i>Non</span></div>
+  <h3>La fin de vie</h3>
+  <div class="cases"><span class="case"><i></i>J’ai rédigé des directives anticipées</span><span class="case"><i></i>Pas encore</span></div>
+  <div class="champ"><span>Où elles se trouvent</span><div class="ligne"></div></div>
+  <div class="champ"><span>Ma personne de confiance (nom, téléphone)</span><div class="ligne"></div></div>
+  <div class="note">Les directives anticipées disent aux médecins ce que vous souhaitez si un jour vous ne pouvez plus vous exprimer. Votre médecin traitant peut vous aider à les rédiger.</div>
+  <h3>Mes animaux</h3>
+  <table>
+    <tr><th>Nom de l’animal</th><th>Qui s’en occupera</th><th>Téléphone</th></tr>
+    <tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr>
+  </table>
+  <div class="pied"><span>Mes volontés</span><span>5</span></div>
+</section>
+
+<!-- 6. Mes papiers -->
+<section class="page">
+  <h2><span class="n">4</span>Où sont mes papiers</h2>
+  <p class="chapo">Vos proches en auront besoin dans les premiers jours, puis pour la succession.</p>
+  <div class="filet"></div>
+  <table>
+    <tr><th>Document</th><th>Où le trouver</th></tr>
+    <tr><td class="l">Carte d’identité, passeport</td><td></td></tr>
+    <tr><td class="l">Livret de famille</td><td></td></tr>
+    <tr><td class="l">Carte Vitale et mutuelle</td><td></td></tr>
+    <tr><td class="l">Testament (ou nom du notaire qui le garde)</td><td></td></tr>
+    <tr><td class="l">Contrat obsèques</td><td></td></tr>
+    <tr><td class="l">Banques (noms, agences)</td><td></td></tr>
+    <tr><td class="l">Assurances vie</td><td></td></tr>
+    <tr><td class="l">Assurances habitation, voiture</td><td></td></tr>
+    <tr><td class="l">Titres de propriété, bail</td><td></td></tr>
+    <tr><td class="l">Crédits en cours</td><td></td></tr>
+    <tr><td class="l">Retraite, pensions</td><td></td></tr>
+    <tr><td class="l">Impôts (dernier avis)</td><td></td></tr>
+    <tr><td class="l">Abonnements : énergie, téléphone, internet</td><td></td></tr>
+    <tr><td class="l">Clés, double des clés</td><td></td></tr>
+    <tr><td class="l">Autres</td><td></td></tr>
+  </table>
+  <h3>Ma vie numérique</h3>
+  <div class="champ"><span>Mes mots de passe sont rangés (sans les écrire ici)</span><div class="ligne"></div></div>
+  <div class="champ"><span>Qui peut y accéder</span><div class="ligne"></div></div>
+  <div class="champ"><span>Mes réseaux sociaux : à fermer, ou à garder en souvenir</span><div class="ligne"></div></div>
+  <div class="champ"><span>Mes photos à garder, et pour qui</span><div class="ligne"></div></div>
+  <div class="pied"><span>Mes volontés</span><span>6</span></div>
+</section>
+
+<!-- 7. Mes affaires -->
+<section class="page">
+  <h2><span class="n">5</span>Mes affaires et mes souvenirs</h2>
+  <p class="chapo">Le bijou, la montre, le pull que tout le monde reconnaît. À qui aimeriez-vous les laisser&nbsp;?</p>
+  <div class="filet"></div>
+  <table>
+    <tr><th>L’objet</th><th>Pour qui</th><th>Pourquoi lui ou elle</th></tr>
+    <tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr>
+  </table>
+  <h3>Mes vêtements</h3>
+  <div class="cases"><span class="case"><i></i>À donner à une association</span><span class="case"><i></i>À garder par mes proches</span><span class="case"><i></i>Mes proches choisiront</span></div>
+  <div class="champ"><span>Ceux auxquels je tiens, et pour qui</span><div class="ligne"></div></div>
+  <div class="ligne"></div>
+  <p style="font-size:8.5pt;color:var(--ardoise);margin-top:2mm">Une chemise ou un pull peut aussi devenir un coussin ou un doudou souvenir.</p>
+  <h3>Ma maison, mon jardin</h3>
+  <div class="champ"><span>Ce que j’aimerais qu’on en fasse</span><div class="ligne"></div></div>
+  <div class="ligne"></div>
+  <div class="note">Ces souhaits guident vos proches. Pour qu’ils s’imposent, ils doivent figurer dans un testament.</div>
+  <div class="pied"><span>Mes volontés</span><span>7</span></div>
+</section>
+
+<!-- 8. Mes mots -->
+<section class="page lettre">
+  <h2><span class="n">6</span>Ce que je veux leur dire</h2>
+  <p class="chapo">Un merci, un pardon, un souvenir, une recette. Vous pouvez aussi glisser des lettres dans une enveloppe avec ce carnet.</p>
+  <div class="filet"></div>
+  <div class="ligne"></div><div class="ligne"></div><div class="ligne"></div><div class="ligne"></div><div class="ligne"></div>
+  <div class="ligne"></div><div class="ligne"></div><div class="ligne"></div><div class="ligne"></div><div class="ligne"></div>
+  <div class="ligne"></div><div class="ligne"></div><div class="ligne"></div><div class="ligne"></div><div class="ligne"></div>
+  <div class="ligne"></div><div class="ligne"></div><div class="ligne"></div><div class="ligne"></div><div class="ligne"></div>
+  <div class="ligne"></div><div class="ligne"></div>
+  <div class="pied"><span>Mes volontés</span><span>8</span></div>
+</section>
+
+<!-- 9. Signature -->
+<section class="page">
+  <h2>Signature</h2>
+  <p class="chapo">Ce carnet exprime mes volontés. Je l’ai écrit librement, de ma main.</p>
+  <div class="filet"></div>
+  <div class="deux">
+    <div class="champ"><span>Fait à</span><div class="ligne"></div></div>
+    <div class="champ"><span>le</span><div class="ligne"></div></div>
+  </div>
+  <div class="sign"><div class="cadre-sign">Signature</div><div></div></div>
+  <h3 style="margin-top:12mm">Mes relectures</h3>
+  <p style="font-size:9.5pt;color:var(--ardoise)">À chaque relecture, datez et signez. Si vous changez un choix, barrez l’ancien et écrivez le nouveau à côté.</p>
+  <table>
+    <tr><th>Date</th><th>Ce que j’ai changé</th><th>Signature</th></tr>
+    <tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td></tr>
+  </table>
+  <div class="note" style="margin-top:10mm"><b>Pour vos proches, le jour venu.</b> Les premières démarches, dans l’ordre, sont détaillées dans notre guide gratuit : maison-lignee.fr/guide</div>
+  <div class="pied"><span>Lignée · maison-lignee.fr</span><span>9</span></div>
+</section>
+
+</body>
+</html>
